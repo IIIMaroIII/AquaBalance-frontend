@@ -1,0 +1,16 @@
+.homePageLogo {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 111%;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #323f47;
+  text-decoration: none;
+  height: 20px;
+
+  @media (768px<=width) {
+    font-size: 24px;
+    line-height: 100%;
+  }
+}

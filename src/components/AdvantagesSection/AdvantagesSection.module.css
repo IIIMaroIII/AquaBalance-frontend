@@ -1,0 +1,192 @@
+.homePageAdvantagesSection {
+  background-image: url('../../assets/pictures/HomePage/girl.png');
+  background-repeat: no-repeat;
+  height: 353px;
+  width: 343px;
+  position: relative;
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url('../../assets/pictures/HomePage/girl@2x.png');
+    background-size: 343px 353px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1439px) {
+    background-image: url('../../assets/pictures/HomePage/girl-tab.png');
+    height: 446px;
+    width: 704px;
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../../assets/pictures/HomePage/girl-tab@2x.png');
+      background-size: 704px 446px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    background-image: url('../../assets/pictures/HomePage/girl-desk.png');
+    height: 736px;
+    width: 672px;
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../../assets/pictures/HomePage/girl-desk@2x.png');
+      background-size: 672px 736px;
+    }
+  }
+}
+
+.homePageCustomers {
+  background-color: var(--white);
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  padding: 10px 14px;
+  width: 160px;
+  position: absolute;
+  top: 209px;
+  left: 16px;
+  text-align: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 117%;
+  color: var(--basic-dark-blue);
+  display: inline-flex;
+  gap: 4px;
+
+  @media (min-width: 768px) {
+    top: 283px;
+    left: 32px;
+    padding: 10px 20px;
+    font-size: 15px;
+    line-height: 149%;
+    width: 237px;
+  }
+
+  @media (min-width: 1440px) {
+    top: 537px;
+  }
+}
+
+.homePageCustomersSpan {
+  color: var(--basic-green);
+}
+
+.homePageCustomersPhotoContainer {
+  display: flex;
+  text-align: left;
+}
+
+.homePageCustomersPhoto {
+  position: absolute;
+  display: inline-flex;
+  flex-direction: row;
+  border-radius: 50px;
+  width: 26.4px;
+  height: 28px;
+  z-index: 100;
+
+  @media (min-width: 768px) {
+    width: 47px;
+    height: 47px;
+  }
+}
+
+.secondUserPhoto {
+  position: relative;
+  left: 17.91px;
+  z-index: 2;
+
+  @media (min-width: 768px) {
+    left: 28px;
+  }
+}
+
+.thirdUserPhoto {
+  position: relative;
+  left: 8.49px;
+  z-index: 1;
+
+  @media (min-width: 768px) {
+    left: 9px;
+  }
+}
+
+.homePageBenefits {
+  padding-top: 265px;
+  padding-left: 159px;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+
+  @media (min-width: 768px) {
+    padding-top: 336px;
+    padding-left: 430px;
+    gap: 10px;
+  }
+
+  @media (min-width: 1440px) {
+    padding-top: 594px;
+    padding-left: 398px;
+  }
+}
+
+.homePageBenefitsLinks {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.homePageBenefitsLinksStatistics {
+  color: var(--basic-dark-blue);
+}
+
+.homePageBenefitsLinksHabitDrive {
+  color: var(--white);
+}
+
+.homePageBenefitsItems {
+  border-radius: 30px;
+  padding: 9px 12px;
+  display: flex;
+  font-weight: 700;
+  font-size: 8px;
+  line-height: 100%;
+  letter-spacing: -0.01em;
+
+  @media (min-width: 768px) {
+    padding: 11px 16px;
+    font-size: 12px;
+  }
+}
+
+.homePageBenefitsItemsHabitDrive {
+  background-color: var(--basic-dark-blue);
+}
+
+.homePageBenefitsItemsStatistics {
+  background-color: var(--basic-green);
+}
+
+.homePageBenefitsItemsSettings {
+  background-color: var(--white);
+  color: var(--basic-dark-blue);
+  pointer-events: none;
+}
+
+.homePageBenefitsItemsSettingsActive {
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.homePageBenefitsIcon {
+  width: 7px;
+  height: 7px;
+  background-color: var(--basic-green);
+  border-radius: 100%;
+  margin-right: 4px;
+  vertical-align: middle;
+}
