@@ -10,11 +10,13 @@ export const signUp = createAsyncThunk(
   'users/signUp',
   async (_, { rejectWithValue }) => {
     try {
+      const credentials = { email: 'test100@example.com', password: '000000' };
       const res = await AxiosWithCredentials.post(
         `${CONSTANTS.USERS_ENDPOINTS.signUp}`,
+        credentials,
       );
-      console.log(res);
-      return res;
+      console.log('res.data', res.data);
+      return res.data;
     } catch (error) {
       return rejectWithValue(axiosResponseError(error));
     }
