@@ -1,20 +1,23 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import CONSTANTS from 'src/components/Constants/constants.js';
+import AxiosWithCredentials from 'src/utils/axios.js';
+import { axiosResponseError } from 'src/utils/axiosResponseError.js';
 // import CONSTANTS from 'src/components/Constants/constants.js';
 // import AxiosWithCredentials from 'src/utils/axios.js';
 // import { axiosResponseError } from 'src/utils/axiosResponseError.js';
 
 export const signUp = createAsyncThunk(
   'users/signUp',
-  async (credentials, { rejectWithValue }) => {
-    // try {
-    //   const res = await AxiosWithCredentials.post(
-    //     `${CONSTANTS.USERS_ENDPOINTS.signUp}`,
-    //     credentials,
-    //   );
-    //   return res.data;
-    // } catch (error) {
-    // return rejectWithValue(axiosResponseError(error));
-    // }
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await AxiosWithCredentials.post(
+        `${CONSTANTS.USERS_ENDPOINTS.signUp}`,
+      );
+      console.log(res);
+      // return res.data;
+    } catch (error) {
+      return rejectWithValue(axiosResponseError(error));
+    }
   },
 );
 
