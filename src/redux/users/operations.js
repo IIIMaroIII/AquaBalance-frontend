@@ -14,7 +14,7 @@ export const signUp = createAsyncThunk(
         `${CONSTANTS.USERS_ENDPOINTS.signUp}`,
       );
       console.log(res);
-      // return res.data;
+      return res;
     } catch (error) {
       return rejectWithValue(axiosResponseError(error));
     }
