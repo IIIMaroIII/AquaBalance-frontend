@@ -19,3 +19,26 @@ export const selectIsWaterModalEdit = state =>
   state.water.modalFlags.isWaterModalEdit;
 export const selectIsWaterModalAdd = state =>
   state.water.modalFlags.isWaterModalAdd;
+
+export const selectPercentage = state => {
+  const waterItems = selectWaterItems(state);
+  const dailyNorma = state.users.user.dailyNorma;
+
+  const volume = () => {
+    if (waterItems !== null) {
+      return waterItems
+        .map(item => item.volume)
+        .reduce((acc, volume) => {
+          return acc + volume;
+        }, 0);
+    }
+  };
+
+  const percentage = (volume() / (dailyNorma * 1000)) * 100;
+  if (isNaN(percentage)) {
+    return 0;
+  } else {
+    if (percentage < 100) return percentage;
+    if (percentage > 100) return 100;
+  }
+};
