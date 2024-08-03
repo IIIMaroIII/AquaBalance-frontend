@@ -1,4 +1,4 @@
-// import css from './WelcomeSection.module.css';
+import css from './WelcomeSection.module.css';
 import CustomNavLink from '../REUSABLE/CustomNavLink/CustomNavLink';
 import Logo from '../REUSABLE/Logo/Logo';
 import clsx from 'clsx';
@@ -12,34 +12,35 @@ const WelcomeSection = () => {
     //Container - переиспользуемый кастомный компонент, добавление классов через addClass
     //CustomNavLink - переиспользуемый кастомный компонент, добавление классов через addClass
 
-    <Container type="section" addClass={''}>
-      <Logo />
-      {/* <button onClick={() => dispatch(signUp())}>Test Backend</button> */}
-      <div className={''}>
-        <p className={''}>Record daily water intake and track</p>
-        <h1 className={''}>Water consumption tracker</h1>
-        <ul className={''}>
-          <li>
-            <CustomNavLink
-              addClass={clsx('', '', {
-                // [css.isActive]: isActive,
-              })}
-              to="/signup"
-            >
-              Try tracker
-            </CustomNavLink>
-          </li>
-          <li>
-            <CustomNavLink
-              addClass={clsx('', '', {
-                // [css.isActive]: isActive,
-              })}
-              to="/signin"
-            >
-              Sign In
-            </CustomNavLink>
-          </li>
-          {/* <li>
+    <Container type="section" addClass={css.welcomeSection}>
+      <Container type="div" addClass={css.welcomeSectionContainer}>
+        <Logo />
+        {/* <button onClick={() => dispatch(signUp())}>Test Backend</button> */}
+        <div className={''}>
+          <p className={''}>Record daily water intake and track</p>
+          <h1 className={''}>Water consumption tracker</h1>
+          <ul className={''}>
+            <li>
+              <CustomNavLink
+                addClass={clsx('', '', {
+                  // [css.isActive]: isActive,
+                })}
+                to="/signup"
+              >
+                Try tracker
+              </CustomNavLink>
+            </li>
+            <li>
+              <CustomNavLink
+                addClass={clsx('', '', {
+                  // [css.isActive]: isActive,
+                })}
+                to="/signin"
+              >
+                Sign In
+              </CustomNavLink>
+            </li>
+            {/* <li>
             <CustomNavLink
               addClass={clsx('', '', {
                 // [css.isActive]: isActive,
@@ -49,8 +50,9 @@ const WelcomeSection = () => {
               Tracker Page
             </CustomNavLink>
           </li> */}
-        </ul>
-      </div>
+          </ul>
+        </div>
+      </Container>
     </Container>
   );
 };

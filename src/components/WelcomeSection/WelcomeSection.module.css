@@ -1,0 +1,26 @@
+.welcomeSection {
+  outline: 1px solid red;
+  outline-offset: -2px;
+}
+
+.welcomeSectionContainer {
+  outline: 1px solid red;
+  outline-offset: -2px;
+
+  width: 343px;
+  height: 411px;
+  border-radius: 30px;
+  padding: 24px 16px 67px 16px;
+
+  @media (min-width: 768px) {
+    width: 704px;
+    height: 498px;
+    padding: 32px 32px 50px 32px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 672px;
+    height: 736px;
+    padding: 32px 32px 188px 32px;
+  }
+}
