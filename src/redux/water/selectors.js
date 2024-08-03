@@ -1,5 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { selectDailyNorma } from "../users/selectors.js";
+import { selectUserDailyNorma } from '../users/selectors.js';
 
 export const selectWaterItems = state => state.water.water.dailyItems;
 export const selectMonthlyWaterItems = state => state.water.water.monthlyItems;
@@ -24,7 +24,7 @@ export const selectIsWaterModalAdd = state =>
   state.water.modalFlags.isWaterModalAdd;
 
 export const selectPercentage = createSelector(
-  [selectWaterItems, selectDailyNorma],
+  [selectWaterItems, selectUserDailyNorma],
   (waterItems, dailyNorma) => {
     const volume = () => {
       if (waterItems !== null) {
@@ -32,7 +32,7 @@ export const selectPercentage = createSelector(
           .map(item => item.volume)
           .reduce((acc, volume) => {
             return acc + volume;
-        }, 0);
+          }, 0);
       }
     };
 
