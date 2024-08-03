@@ -14,39 +14,43 @@ const WelcomeSection = () => {
 
     <Container type="section" addClass={''}>
       <Logo />
-      <button onClick={() => dispatch(signUp())}>Test Backend</button>
-      <ul className={''}>
-        <li>
-          <CustomNavLink
-            addClass={clsx('', '', {
-              // [css.isActive]: isActive,
-            })}
-            to="/signup"
-          >
-            Try tracker
-          </CustomNavLink>
-        </li>
-        <li>
-          <CustomNavLink
-            addClass={clsx('', '', {
-              // [css.isActive]: isActive,
-            })}
-            to="/signin"
-          >
-            Sign In
-          </CustomNavLink>
-        </li>
-        <li>
-          <CustomNavLink
-            addClass={clsx('', '', {
-              // [css.isActive]: isActive,
-            })}
-            to="/tracker"
-          >
-            Tracker Page
-          </CustomNavLink>
-        </li>
-      </ul>
+      {/* <button onClick={() => dispatch(signUp())}>Test Backend</button> */}
+      <div className={''}>
+        <p className={''}>Record daily water intake and track</p>
+        <h1 className={''}>Water consumption tracker</h1>
+        <ul className={''}>
+          <li>
+            <CustomNavLink
+              addClass={clsx('', '', {
+                // [css.isActive]: isActive,
+              })}
+              to="/signup"
+            >
+              Try tracker
+            </CustomNavLink>
+          </li>
+          <li>
+            <CustomNavLink
+              addClass={clsx('', '', {
+                // [css.isActive]: isActive,
+              })}
+              to="/signin"
+            >
+              Sign In
+            </CustomNavLink>
+          </li>
+          {/* <li>
+            <CustomNavLink
+              addClass={clsx('', '', {
+                // [css.isActive]: isActive,
+              })}
+              to="/tracker"
+            >
+              Tracker Page
+            </CustomNavLink>
+          </li> */}
+        </ul>
+      </div>
     </Container>
   );
 };
