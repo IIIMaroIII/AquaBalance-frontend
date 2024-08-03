@@ -41,7 +41,7 @@ export const selectPercentage = createSelector(
       return 0;
     } else {
       if (percentage < 100) return percentage;
-      if (percentage > 100) return 100;
+      if (percentage >= 100) return 100;
     }
   },
 );
