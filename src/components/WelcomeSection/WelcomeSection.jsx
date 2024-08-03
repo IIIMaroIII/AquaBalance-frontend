@@ -1,4 +1,4 @@
-// import css from './WelcomeSection.module.css';
+import css from './WelcomeSection.module.css';
 import CustomNavLink from '../REUSABLE/CustomNavLink/CustomNavLink';
 import Logo from '../REUSABLE/Logo/Logo';
 import clsx from 'clsx';
@@ -12,13 +12,13 @@ const WelcomeSection = () => {
     //Container - переиспользуемый кастомный компонент, добавление классов через addClass
     //CustomNavLink - переиспользуемый кастомный компонент, добавление классов через addClass
 
-    <Container type="section" addClass={''}>
+    <Container type="section" addClass={css.container}>
       <Logo />
-      <button onClick={() => dispatch(signUp())}>Test Backend</button>
-      <ul className={''}>
-        <li>
+      <button onClick={() => dispatch(signUp())} className={css.buttonTestBackend}>Test Backend</button>
+      <ul className={css.list}>
+        <li className={clsx(css.item, css.signUpItem)}>
           <CustomNavLink
-            addClass={clsx('', '', {
+            addClass={clsx(css.link, css.signUpLink, {
               // [css.isActive]: isActive,
             })}
             to="/signup"
@@ -26,9 +26,9 @@ const WelcomeSection = () => {
             Try tracker
           </CustomNavLink>
         </li>
-        <li>
+        <li className={clsx(css.item, css.signInItem)}>
           <CustomNavLink
-            addClass={clsx('', '', {
+            addClass={clsx(css.link, css.signInLink, {
               // [css.isActive]: isActive,
             })}
             to="/signin"
@@ -36,9 +36,9 @@ const WelcomeSection = () => {
             Sign In
           </CustomNavLink>
         </li>
-        <li>
+        <li className={clsx(css.item, css.signInItem)}>
           <CustomNavLink
-            addClass={clsx('', '', {
+            addClass={clsx(css.link, css.signInLink, {
               // [css.isActive]: isActive,
             })}
             to="/tracker"
