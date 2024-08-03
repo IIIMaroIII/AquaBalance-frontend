@@ -1,18 +1,46 @@
-// import css from './calendarPagination.module.css';
-// import useChosenDate from 'src/hooks/useChosenDate.js';
-// import monthAsName from 'src/utils/monthAsName.js';
-import Button from 'src/components/REUSABLE/Button/Button.jsx';
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+import Button from '../../../../../components/REUSABLE/Button/Button';
+import { parseISO } from 'date-fns';
+import useChosenDate from 'src/hooks/useChosenDate.js';
+import monthAsName from 'src/utils/monthAsName.js';
+import css from './calendarPagination.module.css';
+import { useDispatch } from 'react-redux';
+import {
+  fetchDailyWater,
+  fetchMonthlyWater,
+} from 'src/redux/water/operations.js';
 
 export const CalendarPagination = () => {
-  // const { chosenDate, goToPreviousMonth, goToNextMonth, chosenYear } =
-  //   useChosenDate();
-  // const { month } = monthAsName(parseISO(chosenDate));
+  const { chosenDate, goToPreviousMonth, goToNextMonth, chosenYear } =
+    useChosenDate();
+  const dispatch = useDispatch();
+  const { month } = monthAsName(parseISO(chosenDate));
 
   return (
-    <div className={''}>
-      <Button onClick={() => {}} addClass={''}></Button>
-      <span className={''}>{''}</span>
-      <Button onClick={() => {}} addClass={''}></Button>
+    <div className={css.wrapper}>
+      <Button
+        onClick={() => {
+          goToPreviousMonth();
+          dispatch(fetchMonthlyWater())
+            .unwrap()
+            .then(() => dispatch(fetchDailyWater()));
+        }}
+        addClass={css.btn}
+      >
+        <BsChevronLeft className={css.arrow} />
+      </Button>
+      <span className={css.span}>{`${month}, ${chosenYear}`}</span>
+      <Button
+        onClick={() => {
+          goToNextMonth();
+          dispatch(fetchMonthlyWater())
+            .unwrap()
+            .then(() => dispatch(fetchDailyWater()));
+        }}
+        addClass={css.btn}
+      >
+        <BsChevronRight className={css.arrow} />
+      </Button>
     </div>
   );
 };
