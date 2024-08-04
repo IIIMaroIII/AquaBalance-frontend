@@ -5,13 +5,15 @@ import clsx from 'clsx';
 import Container from '../REUSABLE/Container/Container.jsx';
 import { useDispatch } from 'react-redux';
 import { signUp } from 'src/redux/users/operations.js';
+import Button from '../REUSABLE/Button/Button.jsx';
+import useModals from 'src/hooks/useModals.js';
 
 const WelcomeSection = () => {
   const dispatch = useDispatch();
+  const { changeModal, modal } = useModals();
   return (
     //Container - переиспользуемый кастомный компонент, добавление классов через addClass
     //CustomNavLink - переиспользуемый кастомный компонент, добавление классов через addClass
-
 
     <Container type="section" addClass={css.container}>
       <Logo />
@@ -45,6 +47,16 @@ const WelcomeSection = () => {
           >
             Tracker Page
           </CustomNavLink>
+        </li>
+        <li className={clsx(css.item, css.signInItem)}>
+          <Button
+            onClick={() => dispatch(changeModal(!modal))}
+            addClass={clsx(css.link, css.signInLink, {
+              // [css.isActive]: isActive,
+            })}
+          >
+            Set to Main Modal Open
+          </Button>
         </li>
       </ul>
     </Container>

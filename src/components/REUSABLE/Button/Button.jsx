@@ -6,6 +6,7 @@ const Button = ({
   addClass = '',
   selected = false,
   disabled = false,
+  ariaHidden = false,
   ...otherProps
 }) => {
   return (
@@ -19,6 +20,7 @@ const Button = ({
         addClass,
       )}
       disabled={disabled}
+      aria-hidden={ariaHidden}
       {...otherProps}
     >
       {children}
