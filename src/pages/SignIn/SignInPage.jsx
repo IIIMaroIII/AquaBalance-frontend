@@ -4,7 +4,7 @@ import SignInForm from 'src/components/Users/SignInForm/SignInForm.jsx';
 
 const SignInPage = () => {
   return (
-    <Container type="section" addClass={''}>
+    <Container type="section" addClass={'wrapper'}>
       <SignInForm />
     </Container>
   );

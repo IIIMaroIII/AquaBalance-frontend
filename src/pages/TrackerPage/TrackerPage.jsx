@@ -5,7 +5,7 @@ import Container from 'src/components/REUSABLE/Container/Container.jsx';
 
 const TrackerPage = () => {
   return (
-    <Container type="section" addClass={''}>
+    <Container type="section" addClass={'wrapper'}>
       <WaterMainInfo />
       <WaterDetailedInfo />
     </Container>

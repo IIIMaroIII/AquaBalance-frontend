@@ -1,11 +1,19 @@
+@import url('./fonts/fonts.css');
+
 :root {
   /*
 Переменные
 */
+  --white: #ffffff;
+  --light-gray: #f0eff4;
+  --green: #9be1a0;
+  --hover-green: #87D28D;
+  --light-dark: #323f47;
+  --dark: #2f2f2f;
 }
 
 body {
-  /* базовый шрифт через font-family: */
+  font-family: 'Poppins';
 }
 
 ul {
@@ -32,4 +40,29 @@ input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.wrapper {
+  margin: 0 auto;
+  padding: 16px; 
+}
+
+@media (min-width: 375px) {
+  .wrapper {
+    width: 343px;
+    padding: 16px 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    width: 704px;
+    padding: 32px 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .wrapper {
+    width: 1376px;
+  }
 }

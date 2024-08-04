@@ -1,26 +1,58 @@
-.welcomeSection {
-  outline: 1px solid red;
-  outline-offset: -2px;
+.container {
+  background-color: var(--light-gray);
+  border-radius: 30px;
+  padding: 24px 16px;
 }
 
-.welcomeSectionContainer {
-  outline: 1px solid red;
-  outline-offset: -2px;
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 32px;
+  box-sizing: border-box;
+}
 
-  width: 343px;
-  height: 411px;
+.item {
+  padding: 14px 19px;
   border-radius: 30px;
-  padding: 24px 16px 67px 16px;
+}
 
-  @media (min-width: 768px) {
-    width: 704px;
-    height: 498px;
-    padding: 32px 32px 50px 32px;
+.signUpItem {
+  background-color: var(--green);
+}
+
+.signInItem {
+  background-color: none;
+  border: 1px solid var(--light-dark);
+}
+
+.signUpItem:hover {
+  background-color: var(--hover-green);
+}
+
+.signInItem:hover {
+  border-color: var(--hover-green);
+}
+
+.signInItem:hover .signInLink {
+  color: var(--hover-green);
+}
+
+.link {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--light-dark);
+  line-height: 1.28;
+}
+
+@media (min-width: 768px) {
+  .link {
+    font-size: 16px;
+    line-height: 1.5;
   }
 
-  @media (min-width: 1440px) {
-    width: 672px;
-    height: 736px;
-    padding: 32px 32px 188px 32px;
+  .item {
+    padding: 18px 40px;
   }
 }

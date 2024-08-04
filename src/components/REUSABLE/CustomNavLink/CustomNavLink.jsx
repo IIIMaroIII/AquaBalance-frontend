@@ -12,6 +12,7 @@ const CustomNavLink = ({ addClass = '', children, ...otherProps }) => {
 
   return (
     <>
+      {/* <NavLink className={props => addClassName(props)} {...otherProps}> */}
       <NavLink className={props => addClassName(props)} {...otherProps}>
         {children}
       </NavLink>
