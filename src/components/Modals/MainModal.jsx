@@ -66,7 +66,14 @@ const MainModal = ({ children }) => {
         [css.beforeClose]: beforeClose,
       })}
     >
-      <CloseButton onClose={() => dispatch(changeModal(!modal))} />
+      <CloseButton
+        onClose={() => {
+          setBeforeClose(!beforeClose);
+          setTimeout(() => {
+            dispatch(changeModal(false));
+          }, 500);
+        }}
+      />
       {renderModal()}
       {children}
       <div>
