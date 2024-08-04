@@ -3,8 +3,11 @@ import Loader from '../REUSABLE/Loader/Loader';
 import { Toaster } from 'react-hot-toast';
 import { TOAST } from '../Constants/constants.js';
 import MainModal from '../Modals/MainModal.jsx';
+import useModals from 'src/hooks/useModals.js';
 
 const SharedLayout = ({ children }) => {
+  const { modal } = useModals();
+
   return (
     <>
       <Toaster
@@ -16,7 +19,7 @@ const SharedLayout = ({ children }) => {
         toastOptions={TOAST.options}
       />
       <Suspense fallback={<Loader />}>{children}</Suspense>
-      <MainModal />
+      {modal ? <MainModal /> : <></>}
     </>
   );
 };

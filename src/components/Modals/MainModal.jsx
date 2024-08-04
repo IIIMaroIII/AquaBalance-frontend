@@ -1,6 +1,4 @@
 import Modal from 'react-modal';
-import { IoIosClose } from 'react-icons/io';
-import { IconContext } from 'react-icons';
 import css from './mainModal.module.css';
 import { useDispatch } from 'react-redux';
 import WaterModal from './WaterModal/WaterModal';
@@ -9,12 +7,14 @@ import LogoutModal from './LogoutModal/LogoutModal';
 import UserSettingsModal from './UserSettingsModal/UserSettingsModal';
 import { changeModal } from 'src/redux/water/slice.js';
 import useModals from 'src/hooks/useModals.js';
-import Button from '../REUSABLE/Button/Button.jsx';
-import cross from '../../assets/temporarySVG/x-2.svg';
 import CloseButton from '../REUSABLE/CloseButton/CloseButton.jsx';
+import { useEffect, useState } from 'react';
+import clsx from 'clsx';
 
 const MainModal = ({ children }) => {
   const dispatch = useDispatch();
+  const [afterOpen, setAfterOpen] = useState(false);
+  const [beforeClose, setBeforeClose] = useState(false);
   const {
     waterModalAdd,
     waterModalEdit,
@@ -42,16 +42,29 @@ const MainModal = ({ children }) => {
     }
   };
 
+  useEffect(() => {
+    if (!modal) return;
+    setAfterOpen(true);
+  }, [modal]);
+
   return (
     <Modal
       appElement={document.getElementById('root')}
       isOpen={modal}
-      onRequestClose={() => dispatch(changeModal(false))}
-      contentLabel="Main Modal"
+      onRequestClose={() => {
+        setBeforeClose(!beforeClose);
+        setTimeout(() => {
+          dispatch(changeModal(false));
+        }, 500);
+      }}
+      contentLabel="Modal"
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}
-      className={css.content}
-      overlayClassName={css.overlay}
+      className={clsx(css.content)}
+      overlayClassName={clsx(css.overlay, {
+        [css.afterOpen]: afterOpen,
+        [css.beforeClose]: beforeClose,
+      })}
     >
       <CloseButton onClose={() => dispatch(changeModal(!modal))} />
       {renderModal()}
