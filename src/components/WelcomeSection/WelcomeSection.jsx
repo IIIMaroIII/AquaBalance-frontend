@@ -12,9 +12,9 @@ const WelcomeSection = () => {
     //Container - переиспользуемый кастомный компонент, добавление классов через addClass
     //CustomNavLink - переиспользуемый кастомный компонент, добавление классов через addClass
 
+
     <Container type="section" addClass={css.container}>
       <Logo />
-      <button onClick={() => dispatch(signUp())} className={css.buttonTestBackend}>Test Backend</button>
       <ul className={css.list}>
         <li className={clsx(css.item, css.signUpItem)}>
           <CustomNavLink
