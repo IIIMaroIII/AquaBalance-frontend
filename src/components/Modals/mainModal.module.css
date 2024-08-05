@@ -26,8 +26,9 @@
   background-color: rgba(47, 47, 47, 0.6);
 
   opacity: 0;
-  transform: scale(2);
-  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+  transform: scale(1.5);
+  transition: opacity var(--transition-delay) var(--transition),
+    transform var(--transition-delay) var(--transition);
 }
 
 .overlay.afterOpen {
@@ -36,6 +37,19 @@
 }
 .overlay.beforeClose {
   opacity: 0;
-  transform: scale(2);
-  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+  transform: scale(1.5);
+  transition: opacity var(--transition-delay) var(--transition),
+    transform var(--transition-delay) var(--transition);
+}
+
+@media (min-width: 768px) and (max-width: 1439px) {
+  .content {
+    width: 648px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .content {
+    width: 920px;
+  }
 }

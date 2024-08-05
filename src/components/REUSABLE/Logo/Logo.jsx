@@ -1,9 +1,14 @@
+import clsx from 'clsx';
 import CustomNavLink from '../CustomNavLink/CustomNavLink';
 import css from './logo.module.css';
 
-const Logo = () => {
+const Logo = ({ addClass = '', ...otherProps }) => {
   return (
-    <CustomNavLink className={css.homePageLogo} to="/">
+    <CustomNavLink
+      className={clsx(css.homePageLogo, addClass)}
+      {...otherProps}
+      to="/"
+    >
       AquaTrack
     </CustomNavLink>
   );
