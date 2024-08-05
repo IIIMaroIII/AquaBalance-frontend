@@ -1,15 +1,16 @@
-import Modal from 'react-modal';
 import css from './mainModal.module.css';
+import Modal from 'react-modal';
 import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import clsx from 'clsx';
+
 import WaterModal from './WaterModal/WaterModal';
 import DeleteWaterModal from './DeleteWaterModal/DeleteWaterModal';
 import LogoutModal from './LogoutModal/LogoutModal';
 import UserSettingsModal from './UserSettingsModal/UserSettingsModal';
 import { changeModal } from 'src/redux/water/slice.js';
 import useModals from 'src/hooks/useModals.js';
-import CloseButton from '../REUSABLE/CloseButton/CloseButton.jsx';
-import { useEffect, useState } from 'react';
-import clsx from 'clsx';
+import CloseButton from 'src/components/REUSABLE/CloseButton/CloseButton.jsx';
 
 const MainModal = ({ children }) => {
   const dispatch = useDispatch();
