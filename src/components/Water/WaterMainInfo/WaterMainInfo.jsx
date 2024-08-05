@@ -3,7 +3,7 @@ import WaterDailyNorma from './WaterDailyNorma/WaterDailyNorma.jsx';
 import WaterProgressBar from './WaterProgressBar/WaterProgressBar.jsx';
 import Logo from 'src/components/REUSABLE/Logo/Logo';
 import Container from 'src/components/REUSABLE/Container/Container.jsx';
-// import Button from 'src/components/REUSABLE/Button/Button.jsx';
+import Button from 'src/components/REUSABLE/Button/Button.jsx';
 
 const WaterMainInfo = () => {
   return (
@@ -11,8 +11,8 @@ const WaterMainInfo = () => {
       <Logo />
       <WaterDailyNorma />
       <WaterProgressBar />
-      {/* <Button addClass={''}>{children}</Button> Переиспользуемый кастомный
-      компонент Button */}
+      {/* {<Button addClass={''}>{children}</Button>} */}
+      <Button/>
     </Container>
   );
 };
