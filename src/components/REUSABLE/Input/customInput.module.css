@@ -1,4 +1,4 @@
-label.label {
+.label {
   display: block;
   margin-bottom: 8px;
   font-size: inherit;
@@ -8,7 +8,8 @@ label.label {
   color: var(--dark);
 }
 
-input.input {
+.input,
+.input.inactive {
   width: 100%;
   padding: 16px;
   border: 1px solid var(--input-border-inactive-color);
@@ -24,23 +25,23 @@ input.input {
   color: var(--input-text-inactive-color);
 }
 
-input.input:focus {
+.input.focused {
   color: var(--dark);
   border: 1px solid var(--input-border-focused-color);
 }
 
-input.input:active {
+.input.activated {
   color: var(--dark);
   border: 1px solid var(--input-border-activated-color);
   background-color: transparent;
 }
 
-input.input.error {
+.input.error {
   color: var(--error-color);
   border: 1px solid var(--error-color);
   background-color: transparent;
 }
 
-input.input:hover {
+.input:hover {
   border: 1px solid var(--hover-green);
 }
