@@ -18,7 +18,6 @@ input.input {
   outline: none;
 
   background-color: transparent;
-
   transition: all var(--transition-delay) var(--transition);
 
   color: var(--input-text-inactive-color);
