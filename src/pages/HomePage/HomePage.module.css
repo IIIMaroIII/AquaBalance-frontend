@@ -1,4 +1,4 @@
-.containerHomePage {
+/* .containerHomePage {
   outline: 1px solid red;
   outline-offset: -2px;
 
@@ -19,6 +19,6 @@
     flex-direction: row;
     max-width: 1440px;
     gap: 32px;
-    /* height: 100vh; */
+    height: 100vh;
   }
-}
+} */
