@@ -7,13 +7,16 @@ import { useForm } from 'react-hook-form';
 import { useId } from "react";
 import { useDispatch } from "react-redux";
 import { signInFormValidation } from 'src/Validation/signInFormValidation';
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const SignInForm = () => {
   const emailId = useId();
   const passwordId = useId();
   const dispatch = useDispatch();
 
-  const { register, handleSubmit, reset, formState: { errors }, } = useForm();
+  const { register, handleSubmit, reset, formState: { errors, isDirty, isValid}, } = useForm({
+    resolver: yupResolver(signInFormValidation),
+  });
   const onSubmit = (data) => {
     console.log(data);
     reset();
@@ -29,7 +32,7 @@ const SignInForm = () => {
         name={"email"}
         id={emailId}
         error={errors.email ? true : false}
-        {...register("email", { required: true })}
+        {...register("email")}
       />
       {errors.email && <span>{errors.email.message}</span>}
 
@@ -40,10 +43,11 @@ const SignInForm = () => {
         placeholder={"Enter your password"}
         name={"password"}
         id={passwordId}
-        {...register("password", { required: true })}
+        error={errors.password ? true : false}
+        {...register("password")}
       />
       {errors.password && <span>{errors.password.message}</span>}
-      <Button type="submit" value="submit">Sign In</Button>
+      <Button disabled={!isDirty || !isValid} type="submit" value="submit">Sign In</Button>
     </form>
 )
 };
