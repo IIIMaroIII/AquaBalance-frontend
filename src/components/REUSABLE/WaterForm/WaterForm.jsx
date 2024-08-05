@@ -92,13 +92,15 @@ const WaterForm = ({ operationName }) => {
         label={true}
         labelName={"Recording time:"}
         value={time}
-        onChange={handleTimeChange}>
+        onChange={handleTimeChange}
+        name={"date"}>        
       </CustomInput>
       <CustomInput
         label={true}
         labelName={"Enter the value of the water used:"}
         value={waterAmount}
         onChange={handleInputChange}
+        name={"volume"}
       >
       </CustomInput>
       <Button
