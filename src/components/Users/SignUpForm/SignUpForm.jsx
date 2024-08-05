@@ -1,42 +1,53 @@
 import css from './signUpForm.module.css';
-import { useId } from "react";
 import { useForm } from 'react-hook-form';
+import { signUp } from 'src/redux/users/operations';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { signInFormValidation } from 'src/Validation/signInFormValidation';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Button from 'src/components/REUSABLE/Button/Button';
 import CustomInput from 'src/components/REUSABLE/Input/CustomInput';
 
 const SignUpForm = () => {
-  const emailId = useId();
-  const passwordId = useId();
-  const rpasswordId = useId();
+  const dispatch = useDispatch();
+
+  const { register, handleSubmit, reset, formState: { errors, isDirty, isValid}, } = useForm({
+    resolver: yupResolver(signInFormValidation),
+  });
+
+  const onSubmit = (data) => {
+    dispatch(signUp(data));
+    reset();
+  }
 
   return (
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <p>Sign up</p>
-        <label htmlFor={emailId}>Email</label>
         <CustomInput
           label={true}
+          labelName={"Email"}
           inputType={"text"}
           placeholder={"Enter your email"}
           name={"email"}
-          id={emailId}
+          error={errors.email ? true : false}
+          {...register("email")}
         />
-        <label htmlFor={passwordId}>Password</label>
         <CustomInput
           label={true}
+          labelName={"Password"}
           inputType={"password"}
           placeholder={"Enter your password"}
           name={"password"}
-          id={passwordId}
+          error={errors.password ? true : false}
+          {...register("password")}
         />
-
-        <label htmlFor={rpasswordId}>Repeat password</label>
         <CustomInput
           label={true}
+          labelName={"Repeat password"}
           inputType={"password"}
           placeholder={"Repeat password"}
           name={"password"}
-          id={rpasswordId}
+          error={errors.password ? true : false}
         />
 
         <Button type="submit" value="submit">Sign In</Button>

@@ -1,26 +1,25 @@
 // import css from './signInForm.module.css';
 import Button from 'src/components/REUSABLE/Button/Button';
 import CustomInput from 'src/components/REUSABLE/Input/CustomInput';
-// import { signIn } from 'src/redux/users/operations';
+import { signIn } from 'src/redux/users/operations';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useId } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import { signInFormValidation } from 'src/Validation/signInFormValidation';
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const SignInForm = () => {
-  const emailId = useId();
-  const passwordId = useId();
   const dispatch = useDispatch();
 
   const { register, handleSubmit, reset, formState: { errors, isDirty, isValid}, } = useForm({
     resolver: yupResolver(signInFormValidation),
   });
   const onSubmit = (data) => {
-    console.log(data);
+    dispatch(signIn(data));
     reset();
   }
+  
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <p>Sign in</p>
@@ -30,7 +29,6 @@ const SignInForm = () => {
         inputType={"text"}
         placeholder={"Enter your email"}
         name={"email"}
-        id={emailId}
         error={errors.email ? true : false}
         {...register("email")}
       />
@@ -42,7 +40,6 @@ const SignInForm = () => {
         inputType={"password"}
         placeholder={"Enter your password"}
         name={"password"}
-        id={passwordId}
         error={errors.password ? true : false}
         {...register("password")}
       />
