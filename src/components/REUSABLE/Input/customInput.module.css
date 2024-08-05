@@ -1,0 +1,46 @@
+label.label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: var(--dark);
+}
+
+input.input {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--input-border-inactive-color);
+  border-radius: 15px;
+  font-size: inherit;
+  font-weight: inherit;
+  outline: none;
+
+  background-color: transparent;
+
+  transition: all var(--transition-delay) var(--transition);
+
+  color: var(--input-text-inactive-color);
+}
+
+input.input:focus {
+  color: var(--dark);
+  border: 1px solid var(--input-border-focused-color);
+}
+
+input.input:active {
+  color: var(--dark);
+  border: 1px solid var(--input-border-activated-color);
+  background-color: transparent;
+}
+
+input.input.error {
+  color: var(--error-color);
+  border: 1px solid var(--error-color);
+  background-color: transparent;
+}
+
+input.input:hover {
+  border: 1px solid var(--hover-green);
+}
