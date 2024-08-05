@@ -1,9 +1,9 @@
 import css from './signUpForm.module.css';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useId } from "react";
-
+import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import Button from 'src/components/REUSABLE/Button/Button'; // Переиспользуемый кастомный компонент Button - активно узать вместо тэга
+import Button from 'src/components/REUSABLE/Button/Button';
+import CustomInput from 'src/components/REUSABLE/Input/CustomInput';
 
 const SignUpForm = () => {
   const emailId = useId();
@@ -11,30 +11,36 @@ const SignUpForm = () => {
   const rpasswordId = useId();
 
   return (
-      <Formik initialValues={{
-          email: "",
-          password: "",
-          rpassword: ""
-        }} onSubmit={(values, actions) => {
-          console.log(values);
-          actions.resetForm();
-        }}
-        >
-        <Form>
-          <h2>Sign Up</h2>
-          <label htmlFor={emailId}>Email</label>
-          <Field type="text" name="email" placeholder="Enter your email" id={emailId}/>
+      <form>
+        <p>Sign up</p>
+        <label htmlFor={emailId}>Email</label>
+        <CustomInput
+          label={true}
+          inputType={"text"}
+          placeholder={"Enter your email"}
+          name={"email"}
+          id={emailId}
+        />
+        <label htmlFor={passwordId}>Password</label>
+        <CustomInput
+          label={true}
+          inputType={"password"}
+          placeholder={"Enter your password"}
+          name={"password"}
+          id={passwordId}
+        />
 
-          <label htmlFor={passwordId}>Password</label>
-          <Field type="password" name="password" placeholder="Enter your password" id={passwordId}/>
+        <label htmlFor={rpasswordId}>Repeat password</label>
+        <CustomInput
+          label={true}
+          inputType={"password"}
+          placeholder={"Repeat password"}
+          name={"password"}
+          id={rpasswordId}
+        />
 
-          <label htmlFor={rpasswordId}>Repeat password</label>
-          <Field type="password" name="rpassword" placeholder="Repeat password" id={rpasswordId}/>
-
-          <Button type="submit">Sign Up</Button>
-        </Form>
-      </Formik>
-    
+        <Button type="submit" value="submit">Sign In</Button>
+      </form>
 )
 };
 

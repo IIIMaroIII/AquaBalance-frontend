@@ -1,51 +1,43 @@
 // import css from './signInForm.module.css';
 import Button from 'src/components/REUSABLE/Button/Button';
-import { signIn } from 'src/redux/users/operations';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import CustomInput from 'src/components/REUSABLE/Input/CustomInput';
+// import { signIn } from 'src/redux/users/operations';
+import { useForm } from 'react-hook-form';
 import { useId } from "react";
-import * as Yup from "yup";
 import { useDispatch } from "react-redux";
+import { signInFormValidation } from 'src/Validation/signInFormValidation';
 
 const SignInForm = () => {
   const emailId = useId();
   const passwordId = useId();
   const dispatch = useDispatch();
 
-  const FeedbackSchema = Yup.object().shape({
-    email: Yup
-      .string()
-      .email()
-      .required("Required"),
-    password: Yup
-      .string()
-      .min(8, "Password is too short - should be 8 chars minimum.")
-      .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.')
-      .required("Required")
-  })
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  }
 
   return (
-    <Formik initialValues={{
-        email: "",
-        password: ""
-      }} onSubmit={(values, actions) => {
-        dispatch(signIn(values))
-        actions.resetForm();
-      }}
-      validationSchema={FeedbackSchema}
-      >
-      <Form>
-        <h2>Sign in</h2>
-        <label htmlFor={emailId}>Email</label>
-        <Field type="text" name="email" placeholder="Enter your email" id={emailId}/>
-        <ErrorMessage name="email" component="span"/>
+    <form onSubmit={handleSubmit}>
+      <p>Sign in</p>
+      <label htmlFor={emailId}>Email</label>
+      <CustomInput
+        label={true}
+        inputType={"text"}
+        placeholder={"Enter your email"}
+        name={"email"}
+        id={emailId}
+      />
+      <label htmlFor={passwordId}>Password</label>
+      <CustomInput
+        label={true}
+        inputType={"password"}
+        placeholder={"Enter your password"}
+        name={"password"}
+        id={passwordId}
+      />
 
-        <label htmlFor={passwordId}>Password</label>
-        <Field type="password" name="password" placeholder="Enter your password" id={passwordId}/>
-        <ErrorMessage name="password" component="span"/>
-
-        <Button type="submit">Sign In</Button>
-      </Form>
-    </Formik>
+      <Button type="submit" value="submit">Sign In</Button>
+    </form>
 )
 };
 
