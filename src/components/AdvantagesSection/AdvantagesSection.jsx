@@ -3,9 +3,17 @@ import css from './AdvantagesSection.module.css';
 // import useAuth from 'src/hooks/useAuth.js';
 
 import Container from '../REUSABLE/Container/Container';
+import { useEffect } from 'react';
 
 const AdvantagesSection = () => {
   // const {} = useAuth(); // Кастомный хук для быстрого доступа к isLoggedIn, isLoading и тд
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //     } catch (error) {}
+  //   }
+  // }, []);
 
   return (
     <Container type="section" addClass={css.container}>

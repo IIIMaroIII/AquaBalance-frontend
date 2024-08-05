@@ -1,7 +1,4 @@
 .container {
-  outline: 1px solid red;
-  outline-offset: -2px;
-
   width: 343px;
   height: 353px;
   border-radius: 30px;
