@@ -6,6 +6,7 @@
   font-weight: inherit;
   letter-spacing: inherit;
   color: var(--dark);
+  color: "red";
 }
 
 .input,
