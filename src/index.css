@@ -1,11 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+/* @import 'normalize.css'; */
+
 :root {
   /*
 Переменные
 */
+  --shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+  --transition-delay: 250ms;
+  --transition: cubic-bezier(0.14, 0.57, 0.97, 0.39);
+
+  --white: #ffffff;
+  --light-gray: #f0eff4;
+  --green: #9be1a0;
+  --hover-green: #87d28d;
+  --light-dark: #323f47;
+  --dark: #2f2f2f;
+  --error-color: #ef5050;
+
+  --input-border-inactive-color: rgba(47, 47, 47, 0.2);
+  --input-border-focused-color: rgba(47, 47, 47, 0.2);
+  --input-border-activated-color: rgba(47, 47, 47, 0.4);
+  --input-text-inactive-color: rgba(47, 47, 47, 0.6);
+
+  --signin-btn-disabled-color: rgba(47, 47, 47, 0.2);
 }
 
+html,
 body {
-  /* базовый шрифт через font-family: */
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  box-sizing: border-box;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  /* Стили для автозаполненных полей */
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  box-shadow: 0 0 0px 1000px white inset;
+  -webkit-text-fill-color: #000;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 ul {
@@ -28,8 +75,35 @@ img {
   height: auto;
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+/*
+
+Говорили же - здесь только reset стили и переменные
+
+.wrapper {
+  margin: 0 auto;
+  padding: 16px;
 }
+
+@media (min-width: 375px) {
+  .wrapper {
+    width: 343px;
+    padding: 16px 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    width: 704px;
+    padding: 32px 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .wrapper {
+    width: 1376px;
+  }
+}
+
+Говорили же - здесь только reset стили и переменные
+
+*/

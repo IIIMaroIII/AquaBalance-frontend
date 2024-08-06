@@ -1,4 +1,66 @@
-.homePageAdvantagesSection {
+.container {
+  width: 343px;
+  height: 353px;
+  border-radius: 30px;
+
+  /* Mobile screen */
+  background-image: url(../../assets/pictures/HomePage/girl.png);
+  background-size: cover;
+
+  /* retina mobile screen */
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url('../../assets/pictures/HomePage/girl@2x.png');
+  }
+
+  @media (min-width: 768px) {
+    width: 704px;
+    height: 446px;
+
+    /* tablet screen */
+    background-image: url(../../assets/pictures/HomePage/girl-tab.png);
+    background-size: cover;
+
+    /* retina tablet screen */
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../../assets/pictures/HomePage/girl-tab@2x.png');
+    }
+  }
+
+  @media (min-width: 1440px) {
+    width: 672px;
+    height: 736px;
+
+    /* desktop screen */
+    background-image: url(../../assets/pictures/HomePage/girl-desk.png);
+    background-size: cover;
+
+    /* retina desktop screen */
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../../assets/pictures/HomePage/girl-desk@2x.png');
+    }
+  }
+}
+
+.homePageCustomersPhoto {
+  width: 26.4px;
+  height: 28px;
+
+  @media (min-width: 768px) {
+    width: 47px;
+    height: 47px;
+  }
+}
+
+/* .homePageAdvantagesSection {
   background-image: url('../../assets/pictures/HomePage/girl.png');
   background-repeat: no-repeat;
   height: 353px;
@@ -189,4 +251,4 @@
   border-radius: 100%;
   margin-right: 4px;
   vertical-align: middle;
-}
+} */

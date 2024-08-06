@@ -1,23 +1,33 @@
 .btn {
   display: block;
-  /* width: 100%;
-  height: 100%; */
-  padding: 8px 12px;
+  width: 100%;
+  padding: 18px 40px;
+
   border: none;
+  border-radius: 30px;
+
+  outline: none;
+  background-color: var(--basic-green);
 
   cursor: pointer;
-  transform: scale(1);
-  transition: all 250ms ease-in-out;
+  transition: border var(--transition-delay) var(--transition),
+    background-color var(--transition-delay) var(--transition),
+    color var(--transition-delay) var(--transition);
   font-family: inherit;
-  /* font-size: inherit; */
-  /* font-weight: inherit; */
+  font-size: inherit;
+  font-weight: inherit;
 }
 .btn:hover,
 .btn:focus {
-  transform: scale(1.05);
+  border: none;
+  background-color: var(--hover-green);
+  color: var(--dark);
 }
 
 .btn:disabled {
+  border: 1px solid var(--signin-btn-disabled-color);
+  color: var(--signin-btn-disabled-color);
+  background-color: transparent;
 }
 
 .btn:active {

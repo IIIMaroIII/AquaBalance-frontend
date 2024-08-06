@@ -1,0 +1,58 @@
+.container {
+  background-color: var(--light-gray);
+  border-radius: 30px;
+  padding: 24px 16px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 32px;
+  box-sizing: border-box;
+}
+
+.item {
+  padding: 14px 19px;
+  border-radius: 30px;
+}
+
+.signUpItem {
+  background-color: var(--green);
+}
+
+.signInItem {
+  background-color: none;
+  border: 1px solid var(--light-dark);
+}
+
+.signUpItem:hover {
+  background-color: var(--hover-green);
+}
+
+.signInItem:hover {
+  border-color: var(--hover-green);
+}
+
+.signInItem:hover .signInLink {
+  color: var(--hover-green);
+}
+
+.link {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--light-dark);
+  line-height: 1.28;
+}
+
+@media (min-width: 768px) {
+  .link {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .item {
+    padding: 18px 40px;
+  }
+}

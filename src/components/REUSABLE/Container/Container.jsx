@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import css from './container.module.css';
+// import css from './container.module.css';
 
 const Container = ({
   children,
@@ -10,11 +10,11 @@ const Container = ({
   return (
     <>
       {type === 'div' ? (
-        <div className={clsx(css.container, addClass)} {...otherProps}>
+        <div className={clsx(addClass)} {...otherProps}>
           {children}
         </div>
       ) : (
-        <section className={clsx(css.container, addClass)} {...otherProps}>
+        <section className={clsx(addClass)} {...otherProps}>
           {children}
         </section>
       )}
