@@ -204,7 +204,19 @@
     width: 116px;
     margin-top: 40px;
 }
-
+.uploadIcon{
+    width: 18px;
+    height: 18px; 
+    margin-right: 5px;
+}
+.normaStyle{
+    color: #9BE1A0; 
+    font-weight: 700
+}
+.saveBtn{
+    background: #9BE1A0; 
+    font-weight: 700
+}
 
 @media (min-width: 768px) {
   .modalContainer {
