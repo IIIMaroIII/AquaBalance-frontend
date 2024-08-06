@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { IMAGES } from '../../components/Constants/constants.js';
 import Container from '../REUSABLE/Container/Container';
 import { requestTotalUsers } from 'src/utils/requestTotalUsers.js';
-import { axiosResponseError } from 'src/utils/axiosResponseError.js';
 
 import css from './AdvantagesSection.module.css';
 // import useAuth from 'src/hooks/useAuth.js';
@@ -80,7 +79,7 @@ const AdvantagesSection = () => {
           </picture>
         </div>
         <div>
-          Our <span>{totalUsers} happy</span> customers
+          Our<span> {totalUsers > 0 ? totalUsers : null} happy</span> customers
         </div>
       </div>
       <ul>
