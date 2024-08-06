@@ -33,6 +33,7 @@ const UsersSettingsForm = () => {
       dailyNorma
     };
     console.log(formData);
+
   };
 
   return (
@@ -45,7 +46,7 @@ const UsersSettingsForm = () => {
             <img src="" alt="" />
           </div>
           <button type="button" className={css.uploadPhotoBtn}>
-            <FiUpload className={css.uploadIcon} />Upload a photo
+            <FiUpload className={css.uploadIcon} /> Upload a photo
           </button>
         </div>
 
