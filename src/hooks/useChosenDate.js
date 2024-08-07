@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getDaysInMonth } from 'date-fns';
+import { getDaysInMonth, parseISO } from 'date-fns';
 import { selectDate } from 'src/redux/water/selectors.js';
 import { setChosenDate } from 'src/redux/water/slice.js';
+import CONSTANTS from 'src/components/Constants/constants.js';
 
 const useChosenDate = () => {
   const dispatch = useDispatch();
@@ -88,6 +89,34 @@ const useChosenDate = () => {
     }
   };
 
+  const checkIfToday = () => {
+    const parsedDate = new Date(parseISO(chosenDate));
+    const date = new Date();
+
+    const formatedDate = date => {
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      const day = date.getDate();
+
+      return `${year}/${month}/${day}`;
+    };
+    const chosenDay = CONSTANTS.DAYS[parsedDate.getDay()];
+    return formatedDate(parsedDate) === formatedDate(date)
+      ? 'Today'
+      : `${parsedDate.getDate()}, ${chosenDay}`;
+  };
+
+  const returnAmPmTime = date => {
+    const dateISO = new Date(date);
+    const options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    };
+
+    return dateISO.toLocaleString('en-US', options);
+  };
+
   return {
     getHoursAndMinutes,
     setHoursAndMinutes,
@@ -98,6 +127,8 @@ const useChosenDate = () => {
     goToPreviousMonth,
     goToNextMonth,
     formatLocalISO,
+    checkIfToday,
+    returnAmPmTime,
     chosenYear: chosenDate ? new Date(chosenDate).getFullYear() : null,
     chosenMonth: chosenDate ? new Date(chosenDate).getMonth() : null,
   };
