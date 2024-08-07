@@ -37,6 +37,7 @@ const CustomInput = forwardRef(
       <>
         {label ? (
           <label className={clsx(css.label, labelClass)}>
+            {labelName}
             <input
               ref={ref}
               className={clsx(css.input, inputClass, {
@@ -54,7 +55,6 @@ const CustomInput = forwardRef(
               onBlur={handleBlur}
               {...otherProps}
             />
-            {labelName}
           </label>
         ) : (
           <input
