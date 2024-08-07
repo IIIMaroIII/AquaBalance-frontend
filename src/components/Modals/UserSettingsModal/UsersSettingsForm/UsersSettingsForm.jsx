@@ -7,9 +7,13 @@ import { FiUpload } from "react-icons/fi";
 import { FaExclamation } from "react-icons/fa";
 
 const UsersSettingsForm = () => {
-  const userEmail = "nadia10@gmail.com";
-
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({
+    defaultValues: {
+      gender: "woman",
+      username: "Nadia",
+      userEmail: "nadia10@gmail.com",
+    }
+  });
 
   const calculateDailyNorma = (weight, gender, activeTime) => {
     let volume = 0;
@@ -26,14 +30,13 @@ const UsersSettingsForm = () => {
   };
 
   const onSubmit = (data) => {
-    const { weight, gender, activeTime } = data;
-    const dailyNorma = calculateDailyNorma(weight, gender, activeTime);
+    const { weight, gender, time } = data;
+    const dailyNorma = calculateDailyNorma(weight, gender, time);
     const formData = {
       ...data,
       dailyNorma
     };
     console.log(formData);
-
   };
 
   return (
@@ -53,28 +56,28 @@ const UsersSettingsForm = () => {
         <ul className={css.formContainer}>
           <li className={css.listItem}>
             <div className={css.inputContainer}>
-              <label htmlFor='radio' className={css.labelCustom}>Your gender identity</label>
+              <p className={css.labelCustom}>Your gender identity</p>
               <div id='radio' className={css.radioContainer}>
                 <div className={css.radioInputWrap}>
                   <input
                     type="radio"
                     id="woman"
-                    value="woman"
                     name="woman"
+                    value="woman"
                     {...register("gender", { required: true })}
                   />
-                  <label htmlFor="woman" className={css.radio}></label>
+                  <label htmlFor="woman" className={css.radio} />
                   <label htmlFor="woman">Woman</label>
                 </div>
                 <div className={css.radioInputWrap}>
                   <input
                     type="radio"
                     id="man"
-                    value="man"
                     name="man"
+                    value="man"
                     {...register("gender", { required: true })}
                   />
-                  <label htmlFor="man" className={css.radio}></label>
+                  <label htmlFor="man" className={css.radio} />
                   <label htmlFor="man">Man</label>
                 </div>
               </div>
@@ -88,7 +91,7 @@ const UsersSettingsForm = () => {
               <CustomInput
                 inputName="username"
                 id="username"
-                {...register("username", { required: true })}
+                {...register("username")}
               />
               {errors.username && <span className={css.error}>This field is required</span>}
             </div>
@@ -101,7 +104,6 @@ const UsersSettingsForm = () => {
                 inputName="userEmail"
                 id="userEmail"
                 inputType="email"
-                placeHolder={userEmail}
                 disabled
                 {...register("userEmail")}
               />
@@ -152,7 +154,7 @@ const UsersSettingsForm = () => {
                 inputName="time"
                 id="time"
                 inputType="number"
-                {...register("activeTime", { required: true })}
+                {...register("time", { required: true })}
               />
               {errors.activeTime && <span className={css.error}>This field is required</span>}
             </div>
@@ -162,7 +164,7 @@ const UsersSettingsForm = () => {
             <p className={css.requiredNumber}>
               The required amount of water in liters per day:
               <span className={css.normaStyle}>
-                {`   ${calculateDailyNorma(watch('weight'), watch('gender'), watch('activeTime'))} L`}
+                {`   ${calculateDailyNorma(watch('weight'), watch('gender'), watch('time'))} L`}
               </span>
             </p>
           </li>

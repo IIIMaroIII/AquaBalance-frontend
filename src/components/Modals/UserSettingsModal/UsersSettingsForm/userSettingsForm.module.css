@@ -48,58 +48,56 @@
     gap: 10px;
 }
 
- input[type="radio"] {
-            display: none;
-        }
-    /* Create a custom radio button */
-    .radio {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        background-color: transparent;
-        border: 1.5px solid #9be1a0;
-        border-radius: 50%;
-        position: relative;
-        cursor: pointer;
-        transition: background-color 0.2s;
-    }
-
-    /* Inner circle of the radio button */
-    .radio::after {
-        content: '';
-        display: block;
-        width: 9px;
-        height: 9px;
-        background-color: #9be1a0;
-        border-radius: 50%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 0;
-        transition: opacity 0.2s;
-    }
-
-    /* Checked state */
-    input[type="radio"]:checked + .radio::after {
-        opacity: 1;
-        background: rgb(155, 225, 160);
-    }
-
-    /* Optional: Add a hover effect */
-    .radio:hover {
-        background-color: #9be1a070;
-    }
-
-.radioLabel{
-    cursor: pointer;
-    color: rgb(47, 47, 47);
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: -1%;
-    text-align: left;
+.genderTextLabel {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-right: 20px;
+  margin-bottom: 24px;
 }
+
+input[type="radio"] {
+    display: none;
+}
+
+.radio {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 1.5px solid #9be1a0;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.radio::after {
+    content: '';
+    display: block;
+    width: 9px;
+    height: 9px;
+    background-color: #9be1a0;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+input[type="radio"]:checked + .radio::after {
+    opacity: 1;
+    background: rgb(155, 225, 160);
+}
+
+.radio:hover {
+    background-color: #9be1a070;
+}
+
 .labelCustom{
     color: rgb(50, 63, 71);
     font-family: Poppins;
