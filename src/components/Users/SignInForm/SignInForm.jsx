@@ -59,7 +59,7 @@ const SignInForm = () => {
       />
       {errors.password && <span className={css.error}>{errors.password.message}</span>}
       <Button 
-      // disabled={!isDirty || !isValid} 
+      disabled={!isDirty || !isValid} 
       type="submit" value="submit" addClass={css.button}>
         Sign In
       </Button>

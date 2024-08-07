@@ -37,12 +37,17 @@
 
 .button {
   color: var(--light-dark);
+  background-color: var(--green);
   font-size: 14px;
   font-weight: 700;
   line-height: 1.28;
   background-color: none;
   margin-top: 32px;
   letter-spacing: -1%;
+}
+
+.button:hover {
+  background-color: var(--hover-green);
 }
 
 .error {
@@ -73,5 +78,10 @@
 
   .form {
     width: 436px;
+  }
+
+  .button {
+    font-size: 16px;
+    line-height: 1.5;
   }
 }
