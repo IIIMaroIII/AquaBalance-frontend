@@ -7,12 +7,30 @@ export const usersSlice = createSlice({
   initialState: initialState,
   extraReducers: builder => {
     builder
-      .addCase(signUp.pending, () => {})
-      .addCase(signUp.fulfilled, () => {})
-      .addCase(signUp.rejected, () => {})
-      .addCase(signIn.pending, () => {})
-      .addCase(signIn.fulfilled, () => {})
-      .addCase(signIn.rejected, () => {})
+      .addCase(signUp.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(signUp.fulfilled, (state, { payload }) => {
+        state.user = payload.data;
+        state.isLoggedIn = true;
+        state.isLoading = null;
+      })
+      .addCase(signUp.rejected, state => {
+        state.isLoading = false;
+      })
+      .addCase(signIn.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(signIn.fulfilled, (state, { payload }) => {
+        state.user.email = payload.data.email;
+        state.user.token = payload.data.accessToken;
+        state.isLoggedIn = true;
+        state.isLoading = false;
+      })
+      .addCase(signIn.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isLoggedIn = false;
+      })
       .addCase(logout.pending, () => {})
       .addCase(logout.fulfilled, () => {})
       .addCase(logout.rejected, () => {})

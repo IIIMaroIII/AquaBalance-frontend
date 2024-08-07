@@ -11,6 +11,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 const SignInForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { register, handleSubmit, reset, formState: { errors, isDirty, isValid}, } = useForm({
     resolver: yupResolver(signInFormValidation),
@@ -18,6 +19,7 @@ const SignInForm = () => {
   const onSubmit = (data) => {
     dispatch(signIn(data));
     reset();
+    navigate("/tracker");
   }
   
   return (
