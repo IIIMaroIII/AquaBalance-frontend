@@ -27,9 +27,9 @@ const AdvantagesSection = () => {
 
   return (
     <Container type="section" addClass={css.container}>
-      <div>
-        <div>
-          <picture>
+      <div className={css.ourHappyCustomersContainer}>
+        <div className={css.avatarsList}>
+          <picture className={css.avatar}>
             <source
               srcSet={`${IMAGES.firstUser1x} 1x, ${IMAGES.firstUser2x} 2x`}
               media="(min-width: 768px)"
@@ -45,7 +45,7 @@ const AdvantagesSection = () => {
               height="47"
             />
           </picture>
-          <picture>
+          <picture className={css.avatar}>
             <source
               srcSet={`${IMAGES.secondUser1x} 1x, ${IMAGES.secondUser2x} 2x`}
               media="(min-width: 768px)"
@@ -61,7 +61,7 @@ const AdvantagesSection = () => {
               height="47"
             />
           </picture>
-          <picture>
+          <picture className={css.avatar}>
             <source
               srcSet={`${IMAGES.thirdUser1x} 1x, ${IMAGES.thirdUser2x} 2x`}
               media="(min-width: 768px)"
@@ -78,14 +78,14 @@ const AdvantagesSection = () => {
             />
           </picture>
         </div>
-        <div>
-          Our<span> {totalUsers > 0 ? totalUsers : null} happy</span> customers
+        <div className={css.ourHappyCustomersText}>
+          Our<span className={css.ourHappyCustomersTextSpan}> {totalUsers > 0 ? totalUsers : null} happy</span> customers
         </div>
       </div>
-      <ul>
-        <li>Habit drive</li>
-        <li>View statistics</li>
-        <li>Personal rate setting</li>
+      <ul className={css.advantagesList}>
+        <li className={css.advantagesListItem}>Habit drive</li>
+        <li className={css.advantagesListItem}>View statistics</li>
+        <li className={css.advantagesListItem}>Personal rate setting</li>
       </ul>
     </Container>
   );

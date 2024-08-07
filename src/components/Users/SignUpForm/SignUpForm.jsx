@@ -23,12 +23,14 @@ const SignUpForm = () => {
   }
 
   return (
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <p>Sign up</p>
+      <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+        <p className={css.text}>Sign up</p>
         <CustomInput
           label={true}
           labelName={"Email"}
+          labelClass={css.label}
           inputType={"text"}
+          inputClass={css.input}
           placeholder={"Enter your email"}
           name={"email"}
           error={errors.email ? true : false}
@@ -39,7 +41,9 @@ const SignUpForm = () => {
         <CustomInput
           label={true}
           labelName={"Password"}
+          labelClass={css.label}
           inputType={"password"}
+          inputClass={css.input}
           placeholder={"Enter your password"}
           name={"password"}
           error={errors.password ? true : false}
@@ -49,19 +53,16 @@ const SignUpForm = () => {
         <CustomInput
           label={true}
           labelName={"Repeat password"}
+          labelClass={css.label}
           inputType={"password"}
+          inputClass={css.input}
           placeholder={"Repeat password"}
           name={"repeatPassword"}
           error={errors.password ? true : false}
-          {...register("repeatPassword")}
         />
         {errors.password && <span>{errors.password.message}</span>}
 
-        <Button
-          disabled={!isDirty || !isValid}
-          type="submit"
-          value="submit"
-        >Sign In</Button>
+        <Button disabled={!isDirty || !isValid} type="submit" value="submit">Sign In</Button>
       </form>
 )
 };
