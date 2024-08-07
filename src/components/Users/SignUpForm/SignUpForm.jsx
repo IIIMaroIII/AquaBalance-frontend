@@ -20,16 +20,7 @@ const toggleHidePass = () => {
   console.log(hidePass);
 }
   const { register, handleSubmit, reset, formState: { errors, isDirty, isValid}, } = useForm({
-  const navigate = useNavigate();
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isDirty, isValid },
-  } = useForm({
-    resolver: yupResolver(signUpFormValidation),
-  });
 
   const onSubmit = async data => {
     const { email, password } = data;
