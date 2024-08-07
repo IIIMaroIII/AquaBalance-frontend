@@ -1,9 +1,9 @@
-// import css from './signUpForm.module.css';
+import css from './signUpForm.module.css';
 import { useForm } from 'react-hook-form';
 import { signUp } from 'src/redux/users/operations';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signUpFormValidation } from 'src/Validation/signUpFormValidation';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Button from 'src/components/REUSABLE/Button/Button';
 import CustomInput from 'src/components/REUSABLE/Input/CustomInput';
@@ -12,7 +12,7 @@ import eyeOff from '../../../assets/temporarySVG/eye-off.svg'
 import { useState } from 'react';
 const SignUpForm = () => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [hidePass, setHidePass] = useState(true)
   console.log(hidePass);
 const toggleHidePass = () => {
