@@ -10,7 +10,7 @@ const MonthInfo = () => {
         <div className={css.paginationWrapper}>
           <CalendarPagination />
           <svg width="20" height="20" style={{ cursor: 'pointer' }}>
-            <use href={'/sprite.svg#icon-pie-chart-02'}></use>
+            <use href={'/src/assets/sprite.svg#icon-pie-chart'}></use>
           </svg>
         </div>
       </div>
