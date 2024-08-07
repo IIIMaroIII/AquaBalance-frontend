@@ -38,6 +38,30 @@ const CustomInput = forwardRef(
         {label ? (
           <label className={clsx(css.label, labelClass)}>
             {labelName}
+            <div className={css.inputContainer}>
+              <input
+                ref={ref}
+                className={clsx(css.input, inputClass, {
+                  [css.disabled]: disabled,
+                  [css.inactive]: isInactive,
+                  [css.focused]: isFocused,
+                  [css.activated]: activated,
+                  [css.error]: error,
+                })}
+                type={inputType}
+                placeholder={placeHolder}
+                name={inputName}
+                disabled={disabled}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                {...otherProps}
+              />
+                            {children}
+
+            </div>
+          </label>
+        ) : (
+          <div className={css.inputContainer}>
             <input
               ref={ref}
               className={clsx(css.input, inputClass, {
@@ -55,27 +79,9 @@ const CustomInput = forwardRef(
               onBlur={handleBlur}
               {...otherProps}
             />
-          </label>
-        ) : (
-          <input
-            ref={ref}
-            className={clsx(css.input, inputClass, {
-              [css.disabled]: disabled,
-              [css.inactive]: isInactive,
-              [css.focused]: isFocused,
-              [css.activated]: activated,
-              [css.error]: error,
-            })}
-            type={inputType}
-            placeholder={placeHolder}
-            name={inputName}
-            disabled={disabled}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            {...otherProps}
-          />
+            {children}
+          </div>
         )}
-        {children}
       </>
     );
   },
@@ -84,6 +90,7 @@ const CustomInput = forwardRef(
 CustomInput.displayName = 'CustomInput';
 
 export default CustomInput;
+
 
 /*
 Разбор кода
