@@ -21,6 +21,7 @@ const USERS_ENDPOINTS = {
   resetPassword: '/reset-pwd',
   getGoogleUrl: '/get-oauth-url',
   confirmGoogleAuhorization: '/confirm-oauth',
+  totalUsers: '/v1/users/amount',
 };
 
 export const TOAST = {
