@@ -27,7 +27,7 @@ const WaterItem = ({ item }) => {
   return (
     <>
       <svg>
-        <use href={'/sprite.svg#icon-glass'}></use>
+        {/* <use href={'/sprite.svg#icon-glass'}></use> */}
       </svg>
       <div>
         <p>{checkVolume()}</p>
