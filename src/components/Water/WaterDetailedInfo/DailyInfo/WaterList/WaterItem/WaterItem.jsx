@@ -20,7 +20,9 @@ const WaterItem = ({ item }) => {
 
   return (
     <>
-      <svg>{/* <use href={'/sprite.svg#icon-glass'}></use> */}</svg>
+      <svg>
+        <use href={'/src/assets/sprite.svg#icon-cup'}></use>
+      </svg>
       <div>
         <p>{checkVolume()}</p>
         <Button
@@ -31,7 +33,9 @@ const WaterItem = ({ item }) => {
             dispatch(changeWaterCardId(item._id));
           }}
         >
-          <svg>{/* <use href={'/sprite.svg#icon-pen'}></use> */}</svg>
+          <svg>
+            <use href={'/src/assets/sprite.svg#icon-edit'}></use>
+          </svg>
         </Button>
 
         <p>{returnAmPmTime(item.date)}</p>
@@ -43,7 +47,10 @@ const WaterItem = ({ item }) => {
             dispatch(changeWaterCardId(item._id));
           }}
         >
-          <svg>{/* <use href={'/sprite.svg#icon-trash'}></use> */}</svg>
+          <svg>
+            {' '}
+            <use href={'/src/assets/sprite.svg#icon-delete'}></use>
+          </svg>
         </Button>
       </div>
     </>
