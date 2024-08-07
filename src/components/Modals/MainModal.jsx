@@ -77,7 +77,7 @@ const MainModal = ({ children }) => {
       />
       {renderModal()}
       {children}
-      <div>
+      {/* <div>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi iure
         dolorum nam facilis, doloribus ut. Incidunt, maiores labore. Corporis
         voluptate quae nisi, possimus dolor enim voluptatum? Veniam porro
@@ -89,7 +89,7 @@ const MainModal = ({ children }) => {
         corporis commodi pariatur placeat? Autem porro deserunt, minima iure
         aperiam rerum repudiandae est, suscipit eius fuga iusto at placeat quis
         quo neque quae consectetur quisquam alias?
-      </div>
+      </div> */}
     </Modal>
   );
 };
