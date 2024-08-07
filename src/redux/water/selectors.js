@@ -23,7 +23,7 @@ export const selectIsWaterModalEdit = state =>
 export const selectIsWaterModalAdd = state =>
   state.water.modalFlags.isWaterModalAdd;
 
-export const selectPercentage = createSelector(
+export const convertDailyTotalVolumeToPercentage = createSelector(
   [selectWaterItems, selectUserDailyNorma],
   (waterItems, dailyNorma) => {
     const volume = () => {
