@@ -44,7 +44,3 @@
 .input:hover {
   border: 1px solid var(--hover-green);
 }
-/* .inputContainer{
-  display: flex;
-  position: relative;
-} */

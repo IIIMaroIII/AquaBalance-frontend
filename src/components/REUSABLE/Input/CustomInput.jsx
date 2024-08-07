@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import css from './customInput.module.css';
 import { forwardRef, useState } from 'react';
 
-const CustomInput = forwardRef(
+const   CustomInput = forwardRef(
   (
     {
       children,
@@ -33,35 +33,12 @@ const CustomInput = forwardRef(
       setIsInactive(true);
     };
 
-    return (
+    return (  
       <>
         {label ? (
+          <> 
           <label className={clsx(css.label, labelClass)}>
             {labelName}
-            <div className={css.inputContainer}>
-              <input
-                ref={ref}
-                className={clsx(css.input, inputClass, {
-                  [css.disabled]: disabled,
-                  [css.inactive]: isInactive,
-                  [css.focused]: isFocused,
-                  [css.activated]: activated,
-                  [css.error]: error,
-                })}
-                type={inputType}
-                placeholder={placeHolder}
-                name={inputName}
-                disabled={disabled}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                {...otherProps}
-              />
-                            {children}
-
-            </div>
-          </label>
-        ) : (
-          <div className={css.inputContainer}>
             <input
               ref={ref}
               className={clsx(css.input, inputClass, {
@@ -77,11 +54,32 @@ const CustomInput = forwardRef(
               disabled={disabled}
               onFocus={handleFocus}
               onBlur={handleBlur}
+
               {...otherProps}
             />
-            {children}
-          </div>
+          </label>
+          </>
+        ) : (
+          
+          <input
+            ref={ref}
+            className={clsx(css.input, inputClass, {
+              [css.disabled]: disabled,
+              [css.inactive]: isInactive,
+              [css.focused]: isFocused,
+              [css.activated]: activated,
+              [css.error]: error,
+            })}
+            type={inputType}
+            placeholder={placeHolder}
+            name={inputName}
+            disabled={disabled}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            {...otherProps}
+          />
         )}
+        {children}
       </>
     );
   },
@@ -90,7 +88,6 @@ const CustomInput = forwardRef(
 CustomInput.displayName = 'CustomInput';
 
 export default CustomInput;
-
 
 /*
 Разбор кода

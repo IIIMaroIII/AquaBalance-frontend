@@ -99,10 +99,13 @@
   font-weight: 500;
   line-height: 27px;
   position: absolute;
-  top: 26px;
   right: 16px;
+  top: 54px;
 }
 .eyeIcon:hover{
   background-color: transparent;
   border: none;
+}
+ .inputContainer{
+  position: relative;
 } */

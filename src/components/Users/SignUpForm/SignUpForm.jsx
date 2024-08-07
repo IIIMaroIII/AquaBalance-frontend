@@ -52,8 +52,8 @@ const toggleShowPass = () => {
         {...register('email')}
       />
       {errors.email && <span>{errors.email.message}</span>}
-
-      <CustomInput
+<div className={css.inputContainer}>
+<CustomInput
         label={true}
         labelName={'Password'}
         labelClass={css.label}
@@ -72,7 +72,9 @@ const toggleShowPass = () => {
             <img src={hidePass ? eyeOff : eye} alt="eye icon" />
           </Button>
         </CustomInput>
+</div>
       {errors.password && <span>{errors.password.message}</span>}
+      <div className={css.inputContainer}>
       <CustomInput
         label={true}
         labelName={'Repeat password'}
@@ -91,6 +93,7 @@ const toggleShowPass = () => {
         <img  src={showPass ? eyeOff : eye} alt="eye icon" />
           </Button>
       </CustomInput>
+      </div>
       {errors.password && <span>{errors.password.message}</span>}
 
       <Button
