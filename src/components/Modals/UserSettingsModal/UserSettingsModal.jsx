@@ -8,6 +8,7 @@ const UserSettingsModal = () => {
 
   return (
     <Container type="section" addClass={''}>
+      <h2>Setting</h2>
       <UsersSettingsForm />
     </Container>
   );
