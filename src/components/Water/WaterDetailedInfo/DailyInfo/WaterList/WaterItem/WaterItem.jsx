@@ -7,17 +7,11 @@ import {
   changeWaterModalEdit,
 } from 'src/redux/water/slice';
 import { useDispatch } from 'react-redux';
+import useChosenDate from 'src/hooks/useChosenDate.js';
 
 const WaterItem = ({ item }) => {
   const dispatch = useDispatch();
-
-  const date = new Date(item.date);
-  const options = {
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: true,
-  };
-  const itemTime = date.toLocaleString('en-US', options);
+  const { returnAmPmTime } = useChosenDate();
 
   const checkVolume = () => {
     if (item.volume < 1000) return `${item.volume} ml`;
@@ -26,9 +20,7 @@ const WaterItem = ({ item }) => {
 
   return (
     <>
-      <svg>
-        {/* <use href={'/sprite.svg#icon-glass'}></use> */}
-      </svg>
+      <svg>{/* <use href={'/sprite.svg#icon-glass'}></use> */}</svg>
       <div>
         <p>{checkVolume()}</p>
         <Button
@@ -39,12 +31,10 @@ const WaterItem = ({ item }) => {
             dispatch(changeWaterCardId(item._id));
           }}
         >
-          <svg>
-            {/* <use href={'/sprite.svg#icon-pen'}></use> */}
-          </svg>
+          <svg>{/* <use href={'/sprite.svg#icon-pen'}></use> */}</svg>
         </Button>
 
-        <p>{itemTime}</p>
+        <p>{returnAmPmTime(item.date)}</p>
         <Button
           // addClass={css.button}
           onClick={() => {
@@ -53,9 +43,7 @@ const WaterItem = ({ item }) => {
             dispatch(changeWaterCardId(item._id));
           }}
         >
-          <svg>
-            {/* <use href={'/sprite.svg#icon-trash'}></use> */}
-          </svg>
+          <svg>{/* <use href={'/sprite.svg#icon-trash'}></use> */}</svg>
         </Button>
       </div>
     </>

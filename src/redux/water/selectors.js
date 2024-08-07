@@ -27,7 +27,7 @@ export const selectPercentage = createSelector(
   [selectWaterItems, selectUserDailyNorma],
   (waterItems, dailyNorma) => {
     const volume = () => {
-      if (waterItems !== null || waterItems.length !== 0) {
+      if (waterItems !== null || waterItems.length > 0) {
         return waterItems
           .map(item => item.volume)
           .reduce((acc, volume) => {

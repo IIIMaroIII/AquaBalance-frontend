@@ -106,6 +106,17 @@ const useChosenDate = () => {
       : `${parsedDate.getDate()}, ${chosenDay}`;
   };
 
+  const returnAmPmTime = date => {
+    const dateISO = new Date(date);
+    const options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    };
+
+    return dateISO.toLocaleString('en-US', options);
+  };
+
   return {
     getHoursAndMinutes,
     setHoursAndMinutes,
@@ -117,6 +128,7 @@ const useChosenDate = () => {
     goToNextMonth,
     formatLocalISO,
     checkIfToday,
+    returnAmPmTime,
     chosenYear: chosenDate ? new Date(chosenDate).getFullYear() : null,
     chosenMonth: chosenDate ? new Date(chosenDate).getMonth() : null,
   };
