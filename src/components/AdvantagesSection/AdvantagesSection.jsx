@@ -1,19 +1,29 @@
+import { useEffect, useState } from 'react';
+
 import { IMAGES } from '../../components/Constants/constants.js';
+import Container from '../REUSABLE/Container/Container';
+import { requestTotalUsers } from 'src/utils/requestTotalUsers.js';
+
 import css from './AdvantagesSection.module.css';
 // import useAuth from 'src/hooks/useAuth.js';
-
-import Container from '../REUSABLE/Container/Container';
-import { useEffect } from 'react';
 
 const AdvantagesSection = () => {
   // const {} = useAuth(); // Кастомный хук для быстрого доступа к isLoggedIn, isLoading и тд
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //     } catch (error) {}
-  //   }
-  // }, []);
+  const [totalUsers, setTotalUsers] = useState(0);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await requestTotalUsers();
+        setTotalUsers(data);
+      } catch (error) {
+        console.log(error);
+        setTotalUsers(0);
+      }
+    }
+    fetchData();
+  }, []);
 
   return (
     <Container type="section" addClass={css.container}>
@@ -69,7 +79,7 @@ const AdvantagesSection = () => {
           </picture>
         </div>
         <div>
-          Our <span>happy</span> customers
+          Our<span> {totalUsers > 0 ? totalUsers : null} happy</span> customers
         </div>
       </div>
       <ul>
