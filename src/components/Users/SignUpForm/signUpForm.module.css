@@ -106,3 +106,34 @@
     line-height: 1.5;
   }
 }
+
+.inputContainer {
+  position: relative;
+  background-color: transparent;
+}
+
+.eyeIcon {
+  width: 20px;
+  height: 20px;
+  all: unset;
+  display: inline-block;
+  cursor: pointer;
+  position: absolute;
+  right: 16px;
+  bottom: 15.8px;
+  background-color: transparent;
+  stroke: var(--dark);
+  fill: none;
+}
+
+.inputContainer button.eyeIcon:hover,
+.inputContainer button.eyeIcon:focus,
+.inputContainer button.eyeIcon:active {
+  background-color: transparent;
+}
+
+@media (min-width: 768px) {
+  .eyeIcon {
+    bottom: 18px;
+  }
+}

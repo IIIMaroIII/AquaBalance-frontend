@@ -3,16 +3,26 @@ import { useForm } from 'react-hook-form';
 import { signUp } from 'src/redux/users/operations';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signUpFormValidation } from 'src/Validation/signUpFormValidation';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Button from 'src/components/REUSABLE/Button/Button';
 import CustomInput from 'src/components/REUSABLE/Input/CustomInput';
+import { useState } from 'react';
+import eye from '../../../assets/temporarySVG/eye.svg';
+import eyeOff from '../../../assets/temporarySVG/eye-off.svg';
 import clsx from 'clsx';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
+  // const navigate = useNavigate();
+  const [hidePass, setHidePass] = useState(true);
+  const [showPass, setShowPass] = useState(true);
+  const toggleHidePass = () => {
+    setHidePass(prevState => !prevState);
+  };
+  const toggleShowPass = () => {
+    setShowPass(prevState => !prevState);
+  };
   const {
     register,
     handleSubmit,
@@ -45,31 +55,42 @@ const SignUpForm = () => {
       {errors.email && (
         <span className={css.error}>{errors.email.message}</span>
       )}
-
-      <CustomInput
-        label={true}
-        labelName={'Password'}
-        labelClass={css.label}
-        inputType={'password'}
-        inputClass={clsx(css.input, errors.password && css.inputError)}
-        placeholder={'Enter your password'}
-        name={'password'}
-        error={errors.password ? true : false}
-        {...register('password')}
-      />
+      <div className={css.inputContainer}>
+        <CustomInput
+          label={true}
+          labelName={'Password'}
+          labelClass={css.label}
+          inputType={hidePass ? 'password' : 'text'}
+          inputClass={clsx(css.input, errors.password && css.inputError)}
+          placeholder={'Enter your password'}
+          name={'password'}
+          error={errors.password ? true : false}
+          {...register('password')}
+        >
+          <Button onClick={toggleHidePass} type="button" addClass={css.eyeIcon}>
+            <img src={hidePass ? eyeOff : eye} alt="eye icon" />
+          </Button>
+        </CustomInput>
+      </div>
       {errors.password && (
         <span className={css.error}>{errors.password.message}</span>
       )}
-      <CustomInput
-        label={true}
-        labelName={'Repeat password'}
-        labelClass={css.label}
-        inputType={'password'}
-        inputClass={clsx(css.input, errors.password && css.inputError)}
-        placeholder={'Repeat password'}
-        name={'repeatPassword'}
-        error={errors.password ? true : false}
-      />
+      <div className={css.inputContainer}>
+        <CustomInput
+          label={true}
+          labelName={'Repeat password'}
+          labelClass={css.label}
+          inputType={hidePass ? 'password' : 'text'}
+          inputClass={clsx(css.input, errors.password && css.inputError)}
+          placeholder={'Repeat password'}
+          name={'repeatPassword'}
+          error={errors.password ? true : false}
+        >
+          <Button onClick={toggleHidePass} type="button" addClass={css.eyeIcon}>
+            <img src={hidePass ? eyeOff : eye} alt="eye icon" />
+          </Button>
+        </CustomInput>
+      </div>
       {errors.password && (
         <span className={css.error}>{errors.password.message}</span>
       )}
