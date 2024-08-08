@@ -5,14 +5,12 @@ import Button from "src/components/REUSABLE/Button/Button";
 import CustomInput from 'src/components/REUSABLE/Input/CustomInput';
 import { FiUpload } from "react-icons/fi";
 import { FaExclamation } from "react-icons/fa";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { settingsFormValidation } from 'src/Validation/settingsModalFormValidation';
 
 const UsersSettingsForm = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
-    defaultValues: {
-      gender: "woman",
-      username: "Nadia",
-      userEmail: "nadia10@gmail.com",
-    }
+    resolver: yupResolver(settingsFormValidation)
   });
 
   const calculateDailyNorma = (weight, gender, activeTime) => {
