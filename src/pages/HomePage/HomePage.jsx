@@ -6,7 +6,7 @@ import Container from 'src/components/REUSABLE/Container/Container';
 
 const HomePage = () => {
   return (
-    <Container type="section" addClass={'wrapper'}>
+    <Container type="section" addClass={css.container}>
       <WelcomeSection />
       <AdvantagesSection />
     </Container>
