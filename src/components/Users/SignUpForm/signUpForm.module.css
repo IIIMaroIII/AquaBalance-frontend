@@ -21,22 +21,34 @@
   letter-spacing: -1%;
 }
 
-.input {
-  margin-top: 8px;
+.form input.input::placeholder {
   color: rgba(47, 47, 47, 0.6);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: -1%;
+}
+
+.form input.input {
+  margin-top: 8px;
+  color: var(--dark);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.28;
   background-color: transparent;
   letter-spacing: -1%;
-  width: 100%;
 }
 
-.input:focus {
-  background-color: transparent;
+.form input.input:focus,
+.form input.input:hover {
+  border-color: rgba(47, 47, 47, 0.2);
 }
 
-.button {
+.form input.input.active {
+  border-color: rgba(47, 47, 47, 0.4);
+}
+
+.form .button {
   color: var(--light-dark);
   background-color: var(--green);
   font-size: 14px;
@@ -47,18 +59,26 @@
   letter-spacing: -1%;
 }
 
-.button:hover {
+.form .button:hover {
   background-color: var(--hover-green);
+}
+
+.form button.button:disabled {
+  color: rgba(47, 47, 47, 0.3);
+  background-color: var(--light-gray);
+  cursor: not-allowed;
 }
 
 .error {
   color: var(--error-color);
   font-size: 12px;
   font-weight: 400;
-  line-height: 1.28;
-  margin: 0;
-  padding: 0;
+  line-height: 1;
   letter-spacing: -1%;
+}
+
+.form input.inputError {
+  color: var(--error-color);
 }
 
 @media (min-width: 768px) {
@@ -76,7 +96,7 @@
     font-size: 16px;
     line-height: 1.5;
   }
-  
+
   .form {
     width: 436px;
   }
@@ -87,25 +107,33 @@
   }
 }
 
-/* .eyeIcon{
+.inputContainer {
+  position: relative;
+  background-color: transparent;
+}
+
+.eyeIcon {
   width: 20px;
   height: 20px;
   all: unset;
   display: inline-block;
   cursor: pointer;
-  border-radius: 8px;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 27px;
   position: absolute;
   right: 16px;
-  top: 54px;
-}
-.eyeIcon:hover{
+  bottom: 15.8px;
   background-color: transparent;
-  border: none;
+  stroke: var(--dark);
+  fill: none;
 }
- .inputContainer{
-  position: relative;
-} */
+
+.inputContainer button.eyeIcon:hover,
+.inputContainer button.eyeIcon:focus,
+.inputContainer button.eyeIcon:active {
+  background-color: transparent;
+}
+
+@media (min-width: 768px) {
+  .eyeIcon {
+    bottom: 18px;
+  }
+}
