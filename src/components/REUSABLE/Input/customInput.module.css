@@ -15,7 +15,7 @@
   border: 1px solid var(--input-border-inactive-color);
   border-radius: 15px;
   font-size: inherit;
-  /* font-weight: inherit; */
+  font-weight: inherit;
   outline: none;
 
   background-color: transparent;

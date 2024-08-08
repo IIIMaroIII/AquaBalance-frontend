@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Button from 'src/components/REUSABLE/Button/Button';
 import CustomInput from 'src/components/REUSABLE/Input/CustomInput';
+import clsx from 'clsx';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -35,37 +36,43 @@ const SignUpForm = () => {
         labelName={'Email'}
         labelClass={css.label}
         inputType={'text'}
-        inputClass={css.input}
+        inputClass={clsx(css.input, errors.email && css.inputError)}
         placeholder={'Enter your email'}
         name={'email'}
         error={errors.email ? true : false}
         {...register('email')}
       />
-      {errors.email && <span>{errors.email.message}</span>}
+      {errors.email && (
+        <span className={css.error}>{errors.email.message}</span>
+      )}
 
       <CustomInput
         label={true}
         labelName={'Password'}
         labelClass={css.label}
         inputType={'password'}
-        inputClass={css.input}
+        inputClass={clsx(css.input, errors.password && css.inputError)}
         placeholder={'Enter your password'}
         name={'password'}
         error={errors.password ? true : false}
         {...register('password')}
       />
-      {errors.password && <span>{errors.password.message}</span>}
+      {errors.password && (
+        <span className={css.error}>{errors.password.message}</span>
+      )}
       <CustomInput
         label={true}
         labelName={'Repeat password'}
         labelClass={css.label}
         inputType={'password'}
-        inputClass={css.input}
+        inputClass={clsx(css.input, errors.password && css.inputError)}
         placeholder={'Repeat password'}
         name={'repeatPassword'}
         error={errors.password ? true : false}
       />
-      {errors.password && <span>{errors.password.message}</span>}
+      {errors.password && (
+        <span className={css.error}>{errors.password.message}</span>
+      )}
 
       <Button
         disabled={!isDirty || !isValid}
@@ -73,7 +80,7 @@ const SignUpForm = () => {
         value="submit"
         addClass={css.button}
       >
-        Sign In
+        Sign Up
       </Button>
     </form>
   );

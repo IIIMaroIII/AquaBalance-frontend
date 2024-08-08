@@ -26,41 +26,47 @@ const SignInForm = () => {
   const onSubmit = data => {
     dispatch(signIn(data));
     reset();
-    navigate("/tracker");
-  }
-  
+    navigate('/tracker');
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
       <p className={css.text}>Sign in</p>
       <CustomInput
         label={true}
         labelName={'Email'}
-        // labelClass={clsx(css.label, css.theFirstLabel)}
         labelClass={css.label}
         inputType={'text'}
-        inputClass={css.input}
+        inputClass={clsx(css.input, errors.email && css.inputError)}
         placeholder={'Enter your email'}
         name={'email'}
         error={errors.email ? true : false}
         {...register('email')}
       />
-      {errors.email && <span className={css.error}>{errors.email.message}</span>}
+      {errors.email && (
+        <span className={css.error}>{errors.email.message}</span>
+      )}
 
       <CustomInput
         label={true}
         labelName={'Password'}
         labelClass={css.label}
         inputType={'password'}
-        inputClass={css.input}
+        inputClass={clsx(css.input, errors.password && css.inputError)}
         placeholder={'Enter your password'}
         name={'password'}
         error={errors.password ? true : false}
         {...register('password')}
       />
-      {errors.password && <span className={css.error}>{errors.password.message}</span>}
-      <Button 
-      disabled={!isDirty || !isValid} 
-      type="submit" value="submit" addClass={css.button}>
+      {errors.password && (
+        <span className={css.error}>{errors.password.message}</span>
+      )}
+      <Button
+        disabled={!isDirty || !isValid}
+        type="submit"
+        value="submit"
+        addClass={css.button}
+      >
         Sign In
       </Button>
     </form>
