@@ -29,6 +29,7 @@
   line-height: 1.28;
   background-color: transparent;
   letter-spacing: -1%;
+  width: 100%;
 }
 
 .input:focus {
@@ -86,3 +87,25 @@
   }
 }
 
+/* .eyeIcon{
+  width: 20px;
+  height: 20px;
+  all: unset;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 27px;
+  position: absolute;
+  right: 16px;
+  top: 54px;
+}
+.eyeIcon:hover{
+  background-color: transparent;
+  border: none;
+}
+ .inputContainer{
+  position: relative;
+} */
