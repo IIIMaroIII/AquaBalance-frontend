@@ -1,0 +1,149 @@
+.amountText {
+  margin-top: 20px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -1%;
+  color: var(--dark);
+}
+
+.changeAmountContainer {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+form button.changeAmountButton {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: 1.5px solid var(--light-dark);
+  border-radius: 30px;
+  background-color: transparent;
+}
+
+form button.changeAmountButton:hover {
+  cursor: pointer;
+}
+
+form button.changeAmountButton:hover,
+form button.changeAmountButton:focus,
+form button.changeAmountButton:active {
+  border: 1.5px solid var(--light-dark);
+  background-color: transparent;
+}
+
+.changeAmountIcon {
+  width: 14.29px;
+  height: 14.29px;
+  stroke-width: 1.8px;
+  stroke: var(--light-dark);
+  /* fill: var(--light-dark); */
+}
+
+.waterAmountText {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28;
+  color: var(--white);
+  background-color: var(--light-dark);
+  border-radius: 30px;
+  padding: 11px 20px;
+}
+
+label.recordingTimeLabel {
+  margin-top: 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -1%;
+  color: var(--dark);
+}
+
+.recordingTimeLabel input.input,
+.waterAmountLabel input.input {
+  margin-top: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -1%;
+  color: var(--dark);
+  padding: 14px 16px;
+  border-color: rgba(47, 47, 47, 0.15);
+}
+
+label.waterAmountLabel {
+  margin-top: 24px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -1%;
+  color: var(--light-dark);
+}
+
+button.saveButton {
+  margin-top: 24px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -1%;
+  color: var(--dark);
+  background-color: var(--green);
+  padding: 14px 40px;
+  width: 116px;
+}
+
+button.saveButton:hover,
+button.saveButton:focus,
+button.saveButton:active {
+  background-color: var(--hover-green);
+}
+
+@media (min-width: 768px) {
+  .amountText {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  form button.changeAmountButton {
+    width: 43px;
+    height: 43px;
+  }
+
+  .changeAmountIcon {
+    width: 15.36px;
+    height: 15.36px;
+  }
+
+  .waterAmountText {
+    font-size: 15px;
+    line-height: 1.48;
+  }
+
+  label.recordingTimeLabel {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .recordingTimeLabel input.input,
+  .waterAmountLabel input.input {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  label.waterAmountLabel {
+    font-size: 18px;
+    line-height: 1.32;
+  }
+
+  button.saveButton {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 18px 50px;
+    width: 141px;
+  }
+}

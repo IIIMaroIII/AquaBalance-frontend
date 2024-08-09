@@ -3,7 +3,7 @@ import WaterForm from 'src/components/REUSABLE/WaterForm/WaterForm.jsx';
 import useModals from 'src/hooks/useModals.js';
 
 const WaterModal = ({ operationType }) => {
-  const { } = useModals()
+  const {} = useModals();
 
   const WaterFormType = () => {
     switch (operationType) {
