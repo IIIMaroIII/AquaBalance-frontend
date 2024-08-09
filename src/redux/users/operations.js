@@ -66,22 +66,23 @@ export const refresh = createAsyncThunk(
   },
 );
 
+
 export const update = createAsyncThunk(
   'users/update',
-  async (formData, { rejectWithValue }) => {
-    // try {
-    //   const res = await AxiosWithCredentials.patch(
-    //     `${CONSTANTS.USERS_ENDPOINTS.updateUser}`,
-    //     formData,
-    //     {
-    //       headers: {
-    //         'Content-Type': 'multipart/form-data',
-    //       },
-    //     },
-    //   );
-    //   return res.data;
-    // } catch (error) {
-    //   return rejectWithValue(axiosResponseError(error));
-    // }
+  async ({ userId, formData }, { rejectWithValue }) => {
+    try {
+      const res = await AxiosWithCredentials.patch(
+        `https://aquabalance-backend.onrender.com/users/${userId}`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
+      );
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(axiosResponseError(error));
+    }
   },
 );

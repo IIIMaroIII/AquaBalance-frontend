@@ -3,37 +3,53 @@ import { useForm } from 'react-hook-form';
 import css from './userSettingsForm.module.css';
 import Button from "src/components/REUSABLE/Button/Button";
 import CustomInput from 'src/components/REUSABLE/Input/CustomInput';
-import { FiUpload } from "react-icons/fi";
+
 import { FaExclamation } from "react-icons/fa";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { settingsFormValidation } from 'src/Validation/settingsModalFormValidation';
 import { calculateDailyNorma } from 'src/utils/dailyNormaCalculator';
+import UserSettingsAvatar from '../components/UserSettingsAvatar/UserSettingsAvatar';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from 'src/redux/users/selectors';
+import { selectUser, selectUserAvatar } from 'src/redux/users/selectors';
+import { useEffect, useRef, useState } from 'react';
 
 const UsersSettingsForm = () => {
-  const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+  // const dispatch = useDispatch();
+  // const user = useSelector(selectUser);
+  const currentAvatar = useSelector(selectUserAvatar);
+  const fileInputRef = useRef(null);
+  const [preview, setPreview] = useState(currentAvatar);
+
+  useEffect(() => {
+    if (currentAvatar) {
+      setPreview(currentAvatar);
+    }
+  }, [currentAvatar]);
+
+  const onAvatarChange = e => {
+    const selectedAvatar = e.target.files[0];
+    if (selectedAvatar) {
+      const objectURL = URL.createObjectURL(selectedAvatar);
+      setPreview(objectURL);
+    }
+  };
+
+
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
-    resolver: yupResolver(settingsFormValidation),
-    defaultValues: {
-      gender: user.gender || 'female',
-      name: user.name || null,
-      email: user.email,
-      weight: user.weight || null,
-      activeSportsTime: user.activeSportsTime || null,
-      dailyWaterIntake: userNorma || null,
-      avatar: user.avatar || null,
-    },
+    // resolver: yupResolver(settingsFormValidation)
   });
 
+  const genderValue = watch('gender');
+  const weightNumber = watch('weight');
+  const activeSportsTimeNumber = watch('timeInSports');
+  // const dailyWaterIntakeNumber = watch('dailyWaterIntake');
+
+  const recomendedDailyNorma = calculateDailyNorma(weightNumber, genderValue, activeSportsTimeNumber);
 
   const onSubmit = (data) => {
-    const { weight, gender, time } = data;
-    const dailyNorma = calculateDailyNorma(weight, gender, time);
     const formData = {
       ...data,
-      dailyNorma
+      recomendedDailyNorma
     };
     console.log(formData);
   };
@@ -43,14 +59,11 @@ const UsersSettingsForm = () => {
       <h2 className={css.titleModal}>Settings</h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className={css.photoContainer}>
-          <div className={css.userPhoto}>
-            <img src="" alt="" />
-          </div>
-          <button type="button" className={css.uploadPhotoBtn}>
-            <FiUpload className={css.uploadIcon} /> Upload a photo
-          </button>
-        </div>
+        <UserSettingsAvatar
+          onChange={onAvatarChange}
+          fileInputRef={fileInputRef}
+          preview={preview}
+        />
 
         <ul className={css.formContainer}>
           <li className={css.listItem}>
@@ -148,12 +161,12 @@ const UsersSettingsForm = () => {
 
           <li className={css.listItem}>
             <div className={css.inputContainer}>
-              <label htmlFor="time" className={css.labelCalculator}>The time of active participation in sports:</label>
+              <label htmlFor="timeInSports" className={css.labelCalculator}>The time of active participation in sports:</label>
               <CustomInput
-                inputName="time"
-                id="time"
+                inputName="timeInSports"
+                id="timeInSports"
                 inputType="number"
-                {...register("time", { required: true })}
+                {...register("timeInSports", { required: true })}
               />
               {errors.activeTime && <span className={css.error}>This field is required</span>}
             </div>
@@ -163,21 +176,21 @@ const UsersSettingsForm = () => {
             <p className={css.requiredNumber}>
               The required amount of water in liters per day:
               <span className={css.normaStyle}>
-                {`   ${calculateDailyNorma(watch('weight'), watch('gender'), watch('time'))} L`}
+                {`${recomendedDailyNorma} L`}
               </span>
             </p>
           </li>
 
           <li className={css.listItem}>
             <div className={css.inputContainer}>
-              <label htmlFor="water" className={css.labelCustom}>Write down how much water you will drink:</label>
+              <label htmlFor="dailyNorma" className={css.labelCustom}>Write down how much water you will drink:</label>
               <CustomInput
-                inputName="water"
-                id="water"
-                inputType="number"
-                {...register("water", { required: true })}
+                inputName="dailyNorma"
+                id="dailyNorma"
+                inputType="dailyNorma"
+                {...register("dailyNorma", { required: true })}
               />
-              {errors.water && <span className={css.error}>This field is required</span>}
+              {errors.dailyNorma && <span className={css.error}>This field is required</span>}
             </div>
           </li>
         </ul>

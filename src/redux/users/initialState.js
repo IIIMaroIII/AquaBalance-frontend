@@ -7,7 +7,7 @@ export const initialState = {
     gender: null,
     dailyNorma: 2,
     weight: null,
-    photoUrl: CONSTANTS.USER.DEFAULT_USER_IMAGE,
+    avatar: CONSTANTS.USER.DEFAULT_USER_IMAGE,
     timeInSports: null,
     token: null,
   },

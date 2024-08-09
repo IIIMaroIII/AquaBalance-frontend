@@ -1,0 +1,46 @@
+.avatarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.uploadInput {
+  display: none;
+}
+
+.uploadLabel {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.icon {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: #2f2f2f;
+}
+.uploadBtn{
+    margin-left: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .avatar {
+    width: 100px;
+    height: 100px;
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
