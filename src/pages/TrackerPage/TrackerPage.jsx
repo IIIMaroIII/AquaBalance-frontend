@@ -1,13 +1,19 @@
-// import css from './TrackerPage.module.css';
+import css from './TrackerPage.module.css';
 import WaterDetailedInfo from 'src/components/Water/WaterDetailedInfo/WaterDetailedInfo.jsx';
 import WaterMainInfo from 'src/components/Water/WaterMainInfo/WaterMainInfo.jsx';
 import Container from 'src/components/REUSABLE/Container/Container.jsx';
 
 const TrackerPage = () => {
   return (
-    <Container type="section" addClass={'wrapper'}>
-      <WaterMainInfo />
-      <WaterDetailedInfo />
+    <Container type="section">
+      <div className={css.container}>
+        <div className={css.mainInfo}>
+          <WaterMainInfo />
+        </div>
+        <div className={css.detailedInfo}>
+          <WaterDetailedInfo />
+        </div>
+      </div>
     </Container>
   );
 };

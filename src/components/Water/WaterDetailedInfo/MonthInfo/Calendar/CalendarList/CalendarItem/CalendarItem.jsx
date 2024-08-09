@@ -40,7 +40,7 @@ export const CalendarItem = ({ day }) => {
         >
           {day}
         </Button>
-        <p>{`${percentage}%`}</p>
+        <p className={css.procent}>{`${percentage}%`}</p>
       </li>
     </>
   );

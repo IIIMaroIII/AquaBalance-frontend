@@ -1,0 +1,88 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  width: 100%;
+}
+
+.mainInfo {
+  background-color: var(--green);
+  background-image: url(../../assets/pictures/TrackerPage/bottle_for_water_mobx1_min.png);
+  background-repeat: no-repeat;
+  background-position: 41px 50px;
+  border-radius: 30px;
+  padding: 24px 16px;
+  width: 343px;
+  height: 415px;
+}
+.detailedInfo {
+  background-color: var(--light-gray);
+  border-radius: 30px;
+  padding: 40px 20px;
+  width: 343px;
+  height: 100%;
+  min-height: 749px;
+}
+
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 375px),
+  screen and (min-resolution: 192dpi) and (min-width: 375px),
+  screen and (min-resolution: 2dppx) and (min-width: 375px) {
+  .mainInfo {
+    background-image: url(../../assets/pictures/TrackerPage/bottle_for_water_mobx2.png);
+    background-size: 262px 335px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mainInfo {
+    background-image: url(../../assets/pictures/TrackerPage/bottle_for_water_tabx1.png);
+    background-position: 165px 69px;
+    padding: 32px;
+    height: 578px;
+    width: 704px;
+  }
+  .detailedInfo {
+    padding: 32px;
+    width: 704px;
+    min-height: 736px;
+  }
+}
+
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
+  screen and (min-resolution: 192dpi) and (min-width: 768px),
+  screen and (min-resolution: 2dppx) and (min-width: 768px) {
+  .mainInfo {
+    background-image: url(../../assets/pictures/TrackerPage/bottle_for_water_1tabx2.png);
+    background-size: 374px 477px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+  }
+  .mainInfo {
+    background-image: url(../../assets/pictures/TrackerPage/bottle_for_water_1x1desk.png);
+    background-position: 100px 92px;
+    padding-bottom: 40px;
+    width: 672px;
+    height: 100%;
+    min-height: 736px;
+  }
+  .detailedInfo {
+    padding: 32px;
+    width: 704px;
+    min-height: 736px;
+  }
+  @media screen and (min-device-pixel-ratio: 2) and (min-width: 1440px),
+    screen and (min-resolution: 192dpi) and (min-width: 1440px),
+    screen and (min-resolution: 2dppx) and (min-width: 1440px) {
+    .mainInfo {
+      background-image: url(../../assets/pictures/TrackerPage/bottle_for_water_x2desk.png);
+      background-size: 472px 604px;
+    }
+  }
+}

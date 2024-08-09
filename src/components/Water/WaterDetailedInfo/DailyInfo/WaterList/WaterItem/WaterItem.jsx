@@ -1,5 +1,5 @@
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
-// import css from './WaterItem.module.css';
+import css from './WaterItem.module.css';
 import {
   changeDeleteWaterModalOpen,
   changeModal,
@@ -26,7 +26,7 @@ const WaterItem = ({ item }) => {
       <div>
         <p>{checkVolume()}</p>
         <Button
-          // addClass={css.button}
+          addClass={css.button}
           onClick={() => {
             dispatch(changeWaterModalEdit(true));
             dispatch(changeModal(true));
@@ -40,7 +40,7 @@ const WaterItem = ({ item }) => {
 
         <p>{returnAmPmTime(item.date)}</p>
         <Button
-          // addClass={css.button}
+          addClass={css.button}
           onClick={() => {
             dispatch(changeDeleteWaterModalOpen(true));
             dispatch(changeModal(true));
