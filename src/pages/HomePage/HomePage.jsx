@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import css from './HomePage.module.css';
 import WelcomeSection from 'src/components/WelcomeSection/WelcomeSection';
 import AdvantagesSection from 'src/components/AdvantagesSection/AdvantagesSection';

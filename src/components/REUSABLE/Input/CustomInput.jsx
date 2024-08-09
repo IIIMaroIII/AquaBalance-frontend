@@ -21,6 +21,7 @@ const CustomInput = forwardRef(
     },
     ref,
   ) => {
+
     const [isFocused, setIsFocused] = useState(false);
     const [isInactive, setIsInactive] = useState(true);
 
