@@ -1,0 +1,252 @@
+
+.modalContainer{
+    width: 343px;
+    height: fit-content;
+    border: 1px solid rgba(0, 0, 0, 0.11);
+    padding: 40px 20px;
+    border-radius: 15px;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.formContainer{
+    margin-top: 40px;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+.titleModal{
+    color: rgb(50, 63, 71);
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -1%;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 303px;
+}
+.radioContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: start;
+    justify-content: start;
+}
+.radioInputWrap{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+ input[type="radio"] {
+            display: none;
+        }
+    /* Create a custom radio button */
+    .radio {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        border: 1.5px solid #9be1a0;
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    /* Inner circle of the radio button */
+    .radio::after {
+        content: '';
+        display: block;
+        width: 9px;
+        height: 9px;
+        background-color: #9be1a0;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.2s;
+    }
+
+    /* Checked state */
+    input[type="radio"]:checked + .radio::after {
+        opacity: 1;
+        background: rgb(155, 225, 160);
+    }
+
+    /* Optional: Add a hover effect */
+    .radio:hover {
+        background-color: #9be1a070;
+    }
+
+.radioLabel{
+    cursor: pointer;
+    color: rgb(47, 47, 47);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -1%;
+    text-align: left;
+}
+.labelCustom{
+    color: rgb(50, 63, 71);
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -1%;
+    text-align: left;
+}
+.labelCalculator{
+    color: rgb(47, 47, 47);
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -1%;
+    text-align: left;
+}
+.gender{
+    color: rgb(47, 47, 47);
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -1%;
+    text-align: left;
+}
+.formulaWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.formula{
+    color: rgb(155, 225, 160);
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -1%;
+    text-align: left;
+}
+.info{
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    border-radius: 15px;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -1%;
+    text-align: left;
+    color: rgba(47, 47, 47, 0.479);
+}
+.active{
+    color: rgb(47, 47, 47);
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+}
+.requiredNumber{
+    width: 303px;
+    font-size: 14px;
+}
+.formInput{
+    box-sizing: border-box;
+    border: 1px solid rgba(47, 47, 47, 0.15);
+    border-radius: 15px;
+    padding: 16px;
+}
+
+.listItem:nth-of-type(6){
+    margin-top: 0px;
+}
+
+.photoContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.userPhoto{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #9be1a0;
+}
+.uploadPhotoBtn{
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    color: rgb(47, 47, 47);
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -1%;
+    text-align: left;
+}
+.buttonWrapper{
+    width: 116px;
+    margin-top: 40px;
+}
+
+
+@media (min-width: 768px) {
+  .modalContainer {
+    height: fit-content;
+    width: 568px;
+    flex-wrap: wrap;
+    padding: 40px;
+  }
+  .titleModal{
+    font-size: 28px;
+  }
+  .inputContainer{
+    width: 100%;
+  }
+  .info{
+    font-size: 16px;
+  }
+  .requiredNumber{
+    width: 100%;
+  }
+}
+
+@media (min-width: 1440px) {   
+    .modalContainer{
+        width: 920px;
+    } 
+    .formContainer{
+        height: 598px;
+    }
+    .inputContainer{
+        width: 400px;
+    }
+    .formulaWrapper{
+        flex-direction: row;
+    }
+    .listItem:nth-of-type(6){
+    margin-top: 82px;
+    }
+    .requiredNumber{
+        font-size: 16px;
+    }
+    .labelCustom{
+        font-size: 18px;
+    }
+}
