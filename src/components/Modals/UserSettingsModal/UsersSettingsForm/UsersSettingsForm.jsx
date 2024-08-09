@@ -7,25 +7,26 @@ import { FiUpload } from "react-icons/fi";
 import { FaExclamation } from "react-icons/fa";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { settingsFormValidation } from 'src/Validation/settingsModalFormValidation';
+import { calculateDailyNorma } from 'src/utils/dailyNormaCalculator';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from 'src/redux/users/selectors';
 
 const UsersSettingsForm = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
-    resolver: yupResolver(settingsFormValidation)
+    resolver: yupResolver(settingsFormValidation),
+    defaultValues: {
+      gender: user.gender || 'female',
+      name: user.name || null,
+      email: user.email,
+      weight: user.weight || null,
+      activeSportsTime: user.activeSportsTime || null,
+      dailyWaterIntake: userNorma || null,
+      avatar: user.avatar || null,
+    },
   });
 
-  const calculateDailyNorma = (weight, gender, activeTime) => {
-    let volume = 0;
-    switch (gender) {
-      case "woman":
-        volume = (weight * 0.03) + (activeTime * 0.4);
-        break;
-      case "man":
-        volume = (weight * 0.04) + (activeTime * 0.6);
-        break;
-      default: volume = 0;
-    }
-    return volume.toFixed(1);
-  };
 
   const onSubmit = (data) => {
     const { weight, gender, time } = data;

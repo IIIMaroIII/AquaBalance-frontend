@@ -1,9 +1,22 @@
 import * as yup from 'yup';
 
+const decimalInclude = /^\d+(\.\d+)?$/;
+
 export const settingsFormValidation = yup.object().shape({
-    gender: yup.string().required('Gender is required'),
-    username: yup.string().required('Username is required'),
-    weight: yup.number().required('Weight is required').positive('Weight must be positive'),
-    time: yup.number().required('Time is required').min(0, 'Time cannot be negative'),
-    water: yup.number().required('Water is required').min(0, 'Water cannot be negative')
+    username: yup.string().notRequired(),
+    gender: yup.string().oneOf(['female', 'male']),
+    email: yup.string().email().notRequired(),
+    weight: yup
+        .string()
+        .matches(decimalInclude, 'please enter a number')
+        .notRequired(),
+    activeSportsTime: yup
+        .string()
+        .matches(decimalInclude, 'please enter a number')
+        .notRequired(),
+    dailyWaterIntake: yup
+        .string()
+        .matches(decimalInclude, 'please enter a number')
+        .notRequired(),
+    avatar: yup.mixed().notRequired(),
 });
