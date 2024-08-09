@@ -1,0 +1,15 @@
+.datepicker {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-1%, 0%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 327px;
+  height: 354px;
+  padding: 9px 18px;
+  background-color: #3e85f3;
+  font-family: Inter;
+  border-radius: 16px;
+}
