@@ -7,6 +7,7 @@ import { IoAddOutline } from 'react-icons/io5';
 import { IoRemoveOutline } from 'react-icons/io5';
 import { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import CONSTANTS from 'src/components/Constants/constants';
 import {
   addWater,
@@ -16,16 +17,21 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { waterModalFormValidation } from 'src/Validation/waterModalFormValidation';
 import { toast } from 'react-hot-toast';
+import { changeWaterModalAdd, changeWaterModalEdit  } from 'src/redux/water/slice';
+import { selectWaterItems } from 'src/redux/water/selectors.js';
 
-const WaterForm = ({ operationName }) => {
+const WaterForm = ({ operationName}) => {
   const { chosenDate, getHoursAndMinutes, setHoursAndMinutes } = useChosenDate();
   const [waterAmount, setWaterAmount] = useState(50);
-  const dispatch = useDispatch();
+  const [waterAmountError, setWaterAmountError] = useState('');
 
+  const dispatch = useDispatch();
+  const waterItem = useSelector(selectWaterItems);
+  
   const { control, handleSubmit, setValue, formState: { errors } } = useForm({
     resolver: yupResolver(waterModalFormValidation),
     defaultValues: {
-      waterAmount: 50,
+      waterAmount: waterItem ? waterItem.volume : 50,
       time: `${getHoursAndMinutes().hours}:${getHoursAndMinutes().minutes}`
     }
   });
@@ -47,7 +53,7 @@ const WaterForm = ({ operationName }) => {
   const onSubmit = async (data) => {
     const { waterAmount, time } = data;
     const formData = new FormData();
-    formData.append('volume', waterAmount);
+    formData.append('waterValue', waterAmount);
 
     const [hours, minutes] = time.split(':').map(Number);
     setHoursAndMinutes(hours, minutes);
@@ -56,10 +62,12 @@ const WaterForm = ({ operationName }) => {
       if (operationName === 'add') {
         await dispatch(addWater(formData)).then((res) => {
           toast.success('You have successfully added the amount of water!');
+          dispatch(changeWaterModalAdd(false));
         });
       } else {
         await dispatch(changeWater(formData)).then((res) => {
           toast.success('You have successfully edited the amount of water!');
+          dispatch(changeWaterModalEdit(false));
         });
       }
     } catch (error) {
@@ -109,15 +117,22 @@ const WaterForm = ({ operationName }) => {
           <CustomInput
             label={true}
             labelName={"Enter the value of the water used:"}
-            value={field.value}
+            value={waterAmount}
             onChange={(e) => {
-              field.onChange(e);
-              setWaterAmount(Number(e.target.value));
+              const inputValue = e.target.value;
+              if (/^\d*$/.test(inputValue)) {
+                setWaterAmount(Number(inputValue));
+                setWaterAmountError('');
+                field.onChange(inputValue);
+              } else {
+                setWaterAmountError('Please enter a valid number.');
+              }
             }}
             name={"volume"}
           />
         )}
       />
+      {waterAmountError && <p style={{ color: 'red' }}>{waterAmountError}</p>}
       {errors.waterAmount && <p>{errors.waterAmount.message}</p>}
       <Button type="submit">Save</Button>
     </form>
