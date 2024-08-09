@@ -91,7 +91,6 @@ CustomInput.displayName = 'CustomInput';
 export default CustomInput;
 
 /*
-Разбор кода
 
 Импорт библиотек:
 clsx: Библиотека для условного объединения классов.
