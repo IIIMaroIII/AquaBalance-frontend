@@ -1,0 +1,67 @@
+.plusIcon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+
+  color: var(--white);
+  background-color: transparent;
+
+  transform: scale(1);
+  transition: color var(--transition-delay) var(--transition),
+    background-color var(--transition-delay) var(--transition),
+    transform var(--transition-delay) var(--transition);
+}
+
+button.btn {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  background-color: #323f47;
+  color: var(--white);
+  width: 140px;
+  height: 46px;
+  margin-left: auto;
+  margin-top: 42px;
+  border-radius: 30px;
+  padding: 14px 20px;
+  font-size: 14px;
+
+  transform: scale(1);
+  transition: transform var(--transition-delay) var(--transition),
+    color var(--transition-delay) var(--transition);
+}
+
+button.btn:hover,
+button.btn:focus {
+  background-color: #323f47;
+  color: var(--green);
+}
+
+button.btn:hover .plusIcon,
+button.btn:focus .plusIcon {
+  color: var(--green);
+}
+
+.btnSpan {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 129%;
+}
+
+@media (min-width: 767px) {
+  button.btn {
+    font-size: 16px;
+    padding: 18px 30px;
+    width: 178px;
+    height: 60px;
+  }
+  .btnSpan {
+    line-height: 150%;
+  }
+
+  .plusIcon {
+    width: 24px;
+    height: 24px;
+  }
+}
