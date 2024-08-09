@@ -61,7 +61,7 @@ const MainModal = ({ children }) => {
       contentLabel="Modal"
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}
-      className={clsx(css.content)}
+      className={clsx(css.content, waterModalAdd && css.waterModalContent, waterModalEdit && css.waterModalContent)}
       overlayClassName={clsx(css.overlay, {
         [css.afterOpen]: afterOpen,
         [css.beforeClose]: beforeClose,
@@ -74,11 +74,12 @@ const MainModal = ({ children }) => {
             dispatch(changeModal(false));
           }, 500);
         }}
+        addButtonClass={clsx(waterModalAdd && css.closeWaterModalButton, waterModalEdit && css.closeWaterModalButton)}
       />
       {renderModal()}
       {children}
       <div>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi iure
+        {/* Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi iure
         dolorum nam facilis, doloribus ut. Incidunt, maiores labore. Corporis
         voluptate quae nisi, possimus dolor enim voluptatum? Veniam porro
         quisquam hic non voluptas maxime minus officia placeat voluptate fuga
@@ -88,7 +89,7 @@ const MainModal = ({ children }) => {
         vitae vero perferendis ab doloribus, atque laborum voluptates sed
         corporis commodi pariatur placeat? Autem porro deserunt, minima iure
         aperiam rerum repudiandae est, suscipit eius fuga iusto at placeat quis
-        quo neque quae consectetur quisquam alias?
+        quo neque quae consectetur quisquam alias? */}
       </div>
     </Modal>
   );

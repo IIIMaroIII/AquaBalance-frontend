@@ -1,0 +1,28 @@
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -1%;
+  color: var(--light-dark);
+}
+
+.text {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -1%;
+  color: var(--light-dark);
+  margin-top: 24px;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 28px;
+    line-height: 1.14;
+  }
+
+  .text {
+    font-size: 18px;
+    line-height: 1.32;
+  }
+}
