@@ -16,8 +16,8 @@
   border-radius: 15px;
   font-size: inherit;
   font-weight: inherit;
-  outline: none;
 
+  outline: none;
   background-color: transparent;
   transition: all var(--transition-delay) var(--transition);
 

@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import css from './customInput.module.css';
 import { forwardRef, useState } from 'react';
 
-const   CustomInput = forwardRef(
+const CustomInput = forwardRef(
   (
     {
       children,
@@ -33,12 +33,34 @@ const   CustomInput = forwardRef(
       setIsInactive(true);
     };
 
-    return (  
+    return (
       <>
         {label ? (
-          <> 
-          <label className={clsx(css.label, labelClass)}>
-            {labelName}
+          <>
+            <label className={clsx(css.label, labelClass)}>
+              {labelName}
+              <input
+                ref={ref}
+                className={clsx(css.input, inputClass, {
+                  [css.disabled]: disabled,
+                  [css.inactive]: isInactive,
+                  [css.focused]: isFocused,
+                  [css.activated]: activated,
+                  [css.error]: error,
+                })}
+                type={inputType}
+                placeholder={placeHolder}
+                name={inputName}
+                disabled={disabled}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                {...otherProps}
+              />
+            </label>
+            {children}
+          </>
+        ) : (
+          <>
             <input
               ref={ref}
               className={clsx(css.input, inputClass, {
@@ -54,32 +76,11 @@ const   CustomInput = forwardRef(
               disabled={disabled}
               onFocus={handleFocus}
               onBlur={handleBlur}
-
               {...otherProps}
             />
-          </label>
+            {children}
           </>
-        ) : (
-          
-          <input
-            ref={ref}
-            className={clsx(css.input, inputClass, {
-              [css.disabled]: disabled,
-              [css.inactive]: isInactive,
-              [css.focused]: isFocused,
-              [css.activated]: activated,
-              [css.error]: error,
-            })}
-            type={inputType}
-            placeholder={placeHolder}
-            name={inputName}
-            disabled={disabled}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            {...otherProps}
-          />
         )}
-        {children}
       </>
     );
   },
@@ -90,7 +91,6 @@ CustomInput.displayName = 'CustomInput';
 export default CustomInput;
 
 /*
-Разбор кода
 
 Импорт библиотек:
 clsx: Библиотека для условного объединения классов.
