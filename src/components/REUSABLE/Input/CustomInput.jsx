@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import css from './customInput.module.css';
 import { forwardRef, useState } from 'react';
 
-const CustomInput = forwardRef(
+const   CustomInput = forwardRef(
   (
     {
       children,
@@ -33,10 +33,12 @@ const CustomInput = forwardRef(
       setIsInactive(true);
     };
 
-    return (
+    return (  
       <>
         {label ? (
+          <> 
           <label className={clsx(css.label, labelClass)}>
+            {labelName}
             <input
               ref={ref}
               className={clsx(css.input, inputClass, {
@@ -52,11 +54,13 @@ const CustomInput = forwardRef(
               disabled={disabled}
               onFocus={handleFocus}
               onBlur={handleBlur}
+
               {...otherProps}
             />
-            {labelName}
           </label>
+          </>
         ) : (
+          
           <input
             ref={ref}
             className={clsx(css.input, inputClass, {

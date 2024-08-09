@@ -1,0 +1,139 @@
+.text {
+  color: var(--light-dark);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 172px;
+  margin-bottom: 32px;
+  letter-spacing: -1%;
+}
+
+.form {
+  margin: 0 auto;
+}
+
+.label {
+  margin-top: 16px;
+  color: var(--dark);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: -1%;
+}
+
+.form input.input::placeholder {
+  color: rgba(47, 47, 47, 0.6);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: -1%;
+}
+
+.form input.input {
+  margin-top: 8px;
+  color: var(--dark);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  background-color: transparent;
+  letter-spacing: -1%;
+}
+
+.form input.input:focus,
+.form input.input:hover {
+  border-color: rgba(47, 47, 47, 0.2);
+}
+
+.form input.input.active {
+  border-color: rgba(47, 47, 47, 0.4);
+}
+
+.form .button {
+  color: var(--light-dark);
+  background-color: var(--green);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.28;
+  background-color: none;
+  margin-top: 32px;
+  letter-spacing: -1%;
+}
+
+.form .button:hover {
+  background-color: var(--hover-green);
+}
+
+.form button.button:disabled {
+  color: rgba(47, 47, 47, 0.3);
+  background-color: var(--light-gray);
+  cursor: not-allowed;
+}
+
+.error {
+  color: var(--error-color);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -1%;
+}
+
+.form input.inputError {
+  color: var(--error-color);
+}
+
+@media (min-width: 768px) {
+  .text {
+    font-size: 36px;
+    line-height: 1.05;
+  }
+
+  .label {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .input {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .form {
+    width: 436px;
+  }
+
+  .button {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+.inputContainer {
+  position: relative;
+  background-color: transparent;
+}
+
+.eyeIcon {
+  width: 20px;
+  height: 20px;
+  all: unset;
+  display: inline-block;
+  cursor: pointer;
+  position: absolute;
+  right: 16px;
+  bottom: 15.8px;
+  background-color: transparent;
+  stroke: var(--dark);
+  fill: none;
+}
+
+.inputContainer button.eyeIcon:hover,
+.inputContainer button.eyeIcon:focus,
+.inputContainer button.eyeIcon:active {
+  background-color: transparent;
+}
+
+@media (min-width: 768px) {
+  .eyeIcon {
+    bottom: 18px;
+  }
+}

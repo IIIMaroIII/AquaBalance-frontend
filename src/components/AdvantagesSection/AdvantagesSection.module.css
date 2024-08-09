@@ -1,18 +1,11 @@
-.advantagesSection {
-  outline: 1px solid red;
-  outline-offset: -2px;
-}
-
-.advantagesSectionContainer {
-  outline: 1px solid red;
-  outline-offset: -2px;
-
+.container {
   width: 343px;
   height: 353px;
   border-radius: 30px;
+  padding: 16px;
 
   /* Mobile screen */
-  background-image: url(../../images/HomePage/girl.png);
+  background-image: url(../../assets/pictures/HomePage/girl.png);
   background-size: cover;
 
   /* retina mobile screen */
@@ -20,7 +13,7 @@
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url('../../images/HomePage/girl@2x.png');
+    background-image: url('../../assets/pictures/HomePage/girl@2x.png');
   }
 
   @media (min-width: 768px) {
@@ -28,14 +21,15 @@
     height: 446px;
 
     /* tablet screen */
-    background-image: url(../../images/HomePage/girl-tab.png);
+    background-image: url(../../assets/pictures/HomePage/girl-tab.png);
     background-size: cover;
 
     /* retina tablet screen */
     @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url('../../images/HomePage/girl-tab@2x.png');
+      background-image: url('../../assets/pictures/HomePage/girl-tab@2x.png');
     }
   }
 
@@ -44,17 +38,171 @@
     height: 736px;
 
     /* desktop screen */
-    background-image: url(../../images/HomePage/girl-desk.png);
+    background-image: url(../../assets/pictures/HomePage/girl-desk.png);
     background-size: cover;
 
     /* retina desktop screen */
     @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url('../../images/HomePage/girl-desk@2x.png');
+      background-image: url('../../assets/pictures/HomePage/girl-desk@2x.png');
     }
   }
 }
+
+.homePageCustomersPhoto {
+  width: 26.4px;
+  height: 28px;
+
+  @media (min-width: 768px) {
+    width: 47px;
+    height: 47px;
+  }
+}
+
+.ourHappyCustomersContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  margin-top: 193px;
+  padding: 10px 14px;
+  background-color: var(--white);
+  border-radius: 30px;
+}
+
+.avatarsList {
+  position: relative;
+  display: flex;
+  height: 28px;
+  width: 61.29px;
+}
+
+.avatar {
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar:nth-child(1) {
+  z-index: 3;
+  top: 0;
+  left: 0;
+}
+
+.avatar:nth-child(2) {
+  z-index: 2;
+  margin-left: 17.91px;
+}
+
+.avatar:nth-child(3) {
+  margin-left: 34.89px;
+}
+
+.ourHappyCustomersText {
+  width: 66.94px;
+  margin-left: 3.77px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.17;
+  color: var(--light-dark);
+}
+
+.ourHappyCustomersTextSpan {
+  color: var(--green);
+}
+
+.advantagesList {
+  width: 168px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+  margin-left: auto;
+}
+
+.advantagesListItem {
+  padding: 9px 12px;
+  border-radius: 30px;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1%;
+  color: var(--light-dark);
+}
+
+.advantagesListItem:nth-child(1) {
+  color: var(--white);
+  background-color: var(--light-dark);
+}
+
+.advantagesListItem:nth-child(2) {
+  background-color: var(--green);
+}
+
+.advantagesListItem:nth-child(3) {
+  background-color: var(--white);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 32px;
+  }
+
+  .ourHappyCustomersContainer {
+    min-height: 67px;
+    width: 237px;
+    padding: 10px 20px;
+    margin-top: 251px;
+  }
+
+  .ourHappyCustomersText {
+    width: 90px;
+    font-size: 15px;
+    line-height: 1.49;
+    margin-left: 4px;
+  }
+
+  .avatarsList {
+    width: 103px;
+    height: 47px;
+  }
+
+  .avatar:nth-child(2) {
+    margin-left: 28px;
+  }
+
+  .avatar:nth-child(3) {
+    margin-left: 56px;
+  }
+
+  .advantagesList {
+    width: 242px;
+    margin-top: -14px;
+    gap: 10px;
+  }
+
+  .advantagesListItem {
+    padding: 11px 16px;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: -1%;
+    color: var(--light-dark);
+  }
+}
+
+@media (min-width: 1440px) {
+  .ourHappyCustomersContainer {
+    margin-top: 505px;
+  }
+
+  .advantagesList {
+    margin-top: -10px;
+  }
+}
+
+/* styles before: */
 
 /* .homePageAdvantagesSection {
   background-image: url('../../assets/pictures/HomePage/girl.png');

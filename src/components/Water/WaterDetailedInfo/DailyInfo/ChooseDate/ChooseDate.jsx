@@ -1,7 +1,8 @@
-// import css from './chooseDate.module.css';
+import useChosenDate from 'src/hooks/useChosenDate.js';
 
 const ChooseDate = () => {
-  return <div></div>;
+  const { checkIfToday } = useChosenDate();
+  return <div>{checkIfToday()}</div>;
 };
 
 export default ChooseDate;

@@ -7,7 +7,7 @@
   border-radius: 30px;
 
   outline: none;
-  background-color: var(--basic-green);
+  background-color: var(--green);
 
   cursor: pointer;
   transition: border var(--transition-delay) var(--transition),
@@ -17,6 +17,7 @@
   font-size: inherit;
   font-weight: inherit;
 }
+
 .btn:hover,
 .btn:focus {
   border: none;
@@ -34,5 +35,5 @@
 }
 
 .btn.isSelected {
-  background-color: green;
+  background-color: var(--green);
 }

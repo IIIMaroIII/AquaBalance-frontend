@@ -17,48 +17,52 @@ const WelcomeSection = () => {
 
     <Container type="section" addClass={css.container}>
       <Logo />
-      <ul className={css.list}>
-        <li className={clsx(css.item, css.signUpItem)}>
-          <CustomNavLink
-            addClass={clsx(css.link, css.signUpLink, {
-              // [css.isActive]: isActive,
-            })}
-            to="/signup"
-          >
-            Try tracker
-          </CustomNavLink>
-        </li>
-        <li className={clsx(css.item, css.signInItem)}>
-          <CustomNavLink
-            addClass={clsx(css.link, css.signInLink, {
-              // [css.isActive]: isActive,
-            })}
-            to="/signin"
-          >
-            Sign In
-          </CustomNavLink>
-        </li>
-        <li className={clsx(css.item, css.signInItem)}>
-          <CustomNavLink
-            addClass={clsx(css.link, css.signInLink, {
-              // [css.isActive]: isActive,
-            })}
-            to="/tracker"
-          >
-            Tracker Page
-          </CustomNavLink>
-        </li>
-        <li className={clsx(css.item, css.signInItem)}>
-          <Button
-            onClick={() => dispatch(changeModal(!modal))}
-            addClass={clsx(css.link, css.signInLink, {
-              // [css.isActive]: isActive,
-            })}
-          >
-            Set to Main Modal Open
-          </Button>
-        </li>
-      </ul>
+      <div className={css.containerWithoutLogo}>
+      <p className={css.text}>Record daily water intake and track</p>
+        <h1 className={css.title}>Water consumption tracker</h1>
+        <ul className={css.list}>
+          <li className={clsx(css.item, css.signUpItem)}>
+            <CustomNavLink
+              addClass={clsx(css.link, css.signUpLink, {
+                // [css.isActive]: isActive,
+              })}
+              to="/signup"
+            >
+              Try tracker
+            </CustomNavLink>
+          </li>
+          <li className={clsx(css.item, css.signInItem)}>
+            <CustomNavLink
+              addClass={clsx(css.link, css.signInLink, {
+                // [css.isActive]: isActive,
+              })}
+              to="/signin"
+            >
+              Sign In
+            </CustomNavLink>
+          </li>
+          <li className={clsx(css.item, css.signInItem)}>
+            <CustomNavLink
+              addClass={clsx(css.link, css.signInLink, {
+                // [css.isActive]: isActive,
+              })}
+              to="/tracker"
+            >
+              Tracker Page
+            </CustomNavLink>
+          </li>
+          <li className={clsx(css.item, css.signInItem)}>
+            <Button
+              onClick={() => dispatch(changeModal(!modal))}
+              addClass={clsx(css.link, css.signInLink, {
+                // [css.isActive]: isActive,
+              })}
+            >
+              Set to Main Modal Open
+            </Button>
+          </li>
+        </ul>
+      </div>
     </Container>
   );
 };
