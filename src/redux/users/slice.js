@@ -9,6 +9,7 @@ export const usersSlice = createSlice({
     builder
       .addCase(signUp.pending, state => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(signUp.fulfilled, (state, { payload }) => {
         state.user = payload.data;
@@ -20,6 +21,7 @@ export const usersSlice = createSlice({
       })
       .addCase(signIn.pending, state => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(signIn.fulfilled, (state, { payload }) => {
         state.user.email = payload.data.email;
@@ -29,17 +31,43 @@ export const usersSlice = createSlice({
       })
       .addCase(signIn.rejected, (state, action) => {
         state.isLoading = false;
+
         state.isLoggedIn = false;
       })
-      .addCase(logout.pending, () => {})
-      .addCase(logout.fulfilled, () => {})
-      .addCase(logout.rejected, () => {})
-      .addCase(update.pending, () => {})
-      .addCase(update.fulfilled, () => {})
-      .addCase(update.rejected, () => {})
-      .addCase(refresh.pending, () => {})
-      .addCase(refresh.fulfilled, () => {})
-      .addCase(refresh.rejected, () => {});
+      .addCase(logout.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(logout.fulfilled, () => {
+        return { ...initialState };
+      })
+      .addCase(logout.rejected, () => {
+        return { ...initialState };
+      })
+      .addCase(update.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(update.fulfilled, (state, { payload }) => {
+        state.user = payload.data;
+        state.isLoading = false;
+      })
+      .addCase(update.rejected, state => {
+        state.isLoading = false;
+      })
+      .addCase(refresh.pending, state => {
+        state.isRefreshing = true;
+        state.error = null;
+      })
+      .addCase(refresh.fulfilled, (state, { payload }) => {
+        state.user.token = payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(refresh.rejected, state => {
+        state.isRefreshing = false;
+        state.isLoggedIn = false;
+      });
   },
 });
 

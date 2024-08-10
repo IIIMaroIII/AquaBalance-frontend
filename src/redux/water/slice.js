@@ -78,14 +78,14 @@ export const waterSlice = createSlice({
         state.error = null;
         state.isLoading = true;
       })
-      .addCase(addWater.fulfilled, (state, action) => {
+      .addCase(addWater.fulfilled, state => {
         state.isLoading = false;
       })
       .addCase(deleteWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.water.dailyItems = payload;
       })
-      .addCase(changeWater.fulfilled, (state, { payload }) => {
+      .addCase(changeWater.fulfilled, state => {
         state.isLoading = false;
       })
       .addCase(fetchDailyWater.fulfilled, (state, { payload }) => {

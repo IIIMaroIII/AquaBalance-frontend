@@ -2,7 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 import CONSTANTS from 'src/components/Constants/constants.js';
 import AxiosWithCredentials from 'src/utils/axios.js';
-import { axiosResponseError } from 'src/utils/axiosResponseError.js';
 
 export const addWater = createAsyncThunk(
   'water/addWater',
@@ -21,7 +20,9 @@ export const addWater = createAsyncThunk(
         },
       );
     } catch (error) {
-      return rejectWithValue(axiosResponseError(error));
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
@@ -41,7 +42,9 @@ export const deleteWater = createAsyncThunk(
       );
       return items;
     } catch (error) {
-      return rejectWithValue(axiosResponseError(error));
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
@@ -66,7 +69,9 @@ export const changeWater = createAsyncThunk(
         },
       );
     } catch (error) {
-      return rejectWithValue(axiosResponseError(error));
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );

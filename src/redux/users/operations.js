@@ -1,10 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import CONSTANTS from 'src/components/Constants/constants.js';
 import AxiosWithCredentials from 'src/utils/axios.js';
-import { axiosResponseError } from 'src/utils/axiosResponseError.js';
-// import CONSTANTS from 'src/components/Constants/constants.js';
-// import AxiosWithCredentials from 'src/utils/axios.js';
-// import { axiosResponseError } from 'src/utils/axiosResponseError.js';
+import { changeModal } from '../water/slice.js';
+import toast from 'react-hot-toast';
 
 export const signUp = createAsyncThunk(
   'users/signUp',
@@ -34,20 +32,29 @@ export const signIn = createAsyncThunk(
         `${CONSTANTS.USERS_ENDPOINTS.signIn}`,
         credentials,
       );
+      console.log('res.data in sign in', res.data);
       return res.data;
     } catch (error) {
-      return rejectWithValue(axiosResponseError(error));
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
 
 export const logout = createAsyncThunk(
   'users/logout',
-  async (_, { rejectWithValue }) => {
+  async (_, { dispatch, rejectWithValue }) => {
+    dispatch(changeModal(false));
     try {
       await AxiosWithCredentials.post(`${CONSTANTS.USERS_ENDPOINTS.logout}`);
+      toast.success('You have been successfully logged out, see you soon!');
     } catch (error) {
-      return rejectWithValue(axiosResponseError(error));
+      const message = error.response
+        ? error.response.data.message
+        : error.response.message;
+      toast.error(message);
+      return rejectWithValue(message);
     }
   },
 );
@@ -55,33 +62,39 @@ export const logout = createAsyncThunk(
 export const refresh = createAsyncThunk(
   'users/refresh',
   async (_, { rejectWithValue }) => {
-    // try {
-    //   const res = await AxiosWithCredentials.post(
-    //     `${CONSTANTS.USERS_ENDPOINTS.refresh}`,
-    //   );
-    //   return res.data;
-    // } catch (error) {
-    //   return rejectWithValue(axiosResponseError(error));
-    // }
+    try {
+      // console.log('Attempting to call refresh endpoint...');
+      const { data } = await AxiosWithCredentials.post(
+        `${CONSTANTS.USERS_ENDPOINTS.refresh}`,
+      );
+      // console.log('data in refresh operations', data.data);
+      return data.data.accessToken;
+    } catch (error) {
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
+    }
   },
 );
 
 export const update = createAsyncThunk(
   'users/update',
   async (formData, { rejectWithValue }) => {
-    // try {
-    //   const res = await AxiosWithCredentials.patch(
-    //     `${CONSTANTS.USERS_ENDPOINTS.updateUser}`,
-    //     formData,
-    //     {
-    //       headers: {
-    //         'Content-Type': 'multipart/form-data',
-    //       },
-    //     },
-    //   );
-    //   return res.data;
-    // } catch (error) {
-    //   return rejectWithValue(axiosResponseError(error));
-    // }
+    try {
+      const res = await AxiosWithCredentials.patch(
+        `${CONSTANTS.USERS_ENDPOINTS.updateUser}`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
+      );
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
+    }
   },
 );
