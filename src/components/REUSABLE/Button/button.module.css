@@ -1,6 +1,5 @@
 .btn {
   display: block;
-  width: 100%;
   padding: 18px 40px;
 
   border: none;
@@ -28,9 +27,6 @@
   border: 1px solid var(--signin-btn-disabled-color);
   color: var(--signin-btn-disabled-color);
   background-color: transparent;
-}
-
-.btn:active {
 }
 
 .btn.isSelected {

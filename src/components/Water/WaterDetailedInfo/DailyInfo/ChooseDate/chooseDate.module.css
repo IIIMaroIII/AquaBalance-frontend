@@ -1,0 +1,16 @@
+.day {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 120%;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.01em;
+}
+
+@media screen and (min-width: 768px) {
+  .day {
+    font-size: 28px;
+    line-height: 114%;
+    letter-spacing: -0.01em;
+  }
+}

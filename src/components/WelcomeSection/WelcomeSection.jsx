@@ -17,9 +17,9 @@ const WelcomeSection = () => {
 
     <Container type="section" addClass={css.container}>
       <Logo />
-      <div>
-        <p>Record daily water intake and track</p>
-        <h1>Water consumption tracker</h1>
+      <div className={css.containerWithoutLogo}>
+        <p className={css.text}>Record daily water intake and track</p>
+        <h1 className={css.title}>Water consumption tracker</h1>
         <ul className={css.list}>
           <li className={clsx(css.item, css.signUpItem)}>
             <CustomNavLink

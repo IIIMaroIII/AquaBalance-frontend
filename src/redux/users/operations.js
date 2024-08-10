@@ -8,17 +8,20 @@ import { axiosResponseError } from 'src/utils/axiosResponseError.js';
 
 export const signUp = createAsyncThunk(
   'users/signUp',
-  async (_, { rejectWithValue }) => {
+  async (credentials, { rejectWithValue }) => {
     try {
-      const credentials = { email: 'test100@example.com', password: '000000' };
       const res = await AxiosWithCredentials.post(
         `${CONSTANTS.USERS_ENDPOINTS.signUp}`,
         credentials,
       );
-      console.log('res.data', res.data);
+      if (res.status > 300) {
+        return rejectWithValue(res.statusText);
+      }
       return res.data;
     } catch (error) {
-      return rejectWithValue(axiosResponseError(error));
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
@@ -26,15 +29,15 @@ export const signUp = createAsyncThunk(
 export const signIn = createAsyncThunk(
   'users/signIn',
   async (credentials, { rejectWithValue }) => {
-    // try {
-    //   const res = await AxiosWithCredentials.post(
-    //     `${CONSTANTS.USERS_ENDPOINTS.signIn}`,
-    //     credentials,
-    //   );
-    //   return res.data;
-    // } catch (error) {
-    //   return rejectWithValue(axiosResponseError(error));
-    // }
+    try {
+      const res = await AxiosWithCredentials.post(
+        `${CONSTANTS.USERS_ENDPOINTS.signIn}`,
+        credentials,
+      );
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(axiosResponseError(error));
+    }
   },
 );
 

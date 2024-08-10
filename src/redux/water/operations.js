@@ -86,10 +86,12 @@ export const fetchDailyWater = createAsyncThunk(
         toast.success(data.message);
       }
 
-      console.log('data', data);
+      // console.log('data', data);
       return data;
     } catch (error) {
-      return rejectWithValue(axiosResponseError(error));
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
@@ -112,7 +114,9 @@ export const fetchMonthlyWater = createAsyncThunk(
 
       return data;
     } catch (error) {
-      return rejectWithValue(axiosResponseError(error));
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );

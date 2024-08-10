@@ -1,8 +1,9 @@
 .content {
   position: relative;
   margin: auto;
-  max-width: 1440px;
-  padding: 40px;
+  /* max-width: 1440px; */
+  /* padding: 40px; */
+  padding: 40px 20px;
   outline: none;
   background-color: white;
   border-radius: 15px;
@@ -15,7 +16,7 @@
   width: 100%;
   height: 100%;
 
-  padding: 20px;
+  padding: 16px;
 
   display: flex;
   justify-content: center;
@@ -42,14 +43,45 @@
     transform var(--transition-delay) var(--transition);
 }
 
-@media (min-width: 768px) and (max-width: 1439px) {
+button.closeWaterModalButton {
+  top: 20px;
+  right: 16px;
+}
+
+@media (min-width: 375px) {
   .content {
-    width: 648px;
+    min-width: 343px;
+    max-width: 344px;
+  }
+
+  .waterModalContent {
+    width: 343px;
+  }
+}
+
+@media (min-width: 768px) {
+  .content {
+    min-width: 516px;
+    max-width: 648px;
+    padding: 40px;
+  }
+
+  .waterModalContent {
+    width: 518px;
+  }
+
+  button.closeWaterModalButton {
+    right: 20px;
   }
 }
 
 @media (min-width: 1440px) {
   .content {
-    width: 920px;
+    min-width: 516px;
+    max-width: 920px;
+  }
+
+  .waterModalContent {
+    width: 518px;
   }
 }

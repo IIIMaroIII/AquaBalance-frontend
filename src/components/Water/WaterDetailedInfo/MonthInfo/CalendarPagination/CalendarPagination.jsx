@@ -23,7 +23,8 @@ export const CalendarPagination = () => {
           goToPreviousMonth();
           dispatch(fetchMonthlyWater())
             .unwrap()
-            .then(() => dispatch(fetchDailyWater()));
+            .then(() => dispatch(fetchDailyWater()))
+            // .catch(console.error);
         }}
         addClass={css.btn}
       >
@@ -35,7 +36,8 @@ export const CalendarPagination = () => {
           goToNextMonth();
           dispatch(fetchMonthlyWater())
             .unwrap()
-            .then(() => dispatch(fetchDailyWater()));
+            .then(() => dispatch(fetchDailyWater()))
+            // .catch(console.error);
         }}
         addClass={css.btn}
       >
