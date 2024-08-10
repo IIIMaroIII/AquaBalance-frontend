@@ -3,22 +3,27 @@
   font-size: 32px;
   font-weight: 700;
   line-height: 1;
-  margin-top: 172px;
+  /* margin-top: 172px; */
   margin-bottom: 32px;
-  letter-spacing: -1%;
+  letter-spacing: -0.01em;
 }
 
 .form {
   margin: 0 auto;
+  margin-bottom: 16px;
 }
 
 .label {
-  margin-top: 16px;
+  margin-bottom: 16px;
   color: var(--dark);
   font-size: 14px;
   font-weight: 700;
   line-height: 1.28;
   letter-spacing: -1%;
+
+  @media (min-width: 768px) {
+    margin-bottom: 20px;
+  }
 }
 
 .form input.input::placeholder {
@@ -37,6 +42,11 @@
   line-height: 1.28;
   background-color: transparent;
   letter-spacing: -1%;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.5;
+  }
 }
 
 .form input.input:focus,
@@ -55,8 +65,18 @@
   font-weight: 700;
   line-height: 1.28;
   background-color: none;
+
+  padding-top: 16px;
+  padding-bottom: 16px;
   margin-top: 32px;
   letter-spacing: -1%;
+
+  @media (min-width: 768px) {
+    padding-top: 17px;
+    padding-bottom: 18px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
 }
 
 .form .button:hover {
