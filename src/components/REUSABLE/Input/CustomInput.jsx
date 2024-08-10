@@ -15,7 +15,6 @@ const CustomInput = forwardRef(
       inputClass = '',
       disabled = false,
       error = false,
-      value = '',
       checked = false,
       onChange = () => {},
       onBlur = () => {},
@@ -89,7 +88,6 @@ const CustomInput = forwardRef(
               name={inputName}
               disabled={disabled}
               checked={checked}
-              value={value}
               onChange={onChange}
               onFocus={handleFocus}
               onBlur={handleBlur}
