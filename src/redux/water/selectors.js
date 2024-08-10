@@ -27,13 +27,14 @@ export const convertDailyTotalVolumeToPercentage = createSelector(
   [selectWaterItems, selectUserDailyNorma],
   (waterItems, dailyNorma) => {
     const volume = () => {
-      if (waterItems !== null || waterItems.length > 0) {
+      if (waterItems) {
         return waterItems
           .map(item => item.volume)
           .reduce((acc, volume) => {
             return acc + volume;
           }, 0);
       }
+      return
     };
 
     const percentage = (volume() / (dailyNorma * 1000)) * 100;
