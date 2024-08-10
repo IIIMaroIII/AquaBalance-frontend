@@ -26,15 +26,15 @@ export const signUp = createAsyncThunk(
 export const signIn = createAsyncThunk(
   'users/signIn',
   async (credentials, { rejectWithValue }) => {
-    try {
-      const res = await AxiosWithCredentials.post(
-        `${CONSTANTS.USERS_ENDPOINTS.signIn}`,
-        credentials,
-      );
-      return res.data;
-    } catch (error) {
-      return rejectWithValue(axiosResponseError(error));
-    }
+    // try {
+    //   const res = await AxiosWithCredentials.post(
+    //     `${CONSTANTS.USERS_ENDPOINTS.signIn}`,
+    //     credentials,
+    //   );
+    //   return res.data;
+    // } catch (error) {
+    //   return rejectWithValue(axiosResponseError(error));
+    // }
   },
 );
 
