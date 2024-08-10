@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import { refresh } from 'src/redux/users/operations.js';
 
 const AxiosWithCredentials = axios.create({
-  baseURL: CONSTANTS.DOMAINS.SERVER_LOCALHOST,
+  baseURL: CONSTANTS.DOMAINS.SERVER_DEPLOY,
   // baseURL: CONSTANTS.DOMAINS.SERVER_DEPLOY,
   withCredentials: true,
 });
@@ -35,6 +35,7 @@ AxiosWithCredentials.interceptors.response.use(
       'err.response.data.message in interceptors',
       err.response.data.message,
     );
+    console.log(status);
 
     const status = err?.response?.data.status || err?.response?.status || null;
     const statusText =
@@ -77,6 +78,7 @@ AxiosWithCredentials.interceptors.response.use(
       }
     }
     if (status === 500 || status === 400 || status === 403 || status === 409) {
+      console.log(status);
       toast.error(statusText);
     }
 
