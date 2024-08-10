@@ -1,167 +1,194 @@
-import css from './waterForm.module.css';
-import useModals from 'src/hooks/useModals.js';
-import useChosenDate from 'src/hooks/useChosenDate.js';
-import CustomInput from '../Input/CustomInput';
-import Button from '../Button/Button';
-// import { IoAddOutline } from 'react-icons/io5';
-// import { IoRemoveOutline } from 'react-icons/io5';
 import { useState, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import CONSTANTS from 'src/components/Constants/constants';
-import { addWater, changeWater } from 'src/redux/water/operations';
+import css from './waterForm.module.css';
 import { useForm, Controller } from 'react-hook-form';
+import { IoAddOutline } from 'react-icons/io5';
+import { IoRemoveOutline } from 'react-icons/io5';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { waterModalFormValidation } from 'src/Validation/waterModalFormValidation';
+import Button from '../Button/Button';
+import waterSchemas from 'src/Validation/Water/waterSchemas';
+import CONSTANTS from 'src/components/Constants/constants';
+import { useDispatch } from 'react-redux';
+import {
+  addWater,
+  changeWater,
+  fetchDailyWater,
+} from 'src/redux/water/operations';
 import { toast } from 'react-hot-toast';
-import sprite from '../../../assets/sprite.svg';
-import { changeWaterModalAdd, changeWaterModalEdit, changeModal  } from 'src/redux/water/slice';
-import { selectWaterItems } from 'src/redux/water/selectors.js';
+import useChosenDate from 'src/hooks/useChosenDate.js';
+import { changeModal } from 'src/redux/water/slice.js';
 
 const WaterForm = ({ operationName }) => {
-  const { chosenDate, getHoursAndMinutes, setHoursAndMinutes } =
-    useChosenDate();
-  const [waterAmount, setWaterAmount] = useState(50);
-  const [waterAmountError, setWaterAmountError] = useState('');
-
+  const { chosenDate, getHoursAndMinutes } = useChosenDate();
+  const { hours, minutes } = getHoursAndMinutes();
   const dispatch = useDispatch();
-  const waterItem = useSelector(selectWaterItems);
+  const [amount, setAmount] = useState(50);
+  const buttonAddWater = useRef(null);
+  const buttonSubtractWater = useRef(null);
 
   const {
-    control,
+    register,
     handleSubmit,
+    watch,
+    formState: { isDirty, errors },
     setValue,
-    formState: { errors },
+    control,
   } = useForm({
-    resolver: yupResolver(waterModalFormValidation),
+    mode: 'onChange',
+    resolver: yupResolver(waterSchemas.waterTemplateSchema),
     defaultValues: {
-      waterAmount: waterItem ? waterItem.volume : 50,
-      time: `${getHoursAndMinutes().hours}:${getHoursAndMinutes().minutes}`,
+      waterValue: 50,
     },
   });
 
-  const addWaterValue = () => {
-    if (waterAmount < CONSTANTS.WATER_LIMITS.MAX_WATER_LIMIT) {
-      setWaterAmount(prevAmount => prevAmount + 50);
-      setValue(
-        'waterAmount',
-        Math.min(waterAmount + 50, CONSTANTS.WATER_LIMITS.MAX_WATER_LIMIT),
-      );
-    }
-  };
-
-  const subtractWaterValue = () => {
-    if (waterAmount > CONSTANTS.WATER_LIMITS.MIN_WATER_LIMIT) {
-      setWaterAmount(prevAmount => prevAmount - 50);
-      setValue(
-        'waterAmount',
-        Math.max(waterAmount - 50, CONSTANTS.WATER_LIMITS.MIN_WATER_LIMIT),
-      );
-    }
-  };
+  let waterAmount = watch('waterValue', 50);
 
   const onSubmit = async data => {
-    const { waterAmount, time } = data;
-    const formData = new FormData();
-    formData.append('waterValue', waterAmount);
-
-    const [hours, minutes] = time.split(':').map(Number);
-    setHoursAndMinutes(hours, minutes);
-
-    try {
-      if (operationName === 'add') {
-        await dispatch(addWater(formData)).then(res => {
-          toast.success('You have successfully added the amount of water!');
-          dispatch(changeWaterModalAdd(false));
-          dispatch(changeModal(false));
-        });
-      } else {
-        await dispatch(changeWater(formData)).then(res => {
-          toast.success('You have successfully edited the amount of water!');
-          dispatch(changeWaterModalEdit(false));
-          dispatch(changeModal(false));
-        });
-      }
-    } catch (error) {
-      toast.error('There was an error processing your request.');
+    const { waterValue } = data;
+    if (Object.keys(errors).length > 0) {
+      toast.error('Please fix the errors before submitting.');
+      return;
     }
+
+    if (waterValue === undefined || waterValue === null) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('waterValue', waterValue);
+
+    if (operationName === 'add') {
+      await dispatch(addWater(formData))
+        .unwrap()
+        .then(res => {
+          toast.success('You have successfully added your record');
+          console.log('res addWater fulfilled', res);
+          dispatch(changeModal(false));
+          dispatch(fetchDailyWater());
+        });
+    } else {
+      await dispatch(changeWater(formData))
+        .unwrap()
+        .then(res => {
+          console.log('res in editWater fulfilled', res);
+          toast.success(
+            'You have successfully changed water amount in your record',
+          );
+          dispatch(changeModal(false));
+          dispatch(fetchDailyWater());
+        });
+    }
+  };
+
+  const addWaterAmount = () => {
+    let result = (waterAmount += amount);
+    buttonSubtractWater.current.disabled = false;
+    if (result >= CONSTANTS.WATER_LIMITS.MAX_WATER_LIMIT) {
+      buttonAddWater.current.disabled = true;
+    }
+    setValue('waterValue', result);
+  };
+
+  const reduceWater = () => {
+    let result = (waterAmount -= amount);
+    buttonAddWater.current.disabled = false;
+    if (result <= CONSTANTS.WATER_LIMITS.MIN_WATER_LIMIT) {
+      buttonSubtractWater.current.disabled = true;
+    }
+    setValue('waterValue', result);
+  };
+
+  function round(number) {
+    if (number >= 1000) {
+      let liters = number / 1000;
+      if (number % 1000 === 0) {
+        return `${liters.toFixed(0)}L`;
+      } else {
+        return `${liters.toFixed(3)}L`;
+      }
+    } else {
+      return `${number}ml`;
+    }
+  }
+
+  const handleWaterValueChange = evt => {
+    const value = Number(evt.currentTarget.value);
+    setValue('waterValue', isNaN(value) ? 0 : value);
+    if (value >= CONSTANTS.WATER_LIMITS.MAX_WATER_LIMIT) {
+      buttonSubtractWater.current.disabled = false;
+      buttonAddWater.current.disabled = true;
+    } else {
+      buttonAddWater.current.disabled = false;
+    }
+    if (value === 0) {
+      buttonSubtractWater.current.disabled = true;
+      buttonAddWater.current.disabled = true;
+    }
+    setAmount(value);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <p className={css.amountText}>Amount of water:</p>
-      <div className={css.changeAmountContainer}>
-        <Button
-          type="button"
-          onClick={subtractWaterValue}
-          disabled={waterAmount <= CONSTANTS.WATER_LIMITS.MIN_WATER_LIMIT}
-          addClass={css.changeAmountButton}
-        >
-          <svg className={css.changeAmountIcon}>
-            <use xlinkHref={`${sprite}#icon-minus`} />
-          </svg>
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={css.waterControlContainer}>
+          <p>Amount of water:</p>
+          <div className={css.waterAdjustmentContainer}>
+            <button
+              type="button"
+              onClick={reduceWater}
+              className={css.waterAdjustmentBtn}
+              ref={buttonSubtractWater}
+            >
+              <IoRemoveOutline className="subtract-icon" size={16} />
+            </button>
+            <div className={css.waterAmount}>
+              <p className={css.waterAmountDisplay}>{round(waterAmount)}</p>
+            </div>
+            <button
+              type="button"
+              className={css.waterAdjustmentBtn}
+              onClick={addWaterAmount}
+              ref={buttonAddWater}
+            >
+              <IoAddOutline className="add-icon" size={16} />
+            </button>
+          </div>
+        </div>
+        <div className={css.waterInfoContainer}>
+          <label className={css.recordingTimeContainer}>
+            Recording time:
+            <input
+              value={`${hours}:${minutes}`}
+              {...register('time')}
+              className={css.waterInfoField}
+            />
+            {errors.time && <p>{errors.time.message}</p>}
+          </label>
+          <label
+            className={`${css.recordingTimeContainer} ${css.waterAmountText}`}
+          >
+            Enter the value of the water used:
+            <Controller
+              name="waterValue"
+              control={control}
+              defaultValue={50}
+              render={({ field }) => (
+                <input
+                  id="waterValue"
+                  value={waterAmount}
+                  onChange={handleWaterValueChange}
+                  className={css.waterInfoField}
+                />
+              )}
+            />
+            {errors.waterValue && <p>{errors.waterValue.message}</p>}
+          </label>
+        </div>
+        <Button className={css.saveBtn} type="submit" onClick={onSubmit}>
+          {/* Save */}
+          {operationName === 'edit' ? 'Update Save' : 'Save'}
         </Button>
-        <p className={css.waterAmountText}>{waterAmount}</p>
-        <Button
-          type="button"
-          onClick={addWaterValue}
-          disabled={waterAmount >= CONSTANTS.WATER_LIMITS.MAX_WATER_LIMIT}
-          addClass={css.changeAmountButton}
-        >
-          <svg className={css.changeAmountIcon}>
-            <use xlinkHref={`${sprite}#icon-plus`} />
-          </svg>
-        </Button>
-      </div>
-      <Controller
-        name="time"
-        control={control}
-        render={({ field }) => (
-          <CustomInput
-            label={true}
-            labelName={'Recording time:'}
-            labelClass={css.recordingTimeLabel}
-            inputClass={css.input}
-            value={field.value}
-            onChange={e => {
-              field.onChange(e);
-              setValue('time', e.target.value);
-            }}
-            name={'date'}
-          />
-        )}
-      />
-      {errors.time && <p>{errors.time.message}</p>}
-      <Controller
-        name="waterAmount"
-        control={control}
-        render={({ field }) => (
-          <CustomInput
-            label={true}
-            labelName={'Enter the value of the water used:'}
-            labelClass={css.waterAmountLabel}
-            inputClass={css.input}
-            value={waterAmount}
-            onChange={(e) => {
-              const inputValue = e.target.value;
-              if (/^\d*$/.test(inputValue)) {
-                setWaterAmount(Number(inputValue));
-                setWaterAmountError('');
-                field.onChange(inputValue);
-              } else {
-                setWaterAmountError('Please enter a valid number.');
-              }
-            }}
-            name={'volume'}
-          />
-        )}
-      />
-      {waterAmountError && <p>{waterAmountError}</p>}
-      {errors.waterAmount && <p>{errors.waterAmount.message}</p>}
-      <Button type="submit" addClass={css.saveButton}>
-        Save
-      </Button>
-    </form>
+      </form>
+    </div>
   );
 };
 
