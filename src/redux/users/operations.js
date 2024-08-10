@@ -43,12 +43,12 @@ export const signIn = createAsyncThunk(
 
 export const logout = createAsyncThunk(
   'users/logout',
-  async (_, { dispatch, rejectWithValue }) => {
-    //     try {
-    //       await AxiosWithCredentials.post(`${CONSTANTS.USERS_ENDPOINTS.logout}`);
-    //     } catch (error) {
-    // return rejectWithValue(axiosResponseError(error));
-    //     }
+  async (_, { rejectWithValue }) => {
+    try {
+      await AxiosWithCredentials.post(`${CONSTANTS.USERS_ENDPOINTS.logout}`);
+    } catch (error) {
+      return rejectWithValue(axiosResponseError(error));
+    }
   },
 );
 
