@@ -4,43 +4,32 @@ import css from './calendarItem.module.css';
 
 import useChosenDate from 'src/hooks/useChosenDate.js';
 import { fetchDailyWater } from 'src/redux/water/operations.js';
+import clsx from 'clsx';
 import { convertDailyTotalVolumeToPercentage } from 'src/redux/water/selectors.js';
 
-
-export const CalendarItem = ({ day }) => {
+export const CalendarItem = ({ day, activeDay, setActiveDay }) => {
   const dispatch = useDispatch();
   const { setChosenDay } = useChosenDate();
   const percentage = useSelector(convertDailyTotalVolumeToPercentage).toFixed(
     0,
   );
 
-  const items = document.querySelectorAll(`.${css.btn_item}`);
-
-  const target = e => {
-    const btn = e.currentTarget.children[0];
-    btn.classList.add(`${css.active}`);
-
-    items.forEach(item => {
-      if (item.id !== e.currentTarget.id)
-        item.classList.remove(`${css.active}`);
-    });
-  };
-
 
   return (
     <>
-      <li className={css.item} id={day} onClick={target}>
+      <li className={css.item} id={day}>
         <Button
           id={day}
-          addClass={css.btn_item}
+          addClass={clsx(css.btn, { [css.active]: activeDay === day })}
           onClick={() => {
+            setActiveDay(day);
             setChosenDay(day);
             dispatch(fetchDailyWater());
           }}
         >
           {day}
         </Button>
-        <p className={css.procent}>{`${percentage}%`}</p>
+        <p className={css.text}>{`${percentage}%`}</p>
       </li>
     </>
   );

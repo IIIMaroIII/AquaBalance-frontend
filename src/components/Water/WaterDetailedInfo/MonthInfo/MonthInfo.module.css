@@ -1,16 +1,22 @@
-.wrapper {
-    padding-top: 24px;
+.paginationContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 24px;
 }
 
-
-.month {
+.title {
     font-weight: 700;
     font-size: 20px;
     line-height: 120%;
     letter-spacing: -0.01em;
+}
+
+.chartIcon {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    fill: transparent;
 }
 
 .paginationWrapper {
@@ -22,6 +28,11 @@
 @media screen and (min-width: 768px) {
     .paginationWrapper {
         gap: 20px;
+    }
+
+    .chartIcon {
+        width: 24px;
+        height: 24px;
     }
 }
 
