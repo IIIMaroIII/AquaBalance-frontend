@@ -1,5 +1,5 @@
 .container {
-  width: 343px;
+  max-width: 343px;
   height: 353px;
   border-radius: 30px;
   padding: 16px;
@@ -7,6 +7,7 @@
   /* Mobile screen */
   background-image: url(../../assets/pictures/HomePage/girl.png);
   background-size: cover;
+  background-position: center;
 
   /* retina mobile screen */
   @media (min-device-pixel-ratio: 2),
@@ -17,6 +18,7 @@
   }
 
   @media (min-width: 768px) {
+    max-width: none;
     width: 704px;
     height: 446px;
 
@@ -135,6 +137,16 @@
 .advantagesListItem:nth-child(1) {
   color: var(--white);
   background-color: var(--light-dark);
+}
+
+.advantagesListItem:nth-child(1)::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 4px;
+  background-color: var(--green);
 }
 
 .advantagesListItem:nth-child(2) {
