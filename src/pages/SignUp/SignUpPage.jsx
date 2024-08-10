@@ -13,21 +13,18 @@ const SignUpPage = () => {
   const { width } = useWindowSize();
 
   return (
-    <Container type="section" addClass={css.signUpPage}>
-      <div className={css.container}>
+    <Container type="div" addClass={css.signUpPage}>
+      <Container type="section" addClass={css.container}>
         <Logo addClass={css.logo} />
         <SignUpForm />
-        <div className={css.haveAnAccountContainer}>
-          <p className={css.haveAnAccountText}>
-            Already have an account?{' '}
-            <Link to="/signin" className={css.haveAnAccountLink}>
-              Sign In
-            </Link>
-          </p>
-        </div>
-      </div>
-      {width <= 1439 ? null : <AdvantagesSection />}
-      {/* тут должен быть условный рендеринг для экранов от 1440px <AdvantagesSection /> */}
+        <p className={css.haveAnAccountText}>
+          Already have an account?{' '}
+          <Link to="/signin" className={css.haveAnAccountLink}>
+            Sign In
+          </Link>
+        </p>
+      </Container>
+      {width >= 1440 ? <AdvantagesSection /> : null}
     </Container>
   );
 };

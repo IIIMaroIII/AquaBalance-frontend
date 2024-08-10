@@ -1,4 +1,19 @@
 .wrapper {
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 16px;
+
+  @media (min-width: 768px) {
+    max-width: 768px;
+    padding: 32px;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 1440px;
+  }
+}
+
+/* .wrapper {
   margin: 0 auto;
   padding: 16px;
 }
@@ -21,4 +36,4 @@
   .wrapper {
     width: 1376px;
   }
-}
+} */

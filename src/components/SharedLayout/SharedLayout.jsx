@@ -4,7 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import { TOAST } from '../Constants/constants.js';
 import MainModal from '../Modals/MainModal.jsx';
 import useModals from 'src/hooks/useModals.js';
-import css from "./sharedLayout.module.css"
+import css from './sharedLayout.module.css';
 
 const SharedLayout = ({ children }) => {
   const { modal } = useModals();

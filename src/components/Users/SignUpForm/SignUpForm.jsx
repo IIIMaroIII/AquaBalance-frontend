@@ -40,7 +40,7 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
-      <p className={css.text}>Sign up</p>
+      <p className={css.text}>Sign Up</p>
       <CustomInput
         label={true}
         labelName={'Email'}
