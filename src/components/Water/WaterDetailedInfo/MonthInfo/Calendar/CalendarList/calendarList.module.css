@@ -1,22 +1,12 @@
 .list {
-  display: grid;
-  grid-template-columns: repeat(7, auto);
-  gap: 20px 18px;
-  padding: 0;
-  list-style-type: none;
-  margin-top: 24px;
-  width: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 767px) {
   .list {
-    grid-template-columns: repeat(8, auto);
-    gap: 15px 48px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .list {
-    gap: 15px 43px;
+    row-gap: 15px;
+    column-gap: 48px;
   }
 }
