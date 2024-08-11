@@ -1,6 +1,5 @@
-import UsersSettingsForm from '../../UsersSettingsForm/UsersSettingsForm.jsx';
 import css from './userSettingsModal.module.css';
-import { useState } from 'react';
+import UsersSettingsForm from './UsersSettingsForm/UsersSettingsForm.jsx';
 
 const UserSettingsModal = () => {
   return (
