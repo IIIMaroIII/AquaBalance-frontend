@@ -12,7 +12,7 @@
     padding: 14px 18px;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1439px) {
     margin-left: 32px;
   }
 }

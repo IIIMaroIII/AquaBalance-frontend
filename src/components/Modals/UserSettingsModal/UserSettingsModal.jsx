@@ -1,16 +1,13 @@
+import UsersSettingsForm from '../../UsersSettingsForm/UsersSettingsForm.jsx';
 import css from './userSettingsModal.module.css';
-import Container from 'src/components/REUSABLE/Container/Container.jsx';
-import UsersSettingsForm from './UsersSettingsForm/UsersSettingsForm.jsx';
-// import useModals from 'src/hooks/useModals.js';
+import { useState } from 'react';
 
 const UserSettingsModal = () => {
-  // const { } = useModals()
-
   return (
-    <Container type="section" addClass={''}>
-      <h2>Setting</h2>
+    <div className={css.apContainer}>
+      <h2 className={css.apSetting}>Setting</h2>
       <UsersSettingsForm />
-    </Container>
+    </div>
   );
 };
 

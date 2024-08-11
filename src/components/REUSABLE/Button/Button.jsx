@@ -11,6 +11,7 @@ const Button = ({
 }) => {
   return (
     <button
+      aria-label="button"
       className={clsx(
         css.btn,
         {

@@ -90,7 +90,8 @@ export const update = createAsyncThunk(
           },
         },
       );
-      return res.data;
+      console.log(res.data.data);
+      return res.data.data;
     } catch (error) {
       return rejectWithValue(
         error.response ? error.response.data : error.message,

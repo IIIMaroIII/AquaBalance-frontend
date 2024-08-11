@@ -1,0 +1,43 @@
+.userPanelContainer {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.title {
+  font-family: 'Gilroy', sans-serif;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 32px;
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+}
+
+.span {
+  font-weight: 700;
+}
+
+@media screen and (min-width: 375px) {
+  .title {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -0.01em;
+  }
+}
+@media screen and (min-width: 768px) {
+  .userPanelContainer {
+    margin-bottom: 44px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .title {
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 36px;
+    margin-bottom: 0;
+  }
+}
+@media screen and (min-width: 1440px) {
+}
