@@ -1,8 +1,13 @@
+.signUpPage {
+  @media (min-width: 1440px) {
+    display: flex;
+    gap: 32px;
+  }
+}
+
 .container {
   background-color: var(--light-gray);
   border-radius: 30px;
-  /* padding: 24px 16px;
-  padding-bottom: 170px; */
   padding: 24px 16px 170px 16px;
 
   @media (min-width: 768px) {
@@ -35,6 +40,11 @@
   font-weight: 400;
   line-height: 1.28;
   text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.5;
+  }
 }
 
 .haveAnAccountLink {
@@ -42,18 +52,4 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 1.28;
-}
-
-@media (min-width: 768px) {
-  .haveAnAccountText {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-}
-
-@media (min-width: 1440px) {
-  .signUpPage {
-    display: flex;
-    gap: 32px;
-  }
 }

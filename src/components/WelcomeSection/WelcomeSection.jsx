@@ -41,7 +41,7 @@ const WelcomeSection = () => {
               Sign In
             </CustomNavLink>
           </li>
-          <li className={clsx(css.item, css.signInItem)}>
+          {/* <li className={clsx(css.item, css.signInItem)}>
             <CustomNavLink
               addClass={clsx(css.link, css.signInLink, {
                 // [css.isActive]: isActive,
@@ -60,7 +60,7 @@ const WelcomeSection = () => {
             >
               Set to Main Modal Open
             </Button>
-          </li>
+          </li> */}
         </ul>
       </div>
     </Container>
