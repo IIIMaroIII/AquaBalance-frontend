@@ -9,18 +9,19 @@ import { convertDailyTotalVolumeToPercentage } from 'src/redux/water/selectors.j
 
 export const CalendarItem = ({ day, activeDay, setActiveDay }) => {
   const dispatch = useDispatch();
-  const { setChosenDay } = useChosenDate();
+  const { getChosenDay, setChosenDay } = useChosenDate();
   const percentage = useSelector(convertDailyTotalVolumeToPercentage).toFixed(
     0,
   );
-
 
   return (
     <>
       <li className={css.item} id={day}>
         <Button
           id={day}
-          addClass={clsx(css.btn, { [css.active]: activeDay === day })}
+          addClass={clsx(css.btn, {
+            [css.active]: activeDay === day || getChosenDay() === day,
+          })}
           onClick={() => {
             setActiveDay(day);
             setChosenDay(day);

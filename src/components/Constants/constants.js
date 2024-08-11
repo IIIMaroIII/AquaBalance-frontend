@@ -18,6 +18,7 @@ const USERS_ENDPOINTS = {
   refresh: '/v1/users/refresh',
   updateUser: '/v1/users/update',
   requestResetPassword: '/request-reset-password',
+  getUserInfo: '/v1/users/user-info',
   resetPassword: '/reset-pwd',
   getGoogleUrl: '/get-oauth-url',
   confirmGoogleAuhorization: '/confirm-oauth',
