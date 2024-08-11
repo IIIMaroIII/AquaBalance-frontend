@@ -77,7 +77,6 @@ const SignInForm = () => {
             })}
           >
             <span
-              className={css.togglePassword}
               onClick={togglePasswordVisibility}
             >
               <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />

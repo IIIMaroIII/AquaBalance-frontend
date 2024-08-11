@@ -1,109 +1,123 @@
 import css from './signUpForm.module.css';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { signUp } from 'src/redux/users/operations';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signUpFormValidation } from 'src/Validation/signUpFormValidation';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Button from 'src/components/REUSABLE/Button/Button';
-import CustomInput from 'src/components/REUSABLE/Input/CustomInput';
-import { useState } from 'react';
-import eye from '../../../assets/temporarySVG/eye.svg';
-import eyeOff from '../../../assets/temporarySVG/eye-off.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { signIn, signUp } from 'src/redux/users/operations.js';
+import toast from 'react-hot-toast';
+import CustomInput from 'src/components/REUSABLE/Input/CustomInput.jsx';
 import clsx from 'clsx';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  const [hidePass, setHidePass] = useState(true);
-  const [showPass, setShowPass] = useState(true);
-  const toggleHidePass = () => {
-    setHidePass(prevState => !prevState);
-  };
-  const toggleShowPass = () => {
-    setShowPass(prevState => !prevState);
-  };
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors, isDirty, isValid },
   } = useForm({
+    mode: 'onChange',
     resolver: yupResolver(signUpFormValidation),
   });
 
   const onSubmit = async data => {
     const { email, password } = data;
-    dispatch(signUp({ email, password }));
-    reset();
+    dispatch(signUp({ email, password }))
+      .unwrap()
+      .then(() => {
+        dispatch(signIn({ email, password }));
+        toast.success(
+          `We are so exited to meet you ${email} in WaterWise App! 🎊`,
+        );
+        navigate('/tracker');
+      });
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
-      <p className={css.text}>Sign Up</p>
-      <CustomInput
-        label={true}
-        labelName={'Email'}
-        labelClass={css.label}
-        inputType={'text'}
-        inputClass={clsx(css.input, errors.email && css.inputError)}
-        placeholder={'Enter your email'}
-        name={'email'}
-        error={errors.email ? true : false}
-        {...register('email')}
-      />
-      {errors.email && (
-        <span className={css.error}>{errors.email.message}</span>
-      )}
-      <div className={css.inputContainer}>
-        <CustomInput
-          label={true}
-          labelName={'Password'}
-          labelClass={css.label}
-          inputType={hidePass ? 'password' : 'text'}
-          inputClass={clsx(css.input, errors.password && css.inputError)}
-          placeholder={'Enter your password'}
-          name={'password'}
-          error={errors.password ? true : false}
-          {...register('password')}
-        >
-          <Button onClick={toggleHidePass} type="button" addClass={css.eyeIcon}>
-            <img src={hidePass ? eyeOff : eye} alt="eye icon" />
-          </Button>
-        </CustomInput>
-      </div>
-      {errors.password && (
-        <span className={css.error}>{errors.password.message}</span>
-      )}
-      <div className={css.inputContainer}>
-        <CustomInput
-          label={true}
-          labelName={'Repeat password'}
-          labelClass={css.label}
-          inputType={hidePass ? 'password' : 'text'}
-          inputClass={clsx(css.input, errors.password && css.inputError)}
-          placeholder={'Repeat password'}
-          name={'repeatPassword'}
-          error={errors.password ? true : false}
-        >
-          <Button onClick={toggleHidePass} type="button" addClass={css.eyeIcon}>
-            <img src={hidePass ? eyeOff : eye} alt="eye icon" />
-          </Button>
-        </CustomInput>
-      </div>
-      {errors.password && (
-        <span className={css.error}>{errors.password.message}</span>
-      )}
+        <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+          <h2 className={css.text}>Sign Up</h2>
 
-      <Button
-        disabled={!isDirty || !isValid}
-        type="submit"
-        value="submit"
-        addClass={css.button}
-      >
-        Sign Up
-      </Button>
-    </form>
+          <CustomInput
+            label={true}
+            labelName="Email"
+            labelClass={css.label}
+            inputType="email"
+            inputClass={clsx(css.input, errors.email && css.inputError)}
+            placeholder="Enter your email"
+            error={errors.email ? true : false}
+            {...register('email', {
+              onBlur: () => {},
+              onFocus: () => {},
+            })}
+          />
+          {errors.email && (
+            <p className={css.error}>{errors.email.message}</p>
+          )}
+          <CustomInput
+            label={true}
+            labelName="Password"
+            labelClass={css.label}
+            inputType={showPassword ? 'text' : 'password'}
+            inputClass={clsx(css.input, errors.password && css.inputError)}
+            placeholder="Enter your password"
+            error={errors.password ? true : false}
+            {...register('password', {
+              onBlur: () => {},
+              onFocus: () => {},
+            })}
+          >
+            <span
+              onClick={togglePasswordVisibility}
+            >
+              <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+            </span>
+          </CustomInput>
+          {errors.password && (
+            <p className={css.error}>{errors.password.message}</p>
+          )}
+
+          <CustomInput
+            label={true}
+            labelName="Repeat password"
+            labelClass={css.label}
+            inputType={showPassword ? 'text' : 'password'}
+            inputClass={clsx(css.input, errors.password && css.inputError)}
+            placeholder="Repeat password"
+            error={errors.password ? true : false}
+            {...register('repeatPassword', {
+              onBlur: () => {},
+              onFocus: () => {},
+            })}
+          >
+            <span
+              onClick={togglePasswordVisibility}
+            >
+              <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+            </span>
+          </CustomInput>
+
+          {errors.repeatPassword && (
+            <p className={css.error}>{errors.repeatPassword.message}</p>
+          )}
+          <Button
+            disabled={!isDirty || !isValid}
+            addClass={css.button}
+            type="submit"
+          >
+            Sign Up
+          </Button>
+        </form>
   );
 };
 
