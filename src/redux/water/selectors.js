@@ -8,7 +8,7 @@ export const selectIsLoading = state => state.water.isLoading;
 export const selectIsError = state => state.water.error;
 
 export const selectDate = state => state.water.chosenDate;
-export const selectChosenWaterCardId = state => state.chosenWaterCardId;
+export const selectChosenWaterCardId = state => state.water.chosenWaterCardId;
 
 export const selectModalFlags = state => state.water.modalFlags;
 export const selectIsModalOpen = state => state.water.modalFlags.isModalOpen;
