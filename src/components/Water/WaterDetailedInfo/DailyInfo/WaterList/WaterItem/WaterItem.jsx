@@ -7,6 +7,7 @@ import {
   changeWaterModalEdit,
 } from 'src/redux/water/slice';
 import { useDispatch } from 'react-redux';
+import Container from 'src/components/REUSABLE/Container/Container.jsx';
 import useChosenDate from 'src/hooks/useChosenDate.js';
 
 const WaterItem = ({ item }) => {
@@ -14,14 +15,18 @@ const WaterItem = ({ item }) => {
   const { returnAmPmTime } = useChosenDate();
 
   return (
-    <>
-      <svg className={css.iconCup}>
+    <li key={item._id} className={css.item}>
+      <svg className={css.iconGlass}>
         <use href={'/src/assets/sprite.svg#icon-cup'}></use>
       </svg>
-      <div>
-        <p>
+      <Container addClass={css.dataWrapper}>
+        <p className={css.volume}>
           {item.volume < 1000 ? `${item.volume} ml` : `${item.volume / 1000} L`}
         </p>
+        <p className={css.itemTime}>{returnAmPmTime(item.date)}</p>
+      </Container>
+
+      <Container addClass={css.iconsWrapper}>
         <Button
           addClass={css.button}
           onClick={() => {
@@ -35,7 +40,6 @@ const WaterItem = ({ item }) => {
           </svg>
         </Button>
 
-        <p>{returnAmPmTime(item.date)}</p>
         <Button
           addClass={css.button}
           onClick={() => {
@@ -48,8 +52,8 @@ const WaterItem = ({ item }) => {
             <use href={'/src/assets/sprite.svg#icon-delete'}></use>
           </svg>
         </Button>
-      </div>
-    </>
+      </Container>
+    </li>
   );
 };
 

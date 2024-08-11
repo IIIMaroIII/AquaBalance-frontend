@@ -13,16 +13,16 @@
 }
 
 .list::-webkit-scrollbar {
-  height: 4px; /* Высота скроллбара */
+  height: 8px; /* Высота скроллбара */
 }
 
 .list::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.5); /* Цвет "ползунка" */
+  background-color: var(--basic-dark-blue); /* Цвет "ползунка" */
   border-radius: 4px; /* Закругление углов "ползунка" */
 }
 
 .list::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.1); /* Цвет фона трека */
+  background-color: var(--white);
   border-radius: 4px; /* Закругление углов трека */
 }
 
@@ -36,4 +36,7 @@
 }
 
 @media screen and (min-width: 1440px) {
+    .list {
+    gap: 16px;
+  }
 }
