@@ -30,11 +30,11 @@ const MonthInfo = () => {
           <CalendarPagination />
           {showChart ? (
             <svg className={css.chartIcon} onClick={handleClick}>
-              <use href={'/sprite.svg#icon-pie-chart-00'}></use>
+              <use href={'/src/assets/sprite.svg#icon-pie-chart-01'}></use>
             </svg>
           ) : (
             <svg className={css.chartIcon} onClick={handleClick}>
-              <use href={'/sprite.svg#icon-pie-chart-02'}></use>
+              <use href={'/src/assets/sprite.svg#icon-pie-chart-02'}></use>
             </svg>
           )}
         </Container>

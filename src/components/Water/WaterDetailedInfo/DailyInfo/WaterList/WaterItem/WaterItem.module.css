@@ -1,0 +1,114 @@
+button.button {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+
+  transform: scale(1);
+  transition: transform var(--transition-delay) var(--transition);
+}
+
+button.button:hover,
+button.button:focus {
+  background-color: transparent;
+  transform: scale(1.3);
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  fill: var(--white);
+  stroke: black;
+}
+
+.iconGlass {
+  fill: var(--green);
+  width: 38px;
+  height: 31px;
+}
+
+.editArea {
+  display: flex;
+  gap: 10px;
+}
+
+.volume {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  color: var(--main);
+}
+
+.itemTime {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  color: rgba(47, 47, 47, 0.6);
+}
+
+.dataWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: start;
+}
+
+.iconsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item {
+  border-radius: 15px;
+  background-color: var(--white);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 14px;
+  gap: 8px;
+  min-width: calc((303px - 8px) / 2);
+}
+
+@media screen and (min-width: 375px) {
+}
+
+@media screen and (min-width: 768px) {
+  .item {
+    padding: 20px;
+    gap: 20px;
+    min-width: calc((100% - (2 * 32px)) / 3);
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .volume {
+    font-size: 15px;
+  }
+
+  .dataWrapper {
+    gap: 13px;
+  }
+
+  .iconsWrapper {
+    gap: 14px;
+  }
+
+  .iconGlass {
+    width: 32px;
+    height: 36px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .item {
+    min-width: calc((100% - (2 * 16px)) / 3);
+  }
+}
