@@ -3,13 +3,11 @@ import useModals from 'src/hooks/useModals.js';
 import useChosenDate from 'src/hooks/useChosenDate.js';
 import CustomInput from '../Input/CustomInput';
 import Button from '../Button/Button';
-// import { IoAddOutline } from 'react-icons/io5';
-// import { IoRemoveOutline } from 'react-icons/io5';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import CONSTANTS from 'src/components/Constants/constants';
-import { addWater, changeWater } from 'src/redux/water/operations';
+import { addWater, changeWater, fetchDailyWater } from 'src/redux/water/operations';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { waterModalFormValidation } from 'src/Validation/waterModalFormValidation';
@@ -17,16 +15,28 @@ import { toast } from 'react-hot-toast';
 import sprite from '../../../assets/sprite.svg';
 import { changeWaterModalAdd, changeWaterModalEdit, changeModal  } from 'src/redux/water/slice';
 import { selectWaterItems } from 'src/redux/water/selectors.js';
+import { selectChosenWaterCardId } from 'src/redux/water/selectors.js';
 
 const WaterForm = ({ operationName }) => {
   const { chosenDate, getHoursAndMinutes, setHoursAndMinutes } =
     useChosenDate();
-  const [waterAmount, setWaterAmount] = useState(50);
-  const [waterAmountError, setWaterAmountError] = useState('');
 
   const dispatch = useDispatch();
-  const waterItem = useSelector(selectWaterItems);
+  const waterItems = useSelector(selectWaterItems);
+  const itemID = useSelector(selectChosenWaterCardId);
+  
+  const currentWaterItem = waterItems.find(item => item._id === itemID);
+  const currentWaterVolume = currentWaterItem?.volume || 50;
+  const currentWaterTime = currentWaterItem?.date;
 
+  const initialTime = operationName === 'edit' && currentWaterTime
+    ? `${new Date(currentWaterTime).getHours()}:${new Date(currentWaterTime).getMinutes()}`
+    : `${getHoursAndMinutes().hours}:${getHoursAndMinutes().minutes}`;
+
+  const initialWaterAmount = operationName === 'edit' ? currentWaterVolume : 50;
+
+  const [waterAmount, setWaterAmount] = useState(initialWaterAmount);
+  const [waterAmountError, setWaterAmountError] = useState('');
   const {
     control,
     handleSubmit,
@@ -35,11 +45,10 @@ const WaterForm = ({ operationName }) => {
   } = useForm({
     resolver: yupResolver(waterModalFormValidation),
     defaultValues: {
-      waterAmount: waterItem ? waterItem.volume : 50,
-      time: `${getHoursAndMinutes().hours}:${getHoursAndMinutes().minutes}`,
+      time: initialTime,
     },
   });
-
+ 
   const addWaterValue = () => {
     if (waterAmount < CONSTANTS.WATER_LIMITS.MAX_WATER_LIMIT) {
       setWaterAmount(prevAmount => prevAmount + 50);
@@ -74,12 +83,14 @@ const WaterForm = ({ operationName }) => {
           toast.success('You have successfully added the amount of water!');
           dispatch(changeWaterModalAdd(false));
           dispatch(changeModal(false));
+          dispatch(fetchDailyWater());
         });
       } else {
         await dispatch(changeWater(formData)).then(res => {
           toast.success('You have successfully edited the amount of water!');
           dispatch(changeWaterModalEdit(false));
           dispatch(changeModal(false));
+          dispatch(fetchDailyWater());
         });
       }
     } catch (error) {
