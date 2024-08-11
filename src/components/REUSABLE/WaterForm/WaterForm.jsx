@@ -9,13 +9,21 @@ import { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import CONSTANTS from 'src/components/Constants/constants';
-import { addWater, changeWater } from 'src/redux/water/operations';
+import {
+  addWater,
+  changeWater,
+  fetchDailyWater,
+} from 'src/redux/water/operations';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { waterModalFormValidation } from 'src/Validation/waterModalFormValidation';
 import { toast } from 'react-hot-toast';
 import sprite from '../../../assets/sprite.svg';
-import { changeWaterModalAdd, changeWaterModalEdit, changeModal  } from 'src/redux/water/slice';
+import {
+  changeWaterModalAdd,
+  changeWaterModalEdit,
+  changeModal,
+} from 'src/redux/water/slice';
 import { selectWaterItems } from 'src/redux/water/selectors.js';
 
 const WaterForm = ({ operationName }) => {
@@ -74,12 +82,14 @@ const WaterForm = ({ operationName }) => {
           toast.success('You have successfully added the amount of water!');
           dispatch(changeWaterModalAdd(false));
           dispatch(changeModal(false));
+          dispatch(fetchDailyWater());
         });
       } else {
         await dispatch(changeWater(formData)).then(res => {
           toast.success('You have successfully edited the amount of water!');
           dispatch(changeWaterModalEdit(false));
           dispatch(changeModal(false));
+          dispatch(fetchDailyWater());
         });
       }
     } catch (error) {
@@ -142,7 +152,7 @@ const WaterForm = ({ operationName }) => {
             labelClass={css.waterAmountLabel}
             inputClass={css.input}
             value={waterAmount}
-            onChange={(e) => {
+            onChange={e => {
               const inputValue = e.target.value;
               if (/^\d*$/.test(inputValue)) {
                 setWaterAmount(Number(inputValue));
