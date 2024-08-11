@@ -10,6 +10,7 @@ const water = {
   key: 'water',
   storage,
   whitelist: ['water'],
+  blacklist: ['chosenDate'],
 };
 
 export const persistConfig = {

@@ -89,6 +89,14 @@ const useChosenDate = () => {
     }
   };
 
+  const getChosenDay = () => {
+    if (chosenDate) {
+      const date = new Date(chosenDate);
+      return date.getDate();
+    }
+    return null;
+  };
+
   const checkIfToday = () => {
     const parsedDate = new Date(parseISO(chosenDate));
     const date = new Date();
@@ -128,6 +136,7 @@ const useChosenDate = () => {
     goToNextMonth,
     formatLocalISO,
     checkIfToday,
+    getChosenDay,
     returnAmPmTime,
     chosenYear: chosenDate ? new Date(chosenDate).getFullYear() : null,
     chosenMonth: chosenDate ? new Date(chosenDate).getMonth() : null,

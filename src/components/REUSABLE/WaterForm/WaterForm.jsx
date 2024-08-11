@@ -13,7 +13,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { waterModalFormValidation } from 'src/Validation/waterModalFormValidation';
 import { toast } from 'react-hot-toast';
 import sprite from '../../../assets/sprite.svg';
-import { changeWaterModalAdd, changeWaterModalEdit, changeModal  } from 'src/redux/water/slice';
+import {
+  changeWaterModalAdd,
+  changeWaterModalEdit,
+  changeModal,
+} from 'src/redux/water/slice';
 import { selectWaterItems } from 'src/redux/water/selectors.js';
 import { selectChosenWaterCardId } from 'src/redux/water/selectors.js';
 
@@ -153,7 +157,7 @@ const WaterForm = ({ operationName }) => {
             labelClass={css.waterAmountLabel}
             inputClass={css.input}
             value={waterAmount}
-            onChange={(e) => {
+            onChange={e => {
               const inputValue = e.target.value;
               if (/^\d*$/.test(inputValue)) {
                 setWaterAmount(Number(inputValue));
