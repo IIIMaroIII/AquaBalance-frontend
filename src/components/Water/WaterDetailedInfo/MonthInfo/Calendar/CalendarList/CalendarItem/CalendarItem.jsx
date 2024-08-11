@@ -3,7 +3,10 @@ import Button from '../../../../../../REUSABLE/Button/Button';
 import css from './calendarItem.module.css';
 
 import useChosenDate from 'src/hooks/useChosenDate.js';
-import { fetchDailyWater } from 'src/redux/water/operations.js';
+import {
+  fetchDailyWater,
+  fetchMonthlyWater,
+} from 'src/redux/water/operations.js';
 import clsx from 'clsx';
 import { convertDailyTotalVolumeToPercentage } from 'src/redux/water/selectors.js';
 
@@ -25,7 +28,9 @@ export const CalendarItem = ({ day, activeDay, setActiveDay }) => {
           onClick={() => {
             setActiveDay(day);
             setChosenDay(day);
-            dispatch(fetchDailyWater());
+            dispatch(fetchMonthlyWater())
+              .unwrap()
+              .then(() => dispatch(fetchDailyWater()));
           }}
         >
           {day}
