@@ -46,7 +46,7 @@ button.button:focus {
   font-weight: 400;
   font-size: 12px;
   line-height: 100%;
-  color: rgba(47, 47, 47, 0.6);
+  color: var(--text-grey-white);
 }
 
 .dataWrapper {
