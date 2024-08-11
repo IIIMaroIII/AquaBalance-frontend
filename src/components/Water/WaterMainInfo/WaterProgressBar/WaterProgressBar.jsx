@@ -3,9 +3,7 @@ import { useSelector } from 'react-redux';
 import { convertDailyTotalVolumeToPercentage } from 'src/redux/water/selectors.js';
 
 const WaterProgressBar = () => {
-  const percentage = useSelector(convertDailyTotalVolumeToPercentage).toFixed(
-    0,
-  );
+  const percentage = useSelector(convertDailyTotalVolumeToPercentage);
 
   return (
     <div className={css.WaterProgressBar_container}>

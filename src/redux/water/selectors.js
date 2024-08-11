@@ -34,15 +34,44 @@ export const convertDailyTotalVolumeToPercentage = createSelector(
             return acc + volume;
           }, 0);
       }
-      return
+      return;
     };
 
     const percentage = (volume() / (dailyNorma * 1000)) * 100;
     if (isNaN(percentage)) {
       return 0;
     } else {
-      if (percentage < 100) return percentage;
-      if (percentage >= 100) return 100;
+      return Math.min(percentage, 100).toFixed(0);
     }
+  },
+);
+
+export const dailyNormaPercentage = day =>
+  createSelector(
+    [selectMonthlyWaterItems, selectUserDailyNorma],
+    (monthlyWaterItems, dailyNorma) => {
+      const arr = monthlyWaterItems
+        .filter(item => new Date(item.date).getDate() === day)
+        .map(item => item.volume);
+
+      const total = arr.reduce((acc, num) => acc + num, 0);
+
+      const percent = (total / (dailyNorma * 1000)) * 100;
+
+      if (isNaN(percent)) {
+        return 0;
+      } else {
+        return Math.min(percent, 100).toFixed(0);
+      }
+    },
+  );
+
+export const daysWithRecords = createSelector(
+  [selectMonthlyWaterItems],
+  monthlyWaterItems => {
+    return monthlyWaterItems
+      .map(item => new Date(item.date).getDate())
+      .filter((num, idx, arr) => arr.indexOf(num) === idx)
+      .sort((a, b) => a - b);
   },
 );
