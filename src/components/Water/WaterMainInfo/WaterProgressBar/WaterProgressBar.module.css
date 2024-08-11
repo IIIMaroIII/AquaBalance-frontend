@@ -74,7 +74,7 @@
   background-color: transparent;
   padding: 2px 4px;
   border-radius: 4px;
-  color: var(--basic-green);
+  color: var(--green);
   opacity: 0;
   transition: opacity 0.2s ease-in;
 }

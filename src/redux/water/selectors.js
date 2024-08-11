@@ -26,7 +26,6 @@ export const selectIsWaterModalAdd = state =>
 export const convertDailyTotalVolumeToPercentage = createSelector(
   [selectWaterItems, selectUserDailyNorma],
   (waterItems, dailyNorma) => {
-    console.log(waterItems, dailyNorma)
     const volume = () => {
       if (waterItems) {
         return waterItems
