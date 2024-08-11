@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { signIn } from 'src/redux/users/operations.js';
+import { signIn, userInfo } from 'src/redux/users/operations.js';
 import Button from 'src/components/REUSABLE/Button/Button';
 import CustomInput from 'src/components/REUSABLE/Input/CustomInput.jsx';
 import clsx from 'clsx';
@@ -32,10 +33,11 @@ const SignInForm = () => {
     dispatch(signIn(data))
       .unwrap()
       .then(res => {
+        dispatch(userInfo());
         toast.success(res.message);
         reset();
         navigate('/tracker');
-      })
+      });
   };
 
   const togglePasswordVisibility = () => {
@@ -43,57 +45,55 @@ const SignInForm = () => {
   };
 
   return (
-        <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
-          <h2 className={css.text}>Sign In</h2>
+    <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+      <h2 className={css.text}>Sign In</h2>
 
-          <CustomInput
-            label={true}
-            labelName="Email"
-            labelClass={css.label}
-            inputType="email"
-            inputClass={clsx(css.input, errors.email && css.inputError)}
-            placeholder="Enter your email"
-            name={'email'}
-            error={errors.email ? true : false}
-            {...register('email', {
-              onBlur: () => {},
-              onFocus: () => {},
-            })}
-          />
-          {errors.email && (
-            <span className={css.error}>{errors.email.message}</span>
-          )}
-          <CustomInput
-            label={true}
-            labelName="Password"
-            labelClass={css.label}
-            inputType={showPassword ? 'text' : 'password'}
-            inputClass={clsx(css.input, errors.password && css.inputError)}
-            placeholder="Enter your password"
-            error={errors.password ? true : false}
-            {...register('password', {
-              onBlur: () => {},
-              onFocus: () => {},
-            })}
-          >
-            <span
-              onClick={togglePasswordVisibility}
-            >
-              <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
-            </span>
-          </CustomInput>
+      <CustomInput
+        label={true}
+        labelName="Email"
+        labelClass={css.label}
+        inputType="email"
+        inputClass={clsx(css.input, errors.email && css.inputError)}
+        placeholder="Enter your email"
+        name={'email'}
+        error={errors.email ? true : false}
+        {...register('email', {
+          onBlur: () => {},
+          onFocus: () => {},
+        })}
+      />
+      {errors.email && (
+        <span className={css.error}>{errors.email.message}</span>
+      )}
+      <CustomInput
+        label={true}
+        labelName="Password"
+        labelClass={css.label}
+        inputType={showPassword ? 'text' : 'password'}
+        inputClass={clsx(css.input, errors.password && css.inputError)}
+        placeholder="Enter your password"
+        error={errors.password ? true : false}
+        {...register('password', {
+          onBlur: () => {},
+          onFocus: () => {},
+        })}
+      >
+        <span onClick={togglePasswordVisibility}>
+          <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+        </span>
+      </CustomInput>
 
-          {errors.password && (
-            <span className={css.error}>{errors.password.message}</span>
-          )}
-          <Button
-            disabled={!isDirty || !isValid}
-            addClass={css.button}
-            type="submit"
-          >
-            Sign In
-          </Button>
-        </form>
+      {errors.password && (
+        <span className={css.error}>{errors.password.message}</span>
+      )}
+      <Button
+        disabled={!isDirty || !isValid}
+        addClass={css.button}
+        type="submit"
+      >
+        Sign In
+      </Button>
+    </form>
   );
 };
 export default SignInForm;

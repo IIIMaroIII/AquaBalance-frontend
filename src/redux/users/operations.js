@@ -59,6 +59,23 @@ export const logout = createAsyncThunk(
   },
 );
 
+export const userInfo = createAsyncThunk(
+  'users/user-info',
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await AxiosWithCredentials.get(
+        `${CONSTANTS.USERS_ENDPOINTS.getUserInfo}`,
+      );
+
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
+    }
+  },
+);
+
 export const refresh = createAsyncThunk(
   'users/refresh',
   async (_, { rejectWithValue }) => {
