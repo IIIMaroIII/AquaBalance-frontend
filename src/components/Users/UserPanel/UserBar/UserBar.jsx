@@ -1,12 +1,12 @@
-import css from './UserBar.module.css';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'src/redux/users/selectors';
 import UserBarPopover from './UserBarPopover/UserBarPopover.jsx';
-import { useRef } from 'react';
+import css from './UserBar.module.css';
+import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
 import { useClickAway } from 'react-use';
-import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
+import { useRef } from 'react';
 
 const UserBar = () => {
   const user = useSelector(selectUser);
@@ -28,7 +28,7 @@ const UserBar = () => {
         onClick={togglePopover}
         addClass={css.user_bar_wrapper}
       >
-        {user?.name !== null ? (
+        {user?.name ? (
           <span className={css.span}>{user.name}</span>
         ) : (
           <span className={css.span}>User</span>

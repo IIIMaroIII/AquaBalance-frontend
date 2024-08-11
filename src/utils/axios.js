@@ -7,7 +7,6 @@ import { refresh } from 'src/redux/users/operations.js';
 
 const AxiosWithCredentials = axios.create({
   baseURL: CONSTANTS.DOMAINS.SERVER_DEPLOY,
-  // baseURL: CONSTANTS.DOMAINS.SERVER_DEPLOY,
   withCredentials: true,
 });
 
@@ -29,19 +28,19 @@ AxiosWithCredentials.interceptors.request.use(
 AxiosWithCredentials.interceptors.response.use(
   res => res,
   async err => {
-    console.log('err in interceptors', err);
-    console.log('err.response in interceptors', err.response);
-    console.log(
-      'err.response.data.message in interceptors',
-      err.response.data.message,
-    );
-    console.log(status);
+    // console.log('err in interceptors', err);
+    // console.log('err.response in interceptors', err.response);
+    // console.log(
+    //   'err.response.data.message in interceptors',
+    //   err.response.data.message,
+    // );
 
     const status = err?.response?.data.status || err?.response?.status || null;
     const statusText =
       err?.response?.data.message || err?.response?.statusText || null;
 
     const originalRequest = err.config;
+    // console.log('originalRequest', originalRequest);
 
     if (status === 401 && statusText === 'Email or password invalid!') {
       toast.error(statusText);
@@ -53,16 +52,16 @@ AxiosWithCredentials.interceptors.response.use(
     ) {
       localStorage.clear();
       toast(
-        'You have lost cookies somewhere or the session was not found and been redirected to Home Page. Try to log in again, please.',
+        'You have lost cookies somewhere or the session was not found and been redirected to Login Page. Try to log in again, please.',
         {
-          autoClose: 7000,
+          autoClose: 10000,
         },
       );
 
-      setTimeout(() => {
-        window.location.replace('/');
-        console.log('mission cookies with _retry');
-      }, 4000);
+      // setTimeout(() => {
+      //   window.location.replace('/');
+      //   // console.log('mission cookies with _retry');
+      // }, 4000);
     } else if (status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       console.log('Status 401 detected, attempting to refresh token...');
@@ -74,11 +73,12 @@ AxiosWithCredentials.interceptors.response.use(
 
         return AxiosWithCredentials(originalRequest);
       } catch (refreshError) {
-        console.log('Refresh failed:', refreshError);
+        // console.log('Refresh failed:', refreshError);
+        // toast('Your session has expired. Please login again');
+        // await store.dispatch(logout());
       }
     }
     if (status === 500 || status === 400 || status === 403 || status === 409) {
-      console.log(status);
       toast.error(statusText);
     }
 
