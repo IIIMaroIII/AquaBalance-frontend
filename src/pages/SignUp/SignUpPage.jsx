@@ -8,8 +8,6 @@ import css from './SignUpPage.module.css';
 import AdvantagesSection from 'src/components/AdvantagesSection/AdvantagesSection.jsx';
 
 const SignUpPage = () => {
-  // const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
   const { width } = useWindowSize();
 
   return (

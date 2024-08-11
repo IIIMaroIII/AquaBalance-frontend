@@ -1,12 +1,37 @@
+.signInPage {
+  @media (min-width: 1440px) {
+    display: flex;
+    gap: 32px;
+  }
+}
+
 .container {
   background-color: var(--light-gray);
   border-radius: 30px;
-  padding: 24px 16px;
-  padding-bottom: 216px;
+  padding: 24px 16px 216px 16px;
+
+  @media (min-width: 768px) {
+    padding: 32px 32px 281px 32px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 672px;
+    height: 736px;
+    padding: 32px 32px 169px 32px;
+  }
 }
 
-.noAccountContainer {
-  margin-top: 16px;
+.logo {
+  display: block;
+  margin-bottom: 172px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 225px;
+  }
+
+  @media (min-width: 1440px) {
+    margin-bottom: 113px;
+  }
 }
 
 .noAccountText {
@@ -15,6 +40,11 @@
   font-weight: 400;
   line-height: 1.28;
   text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.5;
+  }
 }
 
 .noAccountLink {
@@ -22,22 +52,4 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 1.28;
-}
-
-@media (min-width: 768px) {
-  .container {
-    padding: 32px;
-    padding-bottom: 281px;
-  }
-
-  .noAccountText {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-}
-
-@media (min-width: 1440px) {
-  .container {
-    padding-bottom: 169px;
-  }
 }

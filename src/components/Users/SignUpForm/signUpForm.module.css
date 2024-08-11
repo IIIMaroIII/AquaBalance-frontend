@@ -3,7 +3,6 @@
   font-size: 32px;
   font-weight: 700;
   line-height: 1;
-  /* margin-top: 172px; */
   margin-bottom: 32px;
   letter-spacing: -0.01em;
 }
@@ -59,21 +58,22 @@
 }
 
 .form .button {
-  color: var(--light-dark);
-  background-color: var(--green);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.28;
-  background-color: none;
-
+  width: 100%;
   padding-top: 16px;
   padding-bottom: 16px;
   margin-top: 32px;
+
+  color: var(--light-dark);
+  background-color: var(--green);
+  background-color: none;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.28;
   letter-spacing: -1%;
 
   @media (min-width: 768px) {
     padding-top: 17px;
-    padding-bottom: 18px;
+    padding-bottom: 17px;
     font-size: 16px;
     line-height: 1.5;
   }
