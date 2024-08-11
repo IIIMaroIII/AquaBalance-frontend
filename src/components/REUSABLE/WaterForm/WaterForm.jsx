@@ -7,7 +7,12 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import CONSTANTS from 'src/components/Constants/constants';
-import { addWater, changeWater, fetchDailyWater } from 'src/redux/water/operations';
+import {
+  addWater,
+  changeWater,
+  fetchDailyWater,
+  fetchMonthlyWater,
+} from 'src/redux/water/operations';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { waterModalFormValidation } from 'src/Validation/waterModalFormValidation';
@@ -28,14 +33,17 @@ const WaterForm = ({ operationName }) => {
   const dispatch = useDispatch();
   const waterItems = useSelector(selectWaterItems);
   const itemID = useSelector(selectChosenWaterCardId);
-  
+
   const currentWaterItem = waterItems.find(item => item._id === itemID);
   const currentWaterVolume = currentWaterItem?.volume || 50;
   const currentWaterTime = currentWaterItem?.date;
 
-  const initialTime = operationName === 'edit' && currentWaterTime
-    ? `${new Date(currentWaterTime).getHours()}:${new Date(currentWaterTime).getMinutes()}`
-    : `${getHoursAndMinutes().hours}:${getHoursAndMinutes().minutes}`;
+  const initialTime =
+    operationName === 'edit' && currentWaterTime
+      ? `${new Date(currentWaterTime).getHours()}:${new Date(
+          currentWaterTime,
+        ).getMinutes()}`
+      : `${getHoursAndMinutes().hours}:${getHoursAndMinutes().minutes}`;
 
   const initialWaterAmount = operationName === 'edit' ? currentWaterVolume : 50;
 
@@ -52,7 +60,7 @@ const WaterForm = ({ operationName }) => {
       time: initialTime,
     },
   });
- 
+
   const addWaterValue = () => {
     if (waterAmount < CONSTANTS.WATER_LIMITS.MAX_WATER_LIMIT) {
       setWaterAmount(prevAmount => prevAmount + 50);
@@ -87,14 +95,18 @@ const WaterForm = ({ operationName }) => {
           toast.success('You have successfully added the amount of water!');
           dispatch(changeWaterModalAdd(false));
           dispatch(changeModal(false));
-          dispatch(fetchDailyWater());
+          dispatch(fetchMonthlyWater())
+            .unwrap()
+            .then(() => dispatch(fetchDailyWater()));
         });
       } else {
         await dispatch(changeWater(formData)).then(res => {
           toast.success('You have successfully edited the amount of water!');
           dispatch(changeWaterModalEdit(false));
           dispatch(changeModal(false));
-          dispatch(fetchDailyWater());
+          dispatch(fetchMonthlyWater())
+            .unwrap()
+            .then(() => dispatch(fetchDailyWater()));
         });
       }
     } catch (error) {
