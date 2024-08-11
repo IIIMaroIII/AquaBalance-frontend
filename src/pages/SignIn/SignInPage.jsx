@@ -1,27 +1,29 @@
-// import css from './signInPage.module.css';
+import { useWindowSize } from 'react-use';
+
 import Container from 'src/components/REUSABLE/Container/Container.jsx';
 import SignInForm from 'src/components/Users/SignInForm/SignInForm.jsx';
 import Logo from 'src/components/REUSABLE/Logo/Logo';
 import CustomNavLink from 'src/components/REUSABLE/CustomNavLink/CustomNavLink';
+import AdvantagesSection from 'src/components/AdvantagesSection/AdvantagesSection.jsx';
+
 import css from './signInPage.module.css';
-// import AdvantagesSection from 'src/components/AdvantagesSection/AdvantagesSection.jsx';
 
 const SignInPage = () => {
+  const { width } = useWindowSize();
+
   return (
-    <Container type="section">
-      <div className={css.container}>
-        <Logo />
+    <Container type="div" addClass={css.signInPage}>
+      <Container type="section" addClass={css.container}>
+        <Logo addClass={css.logo} />
         <SignInForm />
-        <div className={css.noAccountContainer}>
-          <p className={css.noAccountText}>
-            Don't have an account?{' '}
-            <CustomNavLink to="/signup" addClass={css.noAccountLink}>
-              Sign Up
-            </CustomNavLink>
-          </p>
-        </div>
-      </div>
-      {/* тут должен быть условный рендеринг для экранов от 1440px <AdvantagesSection /> */}
+        <p className={css.noAccountText}>
+          Don't have an account?{' '}
+          <CustomNavLink to="/signup" addClass={css.noAccountLink}>
+            Sign Up
+          </CustomNavLink>
+        </p>
+      </Container>
+      {width >= 1440 ? <AdvantagesSection /> : null}
     </Container>
   );
 };
