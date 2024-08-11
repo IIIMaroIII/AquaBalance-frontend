@@ -26,6 +26,7 @@ export const CalendarItem = ({ day, activeDay, setActiveDay }) => {
           id={day}
           addClass={clsx(css.btn, {
             [css.active]: activeDay === day || getChosenDay() === day,
+            [css.done]: Number(dailyPercentage) === 100,
           })}
           onClick={() => {
             setActiveDay(day);

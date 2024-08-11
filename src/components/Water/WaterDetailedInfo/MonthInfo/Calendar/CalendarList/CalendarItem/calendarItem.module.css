@@ -7,6 +7,10 @@
   width: calc((100% - (6 * 18px)) / 7);
 }
 
+button.btn.done {
+  background-color: var(--calendar-item-bcg);
+}
+
 button.btn {
   font-weight: 700;
   font-size: 16px;
