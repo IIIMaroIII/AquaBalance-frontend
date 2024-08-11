@@ -8,7 +8,6 @@ import { signInFormValidation } from 'src/Validation/signInFormValidation';
 import toast from 'react-hot-toast';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { signIn } from 'src/redux/users/operations.js';
 import { signIn, userInfo } from 'src/redux/users/operations.js';
 import Button from 'src/components/REUSABLE/Button/Button';
 import CustomInput from 'src/components/REUSABLE/Input/CustomInput.jsx';
