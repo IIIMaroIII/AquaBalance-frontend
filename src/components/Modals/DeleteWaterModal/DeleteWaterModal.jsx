@@ -3,7 +3,7 @@ import css from './deleteWaterModal.module.css';
 import { changeDeleteWaterModalOpen, changeModal } from 'src/redux/water/slice';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
 import toast from 'react-hot-toast';
-import { deleteWater } from 'src/redux/water/operations.js';
+import { deleteWater, fetchMonthlyWater } from 'src/redux/water/operations.js';
 
 const DeleteWaterModal = ({ children, ...otherProps }) => {
   const dispatch = useDispatch();
@@ -12,6 +12,7 @@ const DeleteWaterModal = ({ children, ...otherProps }) => {
     dispatch(deleteWater())
       .unwrap()
       .then(() => {
+        dispatch(fetchMonthlyWater());
         toast.success('You have successfully deleted your water volume!');
         dispatch(changeDeleteWaterModalOpen(false));
         dispatch(changeModal(false));

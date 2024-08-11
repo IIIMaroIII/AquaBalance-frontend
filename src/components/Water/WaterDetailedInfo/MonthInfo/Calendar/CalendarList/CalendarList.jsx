@@ -12,7 +12,6 @@ import { selectUserDailyNorma } from 'src/redux/users/selectors.js';
 
 const CalendarList = () => {
   const [activeDay, setActiveDay] = useState(null);
-  const daysWithRecord = useSelector(daysWithRecords);
   const { getDaysOfMonth, chosenMonth, chosenYear } = useChosenDate();
   const formattedMonth = `${chosenYear}-${String(chosenMonth + 1).padStart(
     2,
@@ -35,14 +34,13 @@ const CalendarList = () => {
   //   }
   // };
 
+
   return (
     <ul className={css.list}>
       {getDaysOfMonth().map(day => {
-        const selector = dailyNormaPercentage(day);
-        const dailyPercent = useSelector(selector);
         return (
           <CalendarItem
-            percentage={daysWithRecord.includes(day) ? dailyPercent : 0}
+            // percentage={daysWithRecord.includes(day) ? dailyPercent(day) : 0}
             activeDay={activeDay}
             setActiveDay={setActiveDay}
             key={day}

@@ -46,7 +46,7 @@ export const convertDailyTotalVolumeToPercentage = createSelector(
   },
 );
 
-export const dailyNormaPercentage = day =>
+export const dailyNormaPercentage = (day = 1) =>
   createSelector(
     [selectMonthlyWaterItems, selectUserDailyNorma],
     (monthlyWaterItems, dailyNorma) => {
