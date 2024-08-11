@@ -1,5 +1,5 @@
+import CONSTANTS from 'src/components/Constants/constants.js';
 import * as yup from 'yup';
-import CONSTANTS from '../../components/Constants/constants.js';
 
 const { MAX_CHAR_WATER_VALIDATION } = CONSTANTS.MODALS.SETTINGS_USER_MODAL;
 
