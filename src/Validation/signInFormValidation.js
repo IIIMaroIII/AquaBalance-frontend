@@ -7,7 +7,7 @@ export const signInFormValidation = yup.object().shape({
       .required("Email is required"),
     password: yup
       .string()
-      .min(8, "Password is too short - should be 8 chars minimum.")
+      .min(6, "Password is too short - should be 6 chars minimum.")
       .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.')
       .required("Password is required")
 });
