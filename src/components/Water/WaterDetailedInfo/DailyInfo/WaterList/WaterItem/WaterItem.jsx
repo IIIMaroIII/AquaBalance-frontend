@@ -13,18 +13,15 @@ const WaterItem = ({ item }) => {
   const dispatch = useDispatch();
   const { returnAmPmTime } = useChosenDate();
 
-  const checkVolume = () => {
-    if (item.volume < 1000) return `${item.volume} ml`;
-    if (item.volume >= 1000) return `${item.volume / 1000} L`;
-  };
-
   return (
     <>
-      <svg>
+      <svg className={css.iconCup}>
         <use href={'/src/assets/sprite.svg#icon-cup'}></use>
       </svg>
       <div>
-        <p>{checkVolume()}</p>
+        <p>
+          {item.volume < 1000 ? `${item.volume} ml` : `${item.volume / 1000} L`}
+        </p>
         <Button
           addClass={css.button}
           onClick={() => {
@@ -33,7 +30,7 @@ const WaterItem = ({ item }) => {
             dispatch(changeWaterCardId(item._id));
           }}
         >
-          <svg>
+          <svg className={css.icon}>
             <use href={'/src/assets/sprite.svg#icon-edit'}></use>
           </svg>
         </Button>
@@ -47,8 +44,7 @@ const WaterItem = ({ item }) => {
             dispatch(changeWaterCardId(item._id));
           }}
         >
-          <svg>
-            {' '}
+          <svg className={css.icon}>
             <use href={'/src/assets/sprite.svg#icon-delete'}></use>
           </svg>
         </Button>

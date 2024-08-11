@@ -1,0 +1,24 @@
+.iconCup {
+  fill: var(--green);
+  width: 38px;
+  height: 31px;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  fill: var(--white);
+  stroke: black;
+}
+
+@media screen and (min-width: 768px) {
+  .iconCup {
+    width: 32px;
+    height: 36px;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+}
