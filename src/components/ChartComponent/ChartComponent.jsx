@@ -36,8 +36,6 @@ const ChartComponent = () => {
     return { hour: new Date(item.date).getHours(), volume: item.volume / 1000 };
   });
 
-  console.log(arr);
-
   const yTicks = Array.from({ length: 6 }, (_, i) => i * 0.5);
 
   const formatYAxis = tickItem => {
