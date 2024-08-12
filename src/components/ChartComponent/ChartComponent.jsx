@@ -32,9 +32,13 @@ const CustomTooltip = ({ active = false, payload = [], coordinate }) => {
 
 const ChartComponent = () => {
   const dailyItems = useSelector(selectMonthlyWaterItems);
-  const arr = dailyItems.map(item => {
-    return { hour: new Date(item.date).getHours(), volume: item.volume / 1000 };
-  });
+  const arr = dailyItems
+    .map(item => {
+      return { day: new Date(item.date).getDate(), volume: item.volume / 1000 };
+    })
+    .sort((a, b) => a.day - b.day);
+
+  console.log(arr);
 
   const yTicks = Array.from({ length: 6 }, (_, i) => i * 0.5);
 
@@ -75,7 +79,7 @@ const ChartComponent = () => {
             </linearGradient>
           </defs>
           <XAxis
-            dataKey="hour"
+            dataKey="day"
             axisLine={false}
             tickLine={false}
             tick={{
