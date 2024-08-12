@@ -31,6 +31,10 @@
   border-radius: 4px; /* Закругление углов трека */
 }
 
+.list {
+  overflow-y: hidden;
+}
+
 @media screen and (min-width: 375px) {
 }
 

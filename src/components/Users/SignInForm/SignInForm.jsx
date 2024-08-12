@@ -6,12 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signInFormValidation } from 'src/Validation/signInFormValidation';
 import toast from 'react-hot-toast';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { signIn, userInfo } from 'src/redux/users/operations.js';
 import Button from 'src/components/REUSABLE/Button/Button';
 import CustomInput from 'src/components/REUSABLE/Input/CustomInput.jsx';
 import clsx from 'clsx';
+import sprite from '../../../assets/sprite.svg';
 
 const SignInForm = () => {
   const dispatch = useDispatch();
@@ -75,9 +74,13 @@ const SignInForm = () => {
           onFocus: () => {},
         })}
       >
-        <span className={css.eyeIcon} onClick={togglePasswordVisibility}>
-          <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
-        </span>
+        <svg className={css.eyeIcon} onClick={togglePasswordVisibility}>
+          <use
+            xlinkHref={
+              showPassword ? `${sprite}#icon-eye` : `${sprite}#icon-eye-off`
+            }
+          ></use>
+        </svg>
       </CustomInput>
 
       {errors.password && (

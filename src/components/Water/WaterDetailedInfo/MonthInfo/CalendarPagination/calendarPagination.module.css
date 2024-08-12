@@ -8,14 +8,21 @@ button.btn {
   background-color: transparent;
   border: none;
   padding: 0;
-  width: 16px;
+  width: 18px;
   transition: transform var(--transition-delay) var(--transition);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
 button.btn:hover,
 button.btn:focus {
   transform: scale(1.15);
+}
+
+button.btn:hover {
+  background-color: transparent;
 }
 
 .span {
@@ -30,6 +37,10 @@ button.btn:focus {
   stroke-width: 1;
   font-size: 12px;
   transition: transform var(--transition-delay) var(--transition);
+  fill: none;
+  stroke: var(--light-dark);
+  width: 18px;
+  height: 18px;
 }
 
 .arrow:hover {
@@ -38,6 +49,10 @@ button.btn:focus {
 
 .pieIcon {
   stroke-opacity: 0.5;
+}
+
+.arrow.right {
+  transform: scaleX(-1);
 }
 
 @media screen and (min-width: 375px) {
