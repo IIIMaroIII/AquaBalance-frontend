@@ -12,15 +12,17 @@ const SignUpPage = () => {
 
   return (
     <Container type="div" addClass={css.signUpPage}>
-      <Container type="section" addClass={css.container}>
-        <Logo addClass={css.logo} />
-        <SignUpForm />
-        <p className={css.haveAnAccountText}>
-          Already have an account?{' '}
-          <Link to="/signin" className={css.haveAnAccountLink}>
-            Sign In
-          </Link>
-        </p>
+      <Container type="section" addClass={css.sectionContainer}>
+        <Container addClass={css.signUpPartContainer}>
+          <Logo addClass={css.logo} />
+          <SignUpForm />
+          <p className={css.haveAnAccountText}>
+            Already have an account?{' '}
+            <Link to="/signin" className={css.haveAnAccountLink}>
+              Sign In
+            </Link>
+          </p>
+        </Container>
       </Container>
       {width >= 1440 ? <AdvantagesSection /> : null}
     </Container>

@@ -163,8 +163,7 @@ const initialTime =
             }}/>
         )}
       />
-      {errors.time && (
-        <p className={css.errorMessage}>{errors.time.message}</p>)}
+      {errors.time && <p className={css.error}>{errors.time.message}</p>}
       <Controller
         name="waterAmount"
         control={control}
@@ -187,10 +186,8 @@ const initialTime =
           />
         )}
       />
-      {waterAmountError && <p>{waterAmountError}</p>}
-      {errors.waterAmount && (
-        <p className={css.errorMessage}>{errors.waterAmount.message}</p>)
-       }
+      {waterAmountError && <p className={css.error}>{waterAmountError}</p>}
+      {errors.waterAmount && <p className={css.error}>{errors.waterAmount.message}</p>}
       <Button type="submit" addClass={css.saveButton}>
         Save
       </Button>

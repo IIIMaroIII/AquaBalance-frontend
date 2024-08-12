@@ -77,7 +77,7 @@ const SignInForm = () => {
           onFocus: () => {},
         })}
       >
-        <span onClick={togglePasswordVisibility}>
+        <span className={css.eyeIcon} onClick={togglePasswordVisibility}>
           <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
         </span>
       </CustomInput>

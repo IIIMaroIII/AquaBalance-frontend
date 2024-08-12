@@ -13,15 +13,16 @@
 }
 
 .label {
-  margin-bottom: 16px;
+  margin-top: 16px;
   color: var(--dark);
   font-size: 14px;
   font-weight: 700;
   line-height: 1.28;
   letter-spacing: -1%;
+  position: relative;
 
   @media (min-width: 768px) {
-    margin-bottom: 20px;
+    margin-top: 20px;
   }
 }
 
@@ -96,6 +97,7 @@
   font-weight: 400;
   line-height: 1;
   letter-spacing: -1%;
+  margin-top: 4px;
 }
 
 .form input.inputError {
@@ -136,22 +138,19 @@
 .eyeIcon {
   width: 20px;
   height: 20px;
-  all: unset;
-  display: inline-block;
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  right: 16px;
-  bottom: 15.8px;
-  background-color: transparent;
-  stroke: var(--dark);
-  fill: none;
+  bottom: 18px;
+  right: 18px;
 }
 
-.inputContainer button.eyeIcon:hover,
+/* .inputContainer button.eyeIcon:hover,
 .inputContainer button.eyeIcon:focus,
 .inputContainer button.eyeIcon:active {
   background-color: transparent;
-}
+} */
 
 @media (min-width: 768px) {
   .eyeIcon {

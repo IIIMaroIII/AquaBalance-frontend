@@ -1,26 +1,25 @@
-/* Wrappers ============================== */
-
-.fileWrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.genderWrapper {
+.uploadPhotoWrapper {
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 40px;
 }
 
-/* Wrappers ============================== */
-
-.errorMessage {
-  color: var(--error-color);
+.uploadPhotoButtonWrapper {
+  position: relative;
+  width: 133px;
+  height: 18px;
+  margin: 0 auto;
 }
 
-.file {
-  position: absolute;
-  top: 0;
-  left: 0;
+.uploadPhotoButtonWrapper:hover {
+  cursor: pointer;
+}
+
+.uploadPhotoButtonWrapper input.fileInput {
   width: 100%;
   height: 100%;
+  border: none;
   opacity: 0;
   z-index: 1;
   cursor: pointer;
@@ -28,25 +27,48 @@
   margin: 0;
 }
 
-.uploadPhoto {
-  width: 100%;
-  height: 100%;
-  background-color: white;
+.uploadPhotoButton {
+  width: 133px;
+  height: 18px;
+  background-color: transparent;
   border: none;
+  border-radius: 0%;
   cursor: pointer;
-  color: rgb(47, 47, 47);
-  font-size: 16px;
-  font-weight: 400;
+  padding: 0;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+}
+
+.uploadPhotoButton:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.uploadPhotoButton:focus,
+.uploadPhotoButton:active {
+  background-color: transparent;
+}
+
+.uploadText {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -1%;
+  color: var(--dark);
+
+  position: absolute;
+  right: 0;
+  text-align: center;
+  min-width: 107px;
 }
 
 .photoUrl {
   display: inline-block;
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -59,10 +81,141 @@
   gap: 10px;
 }
 
-.logOutIcon {
+.uploadIcon {
   transform: rotate(270deg);
-  width: 20px;
-  height: 20px;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+}
+
+.genderContainer {
+  margin-bottom: 24px;
+}
+
+.genderWrapper {
+  display: flex;
+}
+
+.errorMessage {
+  color: var(--red-error);
+}
+
+.genderText {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -1%;
+  color: var(--light-dark);
+  margin-bottom: 14px;
+}
+
+.genderInputsContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.genderInputLabel {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -1%;
+  color: var(--dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row-reverse;
+}
+
+.nameLabel {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -1%;
+  color: var(--light-dark);
+  margin-bottom: 14px;
+}
+
+.nameInput {
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  margin-top: 8px;
+  padding: 14px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  color: var(--dark);
+  height: 46px;
+}
+
+.nameInput:hover,
+.nameInput:active,
+.nameInput:focus {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.nameLabel .nameInput.inactive:hover {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.emailLabel {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -1%;
+  color: var(--light-dark);
+  margin-bottom: 14px;
+}
+
+.emailInput {
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  margin-top: 8px;
+  padding: 14px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  color: var(--dark);
+  height: 46px;
+}
+
+.emailLabel input.emailInput:hover,
+.emailLabel input.emailInput:active,
+.emailLabel input.emailInput:focus {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.emailLabel input.emailInput:disabled {
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  cursor: not-allowed;
+}
+
+.dailyNormaWrapper {
+  margin-top: 24px;
+}
+
+.dailyNormaTitle {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -1%;
+  color: var(--light-dark);
+  margin-bottom: 14px;
+}
+
+.dailyNormaForGenderText {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -1%;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.dailyNormaByGenderWrapper {
+  height: 40px;
+}
+
+.dailyNormaByGenderWrapper:nth-child(1) {
+  margin-bottom: 12px;
 }
 
 .exclamation {
@@ -71,9 +224,18 @@
   color: rgb(155, 225, 160);
 }
 
+.apFrame {
+  margin-top: 14px;
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  border-radius: 15px;
+  padding: 16px 15px 16px 16px;
+}
+
 .accent {
   font-size: 14px;
-  color: rgb(155, 225, 160);
+  line-height: 1.28;
+  font-weight: 700;
+  color: var(--green);
 }
 
 .exclamatoryTextContainer {
@@ -81,11 +243,14 @@
   align-items: center;
   gap: 4px;
   margin-bottom: 24px;
+  margin-top: 14px;
 }
 
 .textInstruction {
   color: rgba(47, 47, 47, 0.6);
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
 }
 
 .exclamatoryText {
@@ -93,22 +258,96 @@
   color: rgba(47, 47, 47);
 }
 
+.weightLabel {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  margin-bottom: 14px;
+}
+
+.weightInput {
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  margin-top: 8px;
+  padding: 14px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  color: var(--dark);
+  height: 46px;
+}
+
+.activeTimeLabel {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  margin-bottom: 24px;
+}
+
+.activeTimeInput {
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  margin-top: 8px;
+  padding: 14px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  color: var(--dark);
+  height: 46px;
+}
+
+.dailyNormaLabel {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -1%;
+  color: var(--light-dark);
+  margin-top: 14px;
+}
+
+.dailyNormaInput {
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  margin-top: 8px;
+  padding: 14px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  color: var(--dark);
+  height: 46px;
+}
+
+.reqWaterText {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  margin-bottom: 5px;
+}
+
+.saveButton {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -1%;
+  text-align: center;
+  height: 46px;
+  border-radius: 30px;
+  padding: 14px 40px;
+  background-color: var(--green);
+  color: var(--light-dark);
+  margin-top: 40px;
+}
+
+.saveButton:hover,
+.saveButton:focus,
+.saveButton:active {
+  background-color: var(--hover-green);
+}
+
 @media screen and (min-width: 768px) {
-  .dailyNormaByGender {
-    flex-direction: row;
-    gap: 28px;
-  }
-  .boldLabel {
-    font-size: 18px;
-  }
   .apLabelName,
   .exclamatoryText,
   .accent {
     font-size: 16px;
   }
 }
-
-/* Inputs and labels =================================================================== */
 
 label.rowReverse {
   display: flex;
@@ -123,6 +362,10 @@ input[type='radio'] {
   outline: none;
 }
 
+input[type='radio']:hover {
+  cursor: pointer;
+}
+
 input[type='radio']::before {
   content: '';
   position: absolute;
@@ -133,7 +376,7 @@ input[type='radio']::before {
   border-radius: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  border: 1px solid rgb(155, 225, 160);
+  border: 1.5px solid var(--green);
 }
 
 input[type='radio']:checked::after {
@@ -149,4 +392,189 @@ input[type='radio']:checked::after {
   visibility: visible;
 }
 
-/* Inputs and labels =================================================================== */
+@media (min-width: 768px) {
+  .uploadText {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .uploadPhotoButtonWrapper {
+    width: 151px;
+    height: 24px;
+  }
+
+  .uploadPhotoButton {
+    width: 151px;
+    height: 24px;
+  }
+
+  .uploadIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .genderText {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .genderInputLabel {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .nameLabel {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .nameInput {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 16px;
+    height: 56px;
+  }
+
+  .emailLabel {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .emailInput {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 16px;
+    height: 56px;
+  }
+
+  .dailyNormaTitle {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .dailyNormaLabel {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .dailyNormaInput {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 16px;
+    height: 56px;
+  }
+
+  .dailyNormaByGender {
+    display: flex;
+    gap: 28px;
+    height: 52px;
+  }
+
+  .reqWaterText {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .weightLabel {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .weightInput {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 16px;
+    height: 56px;
+  }
+
+  .activeTimeLabel {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .activeTimeInput {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 16px;
+    height: 56px;
+  }
+
+  .reqWaterTextContainer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .textInstruction {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 16px;
+  }
+
+  .apFrame {
+    padding: 16px;
+  }
+
+  .dailyNormaForGenderText {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .saveButton {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 16px 50px;
+    height: 56px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .settingsFormContainerWithoutUploadPhotoAndButton {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 594px;
+    max-height: 594px;
+    column-gap: 40px;
+    width: 840px;
+  }
+
+  .genderContainer {
+    max-width: 400px;
+    height: 62px;
+  }
+
+  .nameLabel {
+    height: 88px;
+    max-width: 400px;
+  }
+
+  .emailLabel {
+    height: 88px;
+    margin-bottom: 0;
+    max-width: 400px;
+  }
+
+  .dailyNormaWrapper {
+    max-height: 294px;
+    max-width: 400px;
+  }
+
+  .reqWaterTextContainer {
+    max-width: 400px;
+  }
+
+  .weightLabel {
+    margin-top: 86px;
+    max-width: 400px;
+  }
+
+  .activeTimeLabel {
+    max-width: 400px;
+  }
+
+  .dailyNormaLabel {
+    max-width: 400px;
+  }
+}

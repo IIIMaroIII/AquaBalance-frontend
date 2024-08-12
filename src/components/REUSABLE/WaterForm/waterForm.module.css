@@ -31,10 +31,23 @@ form button.changeAmountButton:hover {
 }
 
 form button.changeAmountButton:hover,
-form button.changeAmountButton:focus,
 form button.changeAmountButton:active {
   border: 1.5px solid var(--light-dark);
+  background-color: var(--light-dark);
+}
+
+form button.changeAmountButton:focus {
   background-color: transparent;
+  border: 1.5px solid var(--light-dark);
+}
+
+form button.changeAmountButton:focus .changeAmountIcon {
+  stroke: var(--light-dark);
+}
+
+form .changeAmountButton:hover .changeAmountIcon,
+form .changeAmountButton:active .changeAmountIcon {
+  stroke: var(--white);
 }
 
 .changeAmountIcon {
@@ -42,7 +55,6 @@ form button.changeAmountButton:active {
   height: 14.29px;
   stroke-width: 1.8px;
   stroke: var(--light-dark);
-  /* fill: var(--light-dark); */
 }
 
 .waterAmountText {
@@ -102,9 +114,16 @@ button.saveButton:focus,
 button.saveButton:active {
   background-color: var(--hover-green);
 }
-.errorMessage {
+
+.error {
   color: var(--error-color);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -1%;
+  margin-top: 8px;
 }
+
 @media (min-width: 768px) {
   .amountText {
     font-size: 16px;
