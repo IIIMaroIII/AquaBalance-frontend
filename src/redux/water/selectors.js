@@ -38,7 +38,7 @@ export const dailyNormaPercentage = (day = 1) =>
       if (isNaN(percent)) {
         return 0;
       } else {
-        return Math.min(percent, 100).toFixed(0);
+        return Number(Math.min(percent, 100).toFixed(0));
       }
     },
   );
