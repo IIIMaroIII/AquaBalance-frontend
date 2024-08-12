@@ -1,0 +1,48 @@
+.wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+button.btn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  width: 16px;
+}
+
+/* 
+button.btn:hover,
+button.btn:focus {
+  background-color: transparent;
+} */
+
+.span {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.arrow {
+  stroke: var(--dark-blue);
+  stroke-width: 1;
+  font-size: 12px;
+}
+
+.pieIcon {
+  stroke-opacity: 0.5;
+}
+
+@media screen and (min-width: 375px) {
+}
+@media screen and (min-width: 768px) {
+  .span {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .btn {
+    width: 20px;
+  }
+}
+@media screen and (min-width: 1440px) {
+}
