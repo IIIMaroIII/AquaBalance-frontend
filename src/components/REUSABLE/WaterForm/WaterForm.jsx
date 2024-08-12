@@ -27,8 +27,7 @@ import { selectWaterItems } from 'src/redux/water/selectors.js';
 import { selectChosenWaterCardId } from 'src/redux/water/selectors.js';
 
 const WaterForm = ({ operationName }) => {
-  const { chosenDate, getHoursAndMinutes, setHoursAndMinutes } =
-    useChosenDate();
+  const { getHoursAndMinutes, setHoursAndMinutes, chosenDate } = useChosenDate();
 
   const dispatch = useDispatch();
   const waterItems = useSelector(selectWaterItems);
@@ -82,22 +81,27 @@ const WaterForm = ({ operationName }) => {
   };
 
   const onSubmit = async data => {
+    console.log(data)
     const { waterAmount, time } = data;
     const formData = new FormData();
     formData.append('waterValue', waterAmount);
 
     const [hours, minutes] = time.split(':').map(Number);
     setHoursAndMinutes(hours, minutes);
-
+console.log(chosenDate)
     try {
       if (operationName === 'add') {
         await dispatch(addWater(formData)).then(res => {
+          console.log(res);
           toast.success('You have successfully added the amount of water!');
           dispatch(changeWaterModalAdd(false));
           dispatch(changeModal(false));
           dispatch(fetchMonthlyWater())
             .unwrap()
-            .then(() => dispatch(fetchDailyWater()));
+            .then(res => {
+              console.log(res)
+              dispatch(fetchDailyWater()).unwrap().then(res => console.log(res));
+            });
         });
       } else {
         await dispatch(changeWater(formData)).then(res => {
