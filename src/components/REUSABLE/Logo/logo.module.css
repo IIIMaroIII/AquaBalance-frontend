@@ -14,3 +14,7 @@
     line-height: 100%;
   }
 }
+
+.homePageLogo:hover {
+  color: #9BE1A0;
+}

@@ -21,7 +21,6 @@ const SignInForm = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors, isDirty, isValid },
   } = useForm({
     mode: 'onChange',
@@ -34,7 +33,6 @@ const SignInForm = () => {
       .then(res => {
         dispatch(userInfo());
         toast.success(res.message);
-        reset();
         navigate('/tracker');
       });
   };
