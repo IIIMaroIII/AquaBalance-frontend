@@ -233,7 +233,6 @@ const UsersSettingsForm = () => {
               <p className={css.exclamatoryText}>Active time in hours</p>
             </div>
           </div>
-          {/* половина */}
           <Controller
             name="weight"
             control={control}
