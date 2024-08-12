@@ -32,7 +32,6 @@ export const dailyNormaPercentage = (day = 1) =>
         .map(item => item.volume);
 
       const total = arr.reduce((acc, num) => acc + num, 0);
-
       const percent = (total / (dailyNorma * 1000)) * 100;
 
       if (isNaN(percent)) {

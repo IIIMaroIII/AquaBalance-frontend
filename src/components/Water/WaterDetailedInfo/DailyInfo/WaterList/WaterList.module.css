@@ -17,7 +17,7 @@
 }
 
 .list::-webkit-scrollbar-thumb {
-  background-color: var(--basic-dark-blue); /* Цвет "ползунка" */
+  background-color: var(--light-dark); /* Цвет "ползунка" */
   border-radius: 4px; /* Закругление углов "ползунка" */
 }
 
