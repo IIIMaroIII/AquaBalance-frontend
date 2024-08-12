@@ -135,6 +135,12 @@ input:-webkit-autofill:active {
   box-shadow: 0 0 0px 1000px var(--light-gray) inset; 
 }
 
+@media (max-width: 768px) {
+  .eyeIcon {
+    bottom: 15px;
+  }
+}
+
 @media (min-width: 768px) {
   .text {
     font-size: 36px;

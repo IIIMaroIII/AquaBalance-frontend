@@ -160,8 +160,8 @@ input:-webkit-autofill:active {
   box-shadow: 0 0 0px 1000px var(--light-gray) inset; 
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .eyeIcon {
-    bottom: 18px;
+    bottom: 15px;
   }
 }
