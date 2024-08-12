@@ -46,12 +46,12 @@ const WaterForm = ({ operationName }) => {
 };
 
 const initialTime =
-  operationName === 'edit' && currentWaterTime
+  operationName === 'edit'
     ? formatTime(
         new Date(currentWaterTime).getHours(),
         new Date(currentWaterTime).getMinutes()
       )
-    : formatTime(getHoursAndMinutes().hours, getHoursAndMinutes().minutes);
+    : formatTime(new Date().getHours(), new Date().getMinutes());
 
 
   const initialWaterAmount = operationName === 'edit' ? currentWaterVolume : 50;
