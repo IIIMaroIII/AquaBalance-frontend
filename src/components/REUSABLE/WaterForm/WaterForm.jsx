@@ -39,12 +39,20 @@ const WaterForm = ({ operationName }) => {
   const currentWaterVolume = currentWaterItem?.volume || 50;
   const currentWaterTime = currentWaterItem?.date;
 
-  const initialTime =
-    operationName === 'edit' && currentWaterTime
-      ? `${new Date(currentWaterTime).getHours()}:${new Date(
-          currentWaterTime,
-        ).getMinutes()}`
-      : `${getHoursAndMinutes().hours}:${getHoursAndMinutes().minutes}`;
+  const formatTime = (hours, minutes) => {
+  const formattedHours = String(hours).padStart(2, '0');
+  const formattedMinutes = String(minutes).padStart(2, '0');
+  return `${formattedHours}:${formattedMinutes}`;
+};
+
+const initialTime =
+  operationName === 'edit' && currentWaterTime
+    ? formatTime(
+        new Date(currentWaterTime).getHours(),
+        new Date(currentWaterTime).getMinutes()
+      )
+    : formatTime(getHoursAndMinutes().hours, getHoursAndMinutes().minutes);
+
 
   const initialWaterAmount = operationName === 'edit' ? currentWaterVolume : 50;
 
@@ -61,6 +69,7 @@ const WaterForm = ({ operationName }) => {
       time: initialTime,
       waterAmount: initialWaterAmount,
     },
+    mode: 'onChange',
   });
 
   const addWaterValue = () => {
@@ -147,12 +156,12 @@ const WaterForm = ({ operationName }) => {
             labelClass={css.recordingTimeLabel}
             inputClass={clsx(css.input, errors.time && css.inputError)}
             value={field.value}
+            name={'date'}
+            error={errors.time ? true : false}
             onChange={e => {
               field.onChange(e);
               setValue('time', e.target.value);
-            }}
-            name={'date'}
-          />
+            }}/>
         )}
       />
       {errors.time && <p className={css.error}>{errors.time.message}</p>}
@@ -163,20 +172,18 @@ const WaterForm = ({ operationName }) => {
           <CustomInput
             label={true}
             labelName={'Enter the value of the water used:'}
+            inputType="number"
             labelClass={css.waterAmountLabel}
-            inputClass={clsx(css.input, errors.time && css.inputError)}
+            inputClass={clsx(css.input, errors.waterAmount && css.inputError)}
             value={field.value}
             onChange={e => {
-              const inputValue = e.target.value;
-              if (/^\d*$/.test(inputValue)) {
+              const inputValue = e.target.value;           
                 setWaterAmount(Number(inputValue));
                 setWaterAmountError('');
-                field.onChange(inputValue);
-              } else {
-                setWaterAmountError('Please enter a valid number.');
-              }
+                field.onChange(inputValue);             
             }}
             name={'volume'}
+            error={errors.waterAmount ? true : false}
           />
         )}
       />
