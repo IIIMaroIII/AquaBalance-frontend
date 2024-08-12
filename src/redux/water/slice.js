@@ -60,6 +60,7 @@ export const waterSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchDailyWater.pending, state => {
+        state.isLoading = true;
         state.error = null;
       })
       .addCase(addWater.pending, state => {

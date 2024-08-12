@@ -89,23 +89,15 @@ export const fetchDailyWater = createAsyncThunk(
 
       const { data } = await AxiosWithCredentials.get(url);
 
-      if (data.status === 200) {
-        toast.success(data.message);
-      }
-
       if (!data || !Array.isArray(data.data)) {
         return rejectWithValue();
-      }
+
 
       const formattedToLocalTimeItems = data?.data.map(item => ({
         ...item,
         date: dateToLocalTime(item.date),
       }));
 
-      console.log(
-        'formattedToLocalTimeItems in daily',
-        formattedToLocalTimeItems,
-      );
 
       return formattedToLocalTimeItems;
     } catch (error) {
@@ -126,9 +118,6 @@ export const fetchMonthlyWater = createAsyncThunk(
       }?chosenDate=${encodeURIComponent(chosenDate)}`;
       const { data } = await AxiosWithCredentials.get(url);
 
-      if (data.status === 200) {
-        toast.success(data.message);
-      }
 
       if (!data || !Array.isArray(data.data)) {
         return rejectWithValue();
@@ -139,10 +128,6 @@ export const fetchMonthlyWater = createAsyncThunk(
         date: dateToLocalTime(item.date),
       }));
 
-      console.log(
-        'formattedToLocalTimeItems in monthly',
-        formattedToLocalTimeItems,
-      );
 
       return formattedToLocalTimeItems;
     } catch (error) {

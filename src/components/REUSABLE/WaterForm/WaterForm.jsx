@@ -92,7 +92,6 @@ const WaterForm = ({ operationName }) => {
     try {
       if (operationName === 'add') {
         await dispatch(addWater(formData)).then(() => {
-          toast.success('You have successfully added the amount of water!');
           dispatch(changeWaterModalAdd(false));
           dispatch(changeModal(false));
           dispatch(fetchMonthlyWater());
@@ -100,7 +99,6 @@ const WaterForm = ({ operationName }) => {
         });
       } else {
         await dispatch(changeWater(formData)).then(() => {
-          toast.success('You have successfully edited the amount of water!');
           dispatch(changeWaterModalEdit(false));
           dispatch(changeModal(false));
           dispatch(fetchMonthlyWater());
