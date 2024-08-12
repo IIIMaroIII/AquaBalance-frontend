@@ -1,7 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { selectUserDailyNorma } from '../users/selectors.js';
 
-export const selectWaterItems = state => state.water.water.dailyItems;
 export const selectMonthlyWaterItems = state => state.water.water.monthlyItems;
 
 export const selectIsLoading = state => state.water.isLoading;
