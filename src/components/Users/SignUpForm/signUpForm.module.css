@@ -13,15 +13,16 @@
 }
 
 .label {
-  margin-bottom: 16px;
+  margin-top: 16px;
   color: var(--dark);
   font-size: 14px;
   font-weight: 700;
   line-height: 1.28;
   letter-spacing: -1%;
+  position: relative;
 
   @media (min-width: 768px) {
-    margin-bottom: 20px;
+    margin-top: 20px;
   }
 }
 
@@ -86,6 +87,7 @@
 .form button.button:disabled {
   color: rgba(47, 47, 47, 0.3);
   background-color: var(--light-gray);
+  border-color: rgba(47, 47, 47, 0.3);
   cursor: not-allowed;
 }
 
@@ -95,6 +97,7 @@
   font-weight: 400;
   line-height: 1;
   letter-spacing: -1%;
+  margin-top: 4px;
 }
 
 .form input.inputError {
@@ -135,25 +138,30 @@
 .eyeIcon {
   width: 20px;
   height: 20px;
-  all: unset;
-  display: inline-block;
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  right: 16px;
-  bottom: 15.8px;
-  background-color: transparent;
+  bottom: 18px;
+  right: 18px;
   stroke: var(--dark);
-  fill: none;
+  fill: transparent;
 }
 
-.inputContainer button.eyeIcon:hover,
-.inputContainer button.eyeIcon:focus,
-.inputContainer button.eyeIcon:active {
-  background-color: transparent;
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--light-gray) inset;
+  box-shadow: 0 0 0px 1000px var(--light-gray) inset; 
 }
 
-@media (min-width: 768px) {
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px var(--light-gray)inset; 
+  box-shadow: 0 0 0px 1000px var(--light-gray) inset; 
+}
+
+@media (max-width: 768px) {
   .eyeIcon {
-    bottom: 18px;
+    bottom: 15px;
   }
 }

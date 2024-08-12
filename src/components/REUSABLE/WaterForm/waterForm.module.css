@@ -31,18 +31,30 @@ form button.changeAmountButton:hover {
 }
 
 form button.changeAmountButton:hover,
-form button.changeAmountButton:focus,
 form button.changeAmountButton:active {
   border: 1.5px solid var(--light-dark);
+  background-color: var(--light-dark);
+}
+
+form button.changeAmountButton:focus {
   background-color: transparent;
+  border: 1.5px solid var(--light-dark);
+}
+
+form button.changeAmountButton:focus .changeAmountIcon {
+  stroke: var(--light-dark);
+}
+
+form .changeAmountButton:hover .changeAmountIcon,
+form .changeAmountButton:active .changeAmountIcon {
+  stroke: var(--white);
 }
 
 .changeAmountIcon {
-  width: 14.29px;
-  height: 14.29px;
-  stroke-width: 1.8px;
+  width: 40px;
+  height: 40px;
   stroke: var(--light-dark);
-  /* fill: var(--light-dark); */
+  fill: none;
 }
 
 .waterAmountText {
@@ -76,6 +88,17 @@ label.recordingTimeLabel {
   border-color: rgba(47, 47, 47, 0.15);
 }
 
+.recordingTimeLabel .input:hover:not(:focus),
+.waterAmountLabel .input:hover:not(:focus) {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.recordingTimeLabel .input:hover,
+.waterAmountLabel .input:focus,
+.waterAmountLabel .input:active {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
 label.waterAmountLabel {
   margin-top: 24px;
   font-weight: 700;
@@ -103,6 +126,19 @@ button.saveButton:active {
   background-color: var(--hover-green);
 }
 
+.error {
+  color: var(--error-color);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -1%;
+  margin-top: 8px;
+}
+
+.form input.inputError {
+  color: var(--error-color);
+}
+
 @media (min-width: 768px) {
   .amountText {
     font-size: 16px;
@@ -115,8 +151,8 @@ button.saveButton:active {
   }
 
   .changeAmountIcon {
-    width: 15.36px;
-    height: 15.36px;
+    width: 43px;
+    height: 43px;
   }
 
   .waterAmountText {

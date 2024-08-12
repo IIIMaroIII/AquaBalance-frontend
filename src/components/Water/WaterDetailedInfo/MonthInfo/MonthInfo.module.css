@@ -10,6 +10,7 @@
   font-size: 20px;
   line-height: 120%;
   letter-spacing: -0.01em;
+  color: var(--light-dark);
 }
 
 .chartIcon {
@@ -17,6 +18,11 @@
   width: 20px;
   height: 20px;
   fill: transparent;
+  transition: transform var(--transition-delay) var(--transition);
+}
+
+.chartIcon:hover {
+  transform: scale(1.15);
 }
 
 .paginationWrapper {

@@ -6,12 +6,11 @@ import { signUpFormValidation } from 'src/Validation/signUpFormValidation';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Button from 'src/components/REUSABLE/Button/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { signIn, signUp, userInfo } from 'src/redux/users/operations.js';
 import toast from 'react-hot-toast';
 import CustomInput from 'src/components/REUSABLE/Input/CustomInput.jsx';
 import clsx from 'clsx';
+import sprite from '../../../assets/sprite.svg';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -79,9 +78,13 @@ const SignUpForm = () => {
           onFocus: () => {},
         })}
       >
-        <span onClick={togglePasswordVisibility}>
-          <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
-        </span>
+        <svg className={css.eyeIcon} onClick={togglePasswordVisibility}>
+          <use
+            xlinkHref={
+              showPassword ? `${sprite}#icon-eye` : `${sprite}#icon-eye-off`
+            }
+          ></use>
+        </svg>
       </CustomInput>
       {errors.password && (
         <p className={css.error}>{errors.password.message}</p>
@@ -100,9 +103,13 @@ const SignUpForm = () => {
           onFocus: () => {},
         })}
       >
-        <span onClick={togglePasswordVisibility}>
-          <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
-        </span>
+        <svg className={css.eyeIcon} onClick={togglePasswordVisibility}>
+          <use
+            xlinkHref={
+              showPassword ? `${sprite}#icon-eye` : `${sprite}#icon-eye-off`
+            }
+          ></use>
+        </svg>
       </CustomInput>
 
       {errors.repeatPassword && (

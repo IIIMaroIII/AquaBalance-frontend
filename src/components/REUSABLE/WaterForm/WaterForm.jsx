@@ -25,6 +25,7 @@ import {
 } from 'src/redux/water/slice';
 import { selectWaterItems } from 'src/redux/water/selectors.js';
 import { selectChosenWaterCardId } from 'src/redux/water/selectors.js';
+import clsx from 'clsx';
 
 const WaterForm = ({ operationName }) => {
   const { getHoursAndMinutes, setHoursAndMinutes, chosenDate } =
@@ -38,12 +39,20 @@ const WaterForm = ({ operationName }) => {
   const currentWaterVolume = currentWaterItem?.volume || 50;
   const currentWaterTime = currentWaterItem?.date;
 
-  const initialTime =
-    operationName === 'edit' && currentWaterTime
-      ? `${new Date(currentWaterTime).getHours()}:${new Date(
-          currentWaterTime,
-        ).getMinutes()}`
-      : `${getHoursAndMinutes().hours}:${getHoursAndMinutes().minutes}`;
+  const formatTime = (hours, minutes) => {
+  const formattedHours = String(hours).padStart(2, '0');
+  const formattedMinutes = String(minutes).padStart(2, '0');
+  return `${formattedHours}:${formattedMinutes}`;
+};
+
+const initialTime =
+  operationName === 'edit'
+    ? formatTime(
+        new Date(currentWaterTime).getHours(),
+        new Date(currentWaterTime).getMinutes()
+      )
+    : formatTime(new Date().getHours(), new Date().getMinutes());
+
 
   const initialWaterAmount = operationName === 'edit' ? currentWaterVolume : 50;
 
@@ -60,6 +69,7 @@ const WaterForm = ({ operationName }) => {
       time: initialTime,
       waterAmount: initialWaterAmount,
     },
+    mode: 'onChange',
   });
 
   const addWaterValue = () => {
@@ -92,7 +102,6 @@ const WaterForm = ({ operationName }) => {
     try {
       if (operationName === 'add') {
         await dispatch(addWater(formData)).then(() => {
-          toast.success('You have successfully added the amount of water!');
           dispatch(changeWaterModalAdd(false));
           dispatch(changeModal(false));
           dispatch(fetchMonthlyWater());
@@ -100,7 +109,6 @@ const WaterForm = ({ operationName }) => {
         });
       } else {
         await dispatch(changeWater(formData)).then(() => {
-          toast.success('You have successfully edited the amount of water!');
           dispatch(changeWaterModalEdit(false));
           dispatch(changeModal(false));
           dispatch(fetchMonthlyWater());
@@ -113,7 +121,7 @@ const WaterForm = ({ operationName }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
       <p className={css.amountText}>Amount of water:</p>
       <div className={css.changeAmountContainer}>
         <Button
@@ -146,17 +154,17 @@ const WaterForm = ({ operationName }) => {
             label={true}
             labelName={'Recording time:'}
             labelClass={css.recordingTimeLabel}
-            inputClass={css.input}
+            inputClass={clsx(css.input, errors.time && css.inputError)}
             value={field.value}
+            name={'date'}
+            error={errors.time ? true : false}
             onChange={e => {
               field.onChange(e);
               setValue('time', e.target.value);
-            }}
-            name={'date'}
-          />
+            }}/>
         )}
       />
-      {errors.time && <p>{errors.time.message}</p>}
+      {errors.time && <p className={css.error}>{errors.time.message}</p>}
       <Controller
         name="waterAmount"
         control={control}
@@ -164,25 +172,23 @@ const WaterForm = ({ operationName }) => {
           <CustomInput
             label={true}
             labelName={'Enter the value of the water used:'}
+            inputType="number"
             labelClass={css.waterAmountLabel}
-            inputClass={css.input}
+            inputClass={clsx(css.input, errors.waterAmount && css.inputError)}
             value={field.value}
             onChange={e => {
-              const inputValue = e.target.value;
-              if (/^\d*$/.test(inputValue)) {
+              const inputValue = e.target.value;           
                 setWaterAmount(Number(inputValue));
                 setWaterAmountError('');
-                field.onChange(inputValue);
-              } else {
-                setWaterAmountError('Please enter a valid number.');
-              }
+                field.onChange(inputValue);             
             }}
             name={'volume'}
+            error={errors.waterAmount ? true : false}
           />
         )}
       />
-      {waterAmountError && <p>{waterAmountError}</p>}
-      {errors.waterAmount && <p>{errors.waterAmount.message}</p>}
+      {waterAmountError && <p className={css.error}>{waterAmountError}</p>}
+      {errors.waterAmount && <p className={css.error}>{errors.waterAmount.message}</p>}
       <Button type="submit" addClass={css.saveButton}>
         Save
       </Button>

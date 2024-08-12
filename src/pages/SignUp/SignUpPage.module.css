@@ -5,24 +5,36 @@
   }
 }
 
-.container {
+.sectionContainer {
   background-color: var(--light-gray);
   border-radius: 30px;
-  padding: 24px 16px 170px 16px;
+  /* padding: 24px 16px 170px 16px; */
+  /* padding: 0 16px; */
+  padding-top: 24px;
+  padding-bottom: 170px;
 
   @media (min-width: 768px) {
-    padding: 32px 32px 227px 32px;
+    padding-top: 32px;
+    padding-bottom: 227px;
   }
 
   @media (min-width: 1440px) {
     width: 672px;
     height: 736px;
-    padding: 32px 32px 100px 32px;
+    padding-bottom: 100px;
+  }
+}
+
+.signUpPartContainer {
+  padding: 0 16px;
+
+  @media (min-width: 768px) {
+    padding: 0 32px;
   }
 }
 
 .logo {
-  display: block;
+  display: inline-block;
   margin-bottom: 126px;
 
   @media (min-width: 768px) {

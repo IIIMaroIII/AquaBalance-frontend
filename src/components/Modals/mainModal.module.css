@@ -1,8 +1,6 @@
 .content {
   position: relative;
   margin: auto;
-  /* max-width: 1440px; */
-  /* padding: 40px; */
   padding: 40px 20px;
   outline: none;
   background-color: white;
@@ -47,6 +45,17 @@ button.closeWaterModalButton {
   position: absolute;
   top: 20px;
   right: 16px;
+  transform: none;
+}
+
+button.closeSettingsModalButton {
+  top: 20px;
+  right: 16px;
+  transform: none;
+}
+
+button.closeSettingsModalButton:hover {
+  transform: scale(1);
 }
 
 @media (min-width: 375px) {
@@ -56,6 +65,10 @@ button.closeWaterModalButton {
   }
 
   .waterModalContent {
+    width: 343px;
+  }
+
+  .settingsModalContent {
     width: 343px;
   }
 }
@@ -71,8 +84,17 @@ button.closeWaterModalButton {
     width: 518px;
   }
 
+  .settingsModalContent {
+    width: 648px;
+  }
+
   button.closeWaterModalButton {
     right: 20px;
+  }
+
+  button.closeSettingsModalButton {
+    top: 40px;
+    right: 40px;
   }
 }
 
@@ -84,5 +106,9 @@ button.closeWaterModalButton {
 
   .waterModalContent {
     width: 518px;
+  }
+
+  .settingsModalContent {
+    width: 920px;
   }
 }

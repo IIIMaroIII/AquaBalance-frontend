@@ -1,4 +1,3 @@
-import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import Button from '../../../../../components/REUSABLE/Button/Button';
 import { parseISO } from 'date-fns';
 import useChosenDate from 'src/hooks/useChosenDate.js';
@@ -9,6 +8,8 @@ import {
   fetchDailyWater,
   fetchMonthlyWater,
 } from 'src/redux/water/operations.js';
+import sprite from '../../../../../assets/sprite.svg';
+import clsx from 'clsx';
 
 export const CalendarPagination = () => {
   const { chosenDate, goToPreviousMonth, goToNextMonth, chosenYear } =
@@ -21,27 +22,27 @@ export const CalendarPagination = () => {
       <Button
         onClick={() => {
           goToPreviousMonth();
-          dispatch(fetchMonthlyWater())
-            .unwrap()
-            .then(() => dispatch(fetchDailyWater()))
-            // .catch(console.error);
+          dispatch(fetchMonthlyWater());
+          dispatch(fetchDailyWater());
         }}
         addClass={css.btn}
       >
-        <BsChevronLeft className={css.arrow} />
+        <svg className={css.arrow}>
+          <use xlinkHref={`${sprite}#icon-chevron-left`}></use>
+        </svg>
       </Button>
       <span className={css.span}>{`${month}, ${chosenYear}`}</span>
       <Button
         onClick={() => {
           goToNextMonth();
-          dispatch(fetchMonthlyWater())
-            .unwrap()
-            .then(() => dispatch(fetchDailyWater()))
-            // .catch(console.error);
+          dispatch(fetchMonthlyWater());
+          dispatch(fetchDailyWater());
         }}
         addClass={css.btn}
       >
-        <BsChevronRight className={css.arrow} />
+        <svg className={clsx(css.arrow, css.right)}>
+          <use xlinkHref={`${sprite}#icon-chevron-left`}></use>
+        </svg>
       </Button>
     </div>
   );

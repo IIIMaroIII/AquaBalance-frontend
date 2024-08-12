@@ -12,15 +12,22 @@
   padding: 6px 12px;
   width: 100%;
   height: 50px;
-  background-color: #323f47;
-
+  background-color: var(--basic-dark-blue);
+  transition: transform var(--transition-delay) var(--transition);
   transition: color var(--transition-delay) var(--transition);
 }
 
 .user_bar_wrapper:hover,
 .user_bar_wrapper:focus {
-  transform: scale(1);
-  background-color: #2f2f2f;
+  transform: scale(1.1);
+  background-color: var(--basic-dark-blue);
+}
+
+.user_bar_wrapper:hover .arrowIcon,
+.user_bar_wrapper:focus .arrowIcon,
+.user_bar_wrapper:hover .span,
+.user_bar_wrapper:focus .span {
+  color: var(--green);
 }
 
 .user_avatar {
@@ -33,6 +40,7 @@
 .arrowIcon {
   color: #fff;
   transition: color var(--transition-delay) var(--transition);
+  
 }
 
 .span {
@@ -50,6 +58,7 @@
     gap: 10px;
     width: 100%;
     height: 56px;
+    background-color: var(--basic-dark-blue);
   }
 
   .span {

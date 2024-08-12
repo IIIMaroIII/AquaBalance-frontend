@@ -6,6 +6,7 @@ import {
   changeUsersSettingsModalOpen,
 } from 'src/redux/water/slice';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
+import sprite from "../../../../../assets/sprite.svg"
 
 const UserBarPopover = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const UserBarPopover = ({ onClose }) => {
           }}
         >
           <svg className={css.popover_icon}>
-            <use href={'/src/assets/sprite.svg#icon-settings'}></use>
+            <use xlinkHref={`${sprite}#icon-settings`}></use>
           </svg>
           Setting
         </Button>
@@ -39,7 +40,7 @@ const UserBarPopover = ({ onClose }) => {
           }}
         >
           <svg className={css.popover_icon}>
-            <use href={'/src/assets/sprite.svg#icon-log-out'}></use>
+            <use xlinkHref={`${sprite}#icon-log-out`}></use>
           </svg>
           Log out
         </Button>

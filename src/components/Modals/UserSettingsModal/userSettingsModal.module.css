@@ -3,3 +3,24 @@
   height: 85vh;
   overflow: auto;
 }
+
+.apSetting {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -1%;
+  color: var(--light-dark);
+}
+
+@media (min-width: 768px) {
+  .apSetting {
+    font-size: 28px;
+    line-height: 1.14;
+  }
+}
+
+.apContainer::-webkit-scrollbar {
+  display: none;
+  opacity: 0;
+  background-color: transparent;
+}
