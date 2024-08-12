@@ -23,7 +23,7 @@ button.btn {
   padding: 0;
   margin-bottom: 4px;
 
-  color: var(--dark);
+  color: var(--light-dark);
   background-color: var(--white);
 }
 

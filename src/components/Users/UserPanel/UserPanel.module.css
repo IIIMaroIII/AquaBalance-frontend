@@ -10,6 +10,7 @@
   line-height: 32px;
   letter-spacing: -0.01em;
   margin-bottom: 20px;
+  color: var(--light-dark);
 }
 
 .span {
@@ -27,9 +28,10 @@
 }
 @media screen and (min-width: 768px) {
   .userPanelContainer {
-    margin-bottom: 44px;
+    margin-bottom: 40px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   .title {
@@ -37,6 +39,7 @@
     font-size: 36px;
     line-height: 36px;
     margin-bottom: 0;
+    
   }
 }
 @media screen and (min-width: 1440px) {

@@ -10,6 +10,11 @@
 
   padding-bottom: 32px;
   padding-top: 24px;
+  align-items: center;
+}
+
+.p {
+  color: var(--light-dark);
 }
 
 .list::-webkit-scrollbar {
@@ -32,11 +37,16 @@
 @media screen and (min-width: 768px) {
   .list {
     gap: 32px;
+    padding-bottom: 24px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-    .list {
+  .list {
     gap: 16px;
+    padding-bottom: 24px;
   }
+  
+ 
+
 }

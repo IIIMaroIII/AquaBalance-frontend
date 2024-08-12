@@ -9,24 +9,31 @@ button.btn {
   border: none;
   padding: 0;
   width: 16px;
+  transition: transform var(--transition-delay) var(--transition);
 }
 
-/* 
+
 button.btn:hover,
 button.btn:focus {
-  background-color: transparent;
-} */
+  transform: scale(1.15);
+}
 
 .span {
   font-size: 14px;
   font-weight: 700;
   line-height: 18px;
+  color: var(--light-dark);
 }
 
 .arrow {
   stroke: var(--dark-blue);
   stroke-width: 1;
   font-size: 12px;
+  transition: transform var(--transition-delay) var(--transition);
+}
+
+.arrow:hover {
+  transform: scale(1.15);
 }
 
 .pieIcon {
