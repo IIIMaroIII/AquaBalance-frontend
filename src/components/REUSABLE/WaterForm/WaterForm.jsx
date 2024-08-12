@@ -60,6 +60,7 @@ const WaterForm = ({ operationName }) => {
       time: initialTime,
       waterAmount: initialWaterAmount,
     },
+    mode: 'onChange',
   });
 
   const addWaterValue = () => {
@@ -145,16 +146,17 @@ const WaterForm = ({ operationName }) => {
             labelName={'Recording time:'}
             labelClass={css.recordingTimeLabel}
             inputClass={css.input}
-            value={field.value}
+            value={field.value} 
+            name={'date'}
+            error={errors.time ? true : false}
             onChange={e => {
               field.onChange(e);
               setValue('time', e.target.value);
-            }}
-            name={'date'}
-          />
+            }}/>
         )}
       />
-      {errors.time && <p>{errors.time.message}</p>}
+      {errors.time && (
+        <p className={css.errorMessage}>{errors.time.message}</p>)}
       <Controller
         name="waterAmount"
         control={control}
@@ -162,25 +164,25 @@ const WaterForm = ({ operationName }) => {
           <CustomInput
             label={true}
             labelName={'Enter the value of the water used:'}
+            inputType="number"
             labelClass={css.waterAmountLabel}
             inputClass={css.input}
             value={field.value}
             onChange={e => {
-              const inputValue = e.target.value;
-              if (/^\d*$/.test(inputValue)) {
+              const inputValue = e.target.value;           
                 setWaterAmount(Number(inputValue));
                 setWaterAmountError('');
-                field.onChange(inputValue);
-              } else {
-                setWaterAmountError('Please enter a valid number.');
-              }
+                field.onChange(inputValue);             
             }}
             name={'volume'}
+            error={errors.waterAmount ? true : false}
           />
         )}
       />
       {waterAmountError && <p>{waterAmountError}</p>}
-      {errors.waterAmount && <p>{errors.waterAmount.message}</p>}
+      {errors.waterAmount && (
+        <p className={css.errorMessage}>{errors.waterAmount.message}</p>)
+       }
       <Button type="submit" addClass={css.saveButton}>
         Save
       </Button>
