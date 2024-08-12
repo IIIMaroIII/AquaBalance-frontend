@@ -80,35 +80,14 @@ img {
   height: auto;
 }
 
-/*
-
-Говорили же - здесь только reset стили и переменные
-
-.wrapper {
-  margin: 0 auto;
-  padding: 16px;
+/* input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--light-gray) inset;
+  box-shadow: 0 0 0px 1000px var(--light-gray) inset; 
 }
 
-@media (min-width: 375px) {
-  .wrapper {
-    width: 343px;
-    padding: 16px 0;
-  }
-}
-
-@media (min-width: 768px) {
-  .wrapper {
-    width: 704px;
-    padding: 32px 0;
-  }
-}
-
-@media (min-width: 1440px) {
-  .wrapper {
-    width: 1376px;
-  }
-}
-
-Говорили же - здесь только reset стили и переменные
-
-*/
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px var(--light-gray)inset; 
+  box-shadow: 0 0 0px 1000px var(--light-gray) inset; 
+} */

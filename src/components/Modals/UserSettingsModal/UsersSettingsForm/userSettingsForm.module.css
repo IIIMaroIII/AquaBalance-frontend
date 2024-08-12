@@ -82,10 +82,11 @@
 }
 
 .uploadIcon {
-  transform: rotate(270deg);
   position: absolute;
   width: 18px;
   height: 18px;
+  fill: none;
+  stroke: var(--dark)
 }
 
 .genderContainer {

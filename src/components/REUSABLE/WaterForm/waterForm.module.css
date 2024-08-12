@@ -51,10 +51,10 @@ form .changeAmountButton:active .changeAmountIcon {
 }
 
 .changeAmountIcon {
-  width: 14.29px;
-  height: 14.29px;
-  stroke-width: 1.8px;
+  width: 40px;
+  height: 40px;
   stroke: var(--light-dark);
+  fill: none;
 }
 
 .waterAmountText {
@@ -151,8 +151,8 @@ button.saveButton:active {
   }
 
   .changeAmountIcon {
-    width: 15.36px;
-    height: 15.36px;
+    width: 43px;
+    height: 43px;
   }
 
   .waterAmountText {

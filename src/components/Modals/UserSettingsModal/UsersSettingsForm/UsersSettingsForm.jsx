@@ -113,10 +113,10 @@ const UsersSettingsForm = () => {
           </div>
           <div className={css.uploadPhotoButtonWrapper}>
             <Button addClass={css.uploadPhotoButton}>
-              {/* <svg className={css.uploadIcon}>
+              <svg className={css.uploadIcon}>
                 <use xlinkHref={`${sprite}#icon-upload`}></use>
-              </svg> */}
-              <FiLogOut className={css.uploadIcon} />
+              </svg>
+              {/* <FiLogOut className={css.uploadIcon} /> */}
               <p className={css.uploadText}>Upload a photo</p>
 
               <Controller
