@@ -32,13 +32,12 @@ export const dailyNormaPercentage = (day = 1) =>
         .map(item => item.volume);
 
       const total = arr.reduce((acc, num) => acc + num, 0);
-
       const percent = (total / (dailyNorma * 1000)) * 100;
 
       if (isNaN(percent)) {
         return 0;
       } else {
-        return Math.min(percent, 100).toFixed(0);
+        return Number(Math.min(percent, 100).toFixed(0));
       }
     },
   );
