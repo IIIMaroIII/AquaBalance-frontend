@@ -20,7 +20,7 @@ export const waterModalFormValidation = yup.object().shape({
     .required('Time is required')
     .typeError('Time must be in HH:MM format')
     .matches(
-      /^([01]\d|2[0-3]):[0-5]\d$/,
+      /^([0-1]?\d|2[0-3]):[0-5]\d$/,
       'Time must be in HH:MM format'
     ),
 });

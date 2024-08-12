@@ -38,12 +38,20 @@ const WaterForm = ({ operationName }) => {
   const currentWaterVolume = currentWaterItem?.volume || 50;
   const currentWaterTime = currentWaterItem?.date;
 
-  const initialTime =
-    operationName === 'edit' && currentWaterTime
-      ? `${new Date(currentWaterTime).getHours()}:${new Date(
-          currentWaterTime,
-        ).getMinutes()}`
-      : `${getHoursAndMinutes().hours}:${getHoursAndMinutes().minutes}`;
+  const formatTime = (hours, minutes) => {
+  const formattedHours = String(hours).padStart(2, '0');
+  const formattedMinutes = String(minutes).padStart(2, '0');
+  return `${formattedHours}:${formattedMinutes}`;
+};
+
+const initialTime =
+  operationName === 'edit' && currentWaterTime
+    ? formatTime(
+        new Date(currentWaterTime).getHours(),
+        new Date(currentWaterTime).getMinutes()
+      )
+    : formatTime(getHoursAndMinutes().hours, getHoursAndMinutes().minutes);
+
 
   const initialWaterAmount = operationName === 'edit' ? currentWaterVolume : 50;
 
