@@ -60,6 +60,7 @@ export const waterSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchDailyWater.pending, state => {
+        state.isLoading = true;
         state.error = null;
       })
       .addCase(addWater.pending, state => {
@@ -90,18 +91,18 @@ export const waterSlice = createSlice({
       })
       .addCase(fetchDailyWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.water.dailyItems = payload.data;
+        state.water.dailyItems = payload;
       })
       .addCase(fetchMonthlyWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.water.monthlyItems = payload.data;
+        state.water.monthlyItems = payload;
       })
       .addCase(changeWater.rejected, () => {
         return { ...initialState };
       })
-      .addCase(fetchDailyWater.rejected, (state, { payload }) => {
+      .addCase(fetchDailyWater.rejected, state => {
         state.isLoading = false;
-        state.water.dailyItems = payload.data;
+        state.water.dailyItems = [];
       })
       .addCase(addWater.rejected, () => {
         return { ...initialState };
@@ -109,9 +110,9 @@ export const waterSlice = createSlice({
       .addCase(deleteWater.rejected, () => {
         return { ...initialState };
       })
-      .addCase(fetchMonthlyWater.rejected, (state, { payload }) => {
+      .addCase(fetchMonthlyWater.rejected, state => {
         state.isLoading = false;
-        state.water.monthlyItems = payload.data;
+        state.water.monthlyItems = [];
       });
   },
 });

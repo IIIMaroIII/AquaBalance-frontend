@@ -7,24 +7,26 @@ import {
   changeWaterModalEdit,
 } from 'src/redux/water/slice';
 import { useDispatch } from 'react-redux';
+import Container from 'src/components/REUSABLE/Container/Container.jsx';
 import useChosenDate from 'src/hooks/useChosenDate.js';
 
 const WaterItem = ({ item }) => {
   const dispatch = useDispatch();
   const { returnAmPmTime } = useChosenDate();
 
-  const checkVolume = () => {
-    if (item.volume < 1000) return `${item.volume} ml`;
-    if (item.volume >= 1000) return `${item.volume / 1000} L`;
-  };
-
   return (
-    <>
-      <svg>
+    <li key={item._id} className={css.item}>
+      <svg className={css.iconGlass}>
         <use href={'/src/assets/sprite.svg#icon-cup'}></use>
       </svg>
-      <div>
-        <p>{checkVolume()}</p>
+      <Container addClass={css.dataWrapper}>
+        <p className={css.volume}>
+          {item.volume < 1000 ? `${item.volume} ml` : `${item.volume / 1000} L`}
+        </p>
+        <p className={css.itemTime}>{returnAmPmTime(item.date)}</p>
+      </Container>
+
+      <Container addClass={css.iconsWrapper}>
         <Button
           addClass={css.button}
           onClick={() => {
@@ -33,12 +35,11 @@ const WaterItem = ({ item }) => {
             dispatch(changeWaterCardId(item._id));
           }}
         >
-          <svg>
+          <svg className={css.icon}>
             <use href={'/src/assets/sprite.svg#icon-edit'}></use>
           </svg>
         </Button>
 
-        <p>{returnAmPmTime(item.date)}</p>
         <Button
           addClass={css.button}
           onClick={() => {
@@ -47,13 +48,12 @@ const WaterItem = ({ item }) => {
             dispatch(changeWaterCardId(item._id));
           }}
         >
-          <svg>
-            {' '}
+          <svg className={css.icon}>
             <use href={'/src/assets/sprite.svg#icon-delete'}></use>
           </svg>
         </Button>
-      </div>
-    </>
+      </Container>
+    </li>
   );
 };
 

@@ -8,6 +8,8 @@ import {
 } from 'recharts';
 import css from './ChartComponent.module.css';
 import { useMediaQuery } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { selectMonthlyWaterItems } from 'src/redux/water/selectors.js';
 
 const CustomTooltip = ({ active = false, payload = [], coordinate }) => {
   if (active && payload && payload.length) {
@@ -28,17 +30,14 @@ const CustomTooltip = ({ active = false, payload = [], coordinate }) => {
   return null;
 };
 
-const data = [
-  { name: '16', value: 1.8 },
-  { name: '17', value: 1.5 },
-  { name: '18', value: 2 },
-  { name: '19', value: 1.75 },
-  { name: '20', value: 2.2 },
-  { name: '21', value: 2.3 },
-  { name: '22', value: 2.1 },
-];
-
 const ChartComponent = () => {
+  const dailyItems = useSelector(selectMonthlyWaterItems);
+  const arr = dailyItems
+    .map(item => {
+      return { day: new Date(item.date).getDate(), volume: item.volume / 1000 };
+    })
+    .sort((a, b) => a.day - b.day);
+
   const yTicks = Array.from({ length: 6 }, (_, i) => i * 0.5);
 
   const formatYAxis = tickItem => {
@@ -63,7 +62,7 @@ const ChartComponent = () => {
   return (
     <div className={css.chartContainer}>
       <ResponsiveContainer width="100%" height={isSmallScreen ? 256 : 273}>
-        <AreaChart data={data}>
+        <AreaChart data={arr}>
           <defs>
             <linearGradient
               id="colorValue"
@@ -78,7 +77,7 @@ const ChartComponent = () => {
             </linearGradient>
           </defs>
           <XAxis
-            dataKey="name"
+            dataKey="day"
             axisLine={false}
             tickLine={false}
             tick={{
@@ -101,7 +100,7 @@ const ChartComponent = () => {
           />
           <Tooltip content={<CustomTooltip />} />
           <Area
-            dataKey="value"
+            dataKey="volume"
             stroke="#87d28d"
             strokeWidth={isSmallScreen ? 2 : 3}
             fill="url(#colorValue)"

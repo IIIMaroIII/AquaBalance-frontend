@@ -97,7 +97,7 @@ const DOMAINS = {
 };
 
 const MODALS = {
-  SETTINGS_USER_MODAL: {},
+  SETTINGS_USER_MODAL: { MAX_CHAR_WATER_VALIDATION: 15 },
   WATER_MODAL: {},
 };
 const CONSTANTS = {

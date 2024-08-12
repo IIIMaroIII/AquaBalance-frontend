@@ -21,10 +21,8 @@ export const CalendarPagination = () => {
       <Button
         onClick={() => {
           goToPreviousMonth();
-          dispatch(fetchMonthlyWater())
-            .unwrap()
-            .then(() => dispatch(fetchDailyWater()))
-            // .catch(console.error);
+          dispatch(fetchMonthlyWater());
+          dispatch(fetchDailyWater());
         }}
         addClass={css.btn}
       >
@@ -34,10 +32,8 @@ export const CalendarPagination = () => {
       <Button
         onClick={() => {
           goToNextMonth();
-          dispatch(fetchMonthlyWater())
-            .unwrap()
-            .then(() => dispatch(fetchDailyWater()))
-            // .catch(console.error);
+          dispatch(fetchMonthlyWater());
+          dispatch(fetchDailyWater());
         }}
         addClass={css.btn}
       >

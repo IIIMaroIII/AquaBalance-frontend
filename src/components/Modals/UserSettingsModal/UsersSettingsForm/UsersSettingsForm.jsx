@@ -13,11 +13,12 @@ import { update } from 'src/redux/users/operations.js';
 import { changeModal } from 'src/redux/water/slice.js';
 import toast from 'react-hot-toast';
 import CustomInput from 'src/components/REUSABLE/Input/CustomInput.jsx';
-import Container from 'src/components/REUSABLE/Container/Container.jsx';
 import CONSTANTS, { IMAGES } from 'src/components/Constants/constants.js';
 import { userSettingsFormValidation } from 'src/Validation/userSettingsForm.js';
 import sprite from '../../../../assets/sprite.svg';
 import clsx from 'clsx';
+import Loader from 'src/components/REUSABLE/Loader/Loader.jsx';
+import useAuth from 'src/hooks/useAuth.js';
 
 const UsersSettingsForm = () => {
   const user = useSelector(selectUser);
@@ -36,14 +37,13 @@ const UsersSettingsForm = () => {
     watch,
     formState: { errors, isDirty, isValid },
   } = useForm({
-    // resolver: yupResolver(userSettingsFormValidation),
+    resolver: yupResolver(userSettingsFormValidation),
     mode: 'onChange',
-    reValidateMode: 'onChange',
     defaultValues: {
-      gender: 'woman',
-      weight: 0,
-      activeTime: 0,
-      dailyNorma: 1.8,
+      gender: user?.gender || 'man',
+      weight: user?.weight || 0,
+      activeTime: user?.activeTime || 0,
+      dailyNorma: user?.dailyNorma || 1.8,
       email: user?.email || '',
       name: user?.name || 'User',
     },
@@ -278,29 +278,31 @@ const UsersSettingsForm = () => {
             <span className={css.accent}>1.8L</span>
           </div>
 
-          <Controller
-            name="dailyNorma"
-            control={control}
-            render={({ field }) => (
-              <CustomInput
-                label
-                labelName="Write down how much water you will drink:"
-                labelClass={css.dailyNormaLabel}
-                inputType="number"
-                inputClass={css.dailyNormaInput}
-                error={errors.dailyNorma ? true : false}
-                {...field}
-                onChange={e => {
-                  setManualDailyNorma(true);
-                  field.onChange(e.target.value);
-                }}
-              />
-            )}
-          />
-          {errors.dailyNorma && (
-            <p className={css.errorMessage}>{errors.dailyNorma.message}</p>
+        <Controller
+          name="dailyNorma"
+          control={control}
+          render={({ field }) => (
+            <CustomInput
+              label
+              labelName="Write down how much water you will drink:"
+              labelClass={css.dailyNormaLabel}
+              inputType="number"
+              inputClass={css.dailyNormaInput}
+              step="0.01"
+              error={errors.dailyNorma ? true : false}
+              {...field}
+              onChange={e => {
+                setManualDailyNorma(true);
+                field.onChange(e.target.value);
+              }}
+            />
           )}
+        />
+        {errors.dailyNorma && (
+          <p className={css.errorMessage}>{errors.dailyNorma.message}</p>
+        )}
         </div>
+
         <Button
           disabled={!isDirty || !isValid}
           addClass={css.saveButton}

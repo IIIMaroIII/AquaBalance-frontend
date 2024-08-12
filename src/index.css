@@ -17,13 +17,18 @@
   --light-dark: #323f47;
   --dark: #2f2f2f;
   --error-color: #ef5050;
+  --text-grey-white: #2f2f2f99;
+  --calendar-item-bcg: #323f4733;
+
+
 
   --input-border-inactive-color: rgba(47, 47, 47, 0.2);
-  --input-border-focused-color: rgba(47, 47, 47, 0.2);
-  --input-border-activated-color: rgba(47, 47, 47, 0.4);
+  --input-border-activated-color: rgba(47, 47, 47, 0.6);
   --input-text-inactive-color: rgba(47, 47, 47, 0.6);
 
   --signin-btn-disabled-color: rgba(47, 47, 47, 0.2);
+
+  --calendar-button-grey-backhround: rgba(50, 63, 71, 0.2);
 }
 
 html,

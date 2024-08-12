@@ -21,11 +21,11 @@ button.popover_btn {
 }
 
 button.popover_btn:hover .popover_icon {
-  stroke: var(--basic-dark-blue);
+  stroke: var(--light-dark);
 }
 
 button.popover_btn:hover {
-  color: var(--basic-dark-blue);
+  color: var(--light-dark);
   background-color: transparent;
 }
 

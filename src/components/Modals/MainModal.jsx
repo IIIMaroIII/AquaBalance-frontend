@@ -11,9 +11,12 @@ import UserSettingsModal from './UserSettingsModal/UserSettingsModal';
 import { changeModal } from 'src/redux/water/slice.js';
 import useModals from 'src/hooks/useModals.js';
 import CloseButton from 'src/components/REUSABLE/CloseButton/CloseButton.jsx';
+import useAuth from 'src/hooks/useAuth.js';
+import Loader from '../REUSABLE/Loader/Loader.jsx';
 
 const MainModal = ({ children }) => {
   const dispatch = useDispatch();
+  const { isUserLoading, isWaterLoading } = useAuth();
   const [afterOpen, setAfterOpen] = useState(false);
   const [beforeClose, setBeforeClose] = useState(false);
   const {
@@ -48,49 +51,51 @@ const MainModal = ({ children }) => {
     setAfterOpen(true);
   }, [modal]);
 
-  return (
-    <Modal
-      appElement={document.getElementById('root')}
-      isOpen={modal}
-      onRequestClose={() => {
-        setBeforeClose(!beforeClose);
-        setTimeout(() => {
-          dispatch(changeModal(false));
-        }, 500);
-      }}
-      contentLabel="Modal"
-      shouldCloseOnOverlayClick={true}
-      shouldCloseOnEsc={true}
-      className={clsx(
-        css.content,
-        waterModalAdd && css.waterModalContent,
-        waterModalEdit && css.waterModalContent,
-        usersSettingsModal && css.settingsModalContent
-      )}
-      overlayClassName={clsx(
-        css.overlay,
-        {
-          [css.afterOpen]: afterOpen,
-          [css.beforeClose]: beforeClose,
-        },
-      )}
-    >
-      <CloseButton
-        onClose={() => {
+  return isUserLoading || isWaterLoading ? (
+    <Loader />
+  ) : (
+    <>
+      {' '}
+      <Modal
+        appElement={document.getElementById('root')}
+        isOpen={modal}
+        onRequestClose={() => {
           setBeforeClose(!beforeClose);
           setTimeout(() => {
             dispatch(changeModal(false));
           }, 500);
         }}
-        addButtonClass={clsx(
-          waterModalAdd && css.closeWaterModalButton,
-          waterModalEdit && css.closeWaterModalButton,
-          usersSettingsModal && css.closeSettingsModalButton,
+        contentLabel="Modal"
+        shouldCloseOnOverlayClick={true}
+        shouldCloseOnEsc={true}
+        className={clsx(
+          css.content,
+          waterModalAdd && css.waterModalContent,
+          waterModalEdit && css.waterModalContent,
+          usersSettingsModal && css.settingsModalContent,
         )}
-      />
-      {renderModal()}
-      {children}
-    </Modal>
+        overlayClassName={clsx(css.overlay, {
+          [css.afterOpen]: afterOpen,
+          [css.beforeClose]: beforeClose,
+        })}
+      >
+        <CloseButton
+          onClose={() => {
+            setBeforeClose(!beforeClose);
+            setTimeout(() => {
+              dispatch(changeModal(false));
+            }, 500);
+          }}
+          addButtonClass={clsx(
+            waterModalAdd && css.closeWaterModalButton,
+            waterModalEdit && css.closeWaterModalButton,
+            usersSettingsModal && css.closeSettingsModalButton,
+          )}
+        />
+        {renderModal()}
+        {children}
+      </Modal>
+    </>
   );
 };
 

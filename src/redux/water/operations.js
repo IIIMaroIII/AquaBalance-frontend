@@ -1,13 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import toast from 'react-hot-toast';
 import CONSTANTS from 'src/components/Constants/constants.js';
 import AxiosWithCredentials from 'src/utils/axios.js';
+import { dateToLocalTime } from 'src/utils/dateToLocalTime.js';
 
 export const addWater = createAsyncThunk(
   'water/addWater',
   async (formData, { getState, rejectWithValue }) => {
     try {
       const chosenDate = getState().water.chosenDate;
+      console.log('chosenDate', chosenDate);
       formData.append('date', chosenDate);
 
       await AxiosWithCredentials.post(
@@ -87,11 +88,16 @@ export const fetchDailyWater = createAsyncThunk(
 
       const { data } = await AxiosWithCredentials.get(url);
 
-      if (data.status === 200) {
-        toast.success(data.message);
+      if (!data || !Array.isArray(data.data)) {
+        return rejectWithValue();
       }
 
-      return data;
+      const formattedToLocalTimeItems = data?.data.map(item => ({
+        ...item,
+        date: dateToLocalTime(item.date),
+      }));
+
+      return formattedToLocalTimeItems;
     } catch (error) {
       return rejectWithValue(
         error.response ? error.response.data : error.message,
@@ -110,13 +116,16 @@ export const fetchMonthlyWater = createAsyncThunk(
       }?chosenDate=${encodeURIComponent(chosenDate)}`;
       const { data } = await AxiosWithCredentials.get(url);
 
-      if (data.status === 200) {
-        toast.success(data.message);
+      if (!data || !Array.isArray(data.data)) {
+        return rejectWithValue();
       }
 
-      console.log('data', data);
+      const formattedToLocalTimeItems = data?.data.map(item => ({
+        ...item,
+        date: dateToLocalTime(item.date),
+      }));
 
-      return data;
+      return formattedToLocalTimeItems;
     } catch (error) {
       return rejectWithValue(
         error.response ? error.response.data : error.message,
