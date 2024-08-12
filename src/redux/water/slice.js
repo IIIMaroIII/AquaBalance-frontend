@@ -90,18 +90,18 @@ export const waterSlice = createSlice({
       })
       .addCase(fetchDailyWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.water.dailyItems = payload.data;
+        state.water.dailyItems = payload;
       })
       .addCase(fetchMonthlyWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.water.monthlyItems = payload.data;
+        state.water.monthlyItems = payload;
       })
       .addCase(changeWater.rejected, () => {
         return { ...initialState };
       })
       .addCase(fetchDailyWater.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.water.dailyItems = payload.data;
+        state.water.dailyItems = payload;
       })
       .addCase(addWater.rejected, () => {
         return { ...initialState };
@@ -111,7 +111,7 @@ export const waterSlice = createSlice({
       })
       .addCase(fetchMonthlyWater.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.water.monthlyItems = payload.data;
+        state.water.monthlyItems = payload;
       });
   },
 });

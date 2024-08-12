@@ -27,7 +27,8 @@ import { selectWaterItems } from 'src/redux/water/selectors.js';
 import { selectChosenWaterCardId } from 'src/redux/water/selectors.js';
 
 const WaterForm = ({ operationName }) => {
-  const { getHoursAndMinutes, setHoursAndMinutes, chosenDate } = useChosenDate();
+  const { getHoursAndMinutes, setHoursAndMinutes, chosenDate } =
+    useChosenDate();
 
   const dispatch = useDispatch();
   const waterItems = useSelector(selectWaterItems);
@@ -57,7 +58,7 @@ const WaterForm = ({ operationName }) => {
     resolver: yupResolver(waterModalFormValidation),
     defaultValues: {
       time: initialTime,
-      waterAmount: initialWaterAmount
+      waterAmount: initialWaterAmount,
     },
   });
 
@@ -82,36 +83,28 @@ const WaterForm = ({ operationName }) => {
   };
 
   const onSubmit = async data => {
-    console.log(data)
     const { waterAmount, time } = data;
     const formData = new FormData();
     formData.append('waterValue', waterAmount);
 
     const [hours, minutes] = time.split(':').map(Number);
     setHoursAndMinutes(hours, minutes);
-console.log(chosenDate)
     try {
       if (operationName === 'add') {
-        await dispatch(addWater(formData)).then(res => {
-          console.log(res);
+        await dispatch(addWater(formData)).then(() => {
           toast.success('You have successfully added the amount of water!');
           dispatch(changeWaterModalAdd(false));
           dispatch(changeModal(false));
-          dispatch(fetchMonthlyWater())
-            .unwrap()
-            .then(res => {
-              console.log(res)
-              dispatch(fetchDailyWater()).unwrap().then(res => console.log(res));
-            });
+          dispatch(fetchMonthlyWater());
+          dispatch(fetchDailyWater());
         });
       } else {
-        await dispatch(changeWater(formData)).then(res => {
+        await dispatch(changeWater(formData)).then(() => {
           toast.success('You have successfully edited the amount of water!');
           dispatch(changeWaterModalEdit(false));
           dispatch(changeModal(false));
-          dispatch(fetchMonthlyWater())
-            .unwrap()
-            .then(() => dispatch(fetchDailyWater()));
+          dispatch(fetchMonthlyWater());
+          dispatch(fetchDailyWater());
         });
       }
     } catch (error) {
