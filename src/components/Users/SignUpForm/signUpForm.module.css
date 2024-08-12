@@ -146,14 +146,15 @@
   right: 18px;
 }
 
+
 /* .inputContainer button.eyeIcon:hover,
 .inputContainer button.eyeIcon:focus,
 .inputContainer button.eyeIcon:active {
   background-color: transparent;
 } */
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .eyeIcon {
-    bottom: 18px;
+    bottom: 15px;
   }
 }
