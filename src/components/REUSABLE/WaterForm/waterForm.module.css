@@ -124,6 +124,10 @@ button.saveButton:active {
   margin-top: 8px;
 }
 
+.form input.inputError {
+  color: var(--error-color);
+}
+
 @media (min-width: 768px) {
   .amountText {
     font-size: 16px;
