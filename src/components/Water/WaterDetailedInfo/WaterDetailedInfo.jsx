@@ -3,14 +3,23 @@ import UserPanel from 'src/components/Users/UserPanel/UserPanel.jsx';
 import MonthInfo from './MonthInfo/MonthInfo.jsx';
 import DailyInfo from './DailyInfo/DailyInfo.jsx';
 import Container from 'src/components/REUSABLE/Container/Container.jsx';
+import useAuth from 'src/hooks/useAuth.js';
+import Loader from 'src/components/REUSABLE/Loader/Loader.jsx';
 
 const WaterDetailedInfo = () => {
-  return (
-    <Container type="section" addClass={css.waterDetailedInfoContainer}>
-      <UserPanel />
-      <DailyInfo />
-      <MonthInfo />
-    </Container>
+  const { isWaterLoading } = useAuth();
+  return isWaterLoading ? (
+    <>
+      <Loader />
+    </>
+  ) : (
+    <>
+      <Container type="section" addClass={css.waterDetailedInfoContainer}>
+        <UserPanel />
+        <DailyInfo />
+        <MonthInfo />
+      </Container>
+    </>
   );
 };
 

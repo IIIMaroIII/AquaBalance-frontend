@@ -31,9 +31,8 @@ export const CalendarItem = ({ day, activeDay, setActiveDay }) => {
           onClick={() => {
             setActiveDay(day);
             setChosenDay(day);
-            dispatch(fetchMonthlyWater())
-              .unwrap()
-              .then(() => dispatch(fetchDailyWater()));
+            dispatch(fetchMonthlyWater());
+            dispatch(fetchDailyWater());
           }}
         >
           {day}

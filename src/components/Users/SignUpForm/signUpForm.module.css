@@ -86,6 +86,7 @@
 .form button.button:disabled {
   color: rgba(47, 47, 47, 0.3);
   background-color: var(--light-gray);
+  border-color: rgba(47, 47, 47, 0.3);
   cursor: not-allowed;
 }
 

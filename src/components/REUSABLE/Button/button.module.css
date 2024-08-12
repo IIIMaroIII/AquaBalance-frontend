@@ -24,9 +24,16 @@
 }
 
 .btn:disabled {
-  border: 1px solid var(--signin-btn-disabled-color);
-  color: var(--signin-btn-disabled-color);
-  background-color: transparent;
+  color: var(--input-border-inactive-color);
+  background-color: var(--light-gray);
+  border: 1px solid var(--input-border-inactive-color);
+  cursor: not-allowed;
+}
+.isDisabled {
+  color: var(--input-border-inactive-color);
+  background-color: var(--light-gray);
+  border: 1px solid var(--input-border-inactive-color);
+  cursor: not-allowed;
 }
 
 .btn.isSelected {
