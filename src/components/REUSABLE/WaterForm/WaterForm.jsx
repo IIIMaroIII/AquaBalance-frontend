@@ -57,6 +57,7 @@ const WaterForm = ({ operationName }) => {
     resolver: yupResolver(waterModalFormValidation),
     defaultValues: {
       time: initialTime,
+      waterAmount: initialWaterAmount
     },
   });
 
@@ -172,7 +173,7 @@ console.log(chosenDate)
             labelName={'Enter the value of the water used:'}
             labelClass={css.waterAmountLabel}
             inputClass={css.input}
-            value={waterAmount}
+            value={field.value}
             onChange={e => {
               const inputValue = e.target.value;
               if (/^\d*$/.test(inputValue)) {

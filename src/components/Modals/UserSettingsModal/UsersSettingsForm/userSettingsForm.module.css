@@ -11,7 +11,7 @@
 
 /* Wrappers ============================== */
 .errorMessage {
-  color: var(--red-error);
+  color: var(--error-color);
 }
 
 .file {

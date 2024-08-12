@@ -34,7 +34,7 @@ const UsersSettingsForm = () => {
     watch,
     formState: { errors, isDirty, isValid },
   } = useForm({
-    // resolver: yupResolver(userSettingsFormValidation),
+    resolver: yupResolver(userSettingsFormValidation),
     mode: 'onChange',
     reValidateMode: 'onChange',
     defaultValues: {
