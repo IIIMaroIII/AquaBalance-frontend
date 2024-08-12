@@ -15,8 +15,9 @@ const WelcomeSection = () => {
     //Container - переиспользуемый кастомный компонент, добавление классов через addClass
     //CustomNavLink - переиспользуемый кастомный компонент, добавление классов через addClass
 
-    <Container type="section" addClass={css.container}>
-      <Logo />
+    <Container type="section" addClass={css.sectionContainer}>
+      <Container type="div" addClass={css.container}>
+      <Logo addClass={css.logo} />
       <div className={css.containerWithoutLogo}>
         <p className={css.text}>Record daily water intake and track</p>
         <h1 className={css.title}>Water consumption tracker</h1>
@@ -63,6 +64,7 @@ const WelcomeSection = () => {
           </li> */}
         </ul>
       </div>
+      </Container>
     </Container>
   );
 };

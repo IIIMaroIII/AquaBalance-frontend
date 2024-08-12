@@ -13,15 +13,16 @@
 }
 
 .label {
-  margin-bottom: 16px;
+  margin-top: 16px;
   color: var(--dark);
   font-size: 14px;
   font-weight: 700;
   line-height: 1.28;
   letter-spacing: -1%;
+  position: relative;
 
   @media (min-width: 768px) {
-    margin-bottom: 20px;
+    margin-top: 20px;
   }
 }
 
@@ -106,6 +107,18 @@
   font-weight: 400;
   line-height: 1;
   letter-spacing: -1%;
+  margin-top: 4px;
+}
+
+.eyeIcon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
 }
 
 @media (min-width: 768px) {

@@ -72,6 +72,7 @@ const MainModal = ({ children }) => {
           css.content,
           waterModalAdd && css.waterModalContent,
           waterModalEdit && css.waterModalContent,
+          usersSettingsModal && css.settingsModalContent,
         )}
         overlayClassName={clsx(css.overlay, {
           [css.afterOpen]: afterOpen,
@@ -88,6 +89,7 @@ const MainModal = ({ children }) => {
           addButtonClass={clsx(
             waterModalAdd && css.closeWaterModalButton,
             waterModalEdit && css.closeWaterModalButton,
+            usersSettingsModal && css.closeSettingsModalButton,
           )}
         />
         {renderModal()}
