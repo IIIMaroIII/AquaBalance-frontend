@@ -1,13 +1,19 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import css from './WaterProgressBar.module.css';
 import { useSelector } from 'react-redux';
 import { dailyNormaPercentage } from 'src/redux/water/selectors.js';
 
 const WaterProgressBar = () => {
   const percentage = useSelector(dailyNormaPercentage(new Date().getDate()));
-  const ref = useRef(percentage);
+  const percent = useRef(0);
 
-  if (ref.current === 0) ref.current = percentage;
+  if (percent.current === 0) {
+    percent.current = percentage;
+  }
+
+  useEffect(() => {
+    percent.current = percentage;
+  }, [percentage]);
 
   return (
     <div className={css.WaterProgressBar_container}>
@@ -15,10 +21,12 @@ const WaterProgressBar = () => {
       <div className={css.WaterProgressBar}>
         <div
           className={css.progress}
-          style={{ width: `${ref.current}%` }}
+          style={{
+            width: `${percentage === 0 ? percent.current : percentage}%`,
+          }}
         ></div>
-        <div className={css.thumb} style={{ left: `${ref.current}%` }}>
-          <div className={css.thumb_value}>{`${ref.current}%`}</div>
+        <div className={css.thumb} style={{ left: `${percentage === 0 ? percent.current : percentage}%` }}>
+          <div className={css.thumb_value}>{`${percentage === 0 ? percent.current : percentage}%`}</div>
         </div>
       </div>
       <div className={css.progress_labels}>
