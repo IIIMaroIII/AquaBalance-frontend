@@ -93,8 +93,8 @@ export const fetchDailyWater = createAsyncThunk(
         toast.success(data.message);
       }
 
-      if (!data || !Array.isArray(data.data) || data.data.length === 0) {
-        return rejectWithValue([]);
+      if (!data || !Array.isArray(data.data)) {
+        return rejectWithValue();
       }
 
       const formattedToLocalTimeItems = data?.data.map(item => ({
@@ -130,8 +130,8 @@ export const fetchMonthlyWater = createAsyncThunk(
         toast.success(data.message);
       }
 
-      if (!data || !Array.isArray(data.data) || data.data.length === 0) {
-        return rejectWithValue([]);
+      if (!data || !Array.isArray(data.data)) {
+        return rejectWithValue();
       }
 
       const formattedToLocalTimeItems = data?.data.map(item => ({

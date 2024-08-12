@@ -42,6 +42,7 @@ export const dailyNormaPercentage = (day = 1) =>
     },
   );
 
+
 export const daysWithRecords = createSelector(
   [selectMonthlyWaterItems],
   monthlyWaterItems => {

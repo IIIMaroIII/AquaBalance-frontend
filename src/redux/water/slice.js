@@ -99,9 +99,9 @@ export const waterSlice = createSlice({
       .addCase(changeWater.rejected, () => {
         return { ...initialState };
       })
-      .addCase(fetchDailyWater.rejected, (state, { payload }) => {
+      .addCase(fetchDailyWater.rejected, state => {
         state.isLoading = false;
-        state.water.dailyItems = payload;
+        state.water.dailyItems = [];
       })
       .addCase(addWater.rejected, () => {
         return { ...initialState };
@@ -109,9 +109,9 @@ export const waterSlice = createSlice({
       .addCase(deleteWater.rejected, () => {
         return { ...initialState };
       })
-      .addCase(fetchMonthlyWater.rejected, (state, { payload }) => {
+      .addCase(fetchMonthlyWater.rejected, state => {
         state.isLoading = false;
-        state.water.monthlyItems = payload;
+        state.water.monthlyItems = [];
       });
   },
 });
