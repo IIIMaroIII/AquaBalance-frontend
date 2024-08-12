@@ -89,9 +89,9 @@ export const fetchDailyWater = createAsyncThunk(
 
       const { data } = await AxiosWithCredentials.get(url);
 
-      if (!data || !Array.isArray(data.data) || data.data.length === 0) {
-        return rejectWithValue([]);
-      }
+      if (!data || !Array.isArray(data.data)) {
+        return rejectWithValue();
+
 
       const formattedToLocalTimeItems = data?.data.map(item => ({
         ...item,
@@ -119,8 +119,8 @@ export const fetchMonthlyWater = createAsyncThunk(
       const { data } = await AxiosWithCredentials.get(url);
 
 
-      if (!data || !Array.isArray(data.data) || data.data.length === 0) {
-        return rejectWithValue([]);
+      if (!data || !Array.isArray(data.data)) {
+        return rejectWithValue();
       }
 
       const formattedToLocalTimeItems = data?.data.map(item => ({
