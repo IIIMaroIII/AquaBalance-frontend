@@ -4,11 +4,16 @@
   align-items: center;
 }
 
-.btn {
+button.btn {
   background-color: transparent;
   border: none;
   padding: 0;
   width: 16px;
+}
+
+button.btn:hover,
+button.btn:focus {
+  background-color: transparent;
 }
 
 .span {
