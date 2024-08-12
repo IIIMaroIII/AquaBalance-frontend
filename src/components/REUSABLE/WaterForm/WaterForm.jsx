@@ -25,6 +25,7 @@ import {
 } from 'src/redux/water/slice';
 import { selectWaterItems } from 'src/redux/water/selectors.js';
 import { selectChosenWaterCardId } from 'src/redux/water/selectors.js';
+import clsx from 'clsx';
 
 const WaterForm = ({ operationName }) => {
   const { getHoursAndMinutes, setHoursAndMinutes, chosenDate } =
@@ -120,7 +121,7 @@ const initialTime =
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
       <p className={css.amountText}>Amount of water:</p>
       <div className={css.changeAmountContainer}>
         <Button
@@ -153,8 +154,8 @@ const initialTime =
             label={true}
             labelName={'Recording time:'}
             labelClass={css.recordingTimeLabel}
-            inputClass={css.input}
-            value={field.value} 
+            inputClass={clsx(css.input, errors.time && css.inputError)}
+            value={field.value}
             name={'date'}
             error={errors.time ? true : false}
             onChange={e => {
@@ -173,7 +174,7 @@ const initialTime =
             labelName={'Enter the value of the water used:'}
             inputType="number"
             labelClass={css.waterAmountLabel}
-            inputClass={css.input}
+            inputClass={clsx(css.input, errors.waterAmount && css.inputError)}
             value={field.value}
             onChange={e => {
               const inputValue = e.target.value;           
