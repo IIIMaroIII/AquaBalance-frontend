@@ -38,8 +38,6 @@ const ChartComponent = () => {
     })
     .sort((a, b) => a.day - b.day);
 
-  console.log(arr);
-
   const yTicks = Array.from({ length: 6 }, (_, i) => i * 0.5);
 
   const formatYAxis = tickItem => {
