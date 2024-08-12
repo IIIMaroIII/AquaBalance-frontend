@@ -6,7 +6,6 @@ import { dailyNormaPercentage } from 'src/redux/water/selectors.js';
 const WaterProgressBar = () => {
   const percentage = useSelector(dailyNormaPercentage(new Date().getDate()));
   const ref = useRef(percentage);
-  console.log('ref :>> ', ref);
 
   if (ref.current === 0) ref.current = percentage;
 
