@@ -19,7 +19,7 @@ button.button:focus {
   width: 14px;
   height: 14px;
   fill: var(--white);
-  stroke: black;
+  stroke: var(--light-dark);
 }
 
 .iconGlass {
@@ -38,7 +38,7 @@ button.button:focus {
   font-weight: 700;
   font-size: 14px;
   line-height: 100%;
-  color: var(--main);
+  color: var(--light-dark);
 }
 
 .itemTime {
@@ -46,7 +46,7 @@ button.button:focus {
   font-weight: 400;
   font-size: 12px;
   line-height: 100%;
-  color: var(--text-grey-white);
+  color: rgba(47, 47, 47, 0.6);
 }
 
 .dataWrapper {

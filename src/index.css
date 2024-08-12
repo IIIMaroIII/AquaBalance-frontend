@@ -6,7 +6,7 @@
 Переменные
 */
   --shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-
+  --basic-dark-blue: #323f47;
   --transition-delay: 250ms;
   --transition: cubic-bezier(0.14, 0.57, 0.97, 0.39);
 
