@@ -1,13 +1,14 @@
 import { useEffect, useRef } from 'react';
 import css from './WaterProgressBar.module.css';
 import { useSelector } from 'react-redux';
-import { dailyNormaPercentage } from 'src/redux/water/selectors.js';
+import { dailyNormaPercentage, selectWaterItems } from 'src/redux/water/selectors.js';
 
 const WaterProgressBar = () => {
   const percentage = useSelector(dailyNormaPercentage(new Date().getDate()));
+  const dailyItems = useSelector(selectWaterItems);
   const percent = useRef(0);
 
-  if (percent.current === 0) {
+  if (percent.current === 0 || dailyItems.length === 0) {
     percent.current = percentage;
   }
 
