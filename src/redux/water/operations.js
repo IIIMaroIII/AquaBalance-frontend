@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import toast from 'react-hot-toast';
 import CONSTANTS from 'src/components/Constants/constants.js';
 import AxiosWithCredentials from 'src/utils/axios.js';
 import { dateToLocalTime } from 'src/utils/dateToLocalTime.js';
@@ -91,13 +90,12 @@ export const fetchDailyWater = createAsyncThunk(
 
       if (!data || !Array.isArray(data.data)) {
         return rejectWithValue();
-
+      }
 
       const formattedToLocalTimeItems = data?.data.map(item => ({
         ...item,
         date: dateToLocalTime(item.date),
       }));
-
 
       return formattedToLocalTimeItems;
     } catch (error) {
@@ -118,7 +116,6 @@ export const fetchMonthlyWater = createAsyncThunk(
       }?chosenDate=${encodeURIComponent(chosenDate)}`;
       const { data } = await AxiosWithCredentials.get(url);
 
-
       if (!data || !Array.isArray(data.data)) {
         return rejectWithValue();
       }
@@ -127,7 +124,6 @@ export const fetchMonthlyWater = createAsyncThunk(
         ...item,
         date: dateToLocalTime(item.date),
       }));
-
 
       return formattedToLocalTimeItems;
     } catch (error) {
