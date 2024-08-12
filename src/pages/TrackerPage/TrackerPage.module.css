@@ -74,7 +74,7 @@
   }
   .detailedInfo {
     padding: 32px;
-    width: 704px;
+    width: 672px;
     min-height: 736px;
   }
   @media screen and (min-device-pixel-ratio: 2) and (min-width: 1440px),
