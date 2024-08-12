@@ -5,9 +5,11 @@ import { TOAST } from '../Constants/constants.js';
 import MainModal from '../Modals/MainModal.jsx';
 import useModals from 'src/hooks/useModals.js';
 import css from './sharedLayout.module.css';
+import useAuth from 'src/hooks/useAuth.js';
 
 const SharedLayout = ({ children }) => {
   const { modal } = useModals();
+  const { isUserLoading } = useAuth();
 
   return (
     <div className={css.wrapper}>
@@ -19,7 +21,13 @@ const SharedLayout = ({ children }) => {
         containerStyle={{}}
         toastOptions={TOAST.options}
       />
-      <Suspense fallback={<Loader />}>{children}</Suspense>
+      {isUserLoading ? (
+        <>
+          <Loader />
+        </>
+      ) : (
+        <Suspense fallback={null}>{children}</Suspense>
+      )}
       {modal ? <MainModal /> : <></>}
     </div>
   );

@@ -13,9 +13,10 @@ import { update } from 'src/redux/users/operations.js';
 import { changeModal } from 'src/redux/water/slice.js';
 import toast from 'react-hot-toast';
 import CustomInput from 'src/components/REUSABLE/Input/CustomInput.jsx';
-import Container from 'src/components/REUSABLE/Container/Container.jsx';
 import CONSTANTS, { IMAGES } from 'src/components/Constants/constants.js';
 import { userSettingsFormValidation } from 'src/Validation/userSettingsForm.js';
+import Loader from 'src/components/REUSABLE/Loader/Loader.jsx';
+import useAuth from 'src/hooks/useAuth.js';
 
 const UsersSettingsForm = () => {
   const user = useSelector(selectUser);
@@ -36,12 +37,11 @@ const UsersSettingsForm = () => {
   } = useForm({
     resolver: yupResolver(userSettingsFormValidation),
     mode: 'onChange',
-    reValidateMode: 'onChange',
     defaultValues: {
-      gender: 'woman',
-      weight: 0,
-      activeTime: 0,
-      dailyNorma: 1.8,
+      gender: user?.gender || 'man',
+      weight: user?.weight || 0,
+      activeTime: user?.activeTime || 0,
+      dailyNorma: user?.dailyNorma || 1.8,
       email: user?.email || '',
       name: user?.name || 'User',
     },
@@ -274,6 +274,7 @@ const UsersSettingsForm = () => {
               labelName="Write down how much water you will drink:"
               inputType="number"
               inputClass={css.input}
+              step="0.01"
               error={errors.dailyNorma ? true : false}
               {...field}
               onChange={e => {

@@ -17,7 +17,7 @@ const SignInPage = () => {
         <Logo addClass={css.logo} />
         <SignInForm />
         <p className={css.noAccountText}>
-          Don't have an account?{' '}
+          Do not have an account?{' '}
           <CustomNavLink to="/signup" addClass={css.noAccountLink}>
             Sign Up
           </CustomNavLink>
