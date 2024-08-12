@@ -88,6 +88,17 @@ label.recordingTimeLabel {
   border-color: rgba(47, 47, 47, 0.15);
 }
 
+.recordingTimeLabel .input:hover:not(:focus),
+.waterAmountLabel .input:hover:not(:focus) {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.recordingTimeLabel .input:hover,
+.waterAmountLabel .input:focus,
+.waterAmountLabel .input:active {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
 label.waterAmountLabel {
   margin-top: 24px;
   font-weight: 700;

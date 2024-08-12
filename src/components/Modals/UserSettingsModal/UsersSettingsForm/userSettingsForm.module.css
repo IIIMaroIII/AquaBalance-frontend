@@ -97,7 +97,12 @@
 }
 
 .errorMessage {
-  color: var(--red-error);
+  color: var(--error-color);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -1%;
+  margin-top: 8px;
 }
 
 .genderText {
@@ -153,6 +158,10 @@
   border: 1px solid rgba(47, 47, 47, 0.4);
 }
 
+.nameInput:hover:not(:focus) {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
 .nameLabel .nameInput.inactive:hover {
   border: 1px solid rgba(47, 47, 47, 0.4);
 }
@@ -175,6 +184,10 @@
   line-height: 1.28;
   color: var(--dark);
   height: 46px;
+}
+
+.emailInput:hover:not(:focus) {
+  border: 1px solid rgba(47, 47, 47, 0.4);
 }
 
 .emailLabel input.emailInput:hover,
@@ -262,7 +275,6 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.28;
-  margin-bottom: 14px;
 }
 
 .weightInput {
@@ -276,11 +288,21 @@
   height: 46px;
 }
 
+.weightLabel input.weightInput:hover,
+.weightLabel input.weightInput:active,
+.weightLabel input.weightInput:focus {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.weightInput:hover:not(:focus) {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
 .activeTimeLabel {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.28;
-  margin-bottom: 24px;
+  margin-top: 14px;
 }
 
 .activeTimeInput {
@@ -292,6 +314,16 @@
   line-height: 1.28;
   color: var(--dark);
   height: 46px;
+}
+
+.activeTimeLabel input.activeTimeInput:hover,
+.activeTimeLabel input.activeTimeInput:active,
+.activeTimeLabel input.activeTimeInput:focus {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.activeTimeInput:hover:not(:focus) {
+  border: 1px solid rgba(47, 47, 47, 0.4);
 }
 
 .dailyNormaLabel {
@@ -312,6 +344,20 @@
   line-height: 1.28;
   color: var(--dark);
   height: 46px;
+}
+
+.dailyNormaLabel input.dailyNormaInput:hover,
+.dailyNormaLabel input.dailyNormaInput:active,
+.dailyNormaLabel input.dailyNormaInput:focus {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.dailyNormaInput:hover:not(:focus) {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.reqWaterTextContainer {
+  margin-top: 24px;
 }
 
 .reqWaterText {
@@ -335,10 +381,17 @@
   margin-top: 40px;
 }
 
-.saveButton:hover,
+.settingsForm .saveButton:hover,
 .saveButton:focus,
 .saveButton:active {
   background-color: var(--hover-green);
+}
+
+.settingsForm .saveButton:disabled {
+  cursor: not-allowed;
+  background-color: var(--light-gray);
+  color: rgba(50, 63, 71, 0.3);
+  border: none;
 }
 
 @media screen and (min-width: 768px) {
