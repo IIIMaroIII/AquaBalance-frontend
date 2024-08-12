@@ -15,7 +15,7 @@ const TrackerPage = () => {
   useEffect(() => {
     dispatch(fetchDailyWater());
     dispatch(fetchMonthlyWater());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Container type="section">
