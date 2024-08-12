@@ -10,6 +10,7 @@
   line-height: 32px;
   letter-spacing: -0.01em;
   margin-bottom: 20px;
+  color: var(--light-dark);
 }
 
 .span {
@@ -38,7 +39,7 @@
     font-size: 36px;
     line-height: 36px;
     margin-bottom: 0;
-    /* padding-top: 9px; */
+    
   }
 }
 @media screen and (min-width: 1440px) {
