@@ -21,8 +21,11 @@ const DeleteWaterModal = ({ children, ...otherProps }) => {
   return (
     <div className={css.deleteModal}>
       <div className={css.deleteModalwrapper}>
-        <h2 className={css.title}>Delete</h2>
-        <p className={css.text}>Do you really delete?</p>
+        <div className={css.titleText}>
+          <h2 className={css.title}>Delete entry</h2>
+          <p className={css.text}>Are you sure you want to delete the entry?</p>
+        </div>
+
         <div className={css.btnWrap}>
           <Button addClass={css.btn} onClick={handleSubmit} {...otherProps}>
             {children || 'Delete'}
