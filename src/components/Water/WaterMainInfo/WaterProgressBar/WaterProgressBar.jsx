@@ -15,6 +15,10 @@ const WaterProgressBar = () => {
     percent.current = percentage;
   }, [percentage]);
 
+  const instantPercentUpd = () => {
+    return percentage === 0 ? percent.current : percentage;
+  };
+
   return (
     <div className={css.WaterProgressBar_container}>
       <h2 className={css.WaterProgressBar_h2}>Today</h2>
@@ -22,11 +26,16 @@ const WaterProgressBar = () => {
         <div
           className={css.progress}
           style={{
-            width: `${percentage === 0 ? percent.current : percentage}%`,
+            width: `${instantPercentUpd()}%`,
           }}
         ></div>
-        <div className={css.thumb} style={{ left: `${percentage === 0 ? percent.current : percentage}%` }}>
-          <div className={css.thumb_value}>{`${percentage === 0 ? percent.current : percentage}%`}</div>
+        <div
+          className={css.thumb}
+          style={{
+            left: `${instantPercentUpd()}%`,
+          }}
+        >
+          <div className={css.thumb_value}>{`${instantPercentUpd()}%`}</div>
         </div>
       </div>
       <div className={css.progress_labels}>
