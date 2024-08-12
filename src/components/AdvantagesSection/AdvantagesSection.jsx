@@ -5,6 +5,7 @@ import Container from '../REUSABLE/Container/Container';
 import { requestTotalUsers } from 'src/utils/requestTotalUsers.js';
 
 import css from './AdvantagesSection.module.css';
+import clsx from 'clsx';
 // import useAuth from 'src/hooks/useAuth.js';
 
 const AdvantagesSection = () => {
@@ -27,7 +28,7 @@ const AdvantagesSection = () => {
 
   return (
     <Container type="section" addClass={css.container}>
-      <div className={css.ourHappyCustomersContainer}>
+      <div className={clsx(css.ourHappyCustomersContainer, totalUsers > 0 && css.ourHappyCustomersContainerWithTotalUsers)}>
         <div className={css.avatarsList}>
           <picture className={css.avatar}>
             <source
@@ -78,8 +79,13 @@ const AdvantagesSection = () => {
             />
           </picture>
         </div>
-        <div className={css.ourHappyCustomersText}>
-          Our<span className={css.ourHappyCustomersTextSpan}> {totalUsers > 0 ? totalUsers : null} happy</span> customers
+        <div className={clsx(css.ourHappyCustomersText, totalUsers > 0 && css.ourHappyCustomersTextWithTotalUsers)}>
+          Our
+          <span className={css.ourHappyCustomersTextSpan}>
+            {' '}
+            {totalUsers > 0 ? totalUsers : null} happy
+          </span>{' '}
+          customers
         </div>
       </div>
       <ul className={css.advantagesList}>

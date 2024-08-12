@@ -16,6 +16,8 @@ import CustomInput from 'src/components/REUSABLE/Input/CustomInput.jsx';
 import Container from 'src/components/REUSABLE/Container/Container.jsx';
 import CONSTANTS, { IMAGES } from 'src/components/Constants/constants.js';
 import { userSettingsFormValidation } from 'src/Validation/userSettingsForm.js';
+import sprite from '../../../../assets/sprite.svg';
+import clsx from 'clsx';
 
 const UsersSettingsForm = () => {
   const user = useSelector(selectUser);
@@ -93,200 +95,213 @@ const UsersSettingsForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className={css.settingsForm}>
-        <div className={css.photoUrlWrapper}>
-          {photoPreview ? (
-            <img
-              className={css.photoUrl}
-              src={photoPreview}
-              alt="Photo Preview"
-            />
-          ) : (
-            <img
-              className={css.photoUrl}
-              src={'src/assets/pictures/userImg.png'}
-              alt="Default Preview"
-            />
-          )}
-          <div className={css.fileWrapper}>
-            <div className={css.uploadPhotoBtnContainer}>
-              <Button addClass={css.uploadPhoto}>
-                <FiLogOut className={css.logOutIcon} />
-                <p>Upload a photo</p>
+        <div className={css.uploadPhotoWrapper}>
+          <div className={css.photoUrlWrapper}>
+            {photoPreview ? (
+              <img
+                className={css.photoUrl}
+                src={photoPreview}
+                alt="Photo Preview"
+              />
+            ) : (
+              <img
+                className={css.photoUrl}
+                src={'src/assets/pictures/userImg.png'}
+                alt="Default Preview"
+              />
+            )}
+          </div>
+          <div className={css.uploadPhotoButtonWrapper}>
+            <Button addClass={css.uploadPhotoButton}>
+              {/* <svg className={css.uploadIcon}>
+                <use xlinkHref={`${sprite}#icon-upload`}></use>
+              </svg> */}
+              <FiLogOut className={css.uploadIcon} />
+              <p className={css.uploadText}>Upload a photo</p>
 
-                <Controller
-                  name="photoUrl"
-                  control={control}
-                  render={({ field }) => (
-                    <CustomInput
-                      inputClass={css.file}
-                      inputType="file"
-                      inputName="file"
-                      onChange={e => {
-                        handleFileChange(e);
-                        field.onChange(e.target.files);
-                      }}
-                    />
-                  )}
-                />
-              </Button>
-            </div>
+              <Controller
+                name="photoUrl"
+                control={control}
+                render={({ field }) => (
+                  <CustomInput
+                    inputClass={css.fileInput}
+                    inputType="file"
+                    inputName="file"
+                    onChange={e => {
+                      handleFileChange(e);
+                      field.onChange(e.target.files);
+                    }}
+                  />
+                )}
+              />
+            </Button>
           </div>
         </div>
 
         {errors.photoUrl && <p>{errors.photoUrl.message}</p>}
 
-        <div>
-          <p className={css.genderText}>Your gender identity</p>
+        <div className={css.settingsFormContainerWithoutUploadPhotoAndButton}>
+          <div className={css.genderContainer}>
+            <p className={css.genderText}>Your gender identity</p>
+            <Controller
+              name="gender"
+              control={control}
+              render={({ field }) => (
+                <div className={css.genderInputsContainer}>
+                  <CustomInput
+                    label
+                    labelName="Woman"
+                    labelClass={css.genderInputLabel}
+                    inputType="radio"
+                    inputClass={css.genderInput}
+                    value="woman"
+                    checked={field.value === 'woman'}
+                    onChange={e => field.onChange(e.target.value)}
+                  />
+                  <CustomInput
+                    label
+                    labelName="Man"
+                    labelClass={css.genderInputLabel}
+                    inputType="radio"
+                    inputClass={css.genderInput}
+                    value="man"
+                    checked={field.value === 'man'}
+                    onChange={e => field.onChange(e.target.value)}
+                  />
+                </div>
+              )}
+            />
+            {errors.gender && <p>{errors.gender.message}</p>}
+          </div>
+
           <Controller
-            name="gender"
+            name="name"
             control={control}
             render={({ field }) => (
-              <>
-                <CustomInput
-                  label
-                  labelName="Woman"
-                  inputType="radio"
-                  inputClass={css.input}
-                  value="woman"
-                  checked={field.value === 'woman'}
-                  onChange={e => field.onChange(e.target.value)}
-                />
-                <CustomInput
-                  label
-                  labelName="Man"
-                  inputType="radio"
-                  inputClass={css.input}
-                  value="man"
-                  checked={field.value === 'man'}
-                  onChange={e => field.onChange(e.target.value)}
-                />
-              </>
+              <CustomInput
+                label
+                labelName="Your name"
+                labelClass={css.nameLabel}
+                inputType="text"
+                inputClass={css.nameInput}
+                error={errors.name ? true : false}
+                {...field}
+              />
             )}
           />
-          {errors.gender && <p>{errors.gender.message}</p>}
-        </div>
-
-        <Controller
-          name="name"
-          control={control}
-          render={({ field }) => (
-            <CustomInput
-              label
-              labelName="Your name"
-              inputType="text"
-              inputClass={css.input}
-              error={errors.name ? true : false}
-              {...field}
-            />
+          {errors.name && (
+            <p className={css.errorMessage}>{errors.name.message}</p>
           )}
-        />
-        {errors.name && (
-          <p className={css.errorMessage}>{errors.name.message}</p>
-        )}
 
-        <Controller
-          name="email"
-          control={control}
-          render={({ field }) => (
-            <CustomInput
-              label
-              labelName="Email"
-              disabled={true}
-              inputType="email"
-              inputClass={css.input}
-              {...field}
-            />
-          )}
-        />
-        {errors.email && <p>{errors.email.message}</p>}
+          <Controller
+            name="email"
+            control={control}
+            render={({ field }) => (
+              <CustomInput
+                label
+                labelName="Email"
+                labelClass={css.emailLabel}
+                disabled={true}
+                inputType="email"
+                inputClass={css.emailInput}
+                {...field}
+              />
+            )}
+          />
+          {errors.email && <p>{errors.email.message}</p>}
 
-        <div className={css.dailyNormaWrapper}>
-          <p className={css.dailyNormaTitle}>My daily norma</p>
-          <div className={css.dailyNormaByGender}>
-            <div className={css.dailyNormaByGenderWrapper}>
-              <p>For woman:</p>
-              <p className={css.accent}>V=(M*0,03) + (T*0,4)</p>
+          <div className={css.dailyNormaWrapper}>
+            <p className={css.dailyNormaTitle}>My daily norma</p>
+            <div className={css.dailyNormaByGender}>
+              <div className={css.dailyNormaByGenderWrapper}>
+                <p className={css.dailyNormaForGenderText}>For woman:</p>
+                <p className={css.accent}>V=(M*0,03) + (T*0,4)</p>
+              </div>
+              <div className={css.dailyNormaByGenderWrapper}>
+                <p className={css.dailyNormaForGenderText}>For man:</p>
+                <p className={css.accent}>V=(M*0,04) + (T*0,6)</p>
+              </div>
             </div>
-            <div className={css.dailyNormaByGenderWrapper}>
-              <p>For man:</p>
-              <p className={css.accent}>V=(M*0,04) + (T*0,6)</p>
+            <p className={clsx(css.apFrame, css.textInstruction)}>
+              <span className={css.accent}>*</span> V is the volume of the water
+              norm in liters per day, M is your body weight, T is the time of
+              active sports, or another type of activity commensurate in terms
+              of loads (in the absence of these, you must set 0)
+            </p>
+            <div className={css.exclamatoryTextContainer}>
+              <BsExclamationLg className={css.exclamation} />
+              <p className={css.exclamatoryText}>Active time in hours</p>
             </div>
           </div>
-          <p className={`${css.apFrame} ${css.textInstruction}`}>
-            <span className={css.accent}>*</span> V is the volume of the water
-            norm in liters per day, M is your body weight, T is the time of
-            active sports, or another type of activity commensurate in terms of
-            loads (in the absence of these, you must set 0)
-          </p>
-          <div className={css.exclamatoryTextContainer}>
-            <BsExclamationLg className={css.exclamation} />
-            <p className={css.exclamatoryText}>Active time in hours</p>
+          {/* половина */}
+          <Controller
+            name="weight"
+            control={control}
+            render={({ field }) => (
+              <CustomInput
+                label
+                labelName="Your weight in kilograms:"
+                labelClass={css.weightLabel}
+                inputType="number"
+                error={errors.weight ? true : false}
+                inputClass={css.weightInput}
+                {...field}
+              />
+            )}
+          />
+          {errors.weight && (
+            <p className={css.errorMessage}>{errors.weight.message}</p>
+          )}
+
+          <Controller
+            name="activeTime"
+            control={control}
+            render={({ field }) => (
+              <CustomInput
+                label
+                labelName="The time of active participation in sports:"
+                labelClass={css.activeTimeLabel}
+                inputType="number"
+                inputClass={css.activeTimeInput}
+                error={errors.activeTime ? true : false}
+                {...field}
+              />
+            )}
+          />
+          {errors.activeTime && (
+            <p className={css.errorMessage}>{errors.activeTime.message}</p>
+          )}
+
+          <div className={css.reqWaterTextContainer}>
+            <p className={clsx(css.apText, css.reqWaterText)}>
+              The required amount of water in liters per day:
+            </p>
+            <span className={css.accent}>1.8L</span>
           </div>
+
+          <Controller
+            name="dailyNorma"
+            control={control}
+            render={({ field }) => (
+              <CustomInput
+                label
+                labelName="Write down how much water you will drink:"
+                labelClass={css.dailyNormaLabel}
+                inputType="number"
+                inputClass={css.dailyNormaInput}
+                error={errors.dailyNorma ? true : false}
+                {...field}
+                onChange={e => {
+                  setManualDailyNorma(true);
+                  field.onChange(e.target.value);
+                }}
+              />
+            )}
+          />
+          {errors.dailyNorma && (
+            <p className={css.errorMessage}>{errors.dailyNorma.message}</p>
+          )}
         </div>
-
-        <Controller
-          name="weight"
-          control={control}
-          render={({ field }) => (
-            <CustomInput
-              label
-              labelName="Your weight in kilograms:"
-              inputType="number"
-              error={errors.weight ? true : false}
-              inputClass={css.input}
-              {...field}
-            />
-          )}
-        />
-        {errors.weight && (
-          <p className={css.errorMessage}>{errors.weight.message}</p>
-        )}
-
-        <Controller
-          name="activeTime"
-          control={control}
-          render={({ field }) => (
-            <CustomInput
-              label
-              labelName="The time of active participation in sports:"
-              inputType="number"
-              inputClass={css.input}
-              error={errors.activeTime ? true : false}
-              {...field}
-            />
-          )}
-        />
-        {errors.activeTime && (
-          <p className={css.errorMessage}>{errors.activeTime.message}</p>
-        )}
-
-        <p className={`${css.apText} ${css.reqWaterText}`}>
-          The required amount of water in liters per day:
-          <span className={css.accent}>1.8L</span>
-        </p>
-
-        <Controller
-          name="dailyNorma"
-          control={control}
-          render={({ field }) => (
-            <CustomInput
-              label
-              labelName="Write down how much water you will drink:"
-              inputType="number"
-              inputClass={css.input}
-              error={errors.dailyNorma ? true : false}
-              {...field}
-              onChange={e => {
-                setManualDailyNorma(true);
-                field.onChange(e.target.value);
-              }}
-            />
-          )}
-        />
-        {errors.dailyNorma && (
-          <p className={css.errorMessage}>{errors.dailyNorma.message}</p>
-        )}
-
         <Button
           disabled={!isDirty || !isValid}
           addClass={css.saveButton}

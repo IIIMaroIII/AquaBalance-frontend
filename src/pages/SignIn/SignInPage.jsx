@@ -13,15 +13,17 @@ const SignInPage = () => {
 
   return (
     <Container type="div" addClass={css.signInPage}>
-      <Container type="section" addClass={css.container}>
-        <Logo addClass={css.logo} />
-        <SignInForm />
-        <p className={css.noAccountText}>
-          Don't have an account?{' '}
-          <CustomNavLink to="/signup" addClass={css.noAccountLink}>
-            Sign Up
-          </CustomNavLink>
-        </p>
+      <Container type="section" addClass={css.sectionContainer}>
+        <Container addClass={css.signInPartContainer}>
+          <Logo addClass={css.logo} />
+          <SignInForm />
+          <p className={css.noAccountText}>
+            Don't have an account?{' '}
+            <CustomNavLink to="/signup" addClass={css.noAccountLink}>
+              Sign Up
+            </CustomNavLink>
+          </p>
+        </Container>
       </Container>
       {width >= 1440 ? <AdvantagesSection /> : null}
     </Container>

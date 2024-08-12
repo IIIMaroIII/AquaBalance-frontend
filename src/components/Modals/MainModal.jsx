@@ -61,11 +61,19 @@ const MainModal = ({ children }) => {
       contentLabel="Modal"
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}
-      className={clsx(css.content, waterModalAdd && css.waterModalContent, waterModalEdit && css.waterModalContent)}
-      overlayClassName={clsx(css.overlay, {
-        [css.afterOpen]: afterOpen,
-        [css.beforeClose]: beforeClose,
-      })}
+      className={clsx(
+        css.content,
+        waterModalAdd && css.waterModalContent,
+        waterModalEdit && css.waterModalContent,
+        usersSettingsModal && css.settingsModalContent
+      )}
+      overlayClassName={clsx(
+        css.overlay,
+        {
+          [css.afterOpen]: afterOpen,
+          [css.beforeClose]: beforeClose,
+        },
+      )}
     >
       <CloseButton
         onClose={() => {
@@ -74,7 +82,11 @@ const MainModal = ({ children }) => {
             dispatch(changeModal(false));
           }, 500);
         }}
-        addButtonClass={clsx(waterModalAdd && css.closeWaterModalButton, waterModalEdit && css.closeWaterModalButton)}
+        addButtonClass={clsx(
+          waterModalAdd && css.closeWaterModalButton,
+          waterModalEdit && css.closeWaterModalButton,
+          usersSettingsModal && css.closeSettingsModalButton,
+        )}
       />
       {renderModal()}
       {children}

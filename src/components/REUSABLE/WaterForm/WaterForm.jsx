@@ -141,7 +141,7 @@ const WaterForm = ({ operationName }) => {
           />
         )}
       />
-      {errors.time && <p>{errors.time.message}</p>}
+      {errors.time && <p className={css.error}>{errors.time.message}</p>}
       <Controller
         name="waterAmount"
         control={control}
@@ -166,8 +166,8 @@ const WaterForm = ({ operationName }) => {
           />
         )}
       />
-      {waterAmountError && <p>{waterAmountError}</p>}
-      {errors.waterAmount && <p>{errors.waterAmount.message}</p>}
+      {waterAmountError && <p className={css.error}>{waterAmountError}</p>}
+      {errors.waterAmount && <p className={css.error}>{errors.waterAmount.message}</p>}
       <Button type="submit" addClass={css.saveButton}>
         Save
       </Button>
