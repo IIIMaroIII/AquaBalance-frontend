@@ -71,7 +71,7 @@
   transform: translateX(-50%);
   white-space: nowrap;
   font-size: 12px;
-  background-color: transparent;
+  background-color: var(--white);
   padding: 2px 4px;
   border-radius: 4px;
   color: var(--green);

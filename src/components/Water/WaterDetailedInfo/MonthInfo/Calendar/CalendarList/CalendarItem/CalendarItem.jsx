@@ -8,14 +8,16 @@ import {
   fetchMonthlyWater,
 } from 'src/redux/water/operations.js';
 import clsx from 'clsx';
-import { convertDailyTotalVolumeToPercentage } from 'src/redux/water/selectors.js';
+import {
+  dailyNormaPercentage,
+  daysWithRecords,
+} from 'src/redux/water/selectors.js';
 
 export const CalendarItem = ({ day, activeDay, setActiveDay }) => {
   const dispatch = useDispatch();
   const { getChosenDay, setChosenDay } = useChosenDate();
-  const percentage = useSelector(convertDailyTotalVolumeToPercentage).toFixed(
-    0,
-  );
+  const dayWithRecord = useSelector(daysWithRecords);
+  const dailyPercentage = useSelector(dailyNormaPercentage(day));
 
   return (
     <>
@@ -24,6 +26,7 @@ export const CalendarItem = ({ day, activeDay, setActiveDay }) => {
           id={day}
           addClass={clsx(css.btn, {
             [css.active]: activeDay === day || getChosenDay() === day,
+            [css.done]: Number(dailyPercentage) === 100,
           })}
           onClick={() => {
             setActiveDay(day);
@@ -35,7 +38,9 @@ export const CalendarItem = ({ day, activeDay, setActiveDay }) => {
         >
           {day}
         </Button>
-        <p className={css.text}>{`${percentage}%`}</p>
+        <p className={css.text}>
+          {dayWithRecord.includes(day) ? `${dailyPercentage}%` : '0%'}
+        </p>
       </li>
     </>
   );
