@@ -6,6 +6,7 @@ import css from './MonthInfo.module.css';
 import { setShowChart } from 'src/redux/chart/slice.js';
 import { useNavigate } from 'react-router-dom';
 import ChartComponent from 'src/components/ChartComponent/ChartComponent.jsx';
+import sprite from "../../../../assets/sprite.svg"
 
 const MonthInfo = () => {
   const dispatch = useDispatch();
@@ -30,11 +31,13 @@ const MonthInfo = () => {
           <CalendarPagination />
           {showChart ? (
             <svg className={css.chartIcon} onClick={handleClick}>
-              <use href={'/src/assets/sprite.svg#icon-pie-chart-01'}></use>
+              <use xlinkHref={`${sprite}#icon-pie-chart-01`}></use>
+              {/* <use href={'/src/assets/sprite.svg#icon-pie-chart-01'}></use> */}
             </svg>
           ) : (
             <svg className={css.chartIcon} onClick={handleClick}>
-              <use href={'/src/assets/sprite.svg#icon-pie-chart-02'}></use>
+              {/* <use href={'/src/assets/sprite.svg#icon-pie-chart-02'}></use> */}
+              <use xlinkHref={`${sprite}#icon-pie-chart-02`}></use>
             </svg>
           )}
         </Container>
