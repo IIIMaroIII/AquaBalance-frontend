@@ -9,6 +9,7 @@ import {
 import { useDispatch } from 'react-redux';
 import Container from 'src/components/REUSABLE/Container/Container.jsx';
 import useChosenDate from 'src/hooks/useChosenDate.js';
+import sprite from "../../../../../../assets/sprite.svg"
 
 const WaterItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const WaterItem = ({ item }) => {
   return (
     <li key={item._id} className={css.item}>
       <svg className={css.iconGlass}>
-        <use href={'/src/assets/sprite.svg#icon-cup'}></use>
+        <use xlinkHref={`${sprite}#icon-cup`}></use>
       </svg>
       <Container addClass={css.dataWrapper}>
         <p className={css.volume}>
@@ -36,7 +37,7 @@ const WaterItem = ({ item }) => {
           }}
         >
           <svg className={css.icon}>
-            <use href={'/src/assets/sprite.svg#icon-edit'}></use>
+            <use xlinkHref={`${sprite}#icon-edit`}></use>
           </svg>
         </Button>
 
@@ -49,7 +50,7 @@ const WaterItem = ({ item }) => {
           }}
         >
           <svg className={css.icon}>
-            <use href={'/src/assets/sprite.svg#icon-delete'}></use>
+            <use xlinkHref={`${sprite}#icon-delete`}></use>
           </svg>
         </Button>
       </Container>
