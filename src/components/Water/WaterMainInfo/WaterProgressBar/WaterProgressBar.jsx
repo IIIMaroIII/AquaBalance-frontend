@@ -8,6 +8,8 @@ import {
 } from 'src/redux/water/selectors.js';
 import { ifEqualDate } from 'src/utils/ifEqualDate';
 
+
+
 const WaterProgressBar = () => {
   const percentage = useSelector(dailyNormaPercentage(new Date().getDate()));
   const waterItemns = useSelector(selectWaterItems);
@@ -28,7 +30,7 @@ const WaterProgressBar = () => {
       }
   }, [chosenDate, currentPercentage, percentage, waterItemns]);
 
-
+  
 
 
 
@@ -52,9 +54,9 @@ const WaterProgressBar = () => {
           </div>
         </div>
         <div className={css.progress_labels}>
-          <span>0%</span>
-          <span>50%</span>
-          <span>100%</span>
+          {(currentPercentage < 10) ? (<span>  </span>) : (<span>0%</span>)}
+          {(35 < currentPercentage && currentPercentage < 65) ? (<span>   </span>) : (<span>50%</span>)}
+          {(currentPercentage > 80) ? (<span>  </span>) : (<span>100%</span>)}
         </div>
       </div>
     );

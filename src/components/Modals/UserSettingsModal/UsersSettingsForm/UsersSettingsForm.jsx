@@ -26,6 +26,7 @@ const UsersSettingsForm = () => {
   });
 
   const [manualDailyNorma, setManualDailyNorma] = useState(false);
+  const [calculatedNorma, setCalculatedNorma] = useState(user.dailyNorma);
 
   const {
     control,
@@ -84,11 +85,12 @@ const UsersSettingsForm = () => {
   };
 
   useEffect(() => {
-    if (!manualDailyNorma) {
+    if (activeTime || weight) {
       const norma = weight * 0.03 + activeTime * 0.4;
-      setValue('dailyNorma', norma.toFixed(2));
+      setCalculatedNorma(norma.toFixed(2));
     }
-  }, [activeTime, errors, manualDailyNorma, setValue, weight]);
+    
+  }, [activeTime, errors, weight]);
 
   return (
     <div>
@@ -271,7 +273,7 @@ const UsersSettingsForm = () => {
             <p className={clsx(css.apText, css.reqWaterText)}>
               The required amount of water in liters per day:
             </p>
-            <span className={css.accent}>1.8L</span>
+            <span className={css.accent}>{calculatedNorma}L</span>
           </div>
 
           <Controller
