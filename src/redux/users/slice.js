@@ -66,7 +66,7 @@ export const usersSlice = createSlice({
       })
       .addCase(userInfo.fulfilled, (state, { payload }) => {
         console.log('payload', payload);
-        state.user = { ...state.user, ...payload.user };
+        state.user = { ...state.user, ...payload };
         state.isLoading = false;
       })
       .addCase(userInfo.rejected, state => {
