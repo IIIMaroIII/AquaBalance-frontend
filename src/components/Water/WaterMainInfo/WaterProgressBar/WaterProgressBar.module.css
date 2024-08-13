@@ -75,12 +75,6 @@
   padding: 2px 4px;
   border-radius: 4px;
   color: var(--green);
-  opacity: 0;
-  transition: opacity 0.2s ease-in;
-}
-
-.thumb:hover .thumb_value {
-  opacity: 1;
 }
 
 .progress_labels {
