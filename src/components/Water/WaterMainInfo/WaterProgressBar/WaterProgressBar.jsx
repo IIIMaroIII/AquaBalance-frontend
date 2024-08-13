@@ -1,24 +1,20 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import css from './WaterProgressBar.module.css';
 import { useSelector } from 'react-redux';
-import { dailyNormaPercentage, selectWaterItems } from 'src/redux/water/selectors.js';
+import { dailyNormaPercentage } from 'src/redux/water/selectors.js';
 
 const WaterProgressBar = () => {
   const percentage = useSelector(dailyNormaPercentage(new Date().getDate()));
-  const dailyItems = useSelector(selectWaterItems);
-  const percent = useRef(0);
-
-  if (percent.current === 0 || dailyItems.length === 0) {
-    percent.current = percentage;
-  }
+  const percent = useRef(percentage);
+  const [currentPercentage, setCurrentPercentage] = useState(percent.current);
 
   useEffect(() => {
-    percent.current = percentage;
+    if (percentage !== 0) {
+      percent.current = percentage;
+      setCurrentPercentage(percent.current);
+    }
   }, [percentage]);
-
-  const instantPercentUpd = () => {
-    return percentage === 0 ? percent.current : percentage;
-  };
+  
 
   return (
     <div className={css.WaterProgressBar_container}>
@@ -27,16 +23,16 @@ const WaterProgressBar = () => {
         <div
           className={css.progress}
           style={{
-            width: `${instantPercentUpd()}%`,
+            width: `${currentPercentage}%`,
           }}
         ></div>
         <div
           className={css.thumb}
           style={{
-            left: `${instantPercentUpd()}%`,
+            left: `${currentPercentage}%`,
           }}
         >
-          <div className={css.thumb_value}>{`${instantPercentUpd()}%`}</div>
+          <div className={css.thumb_value}>{`${currentPercentage}%`}</div>
         </div>
       </div>
       <div className={css.progress_labels}>
