@@ -8,7 +8,6 @@ export const addWater = createAsyncThunk(
   async (formData, { getState, rejectWithValue }) => {
     try {
       const chosenDate = getState().water.chosenDate;
-      console.log('chosenDate', chosenDate);
       formData.append('date', chosenDate);
 
       await AxiosWithCredentials.post(
@@ -26,13 +25,21 @@ export const addWater = createAsyncThunk(
       );
     }
   },
+  {
+    condition: (_, { getState }) => {
+      const { isRefreshing } = getState().users;
+      if (isRefreshing) {
+        return false;
+      }
+      return true;
+    },
+  },
 );
 
 export const deleteWater = createAsyncThunk(
   'water/deleteWater',
   async (_, { getState, rejectWithValue }) => {
     const id = getState().water.chosenWaterCardId;
-    console.log(id);
     try {
       await AxiosWithCredentials.delete(
         `${CONSTANTS.WATER_ENDPOINTS.water}/${id}`,
@@ -47,6 +54,15 @@ export const deleteWater = createAsyncThunk(
         error.response ? error.response.data : error.message,
       );
     }
+  },
+  {
+    condition: (_, { getState }) => {
+      const { isRefreshing } = getState().users;
+      if (isRefreshing) {
+        return false;
+      }
+      return true;
+    },
   },
 );
 
@@ -74,6 +90,15 @@ export const changeWater = createAsyncThunk(
         error.response ? error.response.data : error.message,
       );
     }
+  },
+  {
+    condition: (_, { getState }) => {
+      const { isRefreshing } = getState().users;
+      if (isRefreshing) {
+        return false;
+      }
+      return true;
+    },
   },
 );
 
@@ -104,6 +129,15 @@ export const fetchDailyWater = createAsyncThunk(
       );
     }
   },
+  {
+    condition: (_, { getState }) => {
+      const { isRefreshing } = getState().users;
+      if (isRefreshing) {
+        return false;
+      }
+      return true;
+    },
+  },
 );
 
 export const fetchMonthlyWater = createAsyncThunk(
@@ -131,5 +165,14 @@ export const fetchMonthlyWater = createAsyncThunk(
         error.response ? error.response.data : error.message,
       );
     }
+  },
+  {
+    condition: (_, { getState }) => {
+      const { isRefreshing } = getState().users;
+      if (isRefreshing) {
+        return false;
+      }
+      return true;
+    },
   },
 );
