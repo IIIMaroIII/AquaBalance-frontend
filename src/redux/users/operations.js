@@ -76,7 +76,7 @@ export const userInfo = createAsyncThunk(
         `${CONSTANTS.USERS_ENDPOINTS.getUserInfo}`,
       );
 
-      return res.data;
+      return res.data.user[0];
     } catch (error) {
       return rejectWithValue(
         error.response ? error.response.data : error.message,
