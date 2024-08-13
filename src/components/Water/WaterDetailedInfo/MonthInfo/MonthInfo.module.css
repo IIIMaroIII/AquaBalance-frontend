@@ -21,6 +21,15 @@
   transition: transform var(--transition-delay) var(--transition);
 }
 
+.chartIconStatistics {
+  display: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  fill: transparent;
+  transition: transform var(--transition-delay) var(--transition);
+}
+
 .chartIcon:hover {
   transform: scale(1.15);
 }
