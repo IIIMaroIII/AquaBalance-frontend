@@ -57,6 +57,16 @@ export const logout = createAsyncThunk(
       return rejectWithValue(message);
     }
   },
+  {
+    condition: (_, { getState }) => {
+      const { isRefreshing } = getState().users;
+      console.log('isRefreshing in conditions daily', isRefreshing);
+      if (isRefreshing) {
+        return false;
+      }
+      return true;
+    },
+  },
 );
 
 export const userInfo = createAsyncThunk(
@@ -73,6 +83,16 @@ export const userInfo = createAsyncThunk(
         error.response ? error.response.data : error.message,
       );
     }
+  },
+  {
+    condition: (_, { getState }) => {
+      const { isRefreshing } = getState().users;
+      console.log('isRefreshing in conditions daily', isRefreshing);
+      if (isRefreshing) {
+        return false;
+      }
+      return true;
+    },
   },
 );
 
@@ -91,6 +111,16 @@ export const refresh = createAsyncThunk(
         error.response ? error.response.data : error.message,
       );
     }
+  },
+  {
+    condition: (_, { getState }) => {
+      const { isRefreshing } = getState().users;
+      console.log('isRefreshing in conditions daily', isRefreshing);
+      if (isRefreshing) {
+        return false;
+      }
+      return true;
+    },
   },
 );
 
@@ -114,5 +144,15 @@ export const update = createAsyncThunk(
         error.response ? error.response.data : error.message,
       );
     }
+  },
+  {
+    condition: (_, { getState }) => {
+      const { isRefreshing } = getState().users;
+      console.log('isRefreshing in conditions daily', isRefreshing);
+      if (isRefreshing) {
+        return false;
+      }
+      return true;
+    },
   },
 );

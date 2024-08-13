@@ -40,19 +40,18 @@ const WaterForm = ({ operationName }) => {
   const currentWaterTime = currentWaterItem?.date;
 
   const formatTime = (hours, minutes) => {
-  const formattedHours = String(hours).padStart(2, '0');
-  const formattedMinutes = String(minutes).padStart(2, '0');
-  return `${formattedHours}:${formattedMinutes}`;
-};
+    const formattedHours = String(hours).padStart(2, '0');
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    return `${formattedHours}:${formattedMinutes}`;
+  };
 
-const initialTime =
-  operationName === 'edit'
-    ? formatTime(
-        new Date(currentWaterTime).getHours(),
-        new Date(currentWaterTime).getMinutes()
-      )
-    : formatTime(new Date().getHours(), new Date().getMinutes());
-
+  const initialTime =
+    operationName === 'edit'
+      ? formatTime(
+          new Date(currentWaterTime).getHours(),
+          new Date(currentWaterTime).getMinutes(),
+        )
+      : formatTime(new Date().getHours(), new Date().getMinutes());
 
   const initialWaterAmount = operationName === 'edit' ? currentWaterVolume : 50;
 
@@ -161,7 +160,8 @@ const initialTime =
             onChange={e => {
               field.onChange(e);
               setValue('time', e.target.value);
-            }}/>
+            }}
+          />
         )}
       />
       {errors.time && <p className={css.error}>{errors.time.message}</p>}
@@ -177,10 +177,10 @@ const initialTime =
             inputClass={clsx(css.input, errors.waterAmount && css.inputError)}
             value={field.value}
             onChange={e => {
-              const inputValue = e.target.value;           
-                setWaterAmount(Number(inputValue));
-                setWaterAmountError('');
-                field.onChange(inputValue);             
+              const inputValue = e.target.value;
+              setWaterAmount(Number(inputValue));
+              setWaterAmountError('');
+              field.onChange(inputValue);
             }}
             name={'volume'}
             error={errors.waterAmount ? true : false}
@@ -188,7 +188,9 @@ const initialTime =
         )}
       />
       {waterAmountError && <p className={css.error}>{waterAmountError}</p>}
-      {errors.waterAmount && <p className={css.error}>{errors.waterAmount.message}</p>}
+      {errors.waterAmount && (
+        <p className={css.error}>{errors.waterAmount.message}</p>
+      )}
       <Button type="submit" addClass={css.saveButton}>
         Save
       </Button>

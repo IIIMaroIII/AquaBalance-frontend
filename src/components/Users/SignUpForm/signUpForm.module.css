@@ -136,28 +136,41 @@
 }
 
 .eyeIcon {
+  position: absolute;
+
   width: 20px;
   height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
   bottom: 18px;
   right: 18px;
+
   stroke: var(--dark);
   fill: transparent;
+
+  z-index: 10;
+
+  cursor: pointer;
+
+  transform: scale(1);
+  transition: transform var(--transition-delay) var(--transition);
+}
+
+.eyeIcon:hover {
+  transform: scale(1.1);
 }
 
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px var(--light-gray) inset;
-  box-shadow: 0 0 0px 1000px var(--light-gray) inset; 
+  box-shadow: 0 0 0px 1000px var(--light-gray) inset;
 }
 
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0px 1000px var(--light-gray)inset; 
-  box-shadow: 0 0 0px 1000px var(--light-gray) inset; 
+  -webkit-box-shadow: 0 0 0px 1000px var(--light-gray) inset;
+  box-shadow: 0 0 0px 1000px var(--light-gray) inset;
 }
 
 @media (max-width: 768px) {

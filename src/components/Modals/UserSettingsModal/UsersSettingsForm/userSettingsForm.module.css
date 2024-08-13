@@ -8,23 +8,679 @@
 .uploadPhotoButtonWrapper {
   position: relative;
   width: 133px;
-  height: 18px;
+  height: 24px;
   margin: 0 auto;
-}
-
-.uploadPhotoButtonWrapper:hover {
   cursor: pointer;
 }
 
+.uploadPhotoButtonWrapper:hover .uploadPhotoButton {
+  transform: scale(1.1);
+}
+
 .uploadPhotoButtonWrapper input.fileInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+
+  padding: 24px;
+}
+
+.uploadPhotoButton {
+  width: 133px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.uploadPhotoButton:hover {
+  background-color: transparent;
+}
+
+.uploadPhotoButton:focus,
+.uploadPhotoButton:active {
+  background-color: transparent;
+}
+
+.uploadText {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -1%;
+  color: var(--dark);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  margin-left: 8px;
+  pointer-events: none;
+}
+
+.uploadIcon {
+  position: relative;
+  left: -5%;
+
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--dark);
+  pointer-events: none;
+}
+
+.photoUrl {
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.photoUrlWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.uploadIcon {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--dark);
+  z-index: 1; /* Иконка поверх кнопки */
+}
+
+.genderContainer {
+  margin-bottom: 24px;
+}
+
+.genderWrapper {
+  display: flex;
+}
+
+.errorMessage {
+  color: var(--error-color);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -1%;
+  margin-top: 8px;
+}
+
+.genderText {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -1%;
+  color: var(--light-dark);
+  margin-bottom: 14px;
+}
+
+.genderInputsContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.genderInputLabel {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -1%;
+  color: var(--dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row-reverse;
+}
+
+.nameLabel {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -1%;
+  color: var(--light-dark);
+  margin-bottom: 14px;
+}
+
+.nameInput {
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  margin-top: 8px;
+  padding: 14px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  color: var(--dark);
+  height: 46px;
+}
+
+.nameInput:hover,
+.nameInput:active,
+.nameInput:focus {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.nameInput:hover:not(:focus) {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.nameLabel .nameInput.inactive:hover {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.emailLabel {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -1%;
+  color: var(--light-dark);
+  margin-bottom: 14px;
+}
+
+.emailInput {
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  margin-top: 8px;
+  padding: 14px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  color: var(--dark);
+  height: 46px;
+}
+
+.emailInput:hover:not(:focus) {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.emailLabel input.emailInput:hover,
+.emailLabel input.emailInput:active,
+.emailLabel input.emailInput:focus {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.emailLabel input.emailInput:disabled {
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  cursor: not-allowed;
+}
+
+.dailyNormaWrapper {
+  margin-top: 24px;
+}
+
+.dailyNormaTitle {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -1%;
+  color: var(--light-dark);
+  margin-bottom: 14px;
+}
+
+.dailyNormaForGenderText {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -1%;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.dailyNormaByGenderWrapper {
+  height: 40px;
+}
+
+.dailyNormaByGenderWrapper:nth-child(1) {
+  margin-bottom: 12px;
+}
+
+.exclamation {
+  width: 22px;
+  height: 22px;
+  color: rgb(155, 225, 160);
+}
+
+.apFrame {
+  margin-top: 14px;
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  border-radius: 15px;
+  padding: 16px 15px 16px 16px;
+}
+
+.accent {
+  font-size: 14px;
+  line-height: 1.28;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.exclamatoryTextContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 24px;
+  margin-top: 14px;
+}
+
+.textInstruction {
+  color: rgba(47, 47, 47, 0.6);
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+}
+
+.exclamatoryText {
+  font-size: 14px;
+  color: rgba(47, 47, 47);
+}
+
+.weightLabel {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+}
+
+.weightInput {
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  margin-top: 8px;
+  padding: 14px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  color: var(--dark);
+  height: 46px;
+}
+
+.weightLabel input.weightInput:hover,
+.weightLabel input.weightInput:active,
+.weightLabel input.weightInput:focus {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.weightInput:hover:not(:focus) {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.activeTimeLabel {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  margin-top: 14px;
+}
+
+.activeTimeInput {
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  margin-top: 8px;
+  padding: 14px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  color: var(--dark);
+  height: 46px;
+}
+
+.activeTimeLabel input.activeTimeInput:hover,
+.activeTimeLabel input.activeTimeInput:active,
+.activeTimeLabel input.activeTimeInput:focus {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.activeTimeInput:hover:not(:focus) {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.dailyNormaLabel {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -1%;
+  color: var(--light-dark);
+  margin-top: 14px;
+}
+
+.dailyNormaInput {
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  margin-top: 8px;
+  padding: 14px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  color: var(--dark);
+  height: 46px;
+}
+
+.dailyNormaLabel input.dailyNormaInput:hover,
+.dailyNormaLabel input.dailyNormaInput:active,
+.dailyNormaLabel input.dailyNormaInput:focus {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.dailyNormaInput:hover:not(:focus) {
+  border: 1px солид rgba(47, 47, 47, 0.4);
+}
+
+.reqWaterTextContainer {
+  margin-top: 24px;
+}
+
+.reqWaterText {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  margin-bottom: 5px;
+}
+
+.saveButton {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -1%;
+  text-align: center;
+  height: 46px;
+  border-radius: 30px;
+  padding: 14px 40px;
+  background-color: var(--green);
+  color: var(--light-dark);
+  margin-top: 40px;
+}
+
+.settingsForm .saveButton:hover,
+.saveButton:focus,
+.saveButton:active {
+  background-color: var(--hover-green);
+}
+
+.settingsForm .saveButton:disabled {
+  cursor: not-allowed;
+  background-color: var(--light-gray);
+  color: rgba(50, 63, 71, 0.3);
+  border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .apLabelName,
+  .exclamatoryText,
+  .accent {
+    font-size: 16px;
+  }
+}
+
+label.rowReverse {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+input[type='radio'] {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  outline: none;
+}
+
+input[type='radio']:hover {
+  cursor: pointer;
+}
+
+input[type='radio']::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1.5px solid var(--green);
+}
+
+input[type='radio']:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8.57px;
+  height: 8.57px;
+  border-radius: 50%;
+  background-color: rgb(155, 225, 160);
+  transform: translate(-50%, -50%);
+  visibility: visible;
+}
+
+@media (min-width: 768px) {
+  .uploadText {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .uploadPhotoButtonWrapper {
+    width: 151px;
+    height: 24px;
+  }
+
+  .uploadPhotoButton {
+    width: 151px;
+    height: 24px;
+  }
+
+  .uploadIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .genderText {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .genderInputLabel {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .nameLabel {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .nameInput {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 16px;
+    height: 56px;
+  }
+
+  .emailLabel {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .emailInput {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 16px;
+    height: 56px;
+  }
+
+  .dailyNormaTitle {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .dailyNormaLabel {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .dailyNormaInput {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 16px;
+    height: 56px;
+  }
+
+  .dailyNormaByGender {
+    display: flex;
+    gap: 28px;
+    height: 52px;
+  }
+
+  .reqWaterText {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .weightLabel {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .weightInput {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 16px;
+    height: 56px;
+  }
+
+  .activeTimeLabel {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .activeTimeInput {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 16px;
+    height: 56px;
+  }
+
+  .reqWaterTextContainer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .textInstruction {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 16px;
+  }
+
+  .apFrame {
+    padding: 16px;
+  }
+
+  .dailyNormaForGenderText {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .saveButton {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 16px 50px;
+    height: 56px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .settingsFormContainerWithoutUploadPhotoAndButton {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 594px;
+    max-height: 594px;
+    column-gap: 40px;
+    width: 840px;
+  }
+
+  .genderContainer {
+    max-width: 400px;
+    height: 62px;
+  }
+
+  .nameLabel {
+    height: 88px;
+    max-width: 400px;
+  }
+
+  .emailLabel {
+    height: 88px;
+    margin-bottom: 0;
+    max-width: 400px;
+  }
+
+  .dailyNormaWrapper {
+    max-height: 294px;
+    max-width: 400px;
+  }
+
+  .reqWaterTextContainer {
+    max-width: 400px;
+  }
+
+  .weightLabel {
+    margin-top: 86px;
+    max-width: 400px;
+  }
+
+  .activeTimeLabel {
+    max-width: 400px;
+  }
+
+  .dailyNormaLabel {
+    max-width: 400px;
+  }
+}
+
+/*  Старый вариант ======================*/
+
+/* .uploadPhotoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.uploadPhotoButtonWrapper {
+  position: relative;
+  width: 133px;
+  height: 18px;
+  margin: 0 auto;
+
+  cursor: pointer;
+}
+
+.uploadPhotoButtonWrapper:hover button.uploadPhotoButton {
+  transform: scale(1.2);
+}
+
+.uploadPhotoButtonWrapper input.fileInput {
+  display: block;
+
   width: 100%;
   height: 100%;
   border: none;
   opacity: 0;
-  z-index: 1;
-  cursor: pointer;
+
   padding: 0;
   margin: 0;
+}
+.uploadPhotoButtonWrapper:hover input.fileInput {
+  z-index: 100;
+  cursor: pointer;
 }
 
 .uploadPhotoButton {
@@ -33,9 +689,8 @@
   background-color: transparent;
   border: none;
   border-radius: 0%;
-  cursor: pointer;
+
   padding: 0;
-  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -44,7 +699,6 @@
 
 .uploadPhotoButton:hover {
   background-color: transparent;
-  cursor: pointer;
 }
 
 .uploadPhotoButton:focus,
@@ -86,7 +740,7 @@
   width: 18px;
   height: 18px;
   fill: none;
-  stroke: var(--dark)
+  stroke: var(--dark);
 }
 
 .genderContainer {
@@ -631,4 +1285,4 @@ input[type='radio']:checked::after {
   .dailyNormaLabel {
     max-width: 400px;
   }
-}
+} */
