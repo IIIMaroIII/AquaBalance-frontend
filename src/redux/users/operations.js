@@ -60,7 +60,6 @@ export const logout = createAsyncThunk(
   {
     condition: (_, { getState }) => {
       const { isRefreshing } = getState().users;
-      console.log('isRefreshing in conditions daily', isRefreshing);
       if (isRefreshing) {
         return false;
       }
@@ -87,7 +86,6 @@ export const userInfo = createAsyncThunk(
   {
     condition: (_, { getState }) => {
       const { isRefreshing } = getState().users;
-      console.log('isRefreshing in conditions daily', isRefreshing);
       if (isRefreshing) {
         return false;
       }
@@ -115,7 +113,6 @@ export const refresh = createAsyncThunk(
   {
     condition: (_, { getState }) => {
       const { isRefreshing } = getState().users;
-      console.log('isRefreshing in conditions daily', isRefreshing);
       if (isRefreshing) {
         return false;
       }
@@ -148,7 +145,6 @@ export const update = createAsyncThunk(
   {
     condition: (_, { getState }) => {
       const { isRefreshing } = getState().users;
-      console.log('isRefreshing in conditions daily', isRefreshing);
       if (isRefreshing) {
         return false;
       }
