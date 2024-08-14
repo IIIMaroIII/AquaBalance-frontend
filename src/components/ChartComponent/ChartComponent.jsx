@@ -11,7 +11,6 @@ import { useMediaQuery } from '@mui/material';
 import { useSelector } from 'react-redux';
 import {
   monthlyVolumesForChart,
-  selectMonthlyWaterItems,
 } from 'src/redux/water/selectors.js';
 
 const CustomTooltip = ({ active = false, payload = [], coordinate }) => {
