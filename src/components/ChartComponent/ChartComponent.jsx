@@ -9,7 +9,10 @@ import {
 import css from './ChartComponent.module.css';
 import { useMediaQuery } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { selectMonthlyWaterItems } from 'src/redux/water/selectors.js';
+import {
+  monthlyVolumesForChart,
+  selectMonthlyWaterItems,
+} from 'src/redux/water/selectors.js';
 
 const CustomTooltip = ({ active = false, payload = [], coordinate }) => {
   if (active && payload && payload.length) {
@@ -31,12 +34,7 @@ const CustomTooltip = ({ active = false, payload = [], coordinate }) => {
 };
 
 const ChartComponent = () => {
-  const dailyItems = useSelector(selectMonthlyWaterItems);
-  const arr = dailyItems
-    .map(item => {
-      return { day: new Date(item.date).getDate(), volume: item.volume / 1000 };
-    })
-    .sort((a, b) => a.day - b.day);
+  const monthlyVolumes = useSelector(monthlyVolumesForChart);
 
   const yTicks = Array.from({ length: 6 }, (_, i) => i * 0.5);
 
@@ -62,7 +60,7 @@ const ChartComponent = () => {
   return (
     <div className={css.chartContainer}>
       <ResponsiveContainer width="100%" height={isSmallScreen ? 256 : 273}>
-        <AreaChart data={arr}>
+        <AreaChart data={monthlyVolumes}>
           <defs>
             <linearGradient
               id="colorValue"
