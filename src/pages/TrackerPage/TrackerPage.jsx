@@ -8,11 +8,9 @@ import {
   fetchDailyWater,
   fetchMonthlyWater,
 } from 'src/redux/water/operations.js';
-import useChosenDate from 'src/hooks/useChosenDate.js';
 
 const TrackerPage = () => {
   const dispatch = useDispatch();
-  const { chosenDate } = useChosenDate();
 
   useEffect(() => {
     dispatch(fetchDailyWater())

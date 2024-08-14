@@ -35,7 +35,7 @@ const MonthInfo = () => {
               {/* <use href={'/src/assets/sprite.svg#icon-pie-chart-01'}></use> */}
             </svg>
           ) : (
-            <svg className={css.chartIconStatistics} onClick={handleClick}>
+            <svg className={css.chartIcon} onClick={handleClick}>
               {/* <use href={'/src/assets/sprite.svg#icon-pie-chart-02'}></use> */}
               <use xlinkHref={`${sprite}#icon-pie-chart-02`}></use>
             </svg>
