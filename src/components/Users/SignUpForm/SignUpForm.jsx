@@ -36,7 +36,7 @@ const SignUpForm = () => {
           .then(() => {
             dispatch(userInfo());
             toast.success(
-              `We are so exited to meet you ${email} in WaterWise App! 🎊`,
+              `We are so exited to meet you ${email} in AquaBalance App! 🎊`,
             );
             navigate('/tracker');
           });

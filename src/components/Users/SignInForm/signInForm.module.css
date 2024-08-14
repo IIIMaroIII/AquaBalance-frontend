@@ -48,19 +48,19 @@
     line-height: 1.5;
   }
 }
-
+/* 
 .form input.input:focus,
 .form input.input:hover {
   border-color: rgba(47, 47, 47, 0.2);
-}
+} */
 
 .form input.inputError {
   color: var(--error-color);
 }
-
+/* 
 .form input.input:focus {
   background-color: transparent;
-}
+} */
 
 .form button.button {
   width: 100%;
