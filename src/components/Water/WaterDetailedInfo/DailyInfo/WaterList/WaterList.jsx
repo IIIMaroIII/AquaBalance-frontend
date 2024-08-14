@@ -3,7 +3,6 @@ import css from '../WaterList/WaterList.module.css';
 import { useSelector } from 'react-redux';
 import { selectWaterItems } from 'src/redux/water/selectors.js';
 import {} from 'src/redux/water/operations.js';
-import useAuth from 'src/hooks/useAuth.js';
 
 const WaterList = () => {
   const dailyItems = useSelector(selectWaterItems);
