@@ -14,8 +14,8 @@ import { selectUser, selectUserAvatar } from 'src/redux/users/selectors';
 import { useEffect, useRef, useState } from 'react';
 
 const UsersSettingsForm = () => {
-  // const dispatch = useDispatch();
-  // const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
   const currentAvatar = useSelector(selectUserAvatar);
   const fileInputRef = useRef(null);
   const [preview, setPreview] = useState(currentAvatar);
@@ -36,13 +36,13 @@ const UsersSettingsForm = () => {
 
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
-    // resolver: yupResolver(settingsFormValidation)
+    resolver: yupResolver(settingsFormValidation)
   });
 
   const genderValue = watch('gender');
   const weightNumber = watch('weight');
   const activeSportsTimeNumber = watch('timeInSports');
-  // const dailyWaterIntakeNumber = watch('dailyWaterIntake');
+  const dailyWaterIntakeNumber = watch('dailyWaterIntake');
 
   const recomendedDailyNorma = calculateDailyNorma(weightNumber, genderValue, activeSportsTimeNumber);
 
