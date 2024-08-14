@@ -32,7 +32,7 @@ export const signIn = createAsyncThunk(
         `${CONSTANTS.USERS_ENDPOINTS.signIn}`,
         credentials,
       );
-      console.log('res.data in sign in', res.data);
+      // console.log('res.data in sign in', res.data);
       return res.data;
     } catch (error) {
       return rejectWithValue(
@@ -134,7 +134,7 @@ export const update = createAsyncThunk(
           },
         },
       );
-      console.log(res.data.data);
+      // console.log(res.data.data);
       return res.data.data;
     } catch (error) {
       return rejectWithValue(

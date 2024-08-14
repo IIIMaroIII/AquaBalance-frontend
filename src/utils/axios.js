@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import { refresh } from 'src/redux/users/operations.js';
 
 const AxiosWithCredentials = axios.create({
-  baseURL: CONSTANTS.DOMAINS.SERVER_DEPLOY,
+  baseURL: CONSTANTS.DOMAINS.SERVER_LOCALHOST,
   withCredentials: true,
 });
 
@@ -102,7 +102,7 @@ AxiosWithCredentials.interceptors.response.use(
 
       try {
         const result = await store.dispatch(refresh()).unwrap();
-        console.log('result in interceptors response', result);
+        // console.log('result in interceptors response', result);
 
         processQueue(null, result);
         originalRequest.headers.Authorization = `Bearer ${result}`;
