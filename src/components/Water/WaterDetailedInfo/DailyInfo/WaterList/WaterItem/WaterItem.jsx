@@ -14,6 +14,7 @@ import sprite from "../../../../../../assets/sprite.svg"
 const WaterItem = ({ item }) => {
   const dispatch = useDispatch();
   const { returnAmPmTime } = useChosenDate();
+  console.log('item._id :>> ', item._id);
 
   return (
     <li key={item._id} className={css.item}>
