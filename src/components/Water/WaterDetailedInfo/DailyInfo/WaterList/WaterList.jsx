@@ -19,6 +19,7 @@ const WaterList = () => {
               return { item, time: sortHrs(item.date) };
             })
             .sort((a, b) => a.time.localeCompare(b.time));
+            
           return sortedDailyItems.map(dailyItem => (
             <WaterItem key={dailyItem.item._id} item={dailyItem.item} />
           ));
