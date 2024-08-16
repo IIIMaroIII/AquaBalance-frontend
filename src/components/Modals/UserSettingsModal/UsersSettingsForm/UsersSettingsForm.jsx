@@ -7,7 +7,6 @@ import { selectUser } from 'src/redux/users/selectors.js';
 import { useDispatch } from 'react-redux';
 
 import { BsExclamationLg } from 'react-icons/bs';
-import { FiLogOut } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
 import { update } from 'src/redux/users/operations.js';
 import { changeModal } from 'src/redux/water/slice.js';
