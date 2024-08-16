@@ -13,9 +13,12 @@ const TrackerPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchDailyWater())
-      .unwrap()
-      .then(() => dispatch(fetchMonthlyWater()));
+    (async () => {
+        await Promise.all([
+          dispatch(fetchDailyWater()).unwrap(),
+          dispatch(fetchMonthlyWater()).unwrap(),
+        ]);
+    })();
   }, [dispatch]);
 
   return (
