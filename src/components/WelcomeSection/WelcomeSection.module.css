@@ -36,8 +36,8 @@
 }
 
 .item {
-  padding: 14px 19px;
   border-radius: 30px;
+
   max-height: 46px;
   display: flex;
   justify-content: center;
@@ -112,7 +112,6 @@
   }
 
   .item {
-    padding: 18px 40px;
     max-height: 60px;
   }
 }
