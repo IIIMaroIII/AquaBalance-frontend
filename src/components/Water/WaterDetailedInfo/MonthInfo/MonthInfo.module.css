@@ -28,7 +28,13 @@
 .paginationWrapper {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+}
+
+@media (min-width: 375px) {
+  .paginationWrapper {
+    gap: 16px;
+  }
 }
 
 @media screen and (min-width: 768px) {
