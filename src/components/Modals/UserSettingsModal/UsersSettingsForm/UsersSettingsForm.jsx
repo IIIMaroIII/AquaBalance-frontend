@@ -7,18 +7,15 @@ import { selectUser } from 'src/redux/users/selectors.js';
 import { useDispatch } from 'react-redux';
 
 import { BsExclamationLg } from 'react-icons/bs';
-import { FiLogOut } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
 import { update } from 'src/redux/users/operations.js';
 import { changeModal } from 'src/redux/water/slice.js';
 import toast from 'react-hot-toast';
 import CustomInput from 'src/components/REUSABLE/Input/CustomInput.jsx';
-import CONSTANTS, { IMAGES } from 'src/components/Constants/constants.js';
+import CONSTANTS from 'src/components/Constants/constants.js';
 import { userSettingsFormValidation } from 'src/Validation/userSettingsForm.js';
 import sprite from '../../../../assets/sprite.svg';
 import clsx from 'clsx';
-import Loader from 'src/components/REUSABLE/Loader/Loader.jsx';
-import useAuth from 'src/hooks/useAuth.js';
 
 const UsersSettingsForm = () => {
   const user = useSelector(selectUser);
@@ -28,6 +25,7 @@ const UsersSettingsForm = () => {
   });
 
   const [manualDailyNorma, setManualDailyNorma] = useState(false);
+  const [calculatedNorma, setCalculatedNorma] = useState(user.dailyNorma);
 
   const {
     control,
@@ -86,11 +84,12 @@ const UsersSettingsForm = () => {
   };
 
   useEffect(() => {
-    if (!manualDailyNorma) {
+    if (activeTime || weight) {
       const norma = weight * 0.03 + activeTime * 0.4;
-      setValue('dailyNorma', norma.toFixed(2));
+      setCalculatedNorma(norma.toFixed(2));
     }
-  }, [activeTime, errors, manualDailyNorma, setValue, weight]);
+    
+  }, [activeTime, errors, weight]);
 
   return (
     <div>
@@ -116,25 +115,23 @@ const UsersSettingsForm = () => {
               <svg className={css.uploadIcon}>
                 <use xlinkHref={`${sprite}#icon-upload`}></use>
               </svg>
-              {/* <FiLogOut className={css.uploadIcon} /> */}
               <p className={css.uploadText}>Upload a photo</p>
-
-              <Controller
-                name="photoUrl"
-                control={control}
-                render={({ field }) => (
-                  <CustomInput
-                    inputClass={css.fileInput}
-                    inputType="file"
-                    inputName="file"
-                    onChange={e => {
-                      handleFileChange(e);
-                      field.onChange(e.target.files);
-                    }}
-                  />
-                )}
-              />
             </Button>
+            <Controller
+              name="photoUrl"
+              control={control}
+              render={({ field }) => (
+                <CustomInput
+                  inputClass={css.fileInput}
+                  inputType="file"
+                  inputName="file"
+                  onChange={e => {
+                    handleFileChange(e);
+                    field.onChange(e.target.files);
+                  }}
+                />
+              )}
+            />
           </div>
         </div>
 
@@ -275,32 +272,32 @@ const UsersSettingsForm = () => {
             <p className={clsx(css.apText, css.reqWaterText)}>
               The required amount of water in liters per day:
             </p>
-            <span className={css.accent}>1.8L</span>
+            <span className={css.accent}>{calculatedNorma}L</span>
           </div>
 
-        <Controller
-          name="dailyNorma"
-          control={control}
-          render={({ field }) => (
-            <CustomInput
-              label
-              labelName="Write down how much water you will drink:"
-              labelClass={css.dailyNormaLabel}
-              inputType="number"
-              inputClass={css.dailyNormaInput}
-              step="0.01"
-              error={errors.dailyNorma ? true : false}
-              {...field}
-              onChange={e => {
-                setManualDailyNorma(true);
-                field.onChange(e.target.value);
-              }}
-            />
+          <Controller
+            name="dailyNorma"
+            control={control}
+            render={({ field }) => (
+              <CustomInput
+                label
+                labelName="Write down how much water you will drink:"
+                labelClass={css.dailyNormaLabel}
+                inputType="number"
+                inputClass={css.dailyNormaInput}
+                step="0.01"
+                error={errors.dailyNorma ? true : false}
+                {...field}
+                onChange={e => {
+                  setManualDailyNorma(true);
+                  field.onChange(e.target.value);
+                }}
+              />
+            )}
+          />
+          {errors.dailyNorma && (
+            <p className={css.errorMessage}>{errors.dailyNorma.message}</p>
           )}
-        />
-        {errors.dailyNorma && (
-          <p className={css.errorMessage}>{errors.dailyNorma.message}</p>
-        )}
         </div>
 
         <Button

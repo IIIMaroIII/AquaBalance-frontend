@@ -1,4 +1,4 @@
-export const ifEqual = itemDate => {
+export const ifEqualDate = itemDate => {
   const date = new Date();
   const format = new Date(itemDate);
 

@@ -20,6 +20,12 @@
   }
 }
 
+.hiddenPercent {
+  color: transparent;
+}
+
+
+
 .WaterProgressBar_h2 {
   margin-bottom: 8px;
   font-weight: 700;
@@ -71,16 +77,10 @@
   transform: translateX(-50%);
   white-space: nowrap;
   font-size: 12px;
-  background-color: var(--white);
+  background-color: transparent;
   padding: 2px 4px;
   border-radius: 4px;
   color: var(--green);
-  opacity: 0;
-  transition: opacity 0.2s ease-in;
-}
-
-.thumb:hover .thumb_value {
-  opacity: 1;
 }
 
 .progress_labels {

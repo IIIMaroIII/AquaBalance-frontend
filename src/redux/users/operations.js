@@ -32,7 +32,7 @@ export const signIn = createAsyncThunk(
         `${CONSTANTS.USERS_ENDPOINTS.signIn}`,
         credentials,
       );
-      console.log('res.data in sign in', res.data);
+      // console.log('res.data in sign in', res.data);
       return res.data;
     } catch (error) {
       return rejectWithValue(
@@ -57,6 +57,15 @@ export const logout = createAsyncThunk(
       return rejectWithValue(message);
     }
   },
+  {
+    condition: (_, { getState }) => {
+      const { isRefreshing } = getState().users;
+      if (isRefreshing) {
+        return false;
+      }
+      return true;
+    },
+  },
 );
 
 export const userInfo = createAsyncThunk(
@@ -67,12 +76,21 @@ export const userInfo = createAsyncThunk(
         `${CONSTANTS.USERS_ENDPOINTS.getUserInfo}`,
       );
 
-      return res.data;
+      return res.data.user[0];
     } catch (error) {
       return rejectWithValue(
         error.response ? error.response.data : error.message,
       );
     }
+  },
+  {
+    condition: (_, { getState }) => {
+      const { isRefreshing } = getState().users;
+      if (isRefreshing) {
+        return false;
+      }
+      return true;
+    },
   },
 );
 
@@ -92,6 +110,15 @@ export const refresh = createAsyncThunk(
       );
     }
   },
+  {
+    condition: (_, { getState }) => {
+      const { isRefreshing } = getState().users;
+      if (isRefreshing) {
+        return false;
+      }
+      return true;
+    },
+  },
 );
 
 export const update = createAsyncThunk(
@@ -107,12 +134,21 @@ export const update = createAsyncThunk(
           },
         },
       );
-      console.log(res.data.data);
+      // console.log(res.data.data);
       return res.data.data;
     } catch (error) {
       return rejectWithValue(
         error.response ? error.response.data : error.message,
       );
     }
+  },
+  {
+    condition: (_, { getState }) => {
+      const { isRefreshing } = getState().users;
+      if (isRefreshing) {
+        return false;
+      }
+      return true;
+    },
   },
 );

@@ -26,11 +26,11 @@ export const dailyNormaPercentage = (day = 1) =>
   createSelector(
     [selectMonthlyWaterItems, selectUserDailyNorma],
     (monthlyWaterItems, dailyNorma) => {
-      const arr = monthlyWaterItems
+      const total = monthlyWaterItems
         .filter(item => new Date(item.date).getDate() === day)
-        .map(item => item.volume);
+        .map(item => item.volume)
+        .reduce((acc, num) => acc + num, 0);
 
-      const total = arr.reduce((acc, num) => acc + num, 0);
       const percent = (total / (dailyNorma * 1000)) * 100;
 
       if (isNaN(percent)) {
@@ -41,7 +41,6 @@ export const dailyNormaPercentage = (day = 1) =>
     },
   );
 
-
 export const daysWithRecords = createSelector(
   [selectMonthlyWaterItems],
   monthlyWaterItems => {
@@ -49,5 +48,33 @@ export const daysWithRecords = createSelector(
       .map(item => new Date(item.date).getDate())
       .filter((num, idx, arr) => arr.indexOf(num) === idx)
       .sort((a, b) => a - b);
+  },
+);
+
+export const monthlyVolumesForChart = createSelector(
+  [selectMonthlyWaterItems],
+  monthlyItems => {
+    const days = monthlyItems
+      .map(item => new Date(item.date).getDate())
+      .filter((num, idx, arr) => arr.indexOf(num) === idx)
+      .sort((a, b) => a - b);
+
+    return days.map(day => {
+      const dailyVolume = monthlyItems
+        .filter(item => new Date(item.date).getDate() === day)
+        .map(item => {
+          return {
+            day: new Date(item.date).getDate(),
+            volume: item.volume / 1000,
+          };
+        });
+
+      const countedVolume = dailyVolume.reduce(
+        (acc, num) => acc + num.volume,
+        0,
+      );
+
+      return { day, volume: countedVolume };
+    });
   },
 );

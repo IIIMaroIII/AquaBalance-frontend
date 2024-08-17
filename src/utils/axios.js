@@ -10,6 +10,23 @@ const AxiosWithCredentials = axios.create({
   withCredentials: true,
 });
 
+/** test ================================= */
+
+let isRefreshing = false;
+let failedQueue = [];
+
+const processQueue = (error, token = null) => {
+  failedQueue.forEach(prom => {
+    if (error) {
+      prom.reject(error);
+    } else {
+      prom.resolve(token);
+    }
+  });
+
+  failedQueue = [];
+};
+
 AxiosWithCredentials.interceptors.request.use(
   config => {
     const state = store.getState();
@@ -60,24 +77,45 @@ AxiosWithCredentials.interceptors.response.use(
 
       // setTimeout(() => {
       //   window.location.replace('/');
-      //   // console.log('mission cookies with _retry');
       // }, 4000);
     } else if (status === 401 && !originalRequest._retry) {
+      // console.log(
+      //   'originalRequest in interceptor for refreshing',
+      //   originalRequest,
+      // );
       originalRequest._retry = true;
-      console.log('Status 401 detected, attempting to refresh token...');
+
+      if (isRefreshing) {
+        return new Promise(function (resolve, reject) {
+          failedQueue.push({ resolve, reject });
+        })
+          .then(token => {
+            originalRequest.headers.Authorization = `Bearer ${token}`;
+            return AxiosWithCredentials(originalRequest);
+          })
+          .catch(err => {
+            return Promise.reject(err);
+          });
+      }
+
+      isRefreshing = true;
+
       try {
         const result = await store.dispatch(refresh()).unwrap();
-        console.log('result in interceptors response', result);
+        // console.log('result in interceptors response', result);
 
+        processQueue(null, result);
         originalRequest.headers.Authorization = `Bearer ${result}`;
 
         return AxiosWithCredentials(originalRequest);
       } catch (refreshError) {
-        // console.log('Refresh failed:', refreshError);
-        // toast('Your session has expired. Please login again');
-        // await store.dispatch(logout());
+        processQueue(refreshError, null);
+        return Promise.reject(refreshError);
+      } finally {
+        isRefreshing = false;
       }
     }
+
     if (
       status === 500 ||
       status === 404 ||

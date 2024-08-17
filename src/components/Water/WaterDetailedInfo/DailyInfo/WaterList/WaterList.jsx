@@ -3,7 +3,6 @@ import css from '../WaterList/WaterList.module.css';
 import { useSelector } from 'react-redux';
 import { selectWaterItems } from 'src/redux/water/selectors.js';
 import {} from 'src/redux/water/operations.js';
-import useAuth from 'src/hooks/useAuth.js';
 
 const WaterList = () => {
   const dailyItems = useSelector(selectWaterItems);
@@ -13,9 +12,15 @@ const WaterList = () => {
       {!dailyItems?.length ? (
         <p className={css.p}>You do not have any records!</p>
       ) : (
-        dailyItems.map(item => {
-          return <WaterItem key={item._id} item={item} />;
-        })
+        (() => {
+          const sortedDailyItems = dailyItems
+            .map(item => item)
+            .sort((a, b) => a.date.localeCompare(b.date));
+
+          return sortedDailyItems.map(dailyItem => (
+            <WaterItem key={dailyItem._id} item={dailyItem} />
+          ));
+        })()
       )}
     </ul>
   );

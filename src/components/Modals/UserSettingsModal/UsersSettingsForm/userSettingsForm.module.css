@@ -8,43 +8,43 @@
 .uploadPhotoButtonWrapper {
   position: relative;
   width: 133px;
-  height: 18px;
+  height: 24px;
   margin: 0 auto;
+  cursor: pointer;
 }
 
-.uploadPhotoButtonWrapper:hover {
-  cursor: pointer;
+.uploadPhotoButtonWrapper:hover .uploadPhotoButton {
+  transform: scale(1.1);
 }
 
 .uploadPhotoButtonWrapper input.fileInput {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  border: none;
   opacity: 0;
-  z-index: 1;
   cursor: pointer;
-  padding: 0;
-  margin: 0;
+  z-index: 2;
+
+  padding: 24px;
 }
 
 .uploadPhotoButton {
   width: 133px;
-  height: 18px;
+  height: 24px;
   background-color: transparent;
   border: none;
-  border-radius: 0%;
-  cursor: pointer;
   padding: 0;
-  z-index: 10;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   position: relative;
+  transition: transform 0.3s ease;
 }
 
 .uploadPhotoButton:hover {
   background-color: transparent;
-  cursor: pointer;
 }
 
 .uploadPhotoButton:focus,
@@ -58,11 +58,22 @@
   line-height: 1.28;
   letter-spacing: -1%;
   color: var(--dark);
-
-  position: absolute;
-  right: 0;
   text-align: center;
-  min-width: 107px;
+  position: relative;
+  z-index: 1;
+  margin-left: 8px;
+  pointer-events: none;
+}
+
+.uploadIcon {
+  position: relative;
+  left: -5%;
+
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--dark);
+  pointer-events: none;
 }
 
 .photoUrl {
@@ -86,7 +97,8 @@
   width: 18px;
   height: 18px;
   fill: none;
-  stroke: var(--dark)
+  stroke: var(--dark);
+  z-index: 1; /* Иконка поверх кнопки */
 }
 
 .genderContainer {
@@ -151,20 +163,6 @@
   line-height: 1.28;
   color: var(--dark);
   height: 46px;
-}
-
-.nameInput:hover,
-.nameInput:active,
-.nameInput:focus {
-  border: 1px solid rgba(47, 47, 47, 0.4);
-}
-
-.nameInput:hover:not(:focus) {
-  border: 1px solid rgba(47, 47, 47, 0.4);
-}
-
-.nameLabel .nameInput.inactive:hover {
-  border: 1px solid rgba(47, 47, 47, 0.4);
 }
 
 .emailLabel {
@@ -289,16 +287,6 @@
   height: 46px;
 }
 
-.weightLabel input.weightInput:hover,
-.weightLabel input.weightInput:active,
-.weightLabel input.weightInput:focus {
-  border: 1px solid rgba(47, 47, 47, 0.4);
-}
-
-.weightInput:hover:not(:focus) {
-  border: 1px solid rgba(47, 47, 47, 0.4);
-}
-
 .activeTimeLabel {
   font-weight: 400;
   font-size: 14px;
@@ -315,16 +303,6 @@
   line-height: 1.28;
   color: var(--dark);
   height: 46px;
-}
-
-.activeTimeLabel input.activeTimeInput:hover,
-.activeTimeLabel input.activeTimeInput:active,
-.activeTimeLabel input.activeTimeInput:focus {
-  border: 1px solid rgba(47, 47, 47, 0.4);
-}
-
-.activeTimeInput:hover:not(:focus) {
-  border: 1px solid rgba(47, 47, 47, 0.4);
 }
 
 .dailyNormaLabel {
@@ -345,16 +323,6 @@
   line-height: 1.28;
   color: var(--dark);
   height: 46px;
-}
-
-.dailyNormaLabel input.dailyNormaInput:hover,
-.dailyNormaLabel input.dailyNormaInput:active,
-.dailyNormaLabel input.dailyNormaInput:focus {
-  border: 1px solid rgba(47, 47, 47, 0.4);
-}
-
-.dailyNormaInput:hover:not(:focus) {
-  border: 1px solid rgba(47, 47, 47, 0.4);
 }
 
 .reqWaterTextContainer {

@@ -6,7 +6,7 @@
 }
 
 .container {
-  padding: 0 16px
+  padding: 0 16px;
 }
 
 .text {
@@ -36,21 +36,26 @@
 }
 
 .item {
-  padding: 14px 19px;
   border-radius: 30px;
+
   max-height: 46px;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .signUpItem {
   background-color: var(--green);
+
+  transition: background-color var(--transition-delay) var(--transition);
 }
 
 .signInItem {
   background-color: none;
   border: 1px solid var(--light-dark);
+
+  transition: border var(--transition-delay) var(--transition);
 }
 
 .signUpItem:hover {
@@ -58,11 +63,7 @@
 }
 
 .signInItem:hover {
-  border-color: var(--hover-green);
-}
-
-.signInItem:hover .signInLink {
-  color: var(--hover-green);
+  border: 1px solid var(--hover-green);
 }
 
 .link {
@@ -72,6 +73,12 @@
   color: var(--light-dark);
   line-height: 1.28;
   letter-spacing: -1%;
+
+  transition: color var(--transition-delay) var(--transition);
+}
+
+.signInItem:hover .link {
+  color: var(--hover-green);
 }
 
 @media (min-width: 768px) {
@@ -81,7 +88,7 @@
   }
 
   .container {
-    padding: 0 32px
+    padding: 0 32px;
   }
 
   .containerWithoutLogo {
@@ -105,7 +112,6 @@
   }
 
   .item {
-    padding: 18px 40px;
     max-height: 60px;
   }
 }

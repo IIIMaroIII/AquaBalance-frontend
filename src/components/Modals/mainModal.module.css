@@ -42,6 +42,7 @@
 }
 
 button.closeWaterModalButton {
+  position: absolute;
   top: 20px;
   right: 16px;
   transform: none;
