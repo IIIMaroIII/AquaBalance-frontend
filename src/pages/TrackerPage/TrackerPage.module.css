@@ -13,16 +13,25 @@
   background-position: 41px 50px;
   border-radius: 30px;
   padding: 24px 16px;
-  width: 343px;
   height: 415px;
 }
 .detailedInfo {
   background-color: var(--light-gray);
   border-radius: 30px;
   padding: 40px 20px;
-  width: 343px;
+  /* width: 343px; */
   height: 100%;
   min-height: 749px;
+}
+
+@media (min-width: 375px) {
+  .mainInfo {
+    width: 343px;
+  }
+
+  .detailedInfo {
+    width: 343px;
+  }
 }
 
 @media screen and (min-device-pixel-ratio: 2) and (min-width: 375px),

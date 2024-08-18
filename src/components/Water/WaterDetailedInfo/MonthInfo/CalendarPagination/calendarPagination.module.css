@@ -1,6 +1,6 @@
 .wrapper {
   display: flex;
-  gap: 12px;
+  gap: 6px;
   align-items: center;
 }
 
@@ -30,6 +30,7 @@ button.btn:hover {
   font-weight: 700;
   line-height: 18px;
   color: var(--light-dark);
+  text-align: center;
 }
 
 .arrow {
@@ -56,7 +57,11 @@ button.btn:hover {
 }
 
 @media screen and (min-width: 375px) {
+  .wrapper {
+    gap: 12px;
+  }
 }
+
 @media screen and (min-width: 768px) {
   .span {
     font-size: 16px;
