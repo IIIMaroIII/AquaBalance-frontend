@@ -15,42 +15,42 @@ export const waterSlice = createSlice({
     changeWaterCardId(state, { payload }) {
       state.chosenWaterCardId = payload;
     },
-    changeModal(state, action) {
-      state.modalFlags.isModalOpen = action.payload;
+    changeModal(state, { payload }) {
+      state.modalFlags.isModalOpen = payload;
     },
     setChosenDate(state, { payload }) {
       state.chosenDate = payload;
     },
-    changeWaterModalEdit(state, action) {
-      state.modalFlags.isWaterModalEdit = action.payload;
+    changeWaterModalEdit(state, { payload }) {
+      state.modalFlags.isWaterModalEdit = payload;
       state.modalFlags.isDeleteWaterModalOpen = false;
       state.modalFlags.isLogoutModalOpen = false;
       state.modalFlags.isUsersSettingsModalOpen = false;
       state.modalFlags.isWaterModalAdd = false;
     },
-    changeWaterModalAdd(state, action) {
-      state.modalFlags.isWaterModalAdd = action.payload;
+    changeWaterModalAdd(state, { payload }) {
+      state.modalFlags.isWaterModalAdd = payload;
       state.modalFlags.isDeleteWaterModalOpen = false;
       state.modalFlags.isLogoutModalOpen = false;
       state.modalFlags.isUsersSettingsModalOpen = false;
       state.modalFlags.isWaterModalEdit = false;
     },
-    changeDeleteWaterModalOpen(state, action) {
-      state.modalFlags.isDeleteWaterModalOpen = action.payload;
+    changeDeleteWaterModalOpen(state, { payload }) {
+      state.modalFlags.isDeleteWaterModalOpen = payload;
       state.modalFlags.isWaterModalAdd = false;
       state.modalFlags.isLogoutModalOpen = false;
       state.modalFlags.isUsersSettingsModalOpen = false;
       state.modalFlags.isWaterModalEdit = false;
     },
-    changeUsersSettingsModalOpen(state, action) {
-      state.modalFlags.isUsersSettingsModalOpen = action.payload;
+    changeUsersSettingsModalOpen(state, { payload }) {
+      state.modalFlags.isUsersSettingsModalOpen = payload;
       state.modalFlags.isWaterModalAdd = false;
       state.modalFlags.isLogoutModalOpen = false;
       state.modalFlags.isDeleteWaterModalOpen = false;
       state.modalFlags.isWaterModalEdit = false;
     },
-    changeLogoutModalOpen(state, action) {
-      state.modalFlags.isLogoutModalOpen = action.payload;
+    changeLogoutModalOpen(state, { payload }) {
+      state.modalFlags.isLogoutModalOpen = payload;
       state.modalFlags.isWaterModalAdd = false;
       state.modalFlags.isDeleteWaterModalOpen = false;
       state.modalFlags.isUsersSettingsModalOpen = false;

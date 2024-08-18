@@ -178,3 +178,11 @@ input:-webkit-autofill:active {
     bottom: 15px;
   }
 }
+
+/*! Dark Theme */
+.darkLabel,
+.darkForm input.input::placeholder,
+.darkForm input.input {
+  color: #ffffff91;
+}
+/*! ========== */

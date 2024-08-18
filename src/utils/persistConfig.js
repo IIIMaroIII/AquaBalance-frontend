@@ -4,8 +4,8 @@ const users = {
   key: 'users',
   storage,
   whitelist: ['user', 'isLoggedIn'],
-  // blacklist: ['isLoggedIn'],
 };
+
 const water = {
   key: 'water',
   storage,
@@ -13,7 +13,14 @@ const water = {
   blacklist: ['chosenDate'],
 };
 
+const theme = {
+  key: 'theme',
+  storage,
+  whitelist: ['theme'],
+};
+
 export const persistConfig = {
   users,
   water,
+  theme
 };

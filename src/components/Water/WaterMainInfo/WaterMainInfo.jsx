@@ -1,4 +1,3 @@
-// import css from './WaterMainInfo.module.css';
 import WaterDailyNorma from './WaterDailyNorma/WaterDailyNorma.jsx';
 import WaterProgressBar from './WaterProgressBar/WaterProgressBar.jsx';
 import Logo from 'src/components/REUSABLE/Logo/Logo';

@@ -18,7 +18,7 @@ export const usersSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(signUp.fulfilled, (state, { payload }) => {
+      .addCase(signUp.fulfilled, (state) => {
         state.isLoading = false;
       })
       .addCase(signUp.rejected, state => {
@@ -34,7 +34,7 @@ export const usersSlice = createSlice({
         state.isLoggedIn = true;
         state.isLoading = false;
       })
-      .addCase(signIn.rejected, (state, action) => {
+      .addCase(signIn.rejected, (state) => {
         state.isLoading = false;
 
         state.isLoggedIn = false;

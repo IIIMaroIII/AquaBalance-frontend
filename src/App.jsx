@@ -1,5 +1,7 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { MdDarkMode } from 'react-icons/md';
+import { MdOutlineLightMode } from 'react-icons/md';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const SignInPage = lazy(() => import('./pages/SignIn/SignInPage.jsx'));
@@ -12,11 +14,32 @@ import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 
 import './App.css';
 import ChartComponent from './components/ChartComponent/ChartComponent.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeTheme } from './redux/darkTheme/slice';
+import { selectDarkTheme } from './redux/darkTheme/selectors';
 
 function App() {
+  const dispatch = useDispatch();
+  const switchTheme = useSelector(changeTheme);
+  const theme = useSelector(selectDarkTheme);
+
+  const toggle = () => {
+    dispatch(switchTheme);
+  };
+
+  useEffect(() => {
+    theme
+      ? document.body.classList.add('dark')
+      : document.body.classList.remove('dark');
+  }, [theme]);
+
   return (
     <>
       <SharedLayout>
+        <button onClick={toggle}>
+          {!theme ? <MdDarkMode /> : <MdOutlineLightMode />}
+        </button>
+
         <Routes>
           <Route path="/" element={<HomePage />} />
           {

@@ -3,67 +3,52 @@ import CustomNavLink from '../REUSABLE/CustomNavLink/CustomNavLink';
 import Logo from '../REUSABLE/Logo/Logo';
 import clsx from 'clsx';
 import Container from '../REUSABLE/Container/Container.jsx';
-import { useDispatch } from 'react-redux';
-import { signUp } from 'src/redux/users/operations.js';
-import Button from '../REUSABLE/Button/Button.jsx';
-import useModals from 'src/hooks/useModals.js';
+import { useSelector } from 'react-redux';
+import { selectDarkTheme } from 'src/redux/darkTheme/selectors';
 
 const WelcomeSection = () => {
-  const dispatch = useDispatch();
-  const { changeModal, modal } = useModals();
+  const theme = useSelector(selectDarkTheme);
+
   return (
     //Container - переиспользуемый кастомный компонент, добавление классов через addClass
     //CustomNavLink - переиспользуемый кастомный компонент, добавление классов через addClass
 
-    <Container type="section" addClass={css.sectionContainer}>
+    <Container
+      type="section"
+      addClass={clsx(css.sectionContainer, {
+        [css.darkSectionContainer]: theme,
+      })}
+    >
       <Container type="div" addClass={css.container}>
-      <Logo addClass={css.logo} />
-      <div className={css.containerWithoutLogo}>
-        <p className={css.text}>Record daily water intake and track</p>
-        <h1 className={css.title}>Water consumption tracker</h1>
-        <ul className={css.list}>
-          <li className={clsx(css.item, css.signUpItem)}>
-            <CustomNavLink
-              addClass={clsx(css.link, css.signUpLink, {
-                // [css.isActive]: isActive,
-              })}
-              to="/signup"
-            >
-              Try tracker
-            </CustomNavLink>
-          </li>
-          <li className={clsx(css.item, css.signInItem)}>
-            <CustomNavLink
-              addClass={clsx(css.link, css.signInLink, {
-                // [css.isActive]: isActive,
-              })}
-              to="/signin"
-            >
-              Sign In
-            </CustomNavLink>
-          </li>
-          {/* <li className={clsx(css.item, css.signInItem)}>
-            <CustomNavLink
-              addClass={clsx(css.link, css.signInLink, {
-                // [css.isActive]: isActive,
-              })}
-              to="/tracker"
-            >
-              Tracker Page
-            </CustomNavLink>
-          </li>
-          <li className={clsx(css.item, css.signInItem)}>
-            <Button
-              onClick={() => dispatch(changeModal(!modal))}
-              addClass={clsx(css.link, css.signInLink, {
-                // [css.isActive]: isActive,
-              })}
-            >
-              Set to Main Modal Open
-            </Button>
-          </li> */}
-        </ul>
-      </div>
+        <Logo addClass={css.logo} />
+        <div className={css.containerWithoutLogo}>
+          <p className={clsx(css.text, { [css.darkText]: theme })}>
+            Record daily water intake and track
+          </p>
+          <h1 className={css.title}>Water consumption tracker</h1>
+          <ul className={css.list}>
+            <li className={clsx(css.item, css.signUpItem)}>
+              <CustomNavLink
+                addClass={clsx(css.link, css.signUpLink, {
+                  [css.darkLink]: theme,
+                })}
+                to="/signup"
+              >
+                Try tracker
+              </CustomNavLink>
+            </li>
+            <li className={clsx(css.item, css.signInItem, {[css.darkSignInItem]: theme})}>
+              <CustomNavLink
+                addClass={clsx(css.link, css.signInLink, {
+                  [css.darkLink]: theme,
+                })}
+                to="/signin"
+              >
+                Sign In
+              </CustomNavLink>
+            </li>
+          </ul>
+        </div>
       </Container>
     </Container>
   );

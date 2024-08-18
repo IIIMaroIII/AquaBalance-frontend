@@ -65,3 +65,14 @@
   font-weight: 700;
   line-height: 1.28;
 }
+
+/*! Dark Theme */
+.darkSectionContainer {
+  background-color: transparent;
+  outline: 1px solid white;
+}
+
+.darkHaveAnAccountText {
+  color: #ffffff91;
+}
+/*! ========== */

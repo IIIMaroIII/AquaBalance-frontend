@@ -2,17 +2,24 @@
   max-width: 375px;
   margin: 0 auto;
   padding: 16px;
+}
 
-  @media (min-width: 768px) {
+
+@media (min-width: 768px) {
+  .wrapper {
     max-width: 768px;
     padding: 32px;
   }
+}
 
-  @media (min-width: 1440px) {
+@media (min-width: 1440px) {
+  .wrapper {
     max-width: 1440px;
   }
+}
 
-  @media (min-width: 1440px) and (min-height: 800px) {
+@media (min-width: 1440px) and (min-height: 800px) {
+  .wrapper {
     height: 100vh;
     display: flex;
     justify-content: center;

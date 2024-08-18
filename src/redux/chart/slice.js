@@ -6,8 +6,8 @@ const chartSlice = createSlice({
     showChart: false,
   },
   reducers: {
-    setShowChart(state, action) {
-      state.showChart = action.payload;
+    setShowChart(state, { payload }) {
+      state.showChart = payload;
     },
   },
 });

@@ -8,7 +8,6 @@
 .sectionContainer {
   background-color: var(--light-gray);
   border-radius: 30px;
-  /* padding: 24px 16px 216px 16px; */
   padding-top: 24px;
   padding-bottom: 216px;
 
@@ -64,3 +63,16 @@
   font-weight: 700;
   line-height: 1.28;
 }
+
+
+
+/*! Dark Theme */
+.darkSectionContainer {
+  background-color: transparent;
+  outline: 1px solid white;
+}
+
+.darkNoAccountText,.darkNoAccountLink {
+  color: #ffffff91;
+}
+/*! ========== */

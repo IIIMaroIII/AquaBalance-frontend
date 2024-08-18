@@ -14,11 +14,13 @@ import { persistConfig } from 'src/utils/persistConfig';
 import { usersReducer } from './users/slice';
 import { waterReducer } from './water/slice';
 import { chartReducer } from './chart/slice.js';
+import { themeReducer } from './darkTheme/slice';
 
 const rootReducer = {
   users: persistReducer(persistConfig.users, usersReducer),
   water: persistReducer(persistConfig.water, waterReducer),
   chart: chartReducer,
+  theme: persistReducer(persistConfig.theme, themeReducer),
 };
 
 const store = configureStore({

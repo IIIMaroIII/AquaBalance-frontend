@@ -1,6 +1,6 @@
 import css from './signInForm.module.css';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -11,11 +11,13 @@ import Button from 'src/components/REUSABLE/Button/Button';
 import CustomInput from 'src/components/REUSABLE/Input/CustomInput.jsx';
 import clsx from 'clsx';
 import sprite from '../../../assets/sprite.svg';
+import { selectDarkTheme } from 'src/redux/darkTheme/selectors';
 
 const SignInForm = () => {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const theme = useSelector(selectDarkTheme);
 
   const {
     register,
@@ -41,13 +43,13 @@ const SignInForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+    <form onSubmit={handleSubmit(onSubmit)} className={clsx(css.form, {[css.darkForm]: theme})}>
       <h2 className={css.text}>Sign In</h2>
 
       <CustomInput
         label={true}
         labelName="Email"
-        labelClass={css.label}
+        labelClass={clsx(css.label, { [css.darkLabel]: theme })}
         inputType="email"
         inputClass={clsx(css.input, errors.email && css.inputError)}
         placeholder="Enter your email"
@@ -64,7 +66,7 @@ const SignInForm = () => {
       <CustomInput
         label={true}
         labelName="Password"
-        labelClass={css.label}
+        labelClass={clsx(css.label, { [css.darkLabel]: theme })}
         inputType={showPassword ? 'text' : 'password'}
         inputClass={clsx(css.input, errors.password && css.inputError)}
         placeholder="Enter your password"

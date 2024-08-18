@@ -43,6 +43,8 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  /*  */
 }
 
 .signUpItem {
@@ -132,3 +134,22 @@
     line-height: 0.95;
   }
 }
+
+/*! Dark Theme */
+.darkSectionContainer {
+  background-color: transparent;
+  outline: 1px solid white;
+}
+
+.darkText {
+  color: #ffffff91;
+}
+
+.darkLink {
+  color: #ffffff91;
+}
+
+.darkSignInItem {
+  outline: 1px solid #ffffff91;
+}
+/*! =============== */
