@@ -1,6 +1,10 @@
 import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
+import { MdOutlineLightMode } from "react-icons/md";
+import { MdDarkMode } from 'react-icons/md';
+
+
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const SignInPage = lazy(() => import('./pages/SignIn/SignInPage.jsx'));
 const TrackerPage = lazy(() => import('./pages/TrackerPage/TrackerPage.jsx'));
@@ -35,7 +39,9 @@ function App() {
   return (
     <>
       <SharedLayout>
-        <button onClick={handleClick}>click</button>
+        <button onClick={handleClick}>
+          {isDarkMode ? <MdOutlineLightMode /> : <MdDarkMode />}
+        </button>
         <Routes>
           <Route path="/" element={<HomePage />} />
           {

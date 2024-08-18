@@ -16,8 +16,10 @@ import CONSTANTS from 'src/components/Constants/constants.js';
 import { userSettingsFormValidation } from 'src/Validation/userSettingsForm.js';
 import sprite from '../../../../assets/sprite.svg';
 import clsx from 'clsx';
+import { selectDarkMode } from 'src/redux/darkMode/selectors';
 
 const UsersSettingsForm = () => {
+  const isDarkMode = useSelector(selectDarkMode);
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const [photoPreview, setPhotoPreview] = useState(() => {
@@ -30,7 +32,6 @@ const UsersSettingsForm = () => {
   const {
     control,
     handleSubmit,
-    setValue,
     reset,
     watch,
     formState: { errors, isDirty, isValid },
@@ -49,7 +50,6 @@ const UsersSettingsForm = () => {
 
   const weight = watch('weight', 0);
   const activeTime = watch('activeTime', 0);
-  const dailyNorma = watch('dailyNorma', 1.8);
 
   const onSubmit = async data => {
     const formData = new FormData();
@@ -88,7 +88,6 @@ const UsersSettingsForm = () => {
       const norma = weight * 0.03 + activeTime * 0.4;
       setCalculatedNorma(norma.toFixed(2));
     }
-    
   }, [activeTime, errors, weight]);
 
   return (
@@ -98,13 +97,13 @@ const UsersSettingsForm = () => {
           <div className={css.photoUrlWrapper}>
             {photoPreview ? (
               <img
-                className={css.photoUrl}
+                className={clsx(css.photoUrl, { no_invert: isDarkMode })}
                 src={photoPreview}
                 alt="Photo Preview"
               />
             ) : (
               <img
-                className={css.photoUrl}
+                className={clsx(css.photoUrl, { no_invert: isDarkMode })}
                 src={'src/assets/pictures/userImg.png'}
                 alt="Default Preview"
               />
