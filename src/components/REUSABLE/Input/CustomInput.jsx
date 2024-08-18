@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import css from './customInput.module.css';
 import { forwardRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectDarkTheme } from 'src/redux/darkTheme/selectors';
 
 const CustomInput = forwardRef(
   (
@@ -23,6 +25,7 @@ const CustomInput = forwardRef(
     },
     ref,
   ) => {
+    const theme = useSelector(selectDarkTheme);
     const [isFocused, setIsFocused] = useState(false);
     const [isInactive, setIsInactive] = useState(true);
 
@@ -53,6 +56,7 @@ const CustomInput = forwardRef(
                     [css.inactive]: isInactive,
                     [css.focused]: isFocused,
                     [css.error]: error,
+                    [css.darkInput]: theme,
                   },
                   inputClass,
                 )}
@@ -80,6 +84,7 @@ const CustomInput = forwardRef(
                   [css.inactive]: isInactive,
                   [css.focused]: isFocused,
                   [css.error]: error,
+                  [css.darkInput]: theme,
                 },
                 inputClass,
               )}

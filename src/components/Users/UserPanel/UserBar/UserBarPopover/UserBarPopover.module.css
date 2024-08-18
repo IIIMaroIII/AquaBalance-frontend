@@ -57,3 +57,29 @@ button.popover_btn:hover {
 }
 @media screen and (min-width: 1440px) {
 }
+
+
+/*! Dark Theme */
+.darkPopover_list {
+background-color: black;
+outline: 1px solid white;
+}
+
+button.darkPopover_btn {
+color: white;
+}
+
+.darkPopover_icon {
+  stroke: white;
+  fill: transparent;
+}
+
+button.darkPopover_btn:hover .popover_icon {
+  stroke: var(--green);
+}
+
+button.darkPopover_btn:hover {
+  color: var(--green);
+  background-color: transparent;
+}
+/*! ========== */

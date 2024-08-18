@@ -12,8 +12,10 @@ import {
   dailyNormaPercentage,
   daysWithRecords,
 } from 'src/redux/water/selectors.js';
+import { selectDarkTheme } from 'src/redux/darkTheme/selectors';
 
 export const CalendarItem = ({ day, activeDay, setActiveDay }) => {
+  const theme = useSelector(selectDarkTheme)
   const dispatch = useDispatch();
   const { getChosenDay, setChosenDay } = useChosenDate();
   const dayWithRecord = useSelector(daysWithRecords);
@@ -27,6 +29,7 @@ export const CalendarItem = ({ day, activeDay, setActiveDay }) => {
           addClass={clsx(css.btn, {
             [css.active]: activeDay === day || getChosenDay() === day,
             [css.done]: Number(dailyPercentage) === 100,
+            [css.darkBtn]: theme
           })}
           onClick={() => {
             setActiveDay(day);
@@ -37,7 +40,7 @@ export const CalendarItem = ({ day, activeDay, setActiveDay }) => {
         >
           {day}
         </Button>
-        <p className={css.text}>
+        <p className={clsx(css.percentage, {[css.darkPercentage]: theme})}>
           {dayWithRecord.includes(day) ? `${dailyPercentage}%` : '0%'}
         </p>
       </li>

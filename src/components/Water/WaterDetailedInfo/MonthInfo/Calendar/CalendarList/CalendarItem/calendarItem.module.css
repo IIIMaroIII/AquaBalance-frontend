@@ -47,8 +47,34 @@ button.btn.active {
   }
 }
 
-.text {
+.percentage {
   font-size: 12px;
   line-height: 187%;
   color: var(--input-text-inactive-color);
 }
+
+/*! Dark Theme */
+.darkPercentage {
+  color: var(--white);
+}
+
+button.darkBtn {
+  background-color: transparent;
+  outline: 1px solid var(--white);
+}
+
+button.darkBtn.done {
+  background-color: #00ff048c;
+}
+
+button.darkBtn {
+  color: var(--white);
+  transition: opacity var(--transition-delay) var(--transition);
+}
+
+button.darkBtn:hover,
+button.darkBtn:focus {
+  color: #ffffff66;
+  outline: 1px solid #ffffff66;
+}
+/*! ========== */

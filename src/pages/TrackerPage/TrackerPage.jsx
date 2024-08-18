@@ -3,14 +3,17 @@ import WaterDetailedInfo from 'src/components/Water/WaterDetailedInfo/WaterDetai
 import WaterMainInfo from 'src/components/Water/WaterMainInfo/WaterMainInfo.jsx';
 import Container from 'src/components/REUSABLE/Container/Container.jsx';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchDailyWater,
   fetchMonthlyWater,
 } from 'src/redux/water/operations.js';
+import { selectDarkTheme } from 'src/redux/darkTheme/selectors';
+import clsx from 'clsx';
 
 const TrackerPage = () => {
   const dispatch = useDispatch();
+  const theme = useSelector(selectDarkTheme)
 
   useEffect(() => {
     (async () => {
@@ -27,7 +30,7 @@ const TrackerPage = () => {
         <div className={css.mainInfo}>
           <WaterMainInfo />
         </div>
-        <div className={css.detailedInfo}>
+        <div className={clsx(css.detailedInfo, {[css.darkDetailedInfo]: theme})}>
           <WaterDetailedInfo />
         </div>
       </div>

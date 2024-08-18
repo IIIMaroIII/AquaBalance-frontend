@@ -1,4 +1,3 @@
-import css from './WaterDetailedInfo.module.css';
 import UserPanel from 'src/components/Users/UserPanel/UserPanel.jsx';
 import MonthInfo from './MonthInfo/MonthInfo.jsx';
 import DailyInfo from './DailyInfo/DailyInfo.jsx';
@@ -14,7 +13,7 @@ const WaterDetailedInfo = () => {
     </>
   ) : (
     <>
-      <Container type="section" addClass={css.waterDetailedInfoContainer}>
+      <Container type="section">
         <UserPanel />
         <DailyInfo />
         <MonthInfo />

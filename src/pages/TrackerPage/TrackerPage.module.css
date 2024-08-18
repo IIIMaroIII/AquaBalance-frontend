@@ -16,6 +16,7 @@
   width: 343px;
   height: 415px;
 }
+
 .detailedInfo {
   background-color: var(--light-gray);
   border-radius: 30px;
@@ -86,3 +87,11 @@
     }
   }
 }
+
+
+/*! Dark Theme */
+.darkDetailedInfo {
+  background-color: transparent;
+  outline: 1px solid white;
+}
+/*! ========== */
