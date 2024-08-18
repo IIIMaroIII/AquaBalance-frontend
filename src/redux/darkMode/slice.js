@@ -5,11 +5,11 @@ export const darkModeSlice = createSlice({
   name: 'darkMode',
   initialState,
   reducers: {
-    changeTheme(state) {
+    setDarkMode(state) {
       state.darkMode.isDark = !state.darkMode.isDark;
     },
   },
 });
 
-export const { changeTheme } = darkModeSlice.actions;
+export const { setDarkMode } = darkModeSlice.actions;
 export const darkModeReducer = darkModeSlice.reducer;

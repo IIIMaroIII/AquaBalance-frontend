@@ -20,8 +20,6 @@
   --text-grey-white: #2f2f2f99;
   --calendar-item-bcg: #323f4733;
 
-
-
   --input-border-inactive-color: rgba(47, 47, 47, 0.2);
   --input-border-activated-color: rgba(47, 47, 47, 0.6);
   --input-text-inactive-color: rgba(47, 47, 47, 0.6);
@@ -43,6 +41,15 @@ body {
   font-size: 16px;
   line-height: 150%;
   letter-spacing: -0.01em;
+}
+
+body.dark_mode {
+  filter: invert(1) hue-rotate(180deg);
+  background-color: black;
+}
+
+body.dark_mode .no_invert {
+  filter: invert(1) hue-rotate(180deg);
 }
 
 input:-webkit-autofill,

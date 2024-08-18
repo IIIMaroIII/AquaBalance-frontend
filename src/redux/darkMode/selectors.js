@@ -1,1 +1,1 @@
-export const selectDarkMode = state => state.theme.theme.isDark
+export const selectDarkMode = state => state.darkMode.darkMode.isDark
