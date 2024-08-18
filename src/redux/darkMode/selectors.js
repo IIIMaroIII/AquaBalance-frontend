@@ -1,0 +1,1 @@
+export const selectDarkMode = state => state.theme.theme.isDark

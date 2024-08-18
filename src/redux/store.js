@@ -14,8 +14,10 @@ import { persistConfig } from 'src/utils/persistConfig';
 import { usersReducer } from './users/slice';
 import { waterReducer } from './water/slice';
 import { chartReducer } from './chart/slice.js';
+import { darkModeReducer } from './darkMode/slice';
 
 const rootReducer = {
+  darkMode: persistReducer(persistConfig.darkMode, darkModeReducer),
   users: persistReducer(persistConfig.users, usersReducer),
   water: persistReducer(persistConfig.water, waterReducer),
   chart: chartReducer,

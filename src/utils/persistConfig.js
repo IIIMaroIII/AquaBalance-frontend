@@ -4,7 +4,6 @@ const users = {
   key: 'users',
   storage,
   whitelist: ['user', 'isLoggedIn'],
-  // blacklist: ['isLoggedIn'],
 };
 const water = {
   key: 'water',
@@ -13,7 +12,14 @@ const water = {
   blacklist: ['chosenDate'],
 };
 
+const darkMode = {
+  key: 'darkMode',
+  storage,
+  whitelist: ['darkMode'],
+};
+
 export const persistConfig = {
   users,
   water,
+  darkMode
 };
