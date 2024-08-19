@@ -130,7 +130,7 @@ const WaterForm = ({ operationName }) => {
             <use xlinkHref={`${sprite}#icon-minus`} />
           </svg>
         </Button>
-        <p className={css.waterAmountText}>{waterAmount}ml</p>
+        <p className={css.waterAmountText}>{waterAmount} ml</p>
         <Button
           type="button"
           onClick={addWaterValue}
