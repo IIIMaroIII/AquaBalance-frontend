@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { selectDarkMode } from 'src/redux/darkMode/selectors.js';
 
 const AdvantagesSection = () => {
-  const darkMode = useSelector(selectDarkMode)
+  const isDarkMode = useSelector(selectDarkMode)
 
   const [totalUsers, setTotalUsers] = useState(0);
 
@@ -28,7 +28,7 @@ const AdvantagesSection = () => {
   }, []);
 
   return (
-    <Container type="section" addClass={clsx(css.container, {no_invert: darkMode})}>
+    <Container type="section" addClass={clsx(css.container, {no_invert: isDarkMode})}>
       <div className={clsx(css.ourHappyCustomersContainer, totalUsers > 0 && css.ourHappyCustomersContainerWithTotalUsers)}>
         <div className={css.avatarsList}>
           <picture className={css.avatar}>
