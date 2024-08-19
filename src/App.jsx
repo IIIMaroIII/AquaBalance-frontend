@@ -1,10 +1,6 @@
 import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { MdOutlineLightMode } from "react-icons/md";
-import { MdDarkMode } from 'react-icons/md';
-
-
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const SignInPage = lazy(() => import('./pages/SignIn/SignInPage.jsx'));
 const TrackerPage = lazy(() => import('./pages/TrackerPage/TrackerPage.jsx'));
@@ -16,13 +12,11 @@ import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 
 import './App.css';
 import ChartComponent from './components/ChartComponent/ChartComponent.jsx';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectDarkMode } from './redux/darkMode/selectors';
-import { setDarkMode } from './redux/darkMode/slice';
 
 function App() {
   const isDarkMode = useSelector(selectDarkMode);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isDarkMode) {
@@ -32,16 +26,9 @@ function App() {
     }
   }, [isDarkMode]);
 
-  const handleClick = () => {
-    dispatch(setDarkMode());
-  };
-
   return (
     <>
       <SharedLayout>
-        <button onClick={handleClick}>
-          {isDarkMode ? <MdOutlineLightMode /> : <MdDarkMode />}
-        </button>
         <Routes>
           <Route path="/" element={<HomePage />} />
           {
