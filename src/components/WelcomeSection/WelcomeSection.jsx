@@ -1,9 +1,8 @@
 import css from './WelcomeSection.module.css';
 import CustomNavLink from '../REUSABLE/CustomNavLink/CustomNavLink';
-import Logo from '../REUSABLE/Logo/Logo';
 import clsx from 'clsx';
 import Container from '../REUSABLE/Container/Container.jsx';
-import LogoAndSwitchMode from '../REUSABLE/LogoAndSwitchMode/LogoAndSwitchMode';
+import LogoAndSwitchModeBtn from '../REUSABLE/LogoAndSwitchModeBtn/LogoAndSwitchModeBtn';
 
 const WelcomeSection = () => {
   return (
@@ -12,7 +11,7 @@ const WelcomeSection = () => {
 
     <Container type="section" addClass={css.sectionContainer}>
       <Container type="div" addClass={css.container}>
-        <LogoAndSwitchMode />
+        <LogoAndSwitchModeBtn />
         <div className={css.containerWithoutLogo}>
           <p className={css.text}>Record daily water intake and track</p>
           <h1 className={css.title}>Water consumption tracker</h1>

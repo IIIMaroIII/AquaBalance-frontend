@@ -6,7 +6,7 @@ import CustomNavLink from 'src/components/REUSABLE/CustomNavLink/CustomNavLink';
 import AdvantagesSection from 'src/components/AdvantagesSection/AdvantagesSection.jsx';
 
 import css from './signInPage.module.css';
-import LogoAndSwitchMode from 'src/components/REUSABLE/LogoAndSwitchMode/LogoAndSwitchMode';
+import LogoAndSwitchModeBtn from 'src/components/REUSABLE/LogoAndSwitchModeBtn/LogoAndSwitchModeBtn';
 
 const SignInPage = () => {
   const { width } = useWindowSize();
@@ -15,7 +15,7 @@ const SignInPage = () => {
     <Container type="div" addClass={css.signInPage}>
       <Container type="section" addClass={css.sectionContainer}>
         <Container addClass={css.signInPartContainer}>
-          <LogoAndSwitchMode addClass={css.logo} />
+          <LogoAndSwitchModeBtn addClass={css.logo} />
           <SignInForm />
           <p className={css.noAccountText}>
             Don&apos;t have an account?

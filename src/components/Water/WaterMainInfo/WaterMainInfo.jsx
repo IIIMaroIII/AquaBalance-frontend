@@ -3,12 +3,12 @@ import WaterProgressBar from './WaterProgressBar/WaterProgressBar.jsx';
 import Container from 'src/components/REUSABLE/Container/Container.jsx';
 import AddWaterBtn from './AddWaterBtn/AddWaterBtn.jsx';
 
-import LogoAndSwitchMode from 'src/components/REUSABLE/LogoAndSwitchMode/LogoAndSwitchMode.jsx';
+import LogoAndSwitchModeBtn from 'src/components/REUSABLE/LogoAndSwitchModeBtn/LogoAndSwitchModeBtn.jsx';
 
 const WaterMainInfo = () => {
   return (
     <Container type="section" addClass={''}>
-      <LogoAndSwitchMode />
+      <LogoAndSwitchModeBtn />
       <WaterDailyNorma />
       <WaterProgressBar />
       <AddWaterBtn />

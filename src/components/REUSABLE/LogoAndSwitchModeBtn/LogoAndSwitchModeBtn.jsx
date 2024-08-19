@@ -1,4 +1,4 @@
-import css from './LogoAndSwitchMode.module.css';
+import css from './LogoAndSwitchModeBtn.module.css';
 
 import { MdOutlineLightMode } from 'react-icons/md';
 import { MdDarkMode } from 'react-icons/md';
@@ -9,7 +9,7 @@ import Logo from '../Logo/Logo';
 import Button from '../Button/Button';
 import clsx from 'clsx';
 
-const LogoAndSwitchMode = ({ addClass = '' }) => {
+const LogoAndSwitchModeBtn = ({ addClass = '' }) => {
   const dispatch = useDispatch();
   const isDarkMode = useSelector(selectDarkMode);
 
@@ -26,4 +26,4 @@ const LogoAndSwitchMode = ({ addClass = '' }) => {
   );
 };
 
-export default LogoAndSwitchMode;
+export default LogoAndSwitchModeBtn;

@@ -5,7 +5,7 @@ import Container from 'src/components/REUSABLE/Container/Container';
 import { Link } from 'react-router-dom';
 import css from './SignUpPage.module.css';
 import AdvantagesSection from 'src/components/AdvantagesSection/AdvantagesSection.jsx';
-import LogoAndSwitchMode from 'src/components/REUSABLE/LogoAndSwitchMode/LogoAndSwitchMode';
+import LogoAndSwitchModeBtn from 'src/components/REUSABLE/LogoAndSwitchModeBtn/LogoAndSwitchModeBtn';
 
 const SignUpPage = () => {
   const { width } = useWindowSize();
@@ -14,7 +14,7 @@ const SignUpPage = () => {
     <Container type="div" addClass={css.signUpPage}>
       <Container type="section" addClass={css.sectionContainer}>
         <Container addClass={css.signUpPartContainer}>
-          <LogoAndSwitchMode addClass={css.logo} />
+          <LogoAndSwitchModeBtn addClass={css.logo} />
           <SignUpForm />
           <p className={css.haveAnAccountText}>
             Already have an account?{' '}

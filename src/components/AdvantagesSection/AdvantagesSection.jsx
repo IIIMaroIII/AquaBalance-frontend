@@ -8,11 +8,9 @@ import css from './AdvantagesSection.module.css';
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import { selectDarkMode } from 'src/redux/darkMode/selectors.js';
-// import useAuth from 'src/hooks/useAuth.js';
 
 const AdvantagesSection = () => {
   const darkMode = useSelector(selectDarkMode)
-  // const {} = useAuth(); // Кастомный хук для быстрого доступа к isLoggedIn, isLoading и тд
 
   const [totalUsers, setTotalUsers] = useState(0);
 

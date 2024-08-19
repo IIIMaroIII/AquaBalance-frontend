@@ -28,7 +28,6 @@ import clsx from 'clsx';
 
 const WaterForm = ({ operationName }) => {
   const { setHoursAndMinutes } = useChosenDate();
-
   const dispatch = useDispatch();
   const waterItems = useSelector(selectWaterItems);
   const itemID = useSelector(selectChosenWaterCardId);
