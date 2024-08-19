@@ -54,12 +54,10 @@ body.dark_mode .no_invert {
 }
 
 .switch-dark-mode-btn {
-    background-color: transparent;
+  background-color: transparent;
   border: none;
 }
 /*! ========= */
-
-
 
 input:-webkit-autofill,
 textarea:-webkit-autofill,
