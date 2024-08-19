@@ -3,7 +3,7 @@ import CustomNavLink from '../REUSABLE/CustomNavLink/CustomNavLink';
 import Logo from '../REUSABLE/Logo/Logo';
 import clsx from 'clsx';
 import Container from '../REUSABLE/Container/Container.jsx';
-import LogoAndSwitchMode from '../LogoAndSwitchMode/LogoAndSwitchMode';
+import LogoAndSwitchMode from '../REUSABLE/LogoAndSwitchMode/LogoAndSwitchMode';
 
 const WelcomeSection = () => {
   return (

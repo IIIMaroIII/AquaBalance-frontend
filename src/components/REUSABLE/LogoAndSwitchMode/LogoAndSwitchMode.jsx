@@ -5,11 +5,11 @@ import { MdDarkMode } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDarkMode } from 'src/redux/darkMode/selectors';
 import { setDarkMode } from 'src/redux/darkMode/slice';
-import Logo from '../REUSABLE/Logo/Logo';
-import Button from '../REUSABLE/Button/Button';
+import Logo from '../Logo/Logo';
+import Button from '../Button/Button';
 import clsx from 'clsx';
 
-const LogoAndSwitchMode = ({ addClass='' }) => {
+const LogoAndSwitchMode = ({ addClass = '' }) => {
   const dispatch = useDispatch();
   const isDarkMode = useSelector(selectDarkMode);
 

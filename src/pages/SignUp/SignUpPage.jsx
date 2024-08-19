@@ -5,7 +5,7 @@ import Container from 'src/components/REUSABLE/Container/Container';
 import { Link } from 'react-router-dom';
 import css from './SignUpPage.module.css';
 import AdvantagesSection from 'src/components/AdvantagesSection/AdvantagesSection.jsx';
-import LogoAndSwitchMode from 'src/components/LogoAndSwitchMode/LogoAndSwitchMode';
+import LogoAndSwitchMode from 'src/components/REUSABLE/LogoAndSwitchMode/LogoAndSwitchMode';
 
 const SignUpPage = () => {
   const { width } = useWindowSize();
