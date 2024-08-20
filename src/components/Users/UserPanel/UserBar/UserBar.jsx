@@ -7,8 +7,11 @@ import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
 import { useClickAway } from 'react-use';
 import { useRef } from 'react';
+import { selectDarkMode } from 'src/redux/darkMode/selectors.js';
+import clsx from 'clsx';
 
 const UserBar = () => {
+  const isDarkMode = useSelector(selectDarkMode)
   const user = useSelector(selectUser);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const itemRef = useRef(null);
@@ -35,7 +38,7 @@ const UserBar = () => {
         )}
         <div>
           <img
-            className={css.user_avatar}
+            className={clsx(css.user_avatar, {no_invert: isDarkMode})}
             alt="User Avatar"
             src={
               user?.photoUrl ??

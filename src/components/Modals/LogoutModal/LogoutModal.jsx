@@ -1,4 +1,3 @@
-// import useModals from 'src/hooks/useModals.js';
 import css from './logoutModal.module.css';
 import { useDispatch } from 'react-redux';
 import { logout } from 'src/redux/users/operations';

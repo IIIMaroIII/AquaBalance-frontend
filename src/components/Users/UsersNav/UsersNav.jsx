@@ -1,5 +1,4 @@
 import CustomNavLink from 'src/components/REUSABLE/CustomNavLink/CustomNavLink.jsx';
-import css from './usersNav.module.css';
 
 const UsersNav = () => {
   return (

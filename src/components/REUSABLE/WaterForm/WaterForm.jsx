@@ -1,5 +1,4 @@
 import css from './waterForm.module.css';
-import useModals from 'src/hooks/useModals.js';
 import useChosenDate from 'src/hooks/useChosenDate.js';
 import CustomInput from '../Input/CustomInput';
 import Button from '../Button/Button';
@@ -28,9 +27,7 @@ import { selectChosenWaterCardId } from 'src/redux/water/selectors.js';
 import clsx from 'clsx';
 
 const WaterForm = ({ operationName }) => {
-  const { getHoursAndMinutes, setHoursAndMinutes, chosenDate } =
-    useChosenDate();
-
+  const { setHoursAndMinutes } = useChosenDate();
   const dispatch = useDispatch();
   const waterItems = useSelector(selectWaterItems);
   const itemID = useSelector(selectChosenWaterCardId);
@@ -133,7 +130,7 @@ const WaterForm = ({ operationName }) => {
             <use xlinkHref={`${sprite}#icon-minus`} />
           </svg>
         </Button>
-        <p className={css.waterAmountText}>{waterAmount}</p>
+        <p className={css.waterAmountText}>{waterAmount} ml</p>
         <Button
           type="button"
           onClick={addWaterValue}
