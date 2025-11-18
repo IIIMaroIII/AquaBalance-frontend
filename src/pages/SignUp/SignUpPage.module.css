@@ -8,8 +8,7 @@
 .sectionContainer {
   background-color: var(--light-gray);
   border-radius: 30px;
-  /* padding: 24px 16px 170px 16px; */
-  /* padding: 0 16px; */
+
   padding-top: 24px;
   padding-bottom: 170px;
 
@@ -34,7 +33,6 @@
 }
 
 .logo {
-  display: inline-block;
   margin-bottom: 126px;
 
   @media (min-width: 768px) {

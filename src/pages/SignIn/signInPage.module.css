@@ -33,7 +33,6 @@
 }
 
 .logo {
-  display: block;
   margin-bottom: 172px;
 
   @media (min-width: 768px) {
