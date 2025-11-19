@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import { refresh } from 'src/redux/users/operations.js';
 
 const AxiosWithCredentials = axios.create({
-  baseURL: CONSTANTS.DOMAINS.SERVER_DEPLOY,
+  baseURL: CONSTANTS.DOMAINS.SERVER_LOCALHOST,
   withCredentials: true,
 });
 

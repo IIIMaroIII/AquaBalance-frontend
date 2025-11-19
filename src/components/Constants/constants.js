@@ -93,7 +93,7 @@ const DAYS = [
 
 const DOMAINS = {
   SERVER_LOCALHOST: 'http://localhost:3000',
-  SERVER_DEPLOY: 'https://aquabalance-backend.onrender.com',
+  SERVER_DEPLOY: 'https://aquabalance-backend-nh02.onrender.com',
 };
 
 const MODALS = {
